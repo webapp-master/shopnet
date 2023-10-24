@@ -8,11 +8,14 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
-# Create your views here.
+from .models import Order  # Import your Order model
 from rest_framework import status
 from django.contrib.auth.hashers import make_password
-from .serializer import ProductSerializer,UserSerializer,UserSerializerWithToken
+from .serializer import ProductSerializer,UserSerializer,OrderSerializer,UserSerializerWithToken
 
+
+
+# Create your views here.
 
 
 @api_view(['GET'])
@@ -84,3 +87,30 @@ def registerUser(request):
     except:
         message={'details':'USER WITH THIS EMAIL ALREADY EXIST'}
         return Response(message,status=status.HTTP_400_BAD_REQUEST)
+    
+
+#  handle the order placement and payment deduction logic
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def place_order(request):
+    user = request.user
+    payment_amount = request.data.get('payment_amount')  # Extract payment amount from the request data
+
+    # Implement payment deduction logic here
+    # Ensure that the user has sufficient funds in their wallet
+    # Deduct the payment amount from the user's wallet
+
+    # Create an order record
+    order = Order.objects.create(user=user, total_amount=payment_amount)
+
+    # Serialize the order data and return it in the response
+    serializer = OrderSerializer(order)
+    return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+
+
+
+
+

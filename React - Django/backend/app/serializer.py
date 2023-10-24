@@ -2,6 +2,7 @@ from django.db import models
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from app.models import Product
+from .models import Order  # Import the Order model
 from rest_framework_simplejwt.tokens import RefreshToken
 
 
@@ -48,3 +49,10 @@ class UserSerializerWithToken(UserSerializer):
     def get_token(self,obj):
         token=RefreshToken.for_user(obj)
         return str(token.access_token)
+
+
+
+class OrderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Order
+        fields = '__all__'  # You can specify the fields you want to include or use '__all__' to include all fields

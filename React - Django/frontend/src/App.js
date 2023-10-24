@@ -6,26 +6,33 @@ import Header from "./components/Header";
 import HomeScreen from "./components/screens/HomeScreen";
 import ProductScreen from "./components/screens/ProductScreen";
 import CartScreen from "./components/screens/CartScreen";
-import LoginScreen from './components/screens/LoginScreen';
-import RegisterScreen from './components/screens/RegisterScreen';
-
+import LoginScreen from "./components/screens/LoginScreen";
+import RegisterScreen from "./components/screens/RegisterScreen";
+import ShippingScreen from "./components/screens/ShippingScreen"; 
 
 function App() {
   return (
-<Router>
+    <Router>
+
       <Header />
+
       <main className="py-3">
+
         <Container>
           <Route path="/" component={HomeScreen} exact />
           <Route path="/login" component={LoginScreen} exact />
           <Route path="/register" component={RegisterScreen} exact />
           <Route path="/product/:id" component={ProductScreen} exact />
           <Route path="/cart/:id?" component={CartScreen} exact />
+          <Route path="/shipping" component={ShippingScreen} exact />
+
         </Container>
+
       </main>
 
       <Footer />
-      </Router>
+
+    </Router>
   );
 }
 

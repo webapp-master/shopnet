@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from decimal import Decimal
 
 class Product(models.Model):
     user=models.ForeignKey(User,on_delete=models.SET_NULL,null=True)
@@ -31,21 +32,27 @@ class Review(models.Model):
 
 
 class Order(models.Model):
-    user=models.ForeignKey(User,on_delete=models.SET_NULL,null=True)
-    paymentMethod=models.CharField(max_length=200,null=True,blank=True)
-    taxPrice=models.DecimalField(max_digits=7,decimal_places=2,null=True,blank=True)
-    shippingPrice=models.DecimalField(max_digits=7,decimal_places=2,null=True,blank=True)
-    totalPrice=models.DecimalField(max_digits=7,decimal_places=2,null=True,blank=True)
-    isPaid=models.BooleanField(default=False)
-    paidAt=models.DateTimeField(auto_now_add=False,null=True,blank=True)
-    isDelivered=models.BooleanField(default=False)
-    deliveredAt=models.DateTimeField(auto_now_add=False,null=True,blank=True)
-    createdAt=models.DateTimeField(auto_now_add=True)
-    _id=models.AutoField(primary_key=True,editable=False)
-    
-    
-    def __str__(self):
-        return str(self.createdAt)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    payment_amount = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
+    payment_status = models.BooleanField(default=False)  # Indicates if payment has been processed
+    paid_at = models.DateTimeField(auto_now_add=False, null=True, blank=True)  # Date of payment
+    # Add other order-related fields as needed
+
+
+    def process_order(self):
+        if not self.payment_status:
+            if self.user.wallet >= self.payment_amount:
+                # Deduct payment from the user's wallet
+                self.user.wallet -= self.payment_amount
+                self.user.save()
+                # Update order status and date
+                self.payment_status = True
+                self.paid_at = timezone.now()
+                self.save()
+                return True
+        return False
+
+
 
 
 class OrderItem(models.Model):
