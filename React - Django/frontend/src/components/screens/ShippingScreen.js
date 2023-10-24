@@ -1,86 +1,54 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { Row, Col, Button, Card, Form } from 'react-bootstrap';
-import Message from '../Message';
-import { placeOrder } from '../../actions/orderActions';
+import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
-function ShippingScreen({ history }) {
+function ShippingScreen() {
   const dispatch = useDispatch();
-  const userWallet = useSelector((state) => state.user.wallet); // Assuming you have user data including the wallet in the state
+  const history = useHistory();
+
+  // Select the user object from the state
+  const user = useSelector((state) => state.user);
+
+  // Extract the wallet property, or provide a default value if user is undefined
+  const userWallet = user ? user.wallet : 0;
 
   // Initialize state to handle payment and error messages
   const [paymentAmount, setPaymentAmount] = useState(0);
-  const [paymentError, setPaymentError] = useState(null);
 
   const handlePayment = () => {
     if (paymentAmount <= 0) {
-      setPaymentError('Payment amount must be greater than 0');
+      // Handle payment validation and errors
     } else if (paymentAmount > userWallet) {
-      setPaymentError('Insufficient funds in your wallet');
+      // Handle insufficient funds error
     } else {
+      // Make your Axios POST request here
       axios
         .post('/api/place-order/', { payment_amount: paymentAmount })
         .then((response) => {
-          if (response.data.success) {
-            // Order placed successfully
-            // You can handle a successful order placement here
-            // For example, navigate to a success page or display a success message
-          } else {
-            // Payment processing failed
-            // Handle the error or show an error message
-            // You can set an error message in state or show a message component
-            // Example: setPaymentError('Payment processing failed');
-          }
+          // Handle a successful order placement
+          console.log('Order placed:', response.data);
+          // Update UI or navigate to a success page
         })
         .catch((error) => {
-          // Handle HTTP request errors
+          // Handle errors
           console.error('Order placement failed:', error);
           // Dispatch a failure action or show an error message
-          // Example: dispatch(placeOrderFailure(error));
         });
     }
   };
 
   return (
-    <Row>
-      <Col md={8}>
-        <h1>Shipping Information</h1>
-        <Form>
-          <Form.Group controlId="paymentAmount">
-            <Form.Label>Payment Amount</Form.Label>
-            <Form.Control
-              type="number"
-              placeholder="Enter the payment amount"
-              value={paymentAmount}
-              onChange={(e) => setPaymentAmount(e.target.value)}
-            />
-            {paymentError && <Message variant="danger">{paymentError}</Message>}
-          </Form.Group>
-        </Form>
-      </Col>
-
-      <Col md={4}>
-        <Card>
-          <Card.Body>
-            <Card.Title>Order Summary</Card.Title>
-            <Card.Text>
-              <strong>Wallet Balance:</strong> ${userWallet.toFixed(2)}
-            </Card.Text>
-          </Card.Body>
-          <Card.Footer>
-            <Button
-              type="button"
-              className="btn-block"
-              onClick={handlePayment}
-            >
-              Buy/Order
-            </Button>
-          </Card.Footer>
-        </Card>
-      </Col>
-    </Row>
+    <div>
+      {/* Your component content */}
+      <p>User Wallet: {userWallet}</p>
+      <input
+        type="number"
+        value={paymentAmount}
+        onChange={(e) => setPaymentAmount(e.target.value)}
+      />
+      <button onClick={handlePayment}>Proceed to Checkout</button>
+    </div>
   );
 }
 

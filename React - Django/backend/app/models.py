@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from decimal import Decimal
+from django.utils import timezone
 
 class Product(models.Model):
     user=models.ForeignKey(User,on_delete=models.SET_NULL,null=True)
@@ -31,26 +32,27 @@ class Review(models.Model):
         return str(self.rating)
 
 
+
+
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     payment_amount = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
-    payment_status = models.BooleanField(default=False)  # Indicates if payment has been processed
-    paid_at = models.DateTimeField(auto_now_add=False, null=True, blank=True)  # Date of payment
-    # Add other order-related fields as needed
-
+    payment_status = models.BooleanField(default=False)
+    paid_at = models.DateTimeField(auto_now_add=False, null=True, blank=True)
 
     def process_order(self):
         if not self.payment_status:
-            if self.user.wallet >= self.payment_amount:
-                # Deduct payment from the user's wallet
-                self.user.wallet -= self.payment_amount
-                self.user.save()
+            if self.user.userprofile.wallet_balance >= self.payment_amount:
+                # Deduct payment from the user's wallet balance
+                self.user.userprofile.wallet_balance -= self.payment_amount
+                self.user.userprofile.save()
                 # Update order status and date
                 self.payment_status = True
                 self.paid_at = timezone.now()
                 self.save()
                 return True
         return False
+
 
 
 
@@ -79,3 +81,13 @@ class ShippingAddress(models.Model):
 
     def __str__(self):
         return self.address
+    
+
+
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    wallet_balance = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+
+    def __str__(self):
+        return self.user.username
