@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from app.models import Product
 from .models import Order  # Import the Order model
 from rest_framework_simplejwt.tokens import RefreshToken
+from .models import UserProfile
 
 
 

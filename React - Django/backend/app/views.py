@@ -20,7 +20,7 @@ from .serializer import ProductSerializer,UserSerializer,OrderSerializer,UserSer
 
 @api_view(['GET'])
 def getRoutes(request):
-    return Response('Hello')
+    return Response('Hello')    
 
 @api_view(['GET'])
 def getProducts(request):
