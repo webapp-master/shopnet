@@ -24,8 +24,9 @@ class UserSerializer(serializers.ModelSerializer):
     name=serializers.SerializerMethodField(read_only=True)
     _id=serializers.SerializerMethodField(read_only=True)
     isAdmin=serializers.SerializerMethodField(read_only=True)
+    wallet_balance = serializers.DecimalField(max_digits=10, decimal_places=2, default=0.00)  # Add this field
     class Meta:
-        model=User
+        model=UserProfile
         fields=['id','_id','username','email','name','isAdmin']
 
     def get_name(self,obj):

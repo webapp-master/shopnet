@@ -72,21 +72,30 @@ def  getUsers(request):
 
 @api_view(['POST'])
 def registerUser(request):
-    data=request.data
+    data = request.data
     print(data)
     try:
+        # Extract the 'wallet_balance' field from the request data
+        wallet_balance = data.get('wallet_balance', 0.00)
 
-        user=User.objects.create(
+        # Create the user instance with the 'wallet_balance' field
+        user = User.objects.create(
             first_name=data['name'],
             username=data['email'],
             email=data['email'],
             password=make_password(data['password'])
         )
-        serializer=UserSerializerWithToken(user,many=False)
+        
+        # Assign the 'wallet_balance' value to the user profile
+        user.userprofile.wallet_balance = wallet_balance
+        user.userprofile.save()
+
+        serializer = UserSerializerWithToken(user, many=False)
         return Response(serializer.data)
     except:
-        message={'details':'USER WITH THIS EMAIL ALREADY EXIST'}
-        return Response(message,status=status.HTTP_400_BAD_REQUEST)
+        message = {'details': 'USER WITH THIS EMAIL ALREADY EXISTS'}
+        return Response(message, status=status.HTTP_400_BAD_REQUEST)
+
     
 
 #  handle the order placement and payment deduction logic

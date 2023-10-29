@@ -8,7 +8,7 @@ import ProductScreen from "./components/screens/ProductScreen";
 import CartScreen from "./components/screens/CartScreen";
 import LoginScreen from "./components/screens/LoginScreen";
 import RegisterScreen from "./components/screens/RegisterScreen";
-import ShippingScreen from "./components/screens/ShippingScreen"; 
+
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
           <Route path="/register" component={RegisterScreen} exact />
           <Route path="/product/:id" component={ProductScreen} exact />
           <Route path="/cart/:id?" component={CartScreen} exact />
-          <Route path="/shipping" component={ShippingScreen} exact />
+          
 
         </Container>
 
