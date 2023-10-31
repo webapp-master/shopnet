@@ -1,6 +1,6 @@
 products = [
     {
-      '_id': '1',
+      'id': '1',
       'name': 'Airpods Wireless Bluetooth Headphones',
       'image': '/images/airpods.jpg',
       'description':
