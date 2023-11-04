@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { saveShippingAddress } from '../../actions/cartActions'; // Import the action
+import { saveShippingAddress } from '../../actions/shippingActions'; // Import the action
 
 const ShippingScreen = ({ history }) => {
   const dispatch = useDispatch();
@@ -29,7 +29,7 @@ const ShippingScreen = ({ history }) => {
     );
 
     // Redirect to the next step (order summary or payment page)
-    history.push('/order-summary');
+    history.push('/Buy/Place-order');
   };
 
   return (
