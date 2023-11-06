@@ -39,9 +39,9 @@ function Header() {
                 </Nav.Link>
               </LinkContainer>
 
-              <LinkContainer to="/cart">
+              <LinkContainer to="/wallet">
                 <Nav.Link>
-                  <i className="fas fa-shopping-cart"></i> Wallet
+                  <i className="fas fa-wallet"></i> Wallet
                 </Nav.Link>
               </LinkContainer>
 

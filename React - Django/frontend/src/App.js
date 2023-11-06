@@ -10,6 +10,7 @@ import LoginScreen from "./components/screens/LoginScreen";
 import RegisterScreen from "./components/screens/RegisterScreen";
 import ShippingScreen from "./components/screens/ShippingScreen";
 import BuyScreen from "./components/screens/BuyScreen";
+import WalletScreen from "./components/screens/WalletScreen";
 
 
 function App() {
@@ -29,6 +30,8 @@ function App() {
           <Route path="/cart/:id?" component={CartScreen} exact />
           <Route path="/shipping" component={ShippingScreen} exact />
           <Route path="/buy" component={BuyScreen} exact />
+          <Route path="/wallet" component={WalletScreen} exact />
+
 
 
         </Container>
