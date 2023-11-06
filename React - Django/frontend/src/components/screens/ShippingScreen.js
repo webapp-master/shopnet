@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { saveShippingAddress } from '../../actions/shippingActions'; // Import the action
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { saveShippingAddress } from "../../actions/shippingActions"; // Import the action
+
 
 const ShippingScreen = ({ history }) => {
   const dispatch = useDispatch();
@@ -8,11 +9,13 @@ const ShippingScreen = ({ history }) => {
   const { shippingAddress } = cart;
 
   // Initialize state for the form fields
-  const [state, setState] = useState('');
-  const [city, setCity] = useState('');
-  const [area, setArea] = useState('');
-  const [street, setStreet] = useState('');
-  const [houseNumber, setHouseNumber] = useState('');
+  const [state, setState] = useState("");
+  const [city, setCity] = useState("");
+  const [area, setArea] = useState("");
+  const [street, setStreet] = useState("");
+  const [houseNumber, setHouseNumber] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -25,11 +28,12 @@ const ShippingScreen = ({ history }) => {
         area,
         street,
         houseNumber,
+        phoneNumber,
       })
     );
 
     // Redirect to the next step (order summary or payment page)
-    history.push('/Buy/Place-order');
+    history.push('/login?redirect=buy');
   };
 
   return (
@@ -73,6 +77,14 @@ const ShippingScreen = ({ history }) => {
           type="text"
           value={houseNumber}
           onChange={(e) => setHouseNumber(e.target.value)}
+          required
+        />
+
+        <label>Phone Number:</label>
+        <input
+          type="integer"
+          value={phoneNumber}
+          onChange={(e) => setPhoneNumber(e.target.value)}
           required
         />
 

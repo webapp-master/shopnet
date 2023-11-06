@@ -11,3 +11,4 @@ export const saveShippingAddress = (shippingAddress) => (dispatch) => {
   // You can also save the shipping address to local storage if needed
   localStorage.setItem('shippingAddress', JSON.stringify(shippingAddress));
 };
+
