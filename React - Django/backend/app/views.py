@@ -8,10 +8,13 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
-# Create your views here.
+
 from rest_framework import status
 from django.contrib.auth.hashers import make_password
-from .serializer import ProductSerializer,UserSerializer,UserSerializerWithToken
+from .serializer import ProductSerializer,UserSerializer,OrderItemSerializer,UserSerializerWithToken
+
+from .models import OrderItem
+
 
 
 
@@ -84,3 +87,35 @@ def registerUser(request):
     except:
         message={'details':'USER WITH THIS EMAIL ALREADY EXIST'}
         return Response(message,status=status.HTTP_400_BAD_REQUEST)
+    
+
+
+
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def checkout(request):
+    user = request.user  # Assuming you have user authentication in place
+    cart_items = request.data['cart_items']  # Get the cart items from the frontend
+
+    order_items = []
+    for cart_item in cart_items:
+        order_items.append(
+            {
+                'user': user.id,
+                'product_id': cart_item['product_id'],
+                'product_name': cart_item['name'],
+                'product_image': cart_item['image'],
+                'quantity': cart_item['qty'],
+                'price_per_unit': cart_item['price'],
+                'total_price': cart_item['qty'] * cart_item['price'],
+            }
+        )
+
+    serializer = OrderItemSerializer(data=order_items, many=True)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({'message': 'Order items saved successfully'})
+    else:
+        return Response(serializer.errors, status=400)
