@@ -93,16 +93,18 @@ def registerUser(request):
 
 
 
+
+
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def checkout(request):
-    user = request.user  # Assuming you have user authentication in place
-    cart_items = request.data['cart_items']  # Get the cart items from the frontend
+    try:
+        user = request.user
+        cart_items = request.data['cartItems']  # Ensure the key matches what you send from the frontend
 
-    order_items = []
-    for cart_item in cart_items:
-        order_items.append(
-            {
+        order_items = []
+        for cart_item in cart_items:
+            order_items.append({
                 'user': user.id,
                 'product_id': cart_item['product_id'],
                 'product_name': cart_item['name'],
@@ -110,12 +112,13 @@ def checkout(request):
                 'quantity': cart_item['qty'],
                 'price_per_unit': cart_item['price'],
                 'total_price': cart_item['qty'] * cart_item['price'],
-            }
-        )
+            })
 
-    serializer = OrderItemSerializer(data=order_items, many=True)
-    if serializer.is_valid():
-        serializer.save()
-        return Response({'message': 'Order items saved successfully'})
-    else:
-        return Response(serializer.errors, status=400)
+        serializer = OrderItemSerializer(data=order_items, many=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({'message': 'Order items saved successfully'})
+        else:
+            return Response(serializer.errors, status=400)
+    except Exception as e:
+        return Response({'error': str(e)}, status=400)
