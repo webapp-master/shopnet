@@ -14,5 +14,5 @@ urlpatterns = [
     path('user/profile/', views.getUserProfiles, name="getUserProfiles"),
     path('products/<str:pk>', views.getProduct, name="getProduct"),
     path('users/', views.getUsers, name="getUsers"),
-    path('api/checkout/', views.checkout, name='api_checkout'),
+   
 ]

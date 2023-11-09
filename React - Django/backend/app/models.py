@@ -70,14 +70,4 @@ class ShippingAddress(models.Model):
 
 
 
-class OrderItem(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    product_id = models.CharField(max_length=100)  # You can choose an appropriate field type
-    product_name = models.CharField(max_length=255)
-    product_image = models.URLField()  # Assuming image URLs
-    quantity = models.PositiveIntegerField()
-    price_per_unit = models.DecimalField(max_digits=10, decimal_places=2)
-    total_price = models.DecimalField(max_digits=10, decimal_places=2)
 
-    def __str__(self):
-        return self.product_name
