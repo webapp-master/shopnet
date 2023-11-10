@@ -12,10 +12,7 @@ import {
 } from "react-bootstrap";
 import Message from "../Message";
 import { addToCart, removeFromCart } from "../../actions/cartActions";
-import axios from 'axios';
-
-
-
+import axios from "axios";
 
 function CartScreen({ match, location, history }) {
   const productId = match.params.id;
@@ -35,15 +32,32 @@ function CartScreen({ match, location, history }) {
     dispatch(removeFromCart(id));
   };
 
-
-
-
-
-const checkoutHandler = async () => {
+  const checkoutHandler = async () => {
     try {
-        const response = await axios.post('/api/create-order/', {
-            // Include any additional data needed for the order
-        });
+        // Retrieve the user's authentication token from localStorage
+        const storedUserInfo = localStorage.getItem('userInfo');
+        
+        if (!storedUserInfo) {
+            console.error('User info not found in localStorage.');
+            return;
+        }
+
+        console.log('Stored User Info:', storedUserInfo);
+
+        const { token } = JSON.parse(storedUserInfo);
+
+        console.log('Retrieved Token:', token);
+
+        // Include the token in the request headers
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            },
+        };
+
+        // Make the "Proceed to Checkout" request
+        const response = await axios.post('/api/create-order/', {}, config);
 
         if (response.status === 201) {
             // Handle success (e.g., display a success message)
@@ -54,13 +68,10 @@ const checkoutHandler = async () => {
         }
     } catch (error) {
         // Handle network or other errors
+        console.error('Checkout Error:', error);
     }
 };
 
-
-
-
-  
 
   return (
     <Row>
