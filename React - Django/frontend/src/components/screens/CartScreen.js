@@ -12,6 +12,10 @@ import {
 } from "react-bootstrap";
 import Message from "../Message";
 import { addToCart, removeFromCart } from "../../actions/cartActions";
+import axios from 'axios';
+
+
+
 
 function CartScreen({ match, location, history }) {
   const productId = match.params.id;
@@ -34,28 +38,25 @@ function CartScreen({ match, location, history }) {
 
 
 
-  const checkoutHandler = async () => {
-    try {
-      const response = await fetch("/api/checkout", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          // You may need to include an authentication token in the headers
-        },
-        body: JSON.stringify({ cartItems }), // Send the cart items to the backend
-      });
 
-      if (response.ok) {
-        // Handle success (e.g., display a success message)
-        // For example, you can redirect to an order summary page:
-        history.push("/order-summary");
-      } else {
-        // Handle any errors (e.g., display an error message)
-      }
+const checkoutHandler = async () => {
+    try {
+        const response = await axios.post('/api/create-order/', {
+            // Include any additional data needed for the order
+        });
+
+        if (response.status === 201) {
+            // Handle success (e.g., display a success message)
+            // For example, you can redirect to an order summary page:
+            history.push("/order-summary");
+        } else {
+            // Handle any errors (e.g., display an error message)
+        }
     } catch (error) {
-      // Handle network or other errors
+        // Handle network or other errors
     }
-  };
+};
+
 
 
 

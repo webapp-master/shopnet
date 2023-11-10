@@ -12,6 +12,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework import status
 from django.contrib.auth.hashers import make_password
 from .serializer import ProductSerializer,UserSerializer,UserSerializerWithToken
+from .models import Order, OrderItem
 
 
 
@@ -87,6 +88,35 @@ def registerUser(request):
     except:
         message={'details':'USER WITH THIS EMAIL ALREADY EXIST'}
         return Response(message,status=status.HTTP_400_BAD_REQUEST)
+    
+
+
+
+
+
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def createOrder(request):
+    user = request.user
+    cartItems = user.cart.cartItems  # Assuming you have a cart associated with the user
+    
+    order = Order.objects.create(user=user, paymentMethod='YourPaymentMethodHere')
+
+    for item in cartItems:
+        OrderItem.objects.create(order=order, product=item.product, quantity=item.qty)
+
+    # Calculate taxPrice, shippingPrice, and totalPrice as needed
+
+    order.taxPrice = 0  # Calculate tax
+    order.shippingPrice = 0  # Calculate shipping
+    order.totalPrice = order.taxPrice + order.shippingPrice  # Calculate total
+
+    order.save()
+
+    return Response({'message': 'Order created successfully'}, status=status.HTTP_201_CREATED)
+
     
 
 
