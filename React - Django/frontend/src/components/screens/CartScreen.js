@@ -34,44 +34,42 @@ function CartScreen({ match, location, history }) {
 
   const checkoutHandler = async () => {
     try {
-        // Retrieve the user's authentication token from localStorage
-        const storedUserInfo = localStorage.getItem('userInfo');
-        
-        if (!storedUserInfo) {
-            console.error('User info not found in localStorage.');
-            return;
-        }
+      // Retrieve the user's authentication token from localStorage
+      const storedUserInfo = localStorage.getItem("userInfo");
 
-        console.log('Stored User Info:', storedUserInfo);
+      if (!storedUserInfo) {
+        console.error("User info not found in localStorage.");
+        return;
+      }
 
-        const { token } = JSON.parse(storedUserInfo);
+      console.log("Stored User Info:", storedUserInfo);
 
-        console.log('Retrieved Token:', token);
+      // Parse the stored user info
+      const userInfo = JSON.parse(storedUserInfo);
 
-        // Include the token in the request headers
-        const config = {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`,
-            },
-        };
+      // Include the token in the request headers
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userInfo.access}`,
+        },
+      };
 
-        // Make the "Proceed to Checkout" request
-        const response = await axios.post('/api/create-order/', {}, config);
+      // Make the "Proceed to Checkout" request
+      const response = await axios.post("/api/create-order/", {}, config);
 
-        if (response.status === 201) {
-            // Handle success (e.g., display a success message)
-            // For example, you can redirect to an order summary page:
-            history.push("/order-summary");
-        } else {
-            // Handle any errors (e.g., display an error message)
-        }
+      if (response.status === 201) {
+        // Handle success (e.g., display a success message)
+        // For example, you can redirect to an order summary page:
+        history.push("/order-summary");
+      } else {
+        // Handle any errors (e.g., display an error message)
+      }
     } catch (error) {
-        // Handle network or other errors
-        console.error('Checkout Error:', error);
+      // Handle network or other errors
+      console.error("Checkout Error:", error);
     }
-};
-
+  };
 
   return (
     <Row>
