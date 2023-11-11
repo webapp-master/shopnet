@@ -13,6 +13,9 @@ from rest_framework import status
 from django.contrib.auth.hashers import make_password
 from .serializer import ProductSerializer,UserSerializer,UserSerializerWithToken
 from .models import Order, OrderItem
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
+
 
 
 
@@ -96,26 +99,36 @@ def registerUser(request):
 
 
 
+
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def createOrder(request):
-    user = request.user
-    cartItems = user.cart.cartItems  # Assuming you have a cart associated with the user
-    
-    order = Order.objects.create(user=user, paymentMethod='YourPaymentMethodHere')
+    try:
+        user = request.user
+        cartItems = user.cart.cartItems.all()  # Correctly retrieve cart items
 
-    for item in cartItems:
-        OrderItem.objects.create(order=order, product=item.product, quantity=item.qty)
+        if not cartItems:
+            return Response({'error': 'Cart is empty'}, status=status.HTTP_400_BAD_REQUEST)
 
-    # Calculate taxPrice, shippingPrice, and totalPrice as needed
+        order = Order.objects.create(user=user, paymentMethod='YourPaymentMethodHere')
 
-    order.taxPrice = 0  # Calculate tax
-    order.shippingPrice = 0  # Calculate shipping
-    order.totalPrice = order.taxPrice + order.shippingPrice  # Calculate total
+        for item in cartItems:
+            OrderItem.objects.create(order=order, product=item.product, quantity=item.qty)
 
-    order.save()
+        # Calculate taxPrice, shippingPrice, and totalPrice as needed
+        order.taxPrice = 0  # Calculate tax
+        order.shippingPrice = 0  # Calculate shipping
+        order.totalPrice = order.taxPrice + order.shippingPrice  # Calculate total
 
-    return Response({'message': 'Order created successfully'}, status=status.HTTP_201_CREATED)
+        order.save()
+
+        # Clear the user's cart after successful order creation
+        user.cart.cartItems.clear()
+
+        return Response({'message': 'Order created successfully'}, status=status.HTTP_201_CREATED)
+
+    except Exception as e:
+        return Response({'error': f'Error creating order: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     
 
