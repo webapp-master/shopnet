@@ -56,6 +56,7 @@ function CartScreen({ match, location, history }) {
       };
 
       // Make the "Proceed to Checkout" request
+      console.log('Retrieved Token:', userInfo.access);
       const response = await axios.post("/api/create-order/", {}, config);
 
       if (response.status === 201) {
