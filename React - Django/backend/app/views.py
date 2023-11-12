@@ -105,6 +105,7 @@ def registerUser(request):
 def createOrder(request):
     try:
         user = request.user
+        print('Received Token:', request.auth)  # Print the received token
         cartItems = user.cart.cartItems.all()  # Correctly retrieve cart items
 
         if not cartItems:
