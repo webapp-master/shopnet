@@ -12,7 +12,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework import status
 from django.contrib.auth.hashers import make_password
 from .serializer import ProductSerializer,UserSerializer,UserSerializerWithToken
-from .models import Order, OrderItem
+from .models import Order, CartItem
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 
@@ -114,7 +114,7 @@ def createOrder(request):
         order = Order.objects.create(user=user, paymentMethod='YourPaymentMethodHere')
 
         for item in cartItems:
-            OrderItem.objects.create(order=order, product=item.product, quantity=item.qty)
+            CartItem.objects.create(order=order, product=item.product, quantity=item.qty)
 
         # Calculate taxPrice, shippingPrice, and totalPrice as needed
         order.taxPrice = 0  # Calculate tax
@@ -131,12 +131,4 @@ def createOrder(request):
     except Exception as e:
         print('Exception:', str(e))  # Print the exception
         return Response({'error': 'Internal Server Error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-    
-
-
-
-
-
-
 

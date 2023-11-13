@@ -66,7 +66,6 @@ class Order(models.Model):
     isDelivered=models.BooleanField(default=False)
     deliveredAt=models.DateTimeField(auto_now_add=False,null=True,blank=True)
     createdAt=models.DateTimeField(auto_now_add=True)
-    products = models.ManyToManyField(Product, through='OrderItem')
     cart = models.OneToOneField(Cart, on_delete=models.SET_NULL, null=True)
     
     
@@ -88,20 +87,5 @@ class ShippingAddress(models.Model):
 
     def __str__(self):
         return self.address
-    
-
-
-class OrderItem(models.Model):
-    order = models.ForeignKey(Order, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
-    quantity = models.IntegerField(default=1)
-    order = models.ForeignKey(Order, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
-
-
-
-
-
-
 
 

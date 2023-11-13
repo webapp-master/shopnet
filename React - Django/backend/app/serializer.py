@@ -1,7 +1,7 @@
 from django.db import models
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from app.models import Product, OrderItem, Cart, CartItem, Order
+from app.models import Product, Cart, CartItem, Order
 from rest_framework_simplejwt.tokens import RefreshToken
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -49,10 +49,7 @@ class CartSerializer(serializers.ModelSerializer):
         model = Cart
         fields = '__all__'
 
-class OrderItemSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = OrderItem
-        fields = '__all__'
+
 
 class OrderSerializer(serializers.ModelSerializer):
     products = ProductSerializer(many=True, read_only=True)
