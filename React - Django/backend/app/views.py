@@ -129,7 +129,8 @@ def createOrder(request):
         return Response({'message': 'Order created successfully'}, status=status.HTTP_201_CREATED)
 
     except Exception as e:
-        return Response({'error': f'Error creating order: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        print('Exception:', str(e))  # Print the exception
+        return Response({'error': 'Internal Server Error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     
 
