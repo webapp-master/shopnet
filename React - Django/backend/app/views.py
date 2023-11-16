@@ -15,6 +15,7 @@ from .serializer import ProductSerializer,UserSerializer,UserSerializerWithToken
 from .models import Order, CartItem
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
+from app.models import Cart  # Import the Cart model
 
 
 
@@ -74,28 +75,35 @@ def  getUsers(request):
 
 # register the new users
 
+
+
 @api_view(['POST'])
 def registerUser(request):
-    data=request.data
-    print(data)
+    data = request.data
     try:
-
-        user=User.objects.create(
+        user = User.objects.create(
             first_name=data['name'],
             username=data['email'],
             email=data['email'],
             password=make_password(data['password'])
         )
-        serializer=UserSerializerWithToken(user,many=False)
+
+        # Create a cart for the newly registered user
+        Cart.objects.create(user=user)  # Assuming Cart has a ForeignKey to User
+
+        serializer = UserSerializerWithToken(user, many=False)
         return Response(serializer.data)
     except:
-        message={'details':'USER WITH THIS EMAIL ALREADY EXIST'}
-        return Response(message,status=status.HTTP_400_BAD_REQUEST)
+        message = {'details': 'USER WITH THIS EMAIL ALREADY EXISTS'}
+        return Response(message, status=status.HTTP_400_BAD_REQUEST)
+
     
 
 
 
-
+def initialize_cart_for_user(user):
+    if not hasattr(user, 'cart') or user.cart is None:
+        Cart.objects.create(user=user)
 
 
 
@@ -106,6 +114,9 @@ def createOrder(request):
     try:
         user = request.user
         print('Received Token:', request.auth)  # Print the received token
+
+        initialize_cart_for_user(user)
+        
         cartItems = user.cart.cartItems.all()  # Correctly retrieve cart items
 
         if not cartItems:
@@ -131,4 +142,7 @@ def createOrder(request):
     except Exception as e:
         print('Exception:', str(e))  # Print the exception
         return Response({'error': 'Internal Server Error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+
+
 
