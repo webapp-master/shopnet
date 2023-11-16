@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from app.models import Product
+from app.models import Cart, CartItem, Product
 from django.shortcuts import render
 from django.http import JsonResponse
 from rest_framework.permissions import IsAuthenticated,IsAdminUser
@@ -11,11 +11,11 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 
 from rest_framework import status
 from django.contrib.auth.hashers import make_password
-from .serializer import ProductSerializer,UserSerializer,UserSerializerWithToken
+from .serializer import ProductSerializer,UserSerializer, CartItemSerializer, UserSerializerWithToken
 from .models import Order, CartItem
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
-from app.models import Cart  # Import the Cart model
+
 
 
 
@@ -108,41 +108,27 @@ def initialize_cart_for_user(user):
 
 
 
+
+
+
+
+
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def createOrder(request):
-    try:
+def store_cart_items(request):
+    serializer = CartItemSerializer(data=request.data)
+    if serializer.is_valid():
         user = request.user
-        print('Received Token:', request.auth)  # Print the received token
+        cart_items = serializer.validated_data['item_ids']
 
-        initialize_cart_for_user(user)
-        
-        cartItems = user.cart.cartItems.all()  # Correctly retrieve cart items
+        cart, created = Cart.objects.get_or_create(user=user)
+        for item_id in cart_items:
+            try:
+                product = Product.objects.get(id=item_id)
+                CartItem.objects.create(cart=cart, product=product, quantity=1)  # Adjust quantity as needed
+            except Product.DoesNotExist:
+                pass  # Handle the case if a product does not exist
 
-        if not cartItems:
-            return Response({'error': 'Cart is empty'}, status=status.HTTP_400_BAD_REQUEST)
-
-        order = Order.objects.create(user=user, paymentMethod='YourPaymentMethodHere')
-
-        for item in cartItems:
-            CartItem.objects.create(order=order, product=item.product, quantity=item.qty)
-
-        # Calculate taxPrice, shippingPrice, and totalPrice as needed
-        order.taxPrice = 0  # Calculate tax
-        order.shippingPrice = 0  # Calculate shipping
-        order.totalPrice = order.taxPrice + order.shippingPrice  # Calculate total
-
-        order.save()
-
-        # Clear the user's cart after successful order creation
-        user.cart.cartItems.clear()
-
-        return Response({'message': 'Order created successfully'}, status=status.HTTP_201_CREATED)
-
-    except Exception as e:
-        print('Exception:', str(e))  # Print the exception
-        return Response({'error': 'Internal Server Error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    
-
-
+        return Response({'message': 'Cart items stored successfully'}, status=200)
+    return Response(serializer.errors, status=400)
 

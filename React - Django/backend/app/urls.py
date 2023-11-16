@@ -4,7 +4,6 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
 
 )
-from app.views import createOrder
 
 
 urlpatterns = [
@@ -15,7 +14,8 @@ urlpatterns = [
     path('user/profile/', views.getUserProfiles, name="getUserProfiles"),
     path('products/<str:pk>', views.getProduct, name="getProduct"),
     path('users/', views.getUsers, name="getUsers"),
-    path('create-order/', createOrder, name='create-order'),
+    path('store-cart-items/', views.store_cart_items, name="storecartitems"),
+   
 
 
 
