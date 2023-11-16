@@ -32,6 +32,9 @@ function CartScreen({ match, location, history }) {
     dispatch(removeFromCart(id));
   };
 
+
+
+
   const checkoutHandler = async () => {
     try {
       // Retrieve the user's authentication token from localStorage
@@ -71,6 +74,13 @@ function CartScreen({ match, location, history }) {
       console.error("Checkout Error:", error);
     }
   };
+
+
+
+
+
+
+  
 
   return (
     <Row>
