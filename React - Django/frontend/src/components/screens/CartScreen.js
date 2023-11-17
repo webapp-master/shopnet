@@ -35,35 +35,40 @@ function CartScreen({ match, location, history }) {
   const checkoutHandler = async () => {
     try {
       const storedUserInfo = localStorage.getItem("userInfo");
-
+  
       if (!storedUserInfo) {
         console.error("User info not found in localStorage.");
         return;
       }
-
+  
       const userInfo = JSON.parse(storedUserInfo);
-
+  
       const config = {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${userInfo.access}`,
         },
       };
-
-      const response = await axios.post("/api/store-cart-items/", {
-        cartItems: cartItems.map((item) => item.product),
-      }, config);
-
+  
+      const itemIds = cartItems.map((item) => item.product); // Extract item IDs
+  
+      const payload = {
+        item_ids: itemIds, // Change the key to "item_ids"
+      };
+  
+      const response = await axios.post("/api/store-cart-items/", payload, config);
+  
       if (response.status === 200) {
-        history.push("/order-summary");
+        // Handle success
+        console.log("Cart items stored successfully");
       } else {
-        console.error("Error storing cart items");
+        // Handle other status codes or errors
       }
     } catch (error) {
       console.error("Checkout Error:", error);
     }
   };
-
+  
 
 
 
