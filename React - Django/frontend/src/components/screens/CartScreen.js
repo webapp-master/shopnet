@@ -32,42 +32,48 @@ function CartScreen({ match, location, history }) {
     dispatch(removeFromCart(id));
   };
 
+
+
+
+
   const checkoutHandler = async () => {
-    try {
-      const storedUserInfo = localStorage.getItem("userInfo");
-  
-      if (!storedUserInfo) {
-        console.error("User info not found in localStorage.");
-        return;
-      }
-  
-      const userInfo = JSON.parse(storedUserInfo);
-  
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${userInfo.access}`,
-        },
-      };
-  
-      const itemIds = cartItems.map((item) => item.product); // Extract item IDs
-  
-      const payload = {
-        item_ids: itemIds, // Change the key to "item_ids"
-      };
-  
-      const response = await axios.post("/api/store-cart-items/", payload, config);
-  
-      if (response.status === 200) {
-        // Handle success
-        console.log("Cart items stored successfully");
-      } else {
-        // Handle other status codes or errors
-      }
-    } catch (error) {
-      console.error("Checkout Error:", error);
+  try {
+    const storedUserInfo = localStorage.getItem("userInfo");
+
+    if (!storedUserInfo) {
+      console.error("User info not found in localStorage.");
+      return;
     }
-  };
+
+    const userInfo = JSON.parse(storedUserInfo);
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInfo.access}`,
+      },
+    };
+
+    const payload = {
+      cartItems: cartItems.map((item) => ({
+        product: item.product,
+        quantity: item.qty, // Include the quantity for each item
+      })),
+    };
+
+    const response = await axios.post("/api/store-cart-items/", payload, config);
+
+    if (response.status === 200) {
+      // Handle success
+      console.log("Cart items stored successfully");
+    } else {
+      // Handle other status codes or errors
+    }
+  } catch (error) {
+    console.error("Checkout Error:", error);
+  }
+};
+
   
 
 
