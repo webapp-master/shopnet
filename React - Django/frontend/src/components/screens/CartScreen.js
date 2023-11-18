@@ -72,6 +72,7 @@ function CartScreen({ match, location, history }) {
   } catch (error) {
     console.error("Checkout Error:", error);
   }
+  history.push('/login?redirect=shipping')
 };
 
   
