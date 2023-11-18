@@ -119,16 +119,18 @@ def store_cart_items(request):
     serializer = CartItemSerializer(data=request.data)
     if serializer.is_valid():
         user = request.user
-        cart_items = serializer.validated_data['item_ids']
+        cart_items_list = serializer.validated_data['cartItems']
 
         cart, created = Cart.objects.get_or_create(user=user)
-        for item_id in cart_items:
+        for cart_item_data in cart_items_list:
             try:
-                product = Product.objects.get(id=item_id)
-                CartItem.objects.create(cart=cart, product=product, quantity=1)  # Adjust quantity as needed
-            except Product.DoesNotExist:
-                pass  # Handle the case if a product does not exist
+                product = Product.objects.get(id=cart_item_data['product'])
+                quantity = int(cart_item_data['quantity'])  # Convert to int or your preferred type
+                CartItem.objects.create(cart=cart, product=product, quantity=quantity)
+            except (Product.DoesNotExist, ValueError):
+                pass  # Handle the case if a product does not exist or invalid quantity
 
         return Response({'message': 'Cart items stored successfully'}, status=200)
     return Response(serializer.errors, status=400)
+
 

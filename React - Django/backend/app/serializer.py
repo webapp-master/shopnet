@@ -52,4 +52,8 @@ class UserSerializerWithToken(UserSerializer):
 
 
 class CartItemSerializer(serializers.Serializer):
-    item_ids = serializers.ListField(child=serializers.IntegerField())
+    cartItems = serializers.ListField(
+        child=serializers.DictField(
+            child=serializers.CharField(max_length=100)  # Adjust field types if needed
+        )
+    )
