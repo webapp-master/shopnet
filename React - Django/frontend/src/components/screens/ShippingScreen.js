@@ -41,27 +41,32 @@ const ShippingScreen = ({ history }) => {
     <Container>
       <Row>
         <Col md={6}>
-          <Card>
+          <Card style={{ border: "3px solid #f8f9fa" }}>
+
+            <Card.Header style={{ textAlign: "center" }}>
+              Order Summary
+            </Card.Header>
+
             <Card.Body>
-              <Card>
-                <Card.Body>
-                  <Card.Title>Order Summary</Card.Title>
-                  {/* Display order summary */}
-                  {cartItems.map((item) => (
-                    <div key={item.product} className="mb-3">
-                      <Card.Text>{item.name}</Card.Text>
-                      <Card.Text>Quantity: {item.qty}</Card.Text>
-                      <Card.Text>Price per unit: ${item.price}</Card.Text>
-                      <Card.Text>
-                        Total price: ${(item.qty * item.price).toFixed(2)}
-                      </Card.Text>
-                    </div>
-                  ))}
-                  <Card.Text>Total Items: {totalItems}</Card.Text>
-                  <Card.Text>Total Amount: ${totalPrice.toFixed(2)}</Card.Text>
-                </Card.Body>
-              </Card>
+              {/* Display order summary */}
+              {cartItems.map((item) => (
+                <div key={item.product} className="mb-3">
+                  <Card.Text>{item.name}</Card.Text>
+                  <Card.Text>Quantity: {item.qty}</Card.Text>
+                  <Card.Text>Price per unit: ${item.price}</Card.Text>
+                  <Card.Text>
+                    Total price: ${(item.qty * item.price).toFixed(2)}
+                  </Card.Text>
+                </div>
+              ))}
+              
             </Card.Body>
+                
+            <Card.Footer style={{ textAlign: "center" }}>
+              Total Items: {totalItems}
+              Total Amount: ${totalPrice.toFixed(2)}
+            </Card.Footer>
+
           </Card>
         </Col>
 
