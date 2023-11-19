@@ -32,88 +32,105 @@ const ShippingScreen = ({ history }) => {
 
   return (
     <Container>
-      <h1 className="my-4">Shipping Address</h1>
-      <Form onSubmit={submitHandler}>
-        <Row className="mb-3">
-          <Form.Group as={Col} controlId="state">
-            <Form.Label>State</Form.Label>
-            <Form.Control
-              type="text"
-              value={state}
-              onChange={(e) => setState(e.target.value)}
-              required
-            />
-          </Form.Group>
+      <Row>
+        <Col md={6}>
+          <div>
+            <h1>Order Summary</h1>
+            {/* Display your order summary details here */}
+            <p>Order summary details go here.</p>
+          </div>
+        </Col>
+        <Col md={6}>
+          <div>
+            <h1>Shipping Address</h1>
+            <Form onSubmit={submitHandler}>
 
-          <Form.Group as={Col} controlId="city">
-            <Form.Label>City</Form.Label>
-            <Form.Control
-              type="text"
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-              required
-            />
-          </Form.Group>
-        </Row>
 
-        <Row className="mb-3">
-          <Form.Group as={Col} controlId="area">
-            <Form.Label>Area</Form.Label>
-            <Form.Control
-              type="text"
-              value={area}
-              onChange={(e) => setArea(e.target.value)}
-              required
-            />
-          </Form.Group>
+              {/* Shipping Address form */}
 
-          <Form.Group as={Col} controlId="street">
-            <Form.Label>Street</Form.Label>
-            <Form.Control
-              type="text"
-              value={street}
-              onChange={(e) => setStreet(e.target.value)}
-              required
-            />
-          </Form.Group>
-        </Row>
+              <Row className="mb-3">
+                <Form.Group as={Col} controlId="state">
+                  <Form.Label>State</Form.Label>
+                  <Form.Control
+                    type="text"
+                    value={state}
+                    onChange={(e) => setState(e.target.value)}
+                    required
+                  />
+                </Form.Group>
 
-        <Row className="mb-3">
-          <Form.Group as={Col} controlId="houseNumber">
-            <Form.Label>House Number</Form.Label>
-            <Form.Control
-              type="text"
-              value={houseNumber}
-              onChange={(e) => setHouseNumber(e.target.value)}
-              required
-            />
-          </Form.Group>
+                <Form.Group as={Col} controlId="city">
+                  <Form.Label>City</Form.Label>
+                  <Form.Control
+                    type="text"
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                    required
+                  />
+                </Form.Group>
+              </Row>
 
-          <Form.Group as={Col} controlId="phoneNumber">
-            <Form.Label>Phone Number</Form.Label>
-            <Form.Control
-              type="number"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-              required
-            />
-          </Form.Group>
-        </Row>
+              <Row className="mb-3">
+                <Form.Group as={Col} controlId="area">
+                  <Form.Label>Area</Form.Label>
+                  <Form.Control
+                    type="text"
+                    value={area}
+                    onChange={(e) => setArea(e.target.value)}
+                    required
+                  />
+                </Form.Group>
 
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
+                <Form.Group as={Col} controlId="street">
+                  <Form.Label>Street</Form.Label>
+                  <Form.Control
+                    type="text"
+                    value={street}
+                    onChange={(e) => setStreet(e.target.value)}
+                    required
+                  />
+                </Form.Group>
+              </Row>
 
-      <div className="my-4">
-        <h2>Shipping Cost</h2>
-        <p>Shipping Cost: $1,000</p>
-      </div>
+              <Row className="mb-3">
+                <Form.Group as={Col} controlId="houseNumber">
+                  <Form.Label>House Number</Form.Label>
+                  <Form.Control
+                    type="text"
+                    value={houseNumber}
+                    onChange={(e) => setHouseNumber(e.target.value)}
+                    required
+                  />
+                </Form.Group>
 
-      <div className="my-4">
-        <h2>Order Summary</h2>
-        <p>Display your order summary details here.</p>
-      </div>
+                <Form.Group as={Col} controlId="phoneNumber">
+                  <Form.Label>Phone Number</Form.Label>
+                  <Form.Control
+                    type="number"
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
+                    required
+                  />
+                </Form.Group>
+              </Row>
+
+
+
+              {/* Submit button */}
+
+              <Button variant="primary" type="submit">
+                Submit
+              </Button>
+            </Form>
+
+            <div>
+              {/* Shipping Cost */}
+              <h2>Shipping Cost</h2>
+              <p>Shipping Cost: $1,000</p>
+            </div>
+          </div>
+        </Col>
+      </Row>
     </Container>
   );
 };
