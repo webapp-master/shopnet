@@ -15,9 +15,6 @@ const ShippingScreen = ({ history }) => {
     0
   );
 
-
-
-
   const [state, setState] = useState("");
   const [city, setCity] = useState("");
   const [area, setArea] = useState("");
@@ -40,46 +37,38 @@ const ShippingScreen = ({ history }) => {
     history.push("/login?redirect=buy");
   };
 
-  
-  
-
-
-
-
   return (
     <Container>
-
       <Row>
-
         <Col md={6}>
           <Card>
             <Card.Body>
-              <Card.Title>Order Summary</Card.Title>
-              {/* Display order summary */}
-              {cartItems.map((item) => (
-                <div key={item.product} className="mb-3">
-                  <Card.Text>{item.name}</Card.Text>
-                  <Card.Text>Quantity: {item.qty}</Card.Text>
-                  <Card.Text>Price per unit: ${item.price}</Card.Text>
-                  <Card.Text>
-                    Total price: ${(item.qty * item.price).toFixed(2)}
-                  </Card.Text>
-                </div>
-              ))}
-              <Card.Text>Total Items: {totalItems}</Card.Text>
-              <Card.Text>Total Amount: ${totalPrice.toFixed(2)}</Card.Text>
+              <Card>
+                <Card.Body>
+                  <Card.Title>Order Summary</Card.Title>
+                  {/* Display order summary */}
+                  {cartItems.map((item) => (
+                    <div key={item.product} className="mb-3">
+                      <Card.Text>{item.name}</Card.Text>
+                      <Card.Text>Quantity: {item.qty}</Card.Text>
+                      <Card.Text>Price per unit: ${item.price}</Card.Text>
+                      <Card.Text>
+                        Total price: ${(item.qty * item.price).toFixed(2)}
+                      </Card.Text>
+                    </div>
+                  ))}
+                  <Card.Text>Total Items: {totalItems}</Card.Text>
+                  <Card.Text>Total Amount: ${totalPrice.toFixed(2)}</Card.Text>
+                </Card.Body>
+              </Card>
             </Card.Body>
           </Card>
         </Col>
 
         <Col md={6}>
-
-
-        <div>
+          <div>
             <h1>Shipping Address</h1>
             <Form onSubmit={submitHandler}>
-
-
               {/* Shipping Address form */}
 
               <Row className="mb-3">
@@ -148,8 +137,6 @@ const ShippingScreen = ({ history }) => {
                 </Form.Group>
               </Row>
 
-
-
               {/* Submit button */}
 
               <Button variant="primary" type="submit">
@@ -163,8 +150,6 @@ const ShippingScreen = ({ history }) => {
               <p>Shipping Cost: $1,000</p>
             </div>
           </div>
-
-
         </Col>
       </Row>
     </Container>
