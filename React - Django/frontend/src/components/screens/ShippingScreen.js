@@ -40,36 +40,45 @@ const ShippingScreen = ({ history }) => {
   return (
     <Container>
       <Row>
+
+
         <Col md={6}>
           <Card style={{ border: "3px solid #f8f9fa" }}>
             <Card.Header style={{ textAlign: "center" }}>
-              Order Summary
+
+              <h3>Order Summary</h3>          
+
             </Card.Header>
 
             <Card.Body>
               {/* Display order summary */}
               {cartItems.map((item) => (
-                <div key={item.product} className="mb-3">
-                  <Card.Text>{item.name}</Card.Text>
-                  <Card.Text>Quantity: {item.qty}</Card.Text>
-                  <Card.Text>Unit Price: ${item.price}</Card.Text>
-                  <Card.Text>
+                <div key={item.product} className="mb-5">
+
+                  <Card.Text className="mb-1 ctext-color"> {item.name}</Card.Text>
+                  <Card.Text className="mb-1 ctext-color"> Quantity: {item.qty}</Card.Text>
+                  <Card.Text className="mb-1 ctext-color"> Unit Price: ${item.price}</Card.Text>
+                  <Card.Text className="ctext-color">
                     Total Price: ${(item.qty * item.price).toFixed(2)}
                   </Card.Text>
+
                 </div>
               ))}
             </Card.Body>
 
             <Card.Footer style={{ textAlign: "center" }}>
-              <div>Total Items: {totalItems}</div>
-              <div>Total Amount: ${totalPrice.toFixed(2)}</div>
+              <div> <h5>Total Items: {totalItems}</h5> </div>
+              <div> <h5>Total Amount: ${totalPrice.toFixed(2)}</h5> </div>
             </Card.Footer>
+
           </Card>
         </Col>
 
+
+
         <Col md={6}>
           <div>
-            <h1>Shipping Address</h1>
+            <h3>Shipping Address</h3>
             <Form onSubmit={submitHandler}>
               {/* Shipping Address form */}
 
@@ -148,7 +157,7 @@ const ShippingScreen = ({ history }) => {
 
             <div>
               {/* Shipping Cost */}
-              <h2>Shipping Cost</h2>
+              <h3>Shipping Cost</h3>
               <p>Shipping Cost: $1,000</p>
             </div>
           </div>
