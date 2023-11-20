@@ -37,6 +37,45 @@ const ShippingScreen = ({ history }) => {
     history.push("/login?redirect=buy");
   };
 
+  const states = [
+    "Abia",
+    "Adamawa",
+    "Akwa Ibom",
+    "Anambra",
+    "Bauchi",
+    "Bayelsa",
+    "Benue",
+    "Borno",
+    "Cross River",
+    "Delta",
+    "Ebonyi",
+    "Edo",
+    "Ekiti",
+    "Enugu",
+    "Gombe",
+    "Imo",
+    "Jigawa",
+    "Kaduna",
+    "Kano",
+    "Katsina",
+    "Kebbi",
+    "Kogi",
+    "Kwara",
+    "Lagos",
+    "Nasarawa",
+    "Niger",
+    "Ogun",
+    "Ondo",
+    "Osun",
+    "Oyo",
+    "Plateau",
+    "Rivers",
+    "Sokoto",
+    "Taraba",
+    "Yobe",
+    "Zamfara",
+  ];
+
   return (
     <Container>
       <Row>
@@ -94,12 +133,21 @@ const ShippingScreen = ({ history }) => {
               <Row className="mb-3">
                 <Form.Group as={Col} controlId="state">
                   <Form.Control
-                    type="text"
+                    as="select"
                     placeholder="State"
                     value={state}
                     onChange={(e) => setState(e.target.value)}
                     required
-                  />
+                  >
+                    <option value="" disabled hidden>
+                      Select State
+                    </option>
+                    {states.map((stateName) => (
+                      <option key={stateName} value={stateName}>
+                        {stateName}
+                      </option>
+                    ))}
+                  </Form.Control>
                 </Form.Group>
 
                 <Form.Group as={Col} controlId="city">
