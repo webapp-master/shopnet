@@ -76,6 +76,50 @@ const ShippingScreen = ({ history }) => {
     "Zamfara",
   ];
 
+
+  const stateToCities = {
+    Abia: ["Umuahia", "Aba", "Ohafia", "Arochukwu"],
+    Adamawa: ["Yola", "Mubi", "Jimeta", "Numan"],
+    "Akwa Ibom": ["Uyo", "Eket", "Ikot Ekpene", "Oron"],
+    Anambra: ["Awka", "Onitsha", "Nnewi", "Ihiala"],
+    Bauchi: ["Bauchi", "Azare", "Jama'are", "Misau"],
+    Bayelsa: ["Yenagoa", "Ogbia", "Brass", "Sagbama"],
+    Benue: ["Makurdi", "Otukpo", "Gboko", "Katsina-Ala"],
+    Borno: ["Maiduguri", "Biu", "Bama", "Monguno"],
+    "Cross River": ["Calabar", "Akpabuyo", "Ogoja", "Obudu"],
+    Delta: ["Asaba", "Warri", "Ughelli", "Sapele"],
+    Ebonyi: ["Abakaliki", "Afikpo", "Onueke", "Edda"],
+    Edo: ["Benin City", "Auchi", "Ekpoma", "Uromi"],
+    Ekiti: ["Ado-Ekiti", "Ikere-Ekiti", "Ikole-Ekiti", "Oye-Ekiti"],
+    Enugu: ["Enugu", "Nsukka", "Agbani", "Udi"],
+    Gombe: ["Gombe", "Kaltungo", "Dukku", "Billiri"],
+    Imo: ["Owerri", "Orlu", "Okigwe", "Mbaise"],
+    Jigawa: ["Dutse", "Hadejia", "Birnin Kudu", "Gumel"],
+    Kaduna: ["Kaduna", "Zaria", "Kafanchan", "Jema'a"],
+    Kano: ["Kano", "Gwale", "Fagge", "Tarauni"],
+    Katsina: ["Katsina", "Daura", "Funtua", "Malumfashi"],
+    Kebbi: ["Birnin Kebbi", "Argungu", "Yauri", "Zuru"],
+    Kogi: ["Lokoja", "Okene", "Kabba", "Idah"],
+    Kwara: ["Ilorin", "Offa", "Jebba", "Omu-Aran"],
+    Lagos: ["Lagos", "Ikeja", "Badagry", "Ikorodu"],
+    Nasarawa: ["Lafia", "Akwanga", "Keffi", "Karu"],
+    Niger: ["Minna", "Suleja", "Bida", "Kontagora"],
+    Ogun: ["Abeokuta", "Ijebu-Ode", "Sagamu", "Ilaro"],
+    Ondo: ["Akure", "Ondo City", "Owo", "Ikare"],
+    Osun: ["Osogbo", "Ife", "Ilesa", "Ejigbo"],
+    Oyo: ["Ibadan", "Ogbomoso", "Oyo", "Iseyin"],
+    Plateau: ["Jos", "Bukuru", "Shendam", "Pankshin"],
+    Rivers: ["Port Harcourt", "Bonny", "Degema", "Opobo"],
+    Sokoto: ["Sokoto", "Wurno", "Binji", "Gwadabawa"],
+    Taraba: ["Jalingo", "Wukari", "Bali", "Takum"],
+    Yobe: ["Damaturu", "Potiskum", "Gashua", "Nguru"],
+    Zamfara: ["Gusau", "Kaura Namoda", "Talata Mafara", "Anka"]
+  };
+  
+
+
+
+
   return (
     <Container>
       <Row>
@@ -131,6 +175,8 @@ const ShippingScreen = ({ history }) => {
               {/* Shipping Address form */}
 
               <Row className="mb-3">
+
+
                 <Form.Group as={Col} controlId="state">
                   <Form.Control
                     as="select"
@@ -140,7 +186,7 @@ const ShippingScreen = ({ history }) => {
                     required
                   >
                     <option value="" disabled hidden>
-                      Select State
+                      State
                     </option>
                     {states.map((stateName) => (
                       <option key={stateName} value={stateName}>
@@ -150,15 +196,32 @@ const ShippingScreen = ({ history }) => {
                   </Form.Control>
                 </Form.Group>
 
+
+
+
                 <Form.Group as={Col} controlId="city">
                   <Form.Control
-                    type="text"
+                    as="select"
                     placeholder="City"
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
                     required
-                  />
+                    disabled={!state} // Disable city selection if state not selected
+                  >
+                    <option value="" disabled hidden>
+                      City
+                    </option>
+                    {state &&
+                      stateToCities[state].map((cityName) => (
+                        <option key={cityName} value={cityName}>
+                          {cityName}
+                        </option>
+                      ))}
+                  </Form.Control>
                 </Form.Group>
+
+
+
               </Row>
 
               <Row className="mb-3">
