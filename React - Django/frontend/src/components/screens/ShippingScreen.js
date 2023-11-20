@@ -21,6 +21,7 @@ const ShippingScreen = ({ history }) => {
   const [street, setStreet] = useState("");
   const [houseNumber, setHouseNumber] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [shippingCost, setShippingCost] = useState(1);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -76,7 +77,6 @@ const ShippingScreen = ({ history }) => {
     "Zamfara",
   ];
 
-
   const stateToCities = {
     Abia: ["Umuahia", "Aba", "Ohafia", "Arochukwu"],
     Adamawa: ["Yola", "Mubi", "Jimeta", "Numan"],
@@ -113,12 +113,32 @@ const ShippingScreen = ({ history }) => {
     Sokoto: ["Sokoto", "Wurno", "Binji", "Gwadabawa"],
     Taraba: ["Jalingo", "Wukari", "Bali", "Takum"],
     Yobe: ["Damaturu", "Potiskum", "Gashua", "Nguru"],
-    Zamfara: ["Gusau", "Kaura Namoda", "Talata Mafara", "Anka"]
+    Zamfara: ["Gusau", "Kaura Namoda", "Talata Mafara", "Anka"],
   };
-  
 
+  const handleStateChange = (e) => {
+    setState(e.target.value);
+    setCity("");
+  };
 
+  const handleCityChange = (e) => {
+    setCity(e.target.value);
 
+    const selectedCity = e.target.value;
+    if (
+      ["Bukuru", "Shendam", "Ogbomoso", "Oyo", "Ife", "Ilesa"].includes(
+        selectedCity
+      )
+    ) {
+      setShippingCost(2);
+    } else if (
+      ["Ibadan", "Hadejia", "Ilorin", "Bida", "Ejigbo"].includes(selectedCity)
+    ) {
+      setShippingCost(4);
+    } else {
+      setShippingCost(1);
+    }
+  };
 
   return (
     <Container>
@@ -175,14 +195,12 @@ const ShippingScreen = ({ history }) => {
               {/* Shipping Address form */}
 
               <Row className="mb-3">
-
-
                 <Form.Group as={Col} controlId="state">
                   <Form.Control
                     as="select"
                     placeholder="State"
                     value={state}
-                    onChange={(e) => setState(e.target.value)}
+                    onChange={handleStateChange}
                     required
                   >
                     <option value="" disabled hidden>
@@ -196,15 +214,12 @@ const ShippingScreen = ({ history }) => {
                   </Form.Control>
                 </Form.Group>
 
-
-
-
                 <Form.Group as={Col} controlId="city">
                   <Form.Control
                     as="select"
                     placeholder="City"
                     value={city}
-                    onChange={(e) => setCity(e.target.value)}
+                    onChange={handleCityChange}
                     required
                     disabled={!state} // Disable city selection if state not selected
                   >
@@ -219,9 +234,6 @@ const ShippingScreen = ({ history }) => {
                       ))}
                   </Form.Control>
                 </Form.Group>
-
-
-
               </Row>
 
               <Row className="mb-3">
@@ -277,11 +289,13 @@ const ShippingScreen = ({ history }) => {
               </div>
             </Form>
 
+            {/* Display shipping cost */}
             <div className="text-center">
-              {/* Shipping Cost */}
               <h3>Shipping Cost</h3>
-              <p>Shipping Cost: $1,000</p>
+              <p>Shipping Cost: ${shippingCost}</p>
             </div>
+
+
           </div>
         </Col>
       </Row>
