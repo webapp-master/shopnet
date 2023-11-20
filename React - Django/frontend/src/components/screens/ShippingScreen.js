@@ -249,7 +249,7 @@ const ShippingScreen = ({ history }) => {
               <Row className="mb-3">
                 <Form.Group as={Col} controlId="houseNumber">
                   <Form.Control
-                    type="text"
+                    type="number"
                     placeholder="House Number"
                     value={houseNumber}
                     onChange={(e) => setHouseNumber(e.target.value)}
