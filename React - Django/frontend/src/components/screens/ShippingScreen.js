@@ -40,58 +40,62 @@ const ShippingScreen = ({ history }) => {
   return (
     <Container>
       <Row>
-
-
         <Col md={6}>
           <Card style={{ border: "3px solid #f8f9fa" }}>
             <Card.Header style={{ textAlign: "center" }}>
-
-              <h3>Order Summary</h3>          
-
+              <h3>Order Summary</h3>
             </Card.Header>
 
             <Card.Body>
               {/* Display order summary */}
               {cartItems.map((item) => (
                 <div key={item.product} className="mb-5">
-
-                  <Card.Text className="mb-1 ctext-color"> {item.name}</Card.Text>
-                  <Card.Text className="mb-1 ctext-color"> Quantity: {item.qty}</Card.Text>
-                  <Card.Text className="mb-1 ctext-color"> Unit Price: ${item.price}</Card.Text>
+                  <Card.Text className="mb-1 ctext-color">
+                    {" "}
+                    {item.name}
+                  </Card.Text>
+                  <Card.Text className="mb-1 ctext-color">
+                    {" "}
+                    Quantity: {item.qty}
+                  </Card.Text>
+                  <Card.Text className="mb-1 ctext-color">
+                    {" "}
+                    Unit Price: ${item.price}
+                  </Card.Text>
                   <Card.Text className="ctext-color">
                     Total Price: ${(item.qty * item.price).toFixed(2)}
                   </Card.Text>
-
                 </div>
               ))}
             </Card.Body>
 
             <Card.Footer style={{ textAlign: "center" }}>
-              <div> <h5>Total Items: {totalItems}</h5> </div>
-              <div> <h5>Total Amount: ${totalPrice.toFixed(2)}</h5> </div>
+              <div>
+                {" "}
+                <h5>Total Items: {totalItems}</h5>{" "}
+              </div>
+              <div>
+                {" "}
+                <h5>Total Amount: ${totalPrice.toFixed(2)}</h5>{" "}
+              </div>
             </Card.Footer>
-
           </Card>
         </Col>
 
-
-
         <Col md={6}>
-
           <div>
-
             <div className="text-center">
               <h3>Shipping Address</h3>
             </div>
-            
+
             <Form onSubmit={submitHandler}>
               {/* Shipping Address form */}
 
               <Row className="mb-3">
                 <Form.Group as={Col} controlId="state">
-                  <Form.Label>State</Form.Label>
                   <Form.Control
                     type="text"
+                    placeholder="State"
                     value={state}
                     onChange={(e) => setState(e.target.value)}
                     required
@@ -99,9 +103,9 @@ const ShippingScreen = ({ history }) => {
                 </Form.Group>
 
                 <Form.Group as={Col} controlId="city">
-                  <Form.Label>City</Form.Label>
                   <Form.Control
                     type="text"
+                    placeholder="City"
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
                     required
@@ -111,9 +115,9 @@ const ShippingScreen = ({ history }) => {
 
               <Row className="mb-3">
                 <Form.Group as={Col} controlId="area">
-                  <Form.Label>Area</Form.Label>
                   <Form.Control
                     type="text"
+                    placeholder="Area"
                     value={area}
                     onChange={(e) => setArea(e.target.value)}
                     required
@@ -121,9 +125,9 @@ const ShippingScreen = ({ history }) => {
                 </Form.Group>
 
                 <Form.Group as={Col} controlId="street">
-                  <Form.Label>Street</Form.Label>
                   <Form.Control
                     type="text"
+                    placeholder="Street"
                     value={street}
                     onChange={(e) => setStreet(e.target.value)}
                     required
@@ -133,9 +137,9 @@ const ShippingScreen = ({ history }) => {
 
               <Row className="mb-3">
                 <Form.Group as={Col} controlId="houseNumber">
-                  <Form.Label>House Number</Form.Label>
                   <Form.Control
                     type="text"
+                    placeholder="House Number"
                     value={houseNumber}
                     onChange={(e) => setHouseNumber(e.target.value)}
                     required
@@ -143,9 +147,9 @@ const ShippingScreen = ({ history }) => {
                 </Form.Group>
 
                 <Form.Group as={Col} controlId="phoneNumber">
-                  <Form.Label>Phone Number</Form.Label>
                   <Form.Control
                     type="number"
+                    placeholder="Phone Number"
                     value={phoneNumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}
                     required
@@ -160,7 +164,6 @@ const ShippingScreen = ({ history }) => {
                   Submit
                 </Button>
               </div>
-              
             </Form>
 
             <div className="text-center">
