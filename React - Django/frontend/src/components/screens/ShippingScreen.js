@@ -77,8 +77,13 @@ const ShippingScreen = ({ history }) => {
 
 
         <Col md={6}>
+
           <div>
-            <h3>Shipping Address</h3>
+
+            <div className="text-center">
+              <h3>Shipping Address</h3>
+            </div>
+            
             <Form onSubmit={submitHandler}>
               {/* Shipping Address form */}
 
@@ -150,12 +155,15 @@ const ShippingScreen = ({ history }) => {
 
               {/* Submit button */}
 
-              <Button variant="primary" type="submit">
-                Submit
-              </Button>
+              <div className="text-center mb-5">
+                <Button variant="primary" type="submit">
+                  Submit
+                </Button>
+              </div>
+              
             </Form>
 
-            <div>
+            <div className="text-center">
               {/* Shipping Cost */}
               <h3>Shipping Cost</h3>
               <p>Shipping Cost: $1,000</p>
