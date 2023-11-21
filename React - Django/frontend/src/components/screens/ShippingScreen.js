@@ -21,7 +21,7 @@ const ShippingScreen = ({ history }) => {
   const [street, setStreet] = useState("");
   const [houseNumber, setHouseNumber] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [shippingCost, setShippingCost] = useState(1);
+  const [shippingCost, setShippingCost] = useState(null);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -136,8 +136,10 @@ const ShippingScreen = ({ history }) => {
     ) {
       setShippingCost(4);
     } else {
-      setShippingCost(1);
+      setShippingCost(1); // Default shipping cost for other cities
     }
+
+  
   };
 
   return (
