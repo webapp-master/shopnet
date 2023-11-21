@@ -138,8 +138,6 @@ const ShippingScreen = ({ history }) => {
     } else {
       setShippingCost(1); // Default shipping cost for other cities
     }
-
-  
   };
 
   return (
@@ -294,10 +292,14 @@ const ShippingScreen = ({ history }) => {
             {/* Display shipping cost */}
             <div className="text-center">
               <h3>Shipping Cost</h3>
-              <p>Shipping Cost: ${shippingCost}</p>
+              {city === "" ? (
+                <p>Please choose a location for delivery</p>
+              ) : (
+                <p>Shipping Cost: ${shippingCost}</p>
+              )}
             </div>
 
-
+            
           </div>
         </Col>
       </Row>
