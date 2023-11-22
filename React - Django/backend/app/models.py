@@ -43,7 +43,6 @@ class CartItem(models.Model):
 class Order(models.Model):
     user=models.ForeignKey(User,on_delete=models.SET_NULL,null=True)
     paymentMethod=models.CharField(max_length=200,null=True,blank=True)
-    sum_tax=models.DecimalField(max_digits=7,decimal_places=2,null=True,blank=True)
     shippingPrice=models.DecimalField(max_digits=7,decimal_places=2,null=True,blank=True)
     totalAmount=models.DecimalField(max_digits=7,decimal_places=2,null=True,blank=True)
     isPaid=models.BooleanField(default=False)
@@ -73,7 +72,6 @@ class OrderItem(models.Model):
     qty=models.IntegerField(null=True,blank=True,default=0)
     unitPrice=models.DecimalField(max_digits=7,decimal_places=2,null=True,blank=True)
     totalPrice=models.DecimalField(max_digits=7,decimal_places=2,null=True,blank=True)
-    vat=models.DecimalField(max_digits=7,decimal_places=2,null=True,blank=True)
     image=models.CharField(max_length=200,null=True,blank=True)
     
         
@@ -81,13 +79,14 @@ class OrderItem(models.Model):
         return self.product
 
 class ShippingAddress(models.Model):
-    order=models.OneToOneField(Order,on_delete=models.CASCADE,null=True,blank=True)
-    
-    city=models.CharField(max_length=200,null=True,blank=True)
-    
-    
-    shippingCost=models.DecimalField(max_digits=7,decimal_places=2,null=True,blank=True)
-   
+    order = models.OneToOneField(Order, on_delete=models.CASCADE, null=True, blank=True)
+    city = models.CharField(max_length=200, null=True, blank=True)
+    state = models.CharField(max_length=200, null=True, blank=True)
+    area = models.CharField(max_length=200, null=True, blank=True)
+    street = models.CharField(max_length=200, null=True, blank=True)
+    houseNumber = models.IntegerField(null=True, blank=True)  # Change data type to IntegerField
+    phoneNumber = models.BigIntegerField(null=True, blank=True)  # Change data type to BigIntegerField
+    shippingCost = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
 
     def __str__(self):
-        return self.city
+        return f"{self.city}, {self.area}, {self.street}, {self.houseNumber}"
