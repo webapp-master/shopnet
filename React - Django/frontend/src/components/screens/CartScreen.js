@@ -84,7 +84,7 @@ function CartScreen({ match, location, history }) {
 
   return (
     <Row>
-      <Col md={8}>
+      <Col md={8} className="text-center">
         <h1>Shopping Cart</h1>
         {cartItems.length === 0 ? (
           <Message variant="info">
