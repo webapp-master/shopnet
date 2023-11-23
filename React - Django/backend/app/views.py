@@ -11,10 +11,15 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 
 from rest_framework import status
 from django.contrib.auth.hashers import make_password
-from .serializer import ProductSerializer,UserSerializer, CartItemSerializer, UserSerializerWithToken
-from .models import Order, CartItem
+from .serializer import ProductSerializer,UserSerializer, CartItemSerializer, OrderSerializer, UserSerializerWithToken
+from .models import Order, CartItem, Order
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
+
+from rest_framework import viewsets
+from rest_framework.decorators import action
+
+
 
 
 
@@ -133,4 +138,17 @@ def store_cart_items(request):
         return Response({'message': 'Cart items stored successfully'}, status=200)
     return Response(serializer.errors, status=400)
 
+
+
+
+
+
+class OrderViewSet(viewsets.ViewSet):
+    @action(detail=False, methods=['post'])
+    def save_order_data(self, request):
+        serializer = OrderSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=201)
+        return Response(serializer.errors, status=400)
 
