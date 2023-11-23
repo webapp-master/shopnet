@@ -170,8 +170,8 @@ const ShippingScreen = ({ history }) => {
 
     // Construct the payload to send to the backend
     const payload = {
-      order: orderData,
-      orderItems: orderItemsData,
+      Order: orderData,
+      OrderItem: orderItemsData,
     };
 
     try {
