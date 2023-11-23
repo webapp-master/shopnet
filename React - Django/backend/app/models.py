@@ -77,7 +77,8 @@ class OrderItem(models.Model):
     
         
     def __str__(self):
-        return self.product
+        return str(self.product.name)
+
 
 class ShippingAddress(models.Model):
     order = models.OneToOneField(Order, on_delete=models.CASCADE, null=True, blank=True)

@@ -2,13 +2,16 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { saveShippingAddress } from "../../actions/shippingActions";
 import { Form, Button, Container, Row, Col, Card } from "react-bootstrap";
+import axios from "axios"; // Import Axios
 
 const ShippingScreen = ({ history }) => {
+  // ... (existing code)
+
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
 
-  // Calculate total items and total amount
+   // Calculate total items and total amount
   const totalItems = cartItems.reduce((acc, item) => acc + item.qty, 0);
   const totalPrice = cartItems.reduce(
     (acc, item) => acc + item.qty * item.price,
@@ -23,20 +26,6 @@ const ShippingScreen = ({ history }) => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [shippingCost, setShippingCost] = useState(null);
 
-  const submitHandler = (e) => {
-    e.preventDefault();
-    dispatch(
-      saveShippingAddress({
-        state,
-        city,
-        area,
-        street,
-        houseNumber,
-        phoneNumber,
-      })
-    );
-    history.push("/login?redirect=buy");
-  };
 
   const states = [
     "Abia",
@@ -139,6 +128,77 @@ const ShippingScreen = ({ history }) => {
       setShippingCost(1); // Default shipping cost for other cities
     }
   };
+
+
+
+  const submitHandler = async (e) => { // Make the function async
+    e.preventDefault();
+
+
+    dispatch(
+      saveShippingAddress({
+        state,
+        city,
+        area,
+        street,
+        houseNumber,
+        phoneNumber,
+      })
+    );
+
+
+
+
+    // Construct orderItemsData array based on cartItems
+
+    const orderItemsData = cartItems.map((item) => ({
+      product: item.name,
+      qty: item.qty,
+      unitPrice: item.price,
+      totalPrice: (item.qty * item.price).toFixed(2),
+    }));
+
+    // Construct orderData object
+    const orderData = {
+      user: 'otega', // Replace with actual user information
+      paymentMethod: 'cash', // Capture the payment method from the frontend
+      shippingCost:2 , // Use shippingCost state value
+      totalAmount: 298, // Value from the frontend's totalPrice
+      isPaid: false, // Default value or update based on payment status
+      isDelivered: false, // Default value or update based on delivery status
+    };
+
+    // Construct the payload to send to the backend
+    const payload = {
+      order: orderData,
+      orderItems: orderItemsData,
+    };
+
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          // Include any necessary authorization headers if required
+        },
+      };
+
+      // Send a POST request to your backend API using axios
+      await axios.post('/api/orders/save_order_data/', payload, config);
+
+
+
+      // Handle success scenario (redirect or any other action)
+
+
+      history.push("/login?redirect=buy");
+    } catch (error) {
+      // Handle error scenario
+      console.error('Error:', error);
+    }
+  };
+
+  // ... (existing code)
+
 
   return (
     <Container>
@@ -305,6 +365,9 @@ const ShippingScreen = ({ history }) => {
       </Row>
     </Container>
   );
+
+
+  
 };
 
 export default ShippingScreen;

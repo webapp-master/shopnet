@@ -63,7 +63,7 @@ class OrderItemSerializer(serializers.ModelSerializer):
 
 
 class OrderSerializer(serializers.ModelSerializer):
-    order_items = OrderItemSerializer(many=True)  # Represent the order items
+    
 
     class Meta:
         model = Order
