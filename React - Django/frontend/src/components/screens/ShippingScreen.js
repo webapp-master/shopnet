@@ -155,6 +155,7 @@ const ShippingScreen = ({ history }) => {
       totalAmount: 298, // Value from the frontend's totalPrice
       isPaid: false, // Default value or update based on payment status
       isDelivered: false, // Default value or update based on delivery status
+      totalItem: 13
     };
 
     // Construct orderItemsData array based on cartItems
