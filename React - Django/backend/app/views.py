@@ -11,7 +11,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 
 from rest_framework import status
 from django.contrib.auth.hashers import make_password
-from .serializer import ProductSerializer,UserSerializer, CartItemSerializer, OrderSerializer, UserSerializerWithToken
+from .serializer import ProductSerializer,UserSerializer, CartItemSerializer, OrderSerializer, OrderItemSerializer, UserSerializerWithToken
 from .models import Order, CartItem, Order
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
@@ -143,12 +143,33 @@ def store_cart_items(request):
 
 
 
+
+
+
+
+
+
 class OrderViewSet(viewsets.ViewSet):
     @action(detail=False, methods=['post'])
     def save_order_data(self, request):
-        serializer = OrderSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=201)
-        return Response(serializer.errors, status=400)
+        order_serializer = OrderSerializer(data=request.data)
+        if order_serializer.is_valid():
+            order = order_serializer.save()
+
+            # Now handle creation of OrderItems
+            order_items_data = request.data.get('orderItems', [])
+            order_items = []
+            for item_data in order_items_data:
+                order_item_serializer = OrderItemSerializer(data=item_data)
+                if order_item_serializer.is_valid():
+                    order_item = order_item_serializer.save(order=order)  # Associate each OrderItem with the created Order
+                    order_items.append(order_item)
+
+            response_data = order_serializer.data
+            response_data['orderItems'] = OrderItemSerializer(order_items, many=True).data
+            return Response(response_data, status=status.HTTP_201_CREATED)
+
+        return Response(order_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
 
