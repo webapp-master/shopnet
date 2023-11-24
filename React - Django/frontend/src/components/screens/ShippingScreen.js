@@ -149,7 +149,7 @@ const ShippingScreen = ({ history }) => {
 
     // Construct orderData object
     const orderData = {
-      user: 'tolutech@gmail.com',
+      
       paymentMethod: 'cash', // Capture the payment method from the frontend
       shippingCost:2 , // Use shippingCost state value
       totalAmount: 298, // Value from the frontend's totalPrice
