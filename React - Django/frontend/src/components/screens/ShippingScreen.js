@@ -147,20 +147,9 @@ const ShippingScreen = ({ history }) => {
     );
 
 
-
-
-    // Construct orderItemsData array based on cartItems
-
-    const orderItemsData = cartItems.map((item) => ({
-      product: item.name,
-      qty: item.qty,
-      unitPrice: item.price,
-      totalPrice: (item.qty * item.price).toFixed(2),
-    }));
-
     // Construct orderData object
     const orderData = {
-      user: 'otega', // Replace with actual user information
+      user: 'tolutech@gmail.com',
       paymentMethod: 'cash', // Capture the payment method from the frontend
       shippingCost:2 , // Use shippingCost state value
       totalAmount: 298, // Value from the frontend's totalPrice
@@ -168,10 +157,22 @@ const ShippingScreen = ({ history }) => {
       isDelivered: false, // Default value or update based on delivery status
     };
 
+    // Construct orderItemsData array based on cartItems
+
+    const orderItemsData = cartItems.map((item) => ({
+      product: item.product, // Use item.product assuming it contains the ID of the product
+      qty: item.qty,
+      unitPrice: item.price,
+      totalPrice: (item.qty * item.price).toFixed(2),
+    }));
+    
+
+    
+
     // Construct the payload to send to the backend
     const payload = {
-      Order: orderData,
-      OrderItem: orderItemsData,
+      order: orderData,
+      orderItems: orderItemsData,
     };
 
     try {

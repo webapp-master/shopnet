@@ -152,7 +152,7 @@ def store_cart_items(request):
 class OrderViewSet(viewsets.ViewSet):
     @action(detail=False, methods=['post'])
     def save_order_data(self, request):
-        order_serializer = OrderSerializer(data=request.data)
+        order_serializer = OrderSerializer(data=request.data.get('order', []))
         if order_serializer.is_valid():
             order = order_serializer.save()
 
