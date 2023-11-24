@@ -43,7 +43,7 @@ class CartItem(models.Model):
 class Order(models.Model):
     user=models.ForeignKey(User,on_delete=models.SET_NULL,null=True)
     paymentMethod=models.CharField(max_length=200,null=True,blank=True)
-    shippingPrice=models.DecimalField(max_digits=7,decimal_places=2,null=True,blank=True)
+    shippingCost=models.DecimalField(max_digits=7,decimal_places=2,null=True,blank=True)
     totalItem=models.IntegerField(null=True,blank=True,default=0)
     totalAmount=models.DecimalField(max_digits=7,decimal_places=2,null=True,blank=True)
     isPaid=models.BooleanField(default=False)
