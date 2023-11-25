@@ -86,7 +86,7 @@ function Header() {
                     style={{
                       width: "45px",
                       height: "45px",
-                      marginRight: "10px",
+                     
                     }}
                   />
                 </Nav.Item>
