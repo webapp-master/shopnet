@@ -45,7 +45,6 @@ function Header() {
                 </Nav.Link>
               </LinkContainer>
 
-
               {userInfo ? (
                 <NavDropdown title={userInfo.name} id="username">
                   <LinkContainer to="/profile">
@@ -63,6 +62,28 @@ function Header() {
                   </Nav.Link>
                 </LinkContainer>
               )}
+
+
+
+              {userInfo && (
+                <Nav.Item className="ml-auto d-flex align-items-center">
+                  {/* Place your profile picture URL in the src attribute */}
+                  <img
+                    src="/images/my_dp.jpg"
+                    alt="Profile"
+                    className="rounded-circle"
+                    style={{
+                      width: "45px",
+                      height: "45px",
+                      marginRight: "10px"
+                    }}
+                  />
+                </Nav.Item>
+              )}
+
+
+
+
             </Nav>
           </Navbar.Collapse>
         </Container>
