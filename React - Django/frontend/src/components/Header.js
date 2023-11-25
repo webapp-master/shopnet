@@ -22,7 +22,9 @@ function Header() {
 
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
+
             <Nav
+            
               className="mr-auto my-2 my-lg-0"
               style={{ maxHeight: "100px" }}
               navbarScroll
@@ -75,7 +77,7 @@ function Header() {
                     style={{
                       width: "45px",
                       height: "45px",
-                      marginRight: "10px"
+                      marginRight: "10px",
                     }}
                   />
                 </Nav.Item>
