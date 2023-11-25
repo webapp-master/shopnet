@@ -67,7 +67,16 @@ function Header() {
 
 
 
-              {userInfo && (
+              
+
+
+
+            </Nav>
+          </Navbar.Collapse>
+
+
+
+          {userInfo && (
                 <Nav.Item className="ml-auto d-flex align-items-center">
                   {/* Place your profile picture URL in the src attribute */}
                   <img
@@ -86,8 +95,7 @@ function Header() {
 
 
 
-            </Nav>
-          </Navbar.Collapse>
+
         </Container>
       </Navbar>
     </div>
