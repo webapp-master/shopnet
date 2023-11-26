@@ -3,6 +3,7 @@ import { Navbar, Nav, Container, Row, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { logout } from "../actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
+import { useMediaQuery } from 'react-responsive';
 
 function Header() {
   const userLogin = useSelector((state) => state.userLogin);
@@ -11,6 +12,8 @@ function Header() {
   const logoutHandler = () => {
     dispatch(logout());
   };
+
+  const isMobile = useMediaQuery({ maxWidth: 767 }); // Set the maximum width for mobile view
 
   return (
     <div>
@@ -22,18 +25,28 @@ function Header() {
 
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
-
             <Nav
-            
               className="mr-auto my-2 my-lg-0"
               style={{ maxHeight: "100px" }}
-              navbarScroll
-            >
+              navbarScroll>
+
+
+
+                {/* Home */}
+              {!isMobile && (
+
+
+
+
               <LinkContainer to="/">
                 <Nav.Link>
                   <i className="fas fa-home"></i> Home
                 </Nav.Link>
               </LinkContainer>
+
+)}
+
+                {/* Cart */}
 
               <LinkContainer to="/cart">
                 <Nav.Link>
@@ -41,12 +54,24 @@ function Header() {
                 </Nav.Link>
               </LinkContainer>
 
-              <LinkContainer to="/wallet">
-                <Nav.Link>
-                  <i className="fas fa-wallet"></i> Wallet
-                </Nav.Link>
-              </LinkContainer>
 
+
+               {/* Wallet */}
+              {isMobile ? (
+                <NavDropdown title={<i className="fas fa-wallet"></i>} id="basic-nav-dropdown">
+                  <LinkContainer to="/wallet">
+                    <NavDropdown.Item>Wallet</NavDropdown.Item>
+                  </LinkContainer>
+                </NavDropdown>
+              ) : (
+                <LinkContainer to="/wallet">
+                  <Nav.Link>
+                    <i className="fas fa-wallet"></i> Wallet
+                  </Nav.Link>
+                </LinkContainer>
+              )}
+
+              {/* User Dropdown */}
               {userInfo ? (
                 <NavDropdown title={userInfo.name} id="username">
                   <LinkContainer to="/profile">
@@ -64,38 +89,25 @@ function Header() {
                   </Nav.Link>
                 </LinkContainer>
               )}
-
-
-
-              
-
-
-
             </Nav>
+
+            
           </Navbar.Collapse>
 
-
-
           {userInfo && (
-                <Nav.Item className="ml-auto d-flex align-items-center">
-                  {/* Place your profile picture URL in the src attribute */}
-                  <img
-                    src="/images/my_dp.jpg"
-                    alt="Profile"
-                    className="rounded-circle"
-                    style={{
-                      width: "45px",
-                      height: "45px",
-                     
-                    }}
-                  />
-                </Nav.Item>
-              )}
-
-
-
-
-
+            <Nav.Item className="ml-auto d-flex align-items-center">
+              {/* Place your profile picture URL in the src attribute */}
+              <img
+                src="/images/my_dp.jpg"
+                alt="Profile"
+                className="rounded-circle"
+                style={{
+                  width: "45px",
+                  height: "45px",
+                }}
+              />
+            </Nav.Item>
+          )}
         </Container>
       </Navbar>
     </div>
