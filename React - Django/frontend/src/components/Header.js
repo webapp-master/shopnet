@@ -30,23 +30,25 @@ function Header() {
 
               {/* Home */}
               {!isMobile && (
-                <LinkContainer to="/">
-                  <Nav.Link>
-                    <i className="fas fa-home"></i> Home
-                  </Nav.Link>
-                </LinkContainer>
+
+                <React.Fragment>
+                  <LinkContainer to="/">
+                    <Nav.Link>
+                      <i className="fas fa-home"></i> Home
+                    </Nav.Link>
+                  </LinkContainer>
+
+                  <LinkContainer to="/cart">
+                    <Nav.Link>
+                      <i className="fas fa-shopping-cart"></i> Cart
+                    </Nav.Link>
+                  </LinkContainer>
+                </React.Fragment>
               )}
 
 
 
-              {/* Cart */}
-              {!isMobile && (
-                <LinkContainer to="/cart">
-                  <Nav.Link>
-                    <i className="fas fa-shopping-cart"></i> Cart
-                  </Nav.Link>
-                </LinkContainer>
-              )}
+              
 
 
               {/* Mobile dropdown for More options */}
