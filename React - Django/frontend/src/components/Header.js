@@ -18,7 +18,7 @@ function Header() {
   return (
     <div>
       <Navbar bg="dark" variant="dark">
-        <Container>
+        <Container fluid>
           <LinkContainer to="/" LinkContainer>
             <Navbar.Brand>Shopnet</Navbar.Brand>
           </LinkContainer>
