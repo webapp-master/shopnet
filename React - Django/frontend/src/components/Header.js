@@ -64,27 +64,26 @@ function Header() {
 
               {/* Mobile dropdown for More options */}
               {isMobile && userInfo && (
-                <div className="text-center">
-                  <NavDropdown title="More" id="basic-nav-dropdown" className="mx-auto">
-                    <LinkContainer to="/cart">
-                      <NavDropdown.Item>Cart</NavDropdown.Item>
-                    </LinkContainer>
+                
+                  
 
-                    <LinkContainer to="/wallet">
-                      <NavDropdown.Item>Wallet</NavDropdown.Item>
-                    </LinkContainer>
-
-                    <LinkContainer to="/profile">
-                      <NavDropdown.Item>Profile</NavDropdown.Item>
-                    </LinkContainer>
-
-                    <NavDropdown.Item onClick={logoutHandler}>
-                      Logout
-                    </NavDropdown.Item>
-                  </NavDropdown>
-                </div>
+                    <NavDropdown title="More" id="basic-nav-dropdown" className="dropdown-mobile">
+                      <LinkContainer to="/cart">
+                        <NavDropdown.Item>Cart</NavDropdown.Item>
+                      </LinkContainer>
+                      <LinkContainer to="/wallet">
+                        <NavDropdown.Item>Wallet</NavDropdown.Item>
+                      </LinkContainer>
+                      <LinkContainer to="/profile">
+                        <NavDropdown.Item>Profile</NavDropdown.Item>
+                      </LinkContainer>
+                      <NavDropdown.Item onClick={logoutHandler}>
+                        Logout
+                      </NavDropdown.Item>
+                    </NavDropdown>
+                  
+                
               )}
-
 
 
 
