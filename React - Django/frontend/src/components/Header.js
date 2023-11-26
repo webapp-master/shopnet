@@ -48,6 +48,17 @@ function Header() {
 
 
 
+              {/* Wallet */}
+              {!isMobile && userInfo && (
+                <LinkContainer to="/wallet">
+                  <Nav.Link>
+                    <i className="fas fa-shopping-cart"></i> Wallet
+                  </Nav.Link>
+                </LinkContainer>
+              )}
+
+
+
               
 
 
