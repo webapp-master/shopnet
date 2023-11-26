@@ -86,9 +86,12 @@ function Header() {
                 </NavDropdown>
               )}
 
+
+
+
               {/* User Dropdown */}
               {userInfo && !isMobile && (
-                <NavDropdown title={userInfo.name} id="username">
+                <NavDropdown title="More" id="basic-nav-dropdown">
                   <LinkContainer to="/profile">
                     <NavDropdown.Item>Profile</NavDropdown.Item>
                   </LinkContainer>
@@ -97,6 +100,9 @@ function Header() {
                   </NavDropdown.Item>
                 </NavDropdown>
               )}
+
+
+
 
               {/* Login link */}
               {!userInfo && (
