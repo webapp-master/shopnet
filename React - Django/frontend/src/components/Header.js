@@ -64,26 +64,29 @@ function Header() {
 
               {/* Mobile dropdown for More options */}
               {isMobile && userInfo && (
-                
-                  
 
-                    <NavDropdown title="More" id="basic-nav-dropdown" className="dropdown-mobile">
-                      <LinkContainer to="/cart">
-                        <NavDropdown.Item>Cart</NavDropdown.Item>
-                      </LinkContainer>
-                      <LinkContainer to="/wallet">
-                        <NavDropdown.Item>Wallet</NavDropdown.Item>
-                      </LinkContainer>
-                      <LinkContainer to="/profile">
-                        <NavDropdown.Item>Profile</NavDropdown.Item>
-                      </LinkContainer>
-                      <NavDropdown.Item onClick={logoutHandler}>
-                        Logout
-                      </NavDropdown.Item>
-                    </NavDropdown>
-                  
-                
+                <NavDropdown title="More" id="basic-nav-dropdown" className="dropdown-mobile">
+
+                  <LinkContainer to="/cart">
+                    <NavDropdown.Item>Cart</NavDropdown.Item>
+                  </LinkContainer>
+
+                  <LinkContainer to="/wallet">
+                    <NavDropdown.Item>Wallet</NavDropdown.Item>
+                  </LinkContainer>
+
+                  <LinkContainer to="/profile">
+                    <NavDropdown.Item>Profile</NavDropdown.Item>
+                  </LinkContainer>
+
+                  <NavDropdown.Item onClick={logoutHandler}>
+                    Logout
+                  </NavDropdown.Item>
+
+                </NavDropdown>
+
               )}
+
 
 
 
@@ -113,8 +116,6 @@ function Header() {
 
 
           <Nav className="mr-auto my-2 my-lg-0" navbarScroll>
-
-      
 
             {userInfo && (
               <React.Fragment>
