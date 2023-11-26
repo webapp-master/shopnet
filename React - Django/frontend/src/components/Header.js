@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
+import { Navbar, Nav, Container, NavDropdown, Row } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { logout } from "../actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
@@ -64,26 +64,24 @@ function Header() {
 
               {/* Mobile dropdown for More options */}
               {isMobile && userInfo && (
-
-                <NavDropdown title="More" id="basic-nav-dropdown">
-
-                  <LinkContainer to="/cart">
-                    <NavDropdown.Item>Cart</NavDropdown.Item>
-                  </LinkContainer>
-
-                  <LinkContainer to="/wallet">
-                    <NavDropdown.Item>Wallet</NavDropdown.Item>
-                  </LinkContainer>
-
-                  <LinkContainer to="/profile">
-                    <NavDropdown.Item>Profile</NavDropdown.Item>
-                  </LinkContainer>
-
-                  <NavDropdown.Item onClick={logoutHandler}>
-                    Logout
-                  </NavDropdown.Item>
-
-                </NavDropdown>
+                <Container fluid>
+                  <Row className="justify-content-center">
+                    <NavDropdown title="More" id="basic-nav-dropdown">
+                      <LinkContainer to="/cart">
+                        <NavDropdown.Item>Cart</NavDropdown.Item>
+                      </LinkContainer>
+                      <LinkContainer to="/wallet">
+                        <NavDropdown.Item>Wallet</NavDropdown.Item>
+                      </LinkContainer>
+                      <LinkContainer to="/profile">
+                        <NavDropdown.Item>Profile</NavDropdown.Item>
+                      </LinkContainer>
+                      <NavDropdown.Item onClick={logoutHandler}>
+                        Logout
+                      </NavDropdown.Item>
+                    </NavDropdown>
+                  </Row>
+                </Container>
               )}
 
 
