@@ -42,7 +42,7 @@ function Header() {
                 </Nav.Link>
               </LinkContainer>
 
-              {/* Mobile dropdown for Wallet, Profile, and Logout */}
+              {/* Mobile dropdown for More options */}
               {isMobile && userInfo && (
                 <NavDropdown title="More" id="basic-nav-dropdown">
                   <LinkContainer to="/wallet">
