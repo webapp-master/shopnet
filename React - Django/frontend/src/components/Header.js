@@ -113,41 +113,50 @@ function Header() {
 
 
 
-
+          <Nav className="mr-auto my-2 my-lg-0" navbarScroll>
 
       
 
-          {userInfo && (
-            <React.Fragment>
-              <Nav.Item className="ml-auto d-flex align-items-center">
-                {/* Place your profile picture URL in the src attribute */}
-                <img
-                  src="/images/my_dp.jpg"
-                  alt="Profile"
-                  className="rounded-circle"
-                  style={{
-                    width: "45px",
-                    height: "45px",
-                  }}
-                />
-              </Nav.Item>
+            {userInfo && (
+              <React.Fragment>
 
-              {/* Large screen Dropdown */}
-              {!isMobile && (
-                <NavDropdown title="More" id="basic-nav-dropdown" className="ml-2">
-                  <LinkContainer to="/profile">
-                    <NavDropdown.Item>Profile</NavDropdown.Item>
-                  </LinkContainer>
-                  <NavDropdown.Item onClick={logoutHandler}>
-                    Logout
-                  </NavDropdown.Item>
-                </NavDropdown>
-              )}
-            </React.Fragment>
-          )}
+
+                {/* Large screen Dropdown */}
+                {!isMobile && (
+                  <NavDropdown title="More" id="basic-nav-dropdown"  className="my-dropdown">
+                    <LinkContainer to="/profile">
+                      <NavDropdown.Item>Profile</NavDropdown.Item>
+                    </LinkContainer>
+                    <NavDropdown.Item onClick={logoutHandler}>
+                      Logout
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                )}
 
 
 
+
+                <Nav.Item className="d-flex align-items-center">
+                  {/* Place your profile picture URL in the src attribute */}
+                  <img
+                    src="/images/my_dp.jpg"
+                    alt="Profile"
+                    className="rounded-circle my-profile" 
+                    style={{
+                      width: "45px",
+                      height: "45px",
+                    }}
+                  />
+                </Nav.Item>
+
+                
+
+
+              </React.Fragment>
+            )}
+
+
+          </Nav>
 
 
 
