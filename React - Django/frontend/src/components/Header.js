@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Nav, Container, Row, NavDropdown } from "react-bootstrap";
+import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { logout } from "../actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
@@ -25,64 +25,52 @@ function Header() {
 
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
-            <Nav
-              className="mr-auto my-2 my-lg-0"
-              style={{ maxHeight: "100px" }}
-              navbarScroll>
-
-
-
-                {/* Home */}
+            <Nav className="mr-auto my-2 my-lg-0" navbarScroll>
+              {/* Home */}
               {!isMobile && (
+                <LinkContainer to="/">
+                  <Nav.Link>
+                    <i className="fas fa-home"></i> Home
+                  </Nav.Link>
+                </LinkContainer>
+              )}
 
-
-
-
-              <LinkContainer to="/">
-                <Nav.Link>
-                  <i className="fas fa-home"></i> Home
-                </Nav.Link>
-              </LinkContainer>
-
-)}
-
-                {/* Cart */}
-
+              {/* Cart */}
               <LinkContainer to="/cart">
                 <Nav.Link>
                   <i className="fas fa-shopping-cart"></i> Cart
                 </Nav.Link>
               </LinkContainer>
 
-
-
-               {/* Wallet */}
-              {isMobile ? (
-                <NavDropdown title={<i className="fas fa-wallet"></i>} id="basic-nav-dropdown">
+              {/* Mobile dropdown for Wallet, Profile, and Logout */}
+              {isMobile && userInfo && (
+                <NavDropdown title="More" id="basic-nav-dropdown">
                   <LinkContainer to="/wallet">
                     <NavDropdown.Item>Wallet</NavDropdown.Item>
                   </LinkContainer>
-                </NavDropdown>
-              ) : (
-                <LinkContainer to="/wallet">
-                  <Nav.Link>
-                    <i className="fas fa-wallet"></i> Wallet
-                  </Nav.Link>
-                </LinkContainer>
-              )}
-
-              {/* User Dropdown */}
-              {userInfo ? (
-                <NavDropdown title={userInfo.name} id="username">
                   <LinkContainer to="/profile">
                     <NavDropdown.Item>Profile</NavDropdown.Item>
                   </LinkContainer>
-
                   <NavDropdown.Item onClick={logoutHandler}>
                     Logout
                   </NavDropdown.Item>
                 </NavDropdown>
-              ) : (
+              )}
+
+              {/* User Dropdown */}
+              {userInfo && !isMobile && (
+                <NavDropdown title={userInfo.name} id="username">
+                  <LinkContainer to="/profile">
+                    <NavDropdown.Item>Profile</NavDropdown.Item>
+                  </LinkContainer>
+                  <NavDropdown.Item onClick={logoutHandler}>
+                    Logout
+                  </NavDropdown.Item>
+                </NavDropdown>
+              )}
+
+              {/* Login link */}
+              {!userInfo && (
                 <LinkContainer to="/login">
                   <Nav.Link>
                     <i className="fas fa-user"></i> Login
@@ -90,8 +78,6 @@ function Header() {
                 </LinkContainer>
               )}
             </Nav>
-
-            
           </Navbar.Collapse>
 
           {userInfo && (
