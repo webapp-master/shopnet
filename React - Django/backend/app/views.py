@@ -2,8 +2,8 @@ from django.contrib.auth.models import User
 from app.models import Cart, CartItem, Product, Profile
 from django.shortcuts import render
 from django.http import JsonResponse
-from rest_framework.permissions import IsAuthenticated,IsAdminUser
-from rest_framework.decorators import api_view,permission_classes
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
@@ -11,7 +11,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 
 from rest_framework import status
 from django.contrib.auth.hashers import make_password
-from .serializer import ProductSerializer,UserSerializer, ProfileSerializer, CartItemSerializer, OrderSerializer, OrderItemSerializer, UserSerializerWithToken
+from .serializer import ProductSerializer, UserSerializer, ProfileSerializer, CartItemSerializer, OrderSerializer, OrderItemSerializer, UserSerializerWithToken
 from .models import Order, CartItem, Order
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
@@ -20,66 +20,57 @@ from rest_framework import viewsets
 from rest_framework.decorators import action
 
 
-
-
-
-
-
-
-
-
 @api_view(['GET'])
 def getRoutes(request):
     return Response('Hello')
 
-@api_view(['GET'])
-def getProducts(request):
-    products=Product.objects.all()
-    serializer=ProductSerializer(products,many=True)
-    return Response(serializer.data)
 
 @api_view(['GET'])
-def getProduct(request,pk):
-    product=Product.objects.get(id=pk)
-    serializer=ProductSerializer(product,many=False)
+def getProducts(request):
+    products = Product.objects.all()
+    serializer = ProductSerializer(products, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def getProduct(request, pk):
+    product = Product.objects.get(id=pk)
+    serializer = ProductSerializer(product, many=False)
     return Response(serializer.data)
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 
-    def validate(self,attrs):
-        data=super().validate(attrs)
+    def validate(self, attrs):
+        data = super().validate(attrs)
         serializer = UserSerializerWithToken(self.user).data
-        for k,v in serializer.items():
-            data[k]=v
-    
+        for k, v in serializer.items():
+            data[k] = v
 
         return data
 
+
 class MyTokenObtainPairView(TokenObtainPairView):
-    serializer_class=MyTokenObtainPairSerializer
-    
-        
+    serializer_class = MyTokenObtainPairSerializer
 
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def  getUserProfiles(request):
-    user=request.user
-    serializer=UserSerializer(user,many=False)
+def getUserProfiles(request):
+    user = request.user
+    serializer = UserSerializer(user, many=False)
     return Response(serializer.data)
 
 
 @api_view(['GET'])
 @permission_classes([IsAdminUser])
-def  getUsers(request):
-    user=User.objects.all()
-    serializer=UserSerializer(user,many=True)
+def getUsers(request):
+    user = User.objects.all()
+    serializer = UserSerializer(user, many=True)
     return Response(serializer.data)
 
 
 # register the new users
-
 
 
 @api_view(['POST'])
@@ -87,40 +78,31 @@ def registerUser(request):
     data = request.data
     try:
         user = User.objects.create(
-            first_name=data['name'],
+            first_name=data['firstName'],
             username=data['email'],
             email=data['email'],
             password=make_password(data['password'])
         )
 
         profile = Profile.objects.create(
-        user=user,
-        phoneNumber=data.get('phoneNumber')  # Save phoneNumber if provided
-    )
+            user=user,
+            phoneNumber=data.get('phoneNumber')  # Save phoneNumber if provided
+        )
 
         # Create a cart for the newly registered user
-        Cart.objects.create(user=user)  # Assuming Cart has a ForeignKey to User
+        # Assuming Cart has a ForeignKey to User
+        Cart.objects.create(user=user)
 
         serializer = UserSerializerWithToken(user, many=False)
         return Response(serializer.data)
     except:
-        message = {'details': 'USER WITH THIS EMAIL ALREADY EXISTS'}
+        message = {'details': 'USER WITH THIS EMAIL ALREADY EXIST'}
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
-
-    
-
 
 
 def initialize_cart_for_user(user):
     if not hasattr(user, 'cart') or user.cart is None:
         Cart.objects.create(user=user)
-
-
-
-
-
-
-
 
 
 @api_view(['POST'])
@@ -135,23 +117,15 @@ def store_cart_items(request):
         for cart_item_data in cart_items_list:
             try:
                 product = Product.objects.get(id=cart_item_data['product'])
-                quantity = int(cart_item_data['quantity'])  # Convert to int or your preferred type
-                CartItem.objects.create(cart=cart, product=product, quantity=quantity)
+                # Convert to int or your preferred type
+                quantity = int(cart_item_data['quantity'])
+                CartItem.objects.create(
+                    cart=cart, product=product, quantity=quantity)
             except (Product.DoesNotExist, ValueError):
                 pass  # Handle the case if a product does not exist or invalid quantity
 
         return Response({'message': 'Cart items stored successfully'}, status=200)
     return Response(serializer.errors, status=400)
-
-
-
-
-
-
-
-
-
-
 
 
 class OrderViewSet(viewsets.ViewSet):
@@ -167,15 +141,13 @@ class OrderViewSet(viewsets.ViewSet):
             for item_data in order_items_data:
                 order_item_serializer = OrderItemSerializer(data=item_data)
                 if order_item_serializer.is_valid():
-                    order_item = order_item_serializer.save(order=order)  # Associate each OrderItem with the created Order
+                    # Associate each OrderItem with the created Order
+                    order_item = order_item_serializer.save(order=order)
                     order_items.append(order_item)
 
             response_data = order_serializer.data
-            response_data['orderItems'] = OrderItemSerializer(order_items, many=True).data
+            response_data['orderItems'] = OrderItemSerializer(
+                order_items, many=True).data
             return Response(response_data, status=status.HTTP_201_CREATED)
 
         return Response(order_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
-
-
-

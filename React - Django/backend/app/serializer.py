@@ -18,18 +18,18 @@ class ProductSerializer(serializers.ModelSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
-    name = serializers.SerializerMethodField(read_only=True)
+    firstName = serializers.SerializerMethodField(read_only=True)
     isAdmin = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'name', 'isAdmin']
+        fields = ['id', 'username', 'email', 'firstName', 'isAdmin']
 
-    def get_name(self, obj):
-        name = obj.first_name
-        if name == "":
-            name = obj.email
-        return name
+    def get_firstName(self, obj):
+        firstName = obj.first_name
+        if firstName == "":
+            firstName = obj.email
+        return firstName
 
     def get_isAdmin(self, obj):
         return obj.is_staff
@@ -40,7 +40,7 @@ class UserSerializerWithToken(UserSerializer):
 
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'name', 'isAdmin', 'token']
+        fields = ['id', 'username', 'email', 'firstName', 'isAdmin', 'token']
 
     def get_token(self, obj):
         token = RefreshToken.for_user(obj)
