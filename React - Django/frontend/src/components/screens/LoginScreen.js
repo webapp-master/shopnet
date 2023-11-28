@@ -53,6 +53,8 @@ function LoginScreen({ location, history }) {
             ></Form.Control>
           </Form.Group>
 
+          <br /> {/* Line break added here */}
+
           <Form.Group controlId="password">
             <Form.Control
               required
