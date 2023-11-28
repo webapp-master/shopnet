@@ -1,0 +1,17 @@
+				To - Do - List
+
+			1
+when i was at the ShippingScreen.js
+I logged out
+
+and the i was not redirect to the login page
+
+
+
+
+			2
+
+during registration
+if i use email that is already in existence 
+
+it gives a feedback that won't be understood by users   

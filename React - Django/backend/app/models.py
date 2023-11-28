@@ -92,3 +92,11 @@ class ShippingAddress(models.Model):
 
     def __str__(self):
         return f"{self.city}, {self.area}, {self.street}, {self.houseNumber}"
+    
+
+
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    phoneNumber = models.CharField(max_length=15, blank=True, null=True) 

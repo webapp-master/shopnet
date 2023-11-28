@@ -1,7 +1,7 @@
 from django.db import models
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from app.models import Product,  OrderItem, Order
+from app.models import Product,  OrderItem, Order, Profile
 from rest_framework_simplejwt.tokens import RefreshToken
 
 
@@ -45,6 +45,15 @@ class UserSerializerWithToken(UserSerializer):
     def get_token(self, obj):
         token = RefreshToken.for_user(obj)
         return str(token.access_token)
+    
+
+class ProfileSerializer(serializers.ModelSerializer):
+    phoneNumber = serializers.CharField(allow_null=True, allow_blank=True)
+
+    class Meta:
+        model = Profile
+        fields = ['phoneNumber']
+
 
 
 class CartItemSerializer(serializers.Serializer):
@@ -69,3 +78,4 @@ class OrderSerializer(serializers.ModelSerializer):
         model = Order
         fields = ['user', 'paymentMethod', 'shippingCost', 'totalAmount', 'totalItem', 'isPaid',
                   'paidAt', 'isDelivered', 'deliveredAt', 'createdAt']
+

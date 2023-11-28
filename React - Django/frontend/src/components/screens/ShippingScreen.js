@@ -158,6 +158,7 @@ const ShippingScreen = ({ history }) => {
       totalItem: 13
     };
 
+    
     // Construct orderItemsData array based on cartItems
 
     const orderItemsData = cartItems.map((item) => ({

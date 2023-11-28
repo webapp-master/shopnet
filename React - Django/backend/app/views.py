@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from app.models import Cart, CartItem, Product
+from app.models import Cart, CartItem, Product, Profile
 from django.shortcuts import render
 from django.http import JsonResponse
 from rest_framework.permissions import IsAuthenticated,IsAdminUser
@@ -11,7 +11,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 
 from rest_framework import status
 from django.contrib.auth.hashers import make_password
-from .serializer import ProductSerializer,UserSerializer, CartItemSerializer, OrderSerializer, OrderItemSerializer, UserSerializerWithToken
+from .serializer import ProductSerializer,UserSerializer, ProfileSerializer, CartItemSerializer, OrderSerializer, OrderItemSerializer, UserSerializerWithToken
 from .models import Order, CartItem, Order
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
@@ -93,6 +93,11 @@ def registerUser(request):
             password=make_password(data['password'])
         )
 
+        profile = Profile.objects.create(
+        user=user,
+        phoneNumber=data.get('phoneNumber')  # Save phoneNumber if provided
+    )
+
         # Create a cart for the newly registered user
         Cart.objects.create(user=user)  # Assuming Cart has a ForeignKey to User
 
@@ -170,6 +175,7 @@ class OrderViewSet(viewsets.ViewSet):
             return Response(response_data, status=status.HTTP_201_CREATED)
 
         return Response(order_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
 
 
 
