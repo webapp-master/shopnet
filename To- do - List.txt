@@ -15,3 +15,12 @@ during registration
 if i use email that is already in existence 
 
 it gives a feedback that won't be understood by users   
+
+
+
+
+			3
+
+In registration and Login
+make "username" to be unique
+that is, no two user in the database can have same username
