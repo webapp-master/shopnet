@@ -40,7 +40,7 @@ function LoginScreen({ location, history }) {
   return (
 
 
-    <div className="d-flex justify-content-center"> {/* Wrapping div for center alignment */}
+    <div  className="text-center">
 
       <FormContainer>
         <h1>Sign In</h1>
@@ -86,7 +86,7 @@ function LoginScreen({ location, history }) {
           </Col>
         </Row>
       </FormContainer>
-      
+
     </div>
   );
 }

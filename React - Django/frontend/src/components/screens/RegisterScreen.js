@@ -40,7 +40,8 @@ function RegisterScreen({ location, history }) {
 
 
   return (
-    <div>
+
+    <div  className="text-center">
 
       <FormContainer>
         <h1>Sign Up</h1>
@@ -60,6 +61,8 @@ function RegisterScreen({ location, history }) {
             ></Form.Control>
           </Form.Group>
 
+          <br /> {/* Line break added here */}
+
           <Form.Group controlId="email">
             
             <Form.Control
@@ -70,6 +73,8 @@ function RegisterScreen({ location, history }) {
               onChange={(e) => setEmail(e.target.value)}
             ></Form.Control>
           </Form.Group>
+
+          <br /> {/* Line break added here */}
 
           <Form.Group controlId="phoneNumber">
             
@@ -82,6 +87,8 @@ function RegisterScreen({ location, history }) {
             ></Form.Control>
           </Form.Group>
 
+          <br /> {/* Line break added here */}
+
           <Form.Group controlId="password">
            
             <Form.Control
@@ -92,6 +99,8 @@ function RegisterScreen({ location, history }) {
               onChange={(e) => setPassword(e.target.value)}
             ></Form.Control>
           </Form.Group>
+
+          <br /> {/* Line break added here */}
 
           <Form.Group controlId="password">
             
