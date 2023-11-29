@@ -35,8 +35,13 @@ function LoginScreen({ location, history }) {
     e.preventDefault();
     dispatch(login(email, password));
   };
+
+
   return (
-    <div>
+
+
+    <div className="d-flex justify-content-center"> {/* Wrapping div for center alignment */}
+
       <FormContainer>
         <h1>Sign In</h1>
         {error && <Message variant="danger">{error}</Message>}
@@ -81,6 +86,7 @@ function LoginScreen({ location, history }) {
           </Col>
         </Row>
       </FormContainer>
+      
     </div>
   );
 }
