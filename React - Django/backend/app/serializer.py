@@ -23,7 +23,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'firstName', 'isAdmin']
+        fields = ['id', 'username', 'email', 'firstName', 'last_name', 'isAdmin']
 
     def get_firstName(self, obj):
         firstName = obj.first_name
@@ -40,7 +40,7 @@ class UserSerializerWithToken(UserSerializer):
 
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'firstName', 'isAdmin', 'token']
+        fields = ['id', 'username', 'email', 'firstName', 'last_name', 'isAdmin', 'token']
 
     def get_token(self, obj):
         token = RefreshToken.for_user(obj)

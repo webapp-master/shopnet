@@ -46,7 +46,7 @@ export const login = (email, password) => async (dispatch) => {
 };
 
 export const register =
-  (firstName, email, phoneNumber, password) => async (dispatch) => {
+  (firstName, lastName, userName, email, phoneNumber, password) => async (dispatch) => {
     try {
       dispatch({
         type: USER_REGISTER_REQUEST,
@@ -62,6 +62,8 @@ export const register =
         "/api/users/register/",
         {
           firstName: firstName,
+          last_name: lastName,
+          username: userName,
           email: email,
           phoneNumber: phoneNumber,
           password: password,

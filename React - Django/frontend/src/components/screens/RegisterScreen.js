@@ -9,6 +9,8 @@ import FormContainer from "../FormContainer";
 
 function RegisterScreen({ location, history }) {
   const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [userName, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
@@ -29,14 +31,18 @@ function RegisterScreen({ location, history }) {
     }
   }, [history, userInfo]);
 
+
+
   const submitHandler = (e) => {
     e.preventDefault();
     if (password != confirmPassword) {
       setMessage("Password do not Match");
     } else {
-      dispatch(register(firstName, email, phoneNumber, password));
+      dispatch(register(firstName, lastName, userName, email, phoneNumber, password));
     }
   };
+
+
 
 
   return (
@@ -50,13 +56,37 @@ function RegisterScreen({ location, history }) {
         {loading && <Loader />}
 
         <Form onSubmit={submitHandler}>
-          <Form.Group controlId="firstName">
-            
+
+          <Form.Group controlId="firstName"> 
             <Form.Control
               type="name"
               placeholder="First Name"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
+              required
+            ></Form.Control>
+          </Form.Group>
+
+          <br /> {/* Line break added here */}
+
+          <Form.Group controlId="lastName"> 
+            <Form.Control
+              type="name"
+              placeholder="Last Name"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              required
+            ></Form.Control>
+          </Form.Group>
+
+          <br /> {/* Line break added here */}
+
+          <Form.Group controlId="userName"> 
+            <Form.Control
+              type="text"
+              placeholder="Username"
+              value={userName}
+              onChange={(e) => setUsername(e.target.value)}
               required
             ></Form.Control>
           </Form.Group>

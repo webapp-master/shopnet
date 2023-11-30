@@ -24,3 +24,14 @@ it gives a feedback that won't be understood by users
 In registration and Login
 make "username" to be unique
 that is, no two user in the database can have same username
+
+
+
+			4
+
+after the user register
+it redirects to the login page 
+
+but i discover that inside the login page, the register button does not function 
+also, if i didnt press the login page and i refresh the page just like that
+it will login the user but it wont grant the authorization access token
