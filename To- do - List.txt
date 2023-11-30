@@ -35,3 +35,23 @@ it redirects to the login page
 but i discover that inside the login page, the register button does not function 
 also, if i didnt press the login page and i refresh the page just like that
 it will login the user but it wont grant the authorization access token
+
+
+
+			5
+
+the placeholders in Sign up and Sign In
+I want the text to be aligned center
+
+
+
+			6
+
+incorporate card body to encampsule the register form and login form
+
+
+
+			7.
+in the sign up page
+'city' field ...... make it a drop down
+

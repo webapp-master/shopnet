@@ -13,6 +13,7 @@ function RegisterScreen({ location, history }) {
   const [userName, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [City, setCiTy] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -38,7 +39,7 @@ function RegisterScreen({ location, history }) {
     if (password != confirmPassword) {
       setMessage("Password do not Match");
     } else {
-      dispatch(register(firstName, lastName, userName, email, phoneNumber, password));
+      dispatch(register(firstName, lastName, userName, email, phoneNumber, City, password));
     }
   };
 
@@ -114,6 +115,18 @@ function RegisterScreen({ location, history }) {
               placeholder="Phone Number"
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
+            ></Form.Control>
+          </Form.Group>
+
+          <br /> {/* Line break added here */}
+
+          <Form.Group controlId="City"> 
+            <Form.Control
+              type="text"
+              placeholder="City/Town where you live"
+              value={City}
+              onChange={(e) => setCiTy(e.target.value)}
+              required
             ></Form.Control>
           </Form.Group>
 

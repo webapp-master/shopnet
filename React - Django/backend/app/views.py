@@ -19,6 +19,8 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework import viewsets
 from rest_framework.decorators import action
 
+from django.db import IntegrityError
+
 
 @api_view(['GET'])
 def getRoutes(request):
@@ -78,9 +80,12 @@ def getUsers(request):
 # register the new users
 
 
+
+
 @api_view(['POST'])
 def registerUser(request):
     data = request.data
+    print("Received data:", data)  # Print the incoming data for debugging
     try:
         user = User.objects.create(
             first_name=data['firstName'],
@@ -92,7 +97,8 @@ def registerUser(request):
 
         profile = Profile.objects.create(
             user=user,
-            phoneNumber=data.get('phoneNumber')  # Save phoneNumber if provided
+            phoneNumber=data.get('phoneNumber'),  # Save phoneNumber if provided
+            City=data.get('City')
         )
 
         # Create a cart for the newly registered user
@@ -101,9 +107,15 @@ def registerUser(request):
 
         serializer = UserSerializerWithToken(user, many=False)
         return Response(serializer.data)
-    except:
-        message = {'details': 'USER WITH THIS EMAIL ALREADY EXIST'}
+    except KeyError as e:
+        message = {'details': f'Missing required field: {str(e)}'}
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
+    except IntegrityError:
+        message = {'details': 'User with this email or username already exists'}
+        return Response(message, status=status.HTTP_400_BAD_REQUEST)
+    except Exception as e:
+        message = {'details': f'Error occurred: {str(e)}'}
+        return Response(message, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 def initialize_cart_for_user(user):

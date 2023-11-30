@@ -99,4 +99,5 @@ class ShippingAddress(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    phoneNumber = models.CharField(max_length=15, blank=True, null=True) 
+    phoneNumber = models.CharField(max_length=15, blank=True, null=True)
+    City = models.CharField(max_length=200, null=True, blank=True) 

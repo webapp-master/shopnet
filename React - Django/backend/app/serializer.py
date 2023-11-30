@@ -49,10 +49,12 @@ class UserSerializerWithToken(UserSerializer):
 
 class ProfileSerializer(serializers.ModelSerializer):
     phoneNumber = serializers.CharField(allow_null=True, allow_blank=True)
+    City = serializers.CharField(allow_null=True, allow_blank=True)
 
     class Meta:
         model = Profile
-        fields = ['phoneNumber']
+        fields = ['phoneNumber', 'City']
+
 
 
 
