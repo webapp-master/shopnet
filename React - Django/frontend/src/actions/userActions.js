@@ -30,10 +30,8 @@ export const login = (email, password) => async (dispatch) => {
     );
 
     // Get user details after successful login
-    const userInfoResponse = await axios.get("/api/users/profile/", {
-      headers: {
-        Authorization: `Bearer ${data.token}`, // Include the token obtained after login
-      },
+    const userInfoResponse = await axios.get("/api/user/profile/", {
+      
     });
 
     // Extract required user information from userInfoResponse.data
