@@ -9,6 +9,8 @@ import {
 } from "../constants/userConstants";
 import axios from "axios";
 
+
+
 export const login = (email, password) => async (dispatch) => {
   try {
     dispatch({
@@ -23,17 +25,41 @@ export const login = (email, password) => async (dispatch) => {
 
     const { data } = await axios.post(
       "/api/users/login/",
-
       { username: email, password: password },
       config
     );
 
-    dispatch({
-      type: USER_LOGIN_SUCCESS,
-      payload: data,
+    // Get user details after successful login
+    const userInfoResponse = await axios.get("/api/users/profile/", {
+      headers: {
+        Authorization: `Bearer ${data.token}`, // Include the token obtained after login
+      },
     });
 
-    localStorage.setItem("userInfo", JSON.stringify(data));
+    // Extract required user information from userInfoResponse.data
+    const { username, first_name, last_name } = userInfoResponse.data;
+
+    // Dispatch success action with user information
+    dispatch({
+      type: USER_LOGIN_SUCCESS,
+      payload: {
+        ...data, // Include existing payload (token, etc.)
+        username,
+        first_name,
+        last_name,
+      },
+    });
+
+    // Save user information to localStorage
+    localStorage.setItem(
+      "userInfo",
+      JSON.stringify({
+        ...data,
+        username,
+        first_name,
+        last_name,
+      })
+    );
   } catch (error) {
     dispatch({
       type: USER_LOGIN_FAIL,
@@ -44,6 +70,13 @@ export const login = (email, password) => async (dispatch) => {
     });
   }
 };
+
+
+
+
+
+
+
 
 export const register =
   (firstName, lastName, userName, email, phoneNumber, City, password) => async (dispatch) => {
@@ -93,3 +126,4 @@ export const logout = () => (dispatch) => {
   localStorage.removeItem("userInfo");
   dispatch({ type: USER_LOGOUT });
 };
+

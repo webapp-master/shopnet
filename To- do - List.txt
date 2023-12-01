@@ -55,3 +55,16 @@ incorporate card body to encampsule the register form and login form
 in the sign up page
 'city' field ...... make it a drop down
 
+
+
+			8.
+
+inside "userActions.js"
+
+export const login = (email, password) => async (dispatch) => {
+
+edit 
+email -------->  username
+
+
+
