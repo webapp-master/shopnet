@@ -43,7 +43,7 @@ export const login = (email, password) => async (dispatch) => {
     });
 
     // Extract required user information from userInfoResponse.data
-    const { id, username, firstName, last_name } = userInfoResponse.data;
+    const { id, email: userEmail, username, firstName, last_name } = userInfoResponse.data;
 
 
 
@@ -53,7 +53,7 @@ export const login = (email, password) => async (dispatch) => {
       payload: {
         ...data, // Include existing payload (token, etc.)
         id,
-        
+        email: userEmail,
         username,
         firstName,
         last_name,
@@ -64,7 +64,7 @@ export const login = (email, password) => async (dispatch) => {
     const updatedPayload = {
       ...data,
       id,
-      
+      email: userEmail,
       username,
       firstName,
       last_name,
@@ -78,7 +78,7 @@ export const login = (email, password) => async (dispatch) => {
       JSON.stringify({
         ...data,
         id,
-        
+        email: userEmail,
         username,
         firstName,
         last_name,
