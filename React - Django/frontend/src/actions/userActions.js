@@ -11,7 +11,7 @@ import axios from "axios";
 
 
 
-export const login = (email, password) => async (dispatch) => {
+export const login = (username, password) => async (dispatch) => {
   try {
     dispatch({
       type: USER_LOGIN_REQUEST,
@@ -25,7 +25,7 @@ export const login = (email, password) => async (dispatch) => {
 
     const { data } = await axios.post(
       "/api/users/login/",
-      { username: email, password: password },
+      { username: username, password: password },
       config
     );
 
@@ -43,7 +43,7 @@ export const login = (email, password) => async (dispatch) => {
     });
 
     // Extract required user information from userInfoResponse.data
-    const { id, email: userEmail, username, firstName, last_name } = userInfoResponse.data;
+    const { id, email: userEmail, username: userName, firstName, last_name } = userInfoResponse.data;
 
 
 
@@ -54,7 +54,7 @@ export const login = (email, password) => async (dispatch) => {
         ...data, // Include existing payload (token, etc.)
         id,
         email: userEmail,
-        username,
+        username: userName,
         firstName,
         last_name,
       },
@@ -65,7 +65,7 @@ export const login = (email, password) => async (dispatch) => {
       ...data,
       id,
       email: userEmail,
-      username,
+      username: userName,
       firstName,
       last_name,
     };
@@ -79,7 +79,7 @@ export const login = (email, password) => async (dispatch) => {
         ...data,
         id,
         email: userEmail,
-        username,
+        username: userName,
         firstName,
         last_name,
       })

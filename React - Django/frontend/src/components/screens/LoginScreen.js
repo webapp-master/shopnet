@@ -16,7 +16,7 @@ import { login } from "../../actions/userActions";
 import FormContainer from "../FormContainer";
 
 function LoginScreen({ location, history }) {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
 
@@ -33,7 +33,7 @@ function LoginScreen({ location, history }) {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(login(email, password));
+    dispatch(login(username, password));
   };
 
 
@@ -48,13 +48,13 @@ function LoginScreen({ location, history }) {
         {loading && <Loader />}
 
         <Form onSubmit={submitHandler}>
-          <Form.Group controlId="email">
+          <Form.Group controlId="username">
             <Form.Control
               required
               type="text"
               placeholder="Username"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             ></Form.Control>
           </Form.Group>
 
@@ -92,3 +92,4 @@ function LoginScreen({ location, history }) {
 }
 
 export default LoginScreen;
+
