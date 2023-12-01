@@ -51,7 +51,7 @@ export const login = (username, password) => async (dispatch) => {
     dispatch({
       type: USER_LOGIN_SUCCESS,
       payload: {
-        ...data, // Include existing payload (token, etc.)
+        ...data, // Include existing payload (token=access, etc.)
         id,
         email: userEmail,
         username: userName,

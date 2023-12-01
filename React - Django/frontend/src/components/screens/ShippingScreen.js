@@ -158,13 +158,13 @@ const ShippingScreen = ({ history }) => {
 
     // Construct orderData object
     const orderData = {
-      
-      paymentMethod: 'cash', // Capture the payment method from the frontend
-      shippingCost:2 , // Use shippingCost state value
-      totalAmount: 298, // Value from the frontend's totalPrice
-      isPaid: false, // Default value or update based on payment status
-      isDelivered: false, // Default value or update based on delivery status
-      totalItem: 13
+      user: userInfo.id, // Include the user's primary key (assuming it's 'id' field)
+      paymentMethod: 'Wallet',
+      shippingCost: shippingCost, // Use shippingCost state value
+      totalAmount: totalPrice, // Value from the frontend's totalPrice
+      isPaid: false,
+      isDelivered: false,
+      totalItem: totalItems,
     };
 
     
