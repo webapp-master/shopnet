@@ -5,7 +5,7 @@ import { Form, Button, Container, Row, Col, Card } from "react-bootstrap";
 import axios from "axios"; // Import Axios
 
 const ShippingScreen = ({ history }) => {
-  // ... (existing code)
+  
 
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
@@ -129,7 +129,11 @@ const ShippingScreen = ({ history }) => {
     }
   };
 
-
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+  
+  
+  
 
   const submitHandler = async (e) => { // Make the function async
     e.preventDefault();
@@ -145,6 +149,11 @@ const ShippingScreen = ({ history }) => {
         phoneNumber,
       })
     );
+
+
+    console.log(userInfo); // Log the userInfo object to the console
+
+    
 
 
     // Construct orderData object
@@ -374,3 +383,4 @@ const ShippingScreen = ({ history }) => {
 };
 
 export default ShippingScreen;
+
