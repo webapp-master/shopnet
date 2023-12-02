@@ -160,7 +160,7 @@ const ShippingScreen = ({ history }) => {
     const orderData = {
       user: userInfo.id, // Include the user's primary key (assuming it's 'id' field)
       paymentMethod: 'Wallet',
-      shippingCost: shippingCost, // Use shippingCost state value
+      shippingCost: shippingCost || 0, // Use shippingCost state value, defaulting to 0 if it's null
       totalAmount: totalPrice, // Value from the frontend's totalPrice
       isPaid: false,
       isDelivered: false,
