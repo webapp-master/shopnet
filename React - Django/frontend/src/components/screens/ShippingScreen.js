@@ -147,6 +147,7 @@ const ShippingScreen = ({ history }) => {
         street,
         houseNumber,
         phoneNumber,
+        shippingCost,
       })
     );
 
@@ -355,10 +356,13 @@ const ShippingScreen = ({ history }) => {
               {/* Submit button */}
 
               <div className="text-center mb-5">
-                <Button variant="primary" type="submit">
+
+                <Button variant="primary" type="submit" disabled={!state || !city}> {/*Disable the button if state or city is not selected*/}
                   Submit
                 </Button>
+
               </div>
+
             </Form>
 
             {/* Display shipping cost */}
@@ -370,8 +374,6 @@ const ShippingScreen = ({ history }) => {
                 <p>Shipping Cost: ${shippingCost}</p>
               )}
             </div>
-
-            
           </div>
         </Col>
       </Row>
