@@ -15,7 +15,7 @@ const BuyScreen = () => {
       <h1>Order Summary</h1>
       <div>
         <h2>Total Amount to be Paid: $100.00</h2>
-        <p>Wallet Balance: $50.00</p>
+        <p>Wallet: $50.00</p>
       </div>
       <button onClick={handleBuyClick}>BUY</button>
       {successMessage && <div>{successMessage}</div>}

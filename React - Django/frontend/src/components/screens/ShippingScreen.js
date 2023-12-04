@@ -139,8 +139,11 @@ const ShippingScreen = ({ history }) => {
     e.preventDefault();
 
 
-    dispatch(
-      saveShippingAddress({
+    // Assuming you have an orderId available, either from the Redux store or props
+    const orderId = 'your_order_id_here'; // Replace with the actual order ID
+
+    // Update the action dispatch with orderId
+    dispatch(saveShippingAddress({
         state,
         city,
         area,
@@ -148,8 +151,7 @@ const ShippingScreen = ({ history }) => {
         houseNumber,
         phoneNumber,
         shippingCost,
-      })
-    );
+    }, orderId));
 
 
     console.log(userInfo); // Log the userInfo object to the console

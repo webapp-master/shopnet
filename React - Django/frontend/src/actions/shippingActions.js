@@ -1,15 +1,15 @@
-import { SAVE_SHIPPING_ADDRESS } from '../constants/shippingConstants'; 
+// In shippingActions.js
+import { SAVE_SHIPPING_ADDRESS } from '../constants/shippingConstants';
 
+export const saveShippingAddress = (shippingAddress, orderId) => (dispatch) => {
+    dispatch({
+        type: SAVE_SHIPPING_ADDRESS,
+        payload: {
+            shippingAddress,
+            orderId,
+        },
+    });
 
-// Define the action to save the shipping address
-export const saveShippingAddress = (shippingAddress) => (dispatch) => {
-  dispatch({
-    type: SAVE_SHIPPING_ADDRESS,
-    payload: shippingAddress,
-  });
-
-  // You can also save the shipping address to local storage if needed
-  localStorage.setItem('shippingAddress', JSON.stringify(shippingAddress));
+    // You can also save the shipping address to local storage if needed
+    localStorage.setItem('shippingAddress', JSON.stringify(shippingAddress));
 };
-
-
