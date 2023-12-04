@@ -4,11 +4,10 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
 
 )
-from rest_framework.routers import DefaultRouter
-from .views import OrderViewSet
 
-router = DefaultRouter()
-router.register(r'orders', OrderViewSet, basename='order')
+
+
+
 
 
 
@@ -20,11 +19,10 @@ urlpatterns = [
     path('user/profile/', views.getUserProfiles, name="getUserProfiles"),
     path('products/<str:pk>', views.getProduct, name="getProduct"),
     path('users/', views.getUsers, name="getUsers"),
-    path('store-cart-items/', views.store_cart_items, name="storecartitems"),
-    path('orders/save_order_data/', OrderViewSet.as_view({'post': 'save_order_data'}), name='save_order_data'),
+    
 
 ]
 
-urlpatterns += router.urls  # Include the router's URL patterns
+
 
 

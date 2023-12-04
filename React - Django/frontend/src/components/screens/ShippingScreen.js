@@ -5,13 +5,11 @@ import { Form, Button, Container, Row, Col, Card } from "react-bootstrap";
 import axios from "axios"; // Import Axios
 
 const ShippingScreen = ({ history }) => {
-  
-
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
 
-   // Calculate total items and total amount
+  // Calculate total items and total amount
   const totalItems = cartItems.reduce((acc, item) => acc + item.qty, 0);
   const totalPrice = cartItems.reduce(
     (acc, item) => acc + item.qty * item.price,
@@ -25,7 +23,6 @@ const ShippingScreen = ({ history }) => {
   const [houseNumber, setHouseNumber] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [shippingCost, setShippingCost] = useState(null);
-
 
   const states = [
     "Abia",
@@ -131,19 +128,14 @@ const ShippingScreen = ({ history }) => {
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
-  
-  
-  
 
-  const submitHandler = async (e) => { // Make the function async
+  const submitHandler = async (e) => {
+    // Make the function async
     e.preventDefault();
 
-
-    // Assuming you have an orderId available, either from the Redux store or props
-    const orderId = 'your_order_id_here'; // Replace with the actual order ID
-
-    // Update the action dispatch with orderId
-    dispatch(saveShippingAddress({
+    // Update the action dispatch with shipping details
+    dispatch(
+      saveShippingAddress({
         state,
         city,
         area,
@@ -151,18 +143,15 @@ const ShippingScreen = ({ history }) => {
         houseNumber,
         phoneNumber,
         shippingCost,
-    }, orderId));
-
+      })
+    );
 
     console.log(userInfo); // Log the userInfo object to the console
-
-    
-
 
     // Construct orderData object
     const orderData = {
       user: userInfo.id, // Include the user's primary key (assuming it's 'id' field)
-      paymentMethod: 'Wallet',
+      paymentMethod: "Wallet",
       shippingCost: shippingCost || 0, // Use shippingCost state value, defaulting to 0 if it's null
       totalAmount: totalPrice, // Value from the frontend's totalPrice
       isPaid: false,
@@ -170,7 +159,6 @@ const ShippingScreen = ({ history }) => {
       totalItem: totalItems,
     };
 
-    
     // Construct orderItemsData array based on cartItems
 
     const orderItemsData = cartItems.map((item) => ({
@@ -179,9 +167,6 @@ const ShippingScreen = ({ history }) => {
       unitPrice: item.price,
       totalPrice: (item.qty * item.price).toFixed(2),
     }));
-    
-
-    
 
     // Construct the payload to send to the backend
     const payload = {
@@ -192,28 +177,24 @@ const ShippingScreen = ({ history }) => {
     try {
       const config = {
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
           // Include any necessary authorization headers if required
         },
       };
 
       // Send a POST request to your backend API using axios
-      await axios.post('/api/orders/save_order_data/', payload, config);
-
-
+      // await axios.post('/api/orders/save_order_data/', payload, config);
 
       // Handle success scenario (redirect or any other action)
-
 
       history.push("/login?redirect=buy");
     } catch (error) {
       // Handle error scenario
-      console.error('Error:', error);
+      console.error("Error:", error);
     }
   };
 
   // ... (existing code)
-
 
   return (
     <Container>
@@ -358,13 +339,16 @@ const ShippingScreen = ({ history }) => {
               {/* Submit button */}
 
               <div className="text-center mb-5">
-
-                <Button variant="primary" type="submit" disabled={!state || !city}> {/*Disable the button if state or city is not selected*/}
+                <Button
+                  variant="primary"
+                  type="submit"
+                  disabled={!state || !city}
+                >
+                  {" "}
+                  {/*Disable the button if state or city is not selected*/}
                   Submit
                 </Button>
-
               </div>
-
             </Form>
 
             {/* Display shipping cost */}
@@ -381,10 +365,6 @@ const ShippingScreen = ({ history }) => {
       </Row>
     </Container>
   );
-
-
-  
 };
 
 export default ShippingScreen;
-
