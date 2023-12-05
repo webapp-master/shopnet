@@ -86,8 +86,11 @@ this page will have a buy button
 
 
 wallet balance:
-product list: (it will list out the name of products i selected in the cart)
+product list: (it will list out the name of products I selected in the cart and )
 No. of items:
+Cost of products in your cart:
+Shipping cost:
+Tax:
 Total amount:
 
 above are the important  features that should be present in the BuyScreen.js
@@ -103,3 +106,28 @@ so, therefore with the aid of react bootstrap, design a suitable and beautiful  
 once the user clicks this button, it will send all the data and info inside the redux state to the backend models.py
 I want to call all the info and data I have saved inside the redux state
 and create payload that will save all of this info inside the backend models.py 
+
+
+
+
+
+
+
+I want to adjust the design you gave me 
+I want the page to have one big card and card body
+this card will have a header and footer
+the header will have this text "Place your Order"
+and the footer will have the "buy" button
+
+inside the card body, here is the content;
+
+wallet balance: $700
+product list: AIRPODS WIRELESS BLUETOOTH HEADPHONES, CANNON EOS 80D DSLR CAMERA, IPHONE 11 PRO 256GB MEMORY
+No. of items: 3
+Cost of products in your cart: $523
+Shipping cost:$7
+Tax:$1
+Total amount: $531
+
+please note: you don't need to reference the redux store for any data
+i just want a fronend design. later, i will replace each placeholder with the necessary state management logic 
