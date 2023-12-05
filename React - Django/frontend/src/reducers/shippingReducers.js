@@ -1,4 +1,4 @@
-import { SAVE_SHIPPING_ADDRESS } from '../constants/shippingConstants';
+import { SAVE_SHIPPING_ADDRESS } from "../constants/shippingConstants";
 
 export const shippingAddressReducer = (state = {}, action) => {
   switch (action.type) {

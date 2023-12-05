@@ -80,19 +80,26 @@ I need to be able to use forward and backward arrow to navigate to previous page
 
 the next page I want to create is the BuyScreen.js
 this page will have a buy button 
-once the user clicks this button, it will send all the data and info inside the redux state to the backend models.py
 
 
 
 
-wallet
-products
-No. of items
-Total amount
+
+wallet balance:
+product list: (it will list out the name of products i selected in the cart)
+No. of items:
+Total amount:
 
 above are the important  features that should be present in the BuyScreen.js
-so, therefore with the aid of react bootstrap, design a suitable frontend page for BuySceen.js
+so, therefore with the aid of react bootstrap, design a suitable and beautiful  frontend page for BuySceen.js
 
 
 
 
+
+
+			11.
+
+once the user clicks this button, it will send all the data and info inside the redux state to the backend models.py
+I want to call all the info and data I have saved inside the redux state
+and create payload that will save all of this info inside the backend models.py 
