@@ -1,67 +1,33 @@
 import React from 'react';
-import { Button, Container, Row, Col, Card } from 'react-bootstrap';
+import { Button, Card, Container } from 'react-bootstrap';
 
 const BuyScreen = () => {
-  const cartItems = [
-    { product: 1, name: 'Product 1', qty: 2, price: 50 },
-    { product: 2, name: 'Product 2', qty: 1, price: 30 },
-    // ... other cart items
-  ];
-
-  const totalItems = cartItems.reduce((acc, item) => acc + item.qty, 0);
-  const totalPrice = cartItems.reduce((acc, item) => acc + item.qty * item.price, 0);
-  const walletBalance = 700; // Abstract wallet balance
-
   return (
-    <Container>
-      <h2 className="mt-4">Buy Screen</h2>
-      <Row className="mt-4">
-        <Col md={6}>
-          <Card>
-            <Card.Body>
-              <Card.Title>Wallet Balance</Card.Title>
-              <Card.Text>{`$${walletBalance}`}</Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-      <Row className="mt-4">
-        <Col md={6}>
-          <Card>
-            <Card.Body>
-              <Card.Title>Product List</Card.Title>
-              {cartItems.map((item) => (
-                <div key={item.product}>
-                  <p>{item.name}</p>
-                </div>
-              ))}
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-      <Row className="mt-4">
-        <Col md={6}>
-          <Card>
-            <Card.Body>
-              <Card.Title>No. of Items</Card.Title>
-              <Card.Text>{totalItems}</Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col md={6}>
-          <Card>
-            <Card.Body>
-              <Card.Title>Total Purchase</Card.Title>
-              <Card.Text>{`$${totalPrice.toFixed(2)}`}</Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-      <Row className="mt-4">
-        <Col>
+    <Container className="d-flex justify-content-center align-items-center" style={{ height: '100vh' }}>
+      <Card style={{ width: '30rem' }}>
+        <Card.Header className="text-center">
+          <h4>Place your Order</h4>
+        </Card.Header>
+        <Card.Body>
+          <Card.Text>
+            <p>Wallet Balance: $700</p>
+            <p>Product List:</p>
+            <ul>
+              <li>AIRPODS WIRELESS BLUETOOTH HEADPHONES</li>
+              <li>CANNON EOS 80D DSLR CAMERA</li>
+              <li>IPHONE 11 PRO 256GB MEMORY</li>
+            </ul>
+            <p>No. of Items: 3</p>
+            <p>Cost of Products in Your Cart: $523</p>
+            <p>Shipping Cost: $7</p>
+            <p>Tax: $1</p>
+            <p>Total Amount: $531</p>
+          </Card.Text>
+        </Card.Body>
+        <Card.Footer className="text-center">
           <Button variant="primary">Buy</Button>
-        </Col>
-      </Row>
+        </Card.Footer>
+      </Card>
     </Container>
   );
 };
