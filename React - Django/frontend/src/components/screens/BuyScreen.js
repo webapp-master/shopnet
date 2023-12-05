@@ -1,16 +1,16 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { Button, Container, Row, Col, Card } from 'react-bootstrap';
 
 const BuyScreen = () => {
-  const cart = useSelector((state) => state.cart);
-  const { cartItems } = cart;
+  const cartItems = [
+    { product: 1, name: 'Product 1', qty: 2, price: 50 },
+    { product: 2, name: 'Product 2', qty: 1, price: 30 },
+    // ... other cart items
+  ];
 
   const totalItems = cartItems.reduce((acc, item) => acc + item.qty, 0);
   const totalPrice = cartItems.reduce((acc, item) => acc + item.qty * item.price, 0);
-
-  // Fetch the wallet balance - assuming it's in Redux state
-  const walletBalance = useSelector((state) => state.user.walletBalance);
+  const walletBalance = 700; // Abstract wallet balance
 
   return (
     <Container>
@@ -51,7 +51,7 @@ const BuyScreen = () => {
         <Col md={6}>
           <Card>
             <Card.Body>
-              <Card.Title>Total Amount</Card.Title>
+              <Card.Title>Total Purchase</Card.Title>
               <Card.Text>{`$${totalPrice.toFixed(2)}`}</Card.Text>
             </Card.Body>
           </Card>
