@@ -5,7 +5,7 @@ const BuyScreen = () => {
   const headerFooterColor = "#bdbdbd"; // Deeper version of the color
   return (
     <Container className="d-flex justify-content-center align-items-center">
-      <Card style={{ width: '60rem' }}>
+      <Card>
         <Card.Header className="text-center" style={{ backgroundColor: headerFooterColor }}>
           <h4>Place your Order</h4>
         </Card.Header>
