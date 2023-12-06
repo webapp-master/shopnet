@@ -67,3 +67,7 @@
 }
 
 
+
+.custom-dropdown .dropdown-toggle {
+  color: #ffffff !important; /* Set the text color to white */
+}

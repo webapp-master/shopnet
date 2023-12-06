@@ -1,9 +1,13 @@
+
 import React from "react";
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { logout } from "../actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useMediaQuery } from 'react-responsive';
+
+
+
 
 function Header() {
   const userLogin = useSelector((state) => state.userLogin);
@@ -54,7 +58,7 @@ function Header() {
 
               {/* Mobile dropdown for More options */}
               {isMobile && userInfo && (
-                <NavDropdown title="More" id="basic-nav-dropdown" className="dropdown-mobile">
+                <NavDropdown title="More" id="basic-nav-dropdown" className="dropdown-mobile custom-dropdown">
                   <LinkContainer to="/cart">
                     <NavDropdown.Item>Cart</NavDropdown.Item>
                   </LinkContainer>
@@ -91,17 +95,21 @@ function Header() {
 
 
 
+
+
                 {/* Large screen Dropdown */}
                 {!isMobile && (
                   <LinkContainer to="/">
 
-                    <NavDropdown title="More">
+                    <NavDropdown title="More" className="custom-dropdown" >
+
                       <LinkContainer to="/profile">
                         <NavDropdown.Item>Profile</NavDropdown.Item>
                       </LinkContainer>
                       <NavDropdown.Item onClick={logoutHandler}>
                         Logout
                       </NavDropdown.Item>
+                      
                     </NavDropdown>
 
                   </LinkContainer>

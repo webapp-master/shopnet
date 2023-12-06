@@ -130,10 +130,11 @@ function CartScreen({ match, location, history }) {
         )}
       </Col>
 
-      <Col md={4}>
+      <Col md={4} className="d-flex align-items-center justify-content-center">
+
         <Card>
           <ListGroup variant="flush">
-            <ListGroup.Item>
+          <ListGroup.Item className="text-center">
               <h2>
                 Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)})
                 items
@@ -145,17 +146,21 @@ function CartScreen({ match, location, history }) {
             </ListGroup.Item>
           </ListGroup>
 
-          <ListGroup.Item>
+          <ListGroup.Item className="text-center">
             <Button
               type="button"
               className="btn-block"
               disabled={cartItems.length === 0}
               onClick={checkoutHandler}
-            >
+              style={{ borderRadius: '20px' }} // Set the desired border radius
+              >
               Proceed To Checkout
             </Button>
           </ListGroup.Item>
+
+
         </Card>
+
       </Col>
     </Row>
   );
