@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Nav, Container, NavDropdown, Row } from "react-bootstrap";
+import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { logout } from "../actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,28 +17,25 @@ function Header() {
 
   return (
     <div>
-      <Navbar bg="dark" variant="dark">
+      <Navbar style={{ backgroundColor: "#4091ed" }}>
         <Container fluid>
-          <LinkContainer to="/" LinkContainer>
+          <LinkContainer to="/" style={{ color: "#ffffff" }}>
             <Navbar.Brand>Shopnet</Navbar.Brand>
           </LinkContainer>
 
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav className="mr-auto my-2 my-lg-0" navbarScroll>
-
-
               {/* Home */}
               {!isMobile && (
-
                 <React.Fragment>
-                  <LinkContainer to="/">
+                  <LinkContainer to="/" className="whiteText">
                     <Nav.Link>
                       <i className="fas fa-home"></i> Home
                     </Nav.Link>
                   </LinkContainer>
 
-                  <LinkContainer to="/cart">
+                  <LinkContainer to="/cart" className="whiteText">
                     <Nav.Link>
                       <i className="fas fa-shopping-cart"></i> Cart
                     </Nav.Link>
@@ -46,27 +43,18 @@ function Header() {
                 </React.Fragment>
               )}
 
-
-
               {/* Wallet */}
               {!isMobile && userInfo && (
-                <LinkContainer to="/wallet">
+                <LinkContainer to="/wallet" className="whiteText">
                   <Nav.Link>
                     <i className="fas fa-shopping-cart"></i> Wallet
                   </Nav.Link>
                 </LinkContainer>
               )}
 
-
-
-              
-
-
               {/* Mobile dropdown for More options */}
               {isMobile && userInfo && (
-
                 <NavDropdown title="More" id="basic-nav-dropdown" className="dropdown-mobile">
-
                   <LinkContainer to="/cart">
                     <NavDropdown.Item>Cart</NavDropdown.Item>
                   </LinkContainer>
@@ -82,28 +70,12 @@ function Header() {
                   <NavDropdown.Item onClick={logoutHandler}>
                     Logout
                   </NavDropdown.Item>
-
                 </NavDropdown>
-
               )}
-
-
-
-
-
-              
-
-
-
-
-
-
-
-
 
               {/* Login link */}
               {!userInfo && (
-                <LinkContainer to="/login">
+                <LinkContainer to="/login" className="whiteText">
                   <Nav.Link>
                     <i className="fas fa-user"></i> Login
                   </Nav.Link>
@@ -112,26 +84,30 @@ function Header() {
             </Nav>
           </Navbar.Collapse>
 
-
-
-
           <Nav className="mr-auto my-2 my-lg-0" navbarScroll>
-
             {userInfo && (
               <React.Fragment>
 
 
+
+
                 {/* Large screen Dropdown */}
                 {!isMobile && (
-                  <NavDropdown title="More" id="basic-nav-dropdown"  className="my-dropdown">
-                    <LinkContainer to="/profile">
-                      <NavDropdown.Item>Profile</NavDropdown.Item>
-                    </LinkContainer>
-                    <NavDropdown.Item onClick={logoutHandler}>
-                      Logout
-                    </NavDropdown.Item>
-                  </NavDropdown>
+                  <LinkContainer to="/">
+
+                    <NavDropdown title="More">
+                      <LinkContainer to="/profile">
+                        <NavDropdown.Item>Profile</NavDropdown.Item>
+                      </LinkContainer>
+                      <NavDropdown.Item onClick={logoutHandler}>
+                        Logout
+                      </NavDropdown.Item>
+                    </NavDropdown>
+
+                  </LinkContainer>
                 )}
+
+
 
 
 
@@ -141,28 +117,16 @@ function Header() {
                   <img
                     src="/images/my_dp.jpg"
                     alt="Profile"
-                    className="rounded-circle my-profile" 
+                    className="rounded-circle my-profile"
                     style={{
                       width: "45px",
                       height: "45px",
                     }}
                   />
                 </Nav.Item>
-
-                
-
-
               </React.Fragment>
             )}
-
-
           </Nav>
-
-
-
-
-
-
         </Container>
       </Navbar>
     </div>
