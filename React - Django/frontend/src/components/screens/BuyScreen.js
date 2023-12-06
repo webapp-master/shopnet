@@ -3,6 +3,15 @@ import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 
 const BuyScreen = () => {
   const headerFooterColor = "#bdbdbd"; // Deeper version of the color
+  const cardBodyColor = "#fff7eb"; // Desired background color for the card body
+  const listBorderStyle = {
+    listStyleType: 'none',
+    padding: '10px',
+    border: '1px solid #000',
+    borderRadius: '5px',
+    backgroundColor: '#fff',
+  };
+
   return (
     <Container>
       <Row className="justify-content-center align-items-center">
@@ -19,11 +28,12 @@ const BuyScreen = () => {
             <Card.Header className="text-center" style={{ backgroundColor: headerFooterColor }}>
               <h4>Place your Order</h4>
             </Card.Header>
-            <Card.Body className="text-dark">
+
+            <Card.Body className="text-dark" style={{ backgroundColor: cardBodyColor }}>
               <Card.Text className="text-center">
                 <p>Wallet Balance: $700</p>
                 <p>Product List:</p>
-                <ul style={{ listStyleType: 'none', padding: '0' }}>
+                <ul style={listBorderStyle}>
                   <li>AIRPODS WIRELESS BLUETOOTH HEADPHONES</li>
                   <li>CANNON EOS 80D DSLR CAMERA</li>
                   <li>IPHONE 11 PRO 256GB MEMORY</li>
@@ -41,9 +51,9 @@ const BuyScreen = () => {
               </Card.Text>
             </Card.Body>
             <Card.Footer className="d-flex justify-content-between align-items-center" style={{ backgroundColor: headerFooterColor }}>
-              <Button variant="secondary">Cart</Button>
-              <Button variant="primary">Purchase</Button>
-              <Button variant="success">Shipping</Button>
+              <Button variant="secondary" className="rounded-pill">Cart</Button>
+              <Button variant="primary" className="rounded-pill">Purchase</Button>
+              <Button variant="success" className="rounded-pill">Shipping</Button>
             </Card.Footer>
           </Card>
         </Col>
