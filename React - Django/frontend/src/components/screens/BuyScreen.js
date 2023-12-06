@@ -8,8 +8,12 @@ const BuyScreen = () => {
     listStyleType: 'none',
     padding: '10px',
     border: '1px solid #000',
-    borderRadius: '5px',
+    borderRadius: '75px',
     backgroundColor: '#fff',
+  };
+  const buttonStyle = {
+    width: '100%', // Setting a fixed width for all buttons
+    margin: '5px', // Adding some space between buttons
   };
 
   return (
@@ -23,14 +27,15 @@ const BuyScreen = () => {
           <img src="product_image_url_3" alt="Product 3" />
         </Col>
         {/* Right Column: Order Details */}
+
         <Col xs={12} md={6}>
-          <Card>
+          <Card> 
             <Card.Header className="text-center" style={{ backgroundColor: headerFooterColor }}>
               <h4>Place your Order</h4>
             </Card.Header>
 
             <Card.Body className="text-dark" style={{ backgroundColor: cardBodyColor }}>
-              <Card.Text className="text-center">
+            <Card.Text className="text-center">
                 <p>Wallet Balance: $700</p>
                 <p>Product List:</p>
                 <ul style={listBorderStyle}>
@@ -51,9 +56,9 @@ const BuyScreen = () => {
               </Card.Text>
             </Card.Body>
             <Card.Footer className="d-flex justify-content-between align-items-center" style={{ backgroundColor: headerFooterColor }}>
-              <Button variant="secondary" className="rounded-pill">Cart</Button>
-              <Button variant="primary" className="rounded-pill">Purchase</Button>
-              <Button variant="success" className="rounded-pill">Shipping</Button>
+              <Button variant="secondary" className="rounded-pill" style={buttonStyle}>Cart</Button>
+              <Button variant="primary" className="rounded-pill" style={buttonStyle}>Purchase</Button>
+              <Button variant="success" className="rounded-pill" style={buttonStyle}>Shipping</Button>
             </Card.Footer>
           </Card>
         </Col>
