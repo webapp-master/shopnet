@@ -32,14 +32,14 @@ const BuyScreen = () => {
       const item2 = cartItems[i + 1];
       imageRows.push(
         <Row key={i} className="justify-content-center mb-3">
-          <Col xs={12} md={6} className="text-center">
+          <Col xs={6} md={6} sm={6} lg={6} className="text-center">
             <img
               src={item1.image}
               alt={item1.name}
               style={{ maxWidth: '100%', marginBottom: '10px', borderRadius: '8px' }}
             />
           </Col>
-          <Col xs={12} md={6} className="text-center">
+          <Col xs={6} md={6} sm={6} lg={6} className="text-center">
             {item2 && (
               <img
                 src={item2.image}
