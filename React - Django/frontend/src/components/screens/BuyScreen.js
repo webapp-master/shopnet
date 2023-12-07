@@ -27,29 +27,34 @@ const BuyScreen = () => {
   const renderProductImages = () => {
     const imageRows = [];
     const isOdd = cartItems.length % 2 !== 0;
+
     for (let i = 0; i < cartItems.length; i += 2) {
       const item1 = cartItems[i];
       const item2 = cartItems[i + 1];
+
       imageRows.push(
         <Row key={i} className="justify-content-center mb-3">
-          <Col xs={6} md={6} sm={6} lg={6} className="text-center">
+
+          <Col xs={6} md={6}  className="text-center" >
             <img
               src={item1.image}
               alt={item1.name}
-              style={{ maxWidth: '100%', marginBottom: '10px', borderRadius: '8px' }}
+              style={{ maxWidth: '100%', marginBottom: '10px', borderRadius: '1px' }}
             />
           </Col>
-          <Col xs={6} md={6} sm={6} lg={6} className="text-center">
+
+          <Col xs={6} md={6} className="text-center" >
             {item2 && (
               <img
                 src={item2.image}
                 alt={item2.name}
-                style={{ maxWidth: '100%', marginBottom: '10px', borderRadius: '8px' }}
+                style={{ maxWidth: '100%', marginBottom: '10px', borderRadius: '1px' }}
               />
             )}
-            {!item2 && isOdd && <div style={{ width: '50%', marginBottom: '10px' }} />}
+            {!item2 && isOdd && <div style={{ width: '100%', marginBottom: '10px' }} />}
             {/* Empty placeholder Col for alignment */}
           </Col>
+
         </Row>
       );
     }
@@ -61,7 +66,7 @@ const BuyScreen = () => {
       <Row className="justify-content-center align-items-center">
 
         {/* Left Column: Product Images */}
-        <Col xs={12} md={6}>
+        <Col xs={12} md={6}> 
           {renderProductImages()}
         </Col>
 
