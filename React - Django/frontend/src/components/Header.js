@@ -21,7 +21,9 @@ function Header() {
 
   return (
     <div>
-      <Navbar style={{ backgroundColor: "#4091ed" }}>
+      
+
+      <Navbar style={{ backgroundColor: "#4091ed", position: "relative" }}>
         <Container fluid>
           <LinkContainer to="/" style={{ color: "#ffffff" }}>
             <Navbar.Brand>Shopnet</Navbar.Brand>
@@ -136,7 +138,31 @@ function Header() {
             )}
           </Nav>
         </Container>
+
+
+
+
+        <div
+          style={{
+            position: "absolute",
+            bottom: "10%",
+            left: 0,
+            right: 0,
+            height: "2px",
+            backgroundColor: "#ffffff", // White color for the line
+            zIndex: 1, // Ensure it's above other content
+          }}
+        ></div>
+
+
       </Navbar>
+
+
+
+      
+
+      
+
     </div>
   );
 }
