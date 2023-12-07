@@ -1,7 +1,14 @@
 import React from 'react';
-import { Button, Card, Col, Container, Row } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
+import { Col, Container, Row, Card, Button } from 'react-bootstrap';
+
+
 
 const BuyScreen = () => {
+  const cart = useSelector((state) => state.cart);
+  const { cartItems } = cart;
+
+
   const headerFooterColor = "#bdbdbd"; // Deeper version of the color
   const cardBodyColor = "#fff7eb"; // Desired background color for the card body
   const listBorderStyle = {
@@ -23,13 +30,22 @@ const BuyScreen = () => {
   return (
     <Container>
       <Row className="justify-content-center align-items-center">
+
         {/* Left Column: Product Images */}
         <Col xs={12} md={6} className="text-center">
-          {/* Add your product images here */}
-          <img src="product_image_url_1" alt="Product 1" />
-          <img src="product_image_url_2" alt="Product 2" />
-          <img src="product_image_url_3" alt="Product 3" />
+          {/* Display product images from cartItems */}
+          {cartItems.map((item) => (
+            <img
+              key={item.product}
+              src={item.image} // Assuming 'image' is the property in your cartItem object containing the image URL
+              alt={item.name} // Assuming 'name' is the property in your cartItem object containing the product name
+              style={{ maxWidth: '100%', marginBottom: '10px', borderRadius: '8px' }}
+            />
+          ))}
         </Col>
+
+
+
         {/* Right Column: Order Details */}
 
         <Col xs={12} md={6}>
