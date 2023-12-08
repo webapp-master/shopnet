@@ -110,24 +110,17 @@ and create payload that will save all of this info inside the backend models.py
 
 
 
+			12.
+
+Transaction history
+
+
+			13.
+wallet summary
 
 
 
-I want to adjust the design you gave me 
-I want the page to have one big card and card body
-this card will have a header and footer
-the header will have this text "Place your Order"
-and the footer will have the "buy" button
 
-inside the card body, here is the content;
 
-wallet balance: $700
-product list: AIRPODS WIRELESS BLUETOOTH HEADPHONES, CANNON EOS 80D DSLR CAMERA, IPHONE 11 PRO 256GB MEMORY
-No. of items: 3
-Cost of products in your cart: $523
-Shipping cost:$7
-Tax:$1
-Total amount: $531
 
-please note: you don't need to reference the redux store for any data
-i just want a fronend design. later, i will replace each placeholder with the necessary state management logic 
+

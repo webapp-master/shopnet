@@ -112,15 +112,22 @@ const ShippingScreen = ({ history }) => {
 
     const selectedCity = e.target.value;
     if (
-      ["Bukuru", "Shendam", "Ogbomoso", "Oyo", "Ife", "Ilesa"].includes(
+      ["Bukuru", "Shendam", "Oyo", "Ife", "Lagos", "Jebba", "Abeokuta", "Ado-Ekiti"].includes(
         selectedCity
       )
     ) {
       setShippingCost(2);
+      
     } else if (
-      ["Ibadan", "Hadejia", "Ilorin", "Bida", "Ejigbo"].includes(selectedCity)
+      ["Ibadan", "Hadejia", "Ilorin", "Bida", "Ejigbo", "Badagry", "Ijebu-Ode", "Osogbo", "Ikere-Ekiti"].includes(selectedCity)
     ) {
       setShippingCost(4);
+
+    } else if (
+      ["Ogbomoso", "Ikeja", "Offa", "Sagamu", "Ilesa", "Ikole-Ekiti"].includes(selectedCity)
+    ) {
+      setShippingCost(9);
+
     } else {
       setShippingCost(1); // Default shipping cost for other cities
     }

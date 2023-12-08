@@ -6,6 +6,10 @@ const BuyScreen = () => {
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
 
+  // Assuming shippingAddress is available in the Redux state
+  const shippingAddress = useSelector((state) => state.shippingAddress);
+  const { shippingCost } = shippingAddress;
+
   const headerFooterColor = "#bdbdbd"; // Deeper version of the color
   const cardBodyColor = "#fff7eb"; // Desired background color for the card body
   const listBorderStyle = {
@@ -61,6 +65,53 @@ const BuyScreen = () => {
     return imageRows;
   };
 
+  const calculateTotalItems = () => {
+    // Calculate total quantity of items in the cart
+    const totalItems = cartItems.reduce((accumulator, currentItem) => {
+      return accumulator + currentItem.qty;
+    }, 0);
+  
+    return totalItems;
+  };
+
+
+  // Function to calculate the total cost of all items in the cart
+  const calculateTotalCost = () => {
+    // Use reduce to calculate the total cost by iterating through each item in the cart
+    const totalCost = cartItems.reduce((acc, item) => {
+      // Multiply the quantity by the price for each item and add it to the accumulator
+      return acc + item.qty * item.price;
+    }, 0);
+
+    return totalCost;
+  };
+
+   // Calculate the total cost
+   const totalCost = calculateTotalCost();
+
+
+  const calculateTotalTax = () => {
+    // Calculate the total tax from all cart items
+    const totalTax = cartItems.reduce((accumulator, currentItem) => {
+      // Parse the tax value to ensure it's treated as a number
+      const taxValue = parseFloat(currentItem.tax);
+      const quantity = currentItem.qty || 1; // Use a default quantity of 1 if not provided
+  
+      return accumulator + (isNaN(taxValue) ? 0 : taxValue * quantity); // Multiply tax value by quantity
+    }, 0);
+  
+    return totalTax;
+  };
+  
+  // Calculate the total tax
+  const totalTax = calculateTotalTax();
+  
+
+
+
+
+
+
   return (
     <Container>
       <Row>
@@ -84,16 +135,22 @@ const BuyScreen = () => {
 
               <Card.Text className="text-center">
                   <p style={boldText}>Wallet Balance: $700</p>
+
                   <p>Product List:</p>
                   <ul style={listBorderStyle}>
-                    <li>AIRPODS WIRELESS BLUETOOTH HEADPHONES</li>
-                    <li>CANNON EOS 80D DSLR CAMERA</li>
-                    <li>IPHONE 11 PRO 256GB MEMORY</li>
+                    {cartItems.map((item, index) => (
+                      <li key={index}>{item.name}</li>
+                    ))}
                   </ul>
-                  <p>No. of Items: 3</p>
-                  <p>Cost of Products in Your Cart: $523</p>
-                  <p>Shipping Cost: $7</p>
-                  <p>Tax: $1</p>
+
+                  <p>No. of Items: {calculateTotalItems()}</p>
+
+                  <p>Cost of Products in Your Cart: ${totalCost}</p>
+
+                  <p>Shipping Cost: ${shippingCost}</p>
+
+                  <p>Tax: ${totalTax}</p>
+
                   <p style={boldText}>Total Amount: $531</p>
                   <p>
                     Shipping Address: 04, grace-allegro street, Agodongbo, Oyo, Oyo

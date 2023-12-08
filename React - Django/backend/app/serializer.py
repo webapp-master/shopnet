@@ -11,12 +11,6 @@ class ProductSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-# class UserSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model=User
-#         fields=['id','username','email']
-
-
 class UserSerializer(serializers.ModelSerializer):
     firstName = serializers.SerializerMethodField(read_only=True)
     isAdmin = serializers.SerializerMethodField(read_only=True)
