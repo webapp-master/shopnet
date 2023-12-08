@@ -33,22 +33,22 @@ const BuyScreen = () => {
       const item2 = cartItems[i + 1];
 
       imageRows.push(
-        <Row key={i} className="justify-content-center mb-3">
+        <Row key={i} className=" mb-3">
 
-          <Col xs={6} md={6}  className="text-center" >
+          <Col xs={6} md={6}   >
             <img
               src={item1.image}
               alt={item1.name}
-              style={{ maxWidth: '100%', marginBottom: '10px', borderRadius: '1px' }}
+              style={{ maxWidth: '100%', marginBottom: '10px', borderRadius: '30px' }}
             />
           </Col>
 
-          <Col xs={6} md={6} className="text-center" >
+          <Col xs={6} md={6} >
             {item2 && (
               <img
                 src={item2.image}
                 alt={item2.name}
-                style={{ maxWidth: '100%', marginBottom: '10px', borderRadius: '1px' }}
+                style={{ maxWidth: '100%', marginBottom: '10px', borderRadius: '30px' }}
               />
             )}
             {!item2 && isOdd && <div style={{ width: '100%', marginBottom: '10px' }} />}
@@ -63,7 +63,7 @@ const BuyScreen = () => {
 
   return (
     <Container>
-      <Row className="justify-content-center align-items-center">
+      <Row>
 
         {/* Left Column: Product Images */}
         <Col xs={12} md={6}> 
