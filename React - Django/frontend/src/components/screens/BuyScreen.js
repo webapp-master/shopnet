@@ -33,9 +33,9 @@ const BuyScreen = () => {
       const item2 = cartItems[i + 1];
 
       imageRows.push(
-        <Row key={i} className=" mb-3">
+        <Row key={i} className="mb-1">
 
-          <Col xs={6} md={6}   >
+          <Col xs={6} md={6}>
             <img
               src={item1.image}
               alt={item1.name}
@@ -43,7 +43,7 @@ const BuyScreen = () => {
             />
           </Col>
 
-          <Col xs={6} md={6} >
+          <Col xs={6} md={6}>
             {item2 && (
               <img
                 src={item2.image}
