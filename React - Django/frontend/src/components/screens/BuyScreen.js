@@ -90,21 +90,47 @@ const BuyScreen = () => {
    const totalCost = calculateTotalCost();
 
 
-  const calculateTotalTax = () => {
+   const calculateTotalTax = () => {
     // Calculate the total tax from all cart items
     const totalTax = cartItems.reduce((accumulator, currentItem) => {
       // Parse the tax value to ensure it's treated as a number
       const taxValue = parseFloat(currentItem.tax);
       const quantity = currentItem.qty || 1; // Use a default quantity of 1 if not provided
   
-      return accumulator + (isNaN(taxValue) ? 0 : taxValue * quantity); // Multiply tax value by quantity
+      const taxPerItem = isNaN(taxValue) ? 0 : taxValue * quantity; // Calculate tax per item
+      return accumulator + taxPerItem;
     }, 0);
   
-    return totalTax;
+    return totalTax.toFixed(2); // Limit the total tax to 2 decimal places
   };
   
   // Calculate the total tax
   const totalTax = calculateTotalTax();
+
+
+  const calculateTotalAmount = () => {
+    // Calculate the total amount by summing up the cost of products, shipping cost, and tax
+    const totalAmount = totalCost + shippingCost + parseFloat(totalTax);
+    return totalAmount.toFixed(2); // Limit the total amount to 2 decimal places
+  };
+  
+  // Calculate the total amount
+  const totalAmount = calculateTotalAmount();
+
+
+  const formatShippingAddress = () => {
+    // Access the shippingAddress from the Redux state
+    const { houseNumber, street, area, city, state } = shippingAddress;
+  
+    // Concatenate the address attributes in the desired order
+    const concatenatedAddress = `${houseNumber}, ${street} Street, ${area}, ${city}, ${state}-State`;
+    return concatenatedAddress;
+  };
+  
+  // Get the concatenated shipping address
+  const concatenatedShippingAddress = formatShippingAddress();
+  
+  
   
 
 
@@ -151,11 +177,10 @@ const BuyScreen = () => {
 
                   <p>Tax: ${totalTax}</p>
 
-                  <p style={boldText}>Total Amount: $531</p>
-                  <p>
-                    Shipping Address: 04, grace-allegro street, Agodongbo, Oyo, Oyo
-                    State
-                  </p>
+                  <p style={boldText}>Total Amount: ${totalAmount}</p>
+
+                  <p>Shipping Address: {concatenatedShippingAddress}</p>
+
                   <p>Phone Number: 08034342186</p>
               </Card.Text>
             </Card.Body>
