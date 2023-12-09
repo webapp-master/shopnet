@@ -31,6 +31,17 @@ class Product(models.Model):
 
 
 
+class Wallet(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    balance = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    # Add more fields as needed for your wallet model
+
+    def __str__(self):
+        return f"Wallet of {self.user.username}"
+    
+
+
+
 
 
 
