@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.postgres.fields import JSONField
 from django.contrib.auth.models import User  # If using Django's built-in User model
 
 
@@ -32,84 +31,6 @@ class Product(models.Model):
 
 
 
-class ShippingAddress(models.Model):
-    order = models.OneToOneField(Order, on_delete=models.CASCADE, related_name='shipping_address')
-    state = models.CharField(max_length=100)
-    city = models.CharField(max_length=100)
-    area = models.CharField(max_length=100)
-    street = models.CharField(max_length=255)
-    house_number = models.CharField(max_length=20)
-    phone_number = models.CharField(max_length=20)
-    shipping_cost = models.DecimalField(max_digits=10, decimal_places=2)
-    
-    # Additional fields if needed
-
-    def __str__(self):
-        return f"{self.order} - Shipping Address"
-    
-    
-
-
-
-
-class Cart(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    cartItems = models.ManyToManyField(Product, through='CartItem')
-    
-
-
-
-class CartItem(models.Model):
-    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
-    quantity = models.IntegerField(default=1)
-
-        
-
-
-
-class Order(models.Model):
-    user=models.ForeignKey(User,on_delete=models.SET_NULL,null=True)
-    paymentMethod=models.CharField(max_length=200,null=True,blank=True)
-    shippingCost=models.DecimalField(max_digits=7,decimal_places=2,null=True,blank=True)
-    totalItem=models.IntegerField(null=True,blank=True,default=0)
-    totalAmount=models.DecimalField(max_digits=7,decimal_places=2,null=True,blank=True)
-    isPaid=models.BooleanField(default=False)
-    paidAt=models.DateTimeField(auto_now_add=False,null=True,blank=True)
-    isDelivered=models.BooleanField(default=False)
-    deliveredAt=models.DateTimeField(auto_now_add=False,null=True,blank=True)
-    createdAt=models.DateTimeField(auto_now_add=True)
-    
-    
-    
-    def __str__(self):
-        return str(self.createdAt)
-    
-    def save(self, *args, **kwargs):
-        # Set paymentMethod to 'wallet' if it's not provided
-        if not self.paymentMethod:
-            self.paymentMethod = 'wallet'
-        
-        super().save(*args, **kwargs)
-
-
-
-
-class OrderItem(models.Model):
-    product=models.ForeignKey(Product,on_delete=models.SET_NULL,null=True)
-    order=models.ForeignKey(Order,on_delete=models.SET_NULL,null=True)
-    qty=models.IntegerField(null=True,blank=True,default=0)
-    unitPrice=models.DecimalField(max_digits=7,decimal_places=2,null=True,blank=True)
-    totalPrice=models.DecimalField(max_digits=7,decimal_places=2,null=True,blank=True)
-    
-    
-        
-    def __str__(self):
-        return str(self.product.name)
-
-
-
-    
 
 
 

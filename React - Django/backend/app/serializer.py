@@ -1,7 +1,7 @@
 from django.db import models
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from app.models import Product,  OrderItem, Order, Profile
+from app.models import Product, Profile
 from rest_framework_simplejwt.tokens import RefreshToken
 
 
@@ -52,26 +52,4 @@ class ProfileSerializer(serializers.ModelSerializer):
 
 
 
-class CartItemSerializer(serializers.Serializer):
-    cartItems = serializers.ListField(
-        child=serializers.DictField(
-            # Adjust field types if needed
-            child=serializers.CharField(max_length=100)
-        )
-    )
-
-
-class OrderItemSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = OrderItem
-        fields = ['product', 'qty', 'unitPrice', 'totalPrice']
-
-
-class OrderSerializer(serializers.ModelSerializer):
-    
-
-    class Meta:
-        model = Order
-        fields = ['user', 'paymentMethod', 'shippingCost', 'totalAmount', 'totalItem', 'isPaid',
-                  'paidAt', 'isDelivered', 'deliveredAt', 'createdAt']
 
