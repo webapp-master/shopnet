@@ -8,8 +8,8 @@ const BuyScreen = () => {
 
   // Assuming shippingAddress is available in the Redux state
   const shippingAddress = useSelector((state) => state.shippingAddress);
-  const { shippingCost } = shippingAddress;
-
+  const { shippingCost, phoneNumber } = shippingAddress;
+  
   const headerFooterColor = "#bdbdbd"; // Deeper version of the color
   const cardBodyColor = "#fff7eb"; // Desired background color for the card body
   const listBorderStyle = {
@@ -127,8 +127,14 @@ const BuyScreen = () => {
     return concatenatedAddress;
   };
   
-  // Get the concatenated shipping address
+
+  const capitalizeWords = (str) => {
+    return str.replace(/\b\w/g, (char) => char.toUpperCase());
+  };
+  
+  // Get the concatenated shipping address and capitalize each word
   const concatenatedShippingAddress = formatShippingAddress();
+  const capitalizedShippingAddress = capitalizeWords(concatenatedShippingAddress);
   
   
   
@@ -179,9 +185,10 @@ const BuyScreen = () => {
 
                   <p style={boldText}>Total Amount: ${totalAmount}</p>
 
-                  <p>Shipping Address: {concatenatedShippingAddress}</p>
+                  <p>Shipping Address: {capitalizedShippingAddress}</p>
 
-                  <p>Phone Number: 08034342186</p>
+                  <p>Phone Number: {phoneNumber}</p>
+
               </Card.Text>
             </Card.Body>
 

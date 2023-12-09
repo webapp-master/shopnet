@@ -4,7 +4,7 @@
 when i was at the ShippingScreen.js
 I logged out
 
-and the i was not redirect to the login page
+and then i was not redirect to the login page
 
 
 
@@ -119,6 +119,36 @@ Transaction history
 wallet summary
 
 
+			14
+
+inside the BuyScreen.js
+the shipping address display part
+
+if the user adds "street" to his input while filling the form
+i need you to remove it
+that is, don't save the "street" inside the redux state 
+
+I think you should tackle the problem from the "ShippingSceen.js"
+while the user is still filling the form 
+such that "street" won't be saved in the redux state
+
+
+
+			15
+
+https://medium.com/@gazzaazhari/django-backend-react-frontend-basic-tutorial-6249af7964e4
+
+https://github.com/aishwaryaw/E-commerce-website-using-React-and-Django/blob/master/src/components/Login.js
+
+
+
+
+			16
+
+!userinfo   (not log in)
+the CartScreen
+when i click the "proceed to checkout"
+it should redirect to the login page 
 
 
 

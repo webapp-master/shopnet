@@ -4,6 +4,14 @@ from django.contrib.auth.models import User  # If using Django's built-in User m
 
 
 
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    phoneNumber = models.CharField(max_length=15, blank=True, null=True)
+    City = models.CharField(max_length=200, null=True, blank=True) 
+
+
+
+
 class Product(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=200, null=True, blank=True)
@@ -20,6 +28,25 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+    
+
+
+
+class ShippingAddress(models.Model):
+    order = models.OneToOneField(Order, on_delete=models.CASCADE, related_name='shipping_address')
+    state = models.CharField(max_length=100)
+    city = models.CharField(max_length=100)
+    area = models.CharField(max_length=100)
+    street = models.CharField(max_length=255)
+    house_number = models.CharField(max_length=20)
+    phone_number = models.CharField(max_length=20)
+    shipping_cost = models.DecimalField(max_digits=10, decimal_places=2)
+    
+    # Additional fields if needed
+
+    def __str__(self):
+        return f"{self.order} - Shipping Address"
+    
     
 
 
@@ -81,26 +108,10 @@ class OrderItem(models.Model):
         return str(self.product.name)
 
 
-class ShippingAddress(models.Model):
-    order = models.OneToOneField(Order, on_delete=models.CASCADE, related_name='shipping_address')
-    state = models.CharField(max_length=100)
-    city = models.CharField(max_length=100)
-    area = models.CharField(max_length=100)
-    street = models.CharField(max_length=255)
-    house_number = models.CharField(max_length=20)
-    phone_number = models.CharField(max_length=20)
-    shipping_cost = models.DecimalField(max_digits=10, decimal_places=2)
-    
-    # Additional fields if needed
 
-    def __str__(self):
-        return f"{self.order} - Shipping Address"
     
 
 
 
 
-class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    phoneNumber = models.CharField(max_length=15, blank=True, null=True)
-    City = models.CharField(max_length=200, null=True, blank=True) 
+
