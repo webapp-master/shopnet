@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios'; // Make sure to import axios if you're using it
 
 const CreditScreen = () => {
   const [username, setUsername] = useState('');
@@ -33,22 +34,25 @@ const CreditScreen = () => {
     };
 
     try {
-        const response = await fetch('YOUR_BACKEND_ENDPOINT_FOR_CREDIT_WALLET', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            // Add any authorization headers here if required
-          },
-          body: JSON.stringify(payload),
-        });
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          // Include any necessary authorization headers if required
+        },
+      };
+
+      // Send a POST request to your backend API using axios
+      await axios.post('/api/wallet/credit/', payload, config);
+
+      // Handle success scenario (redirect or any other action)
+    } catch (error) {
+      // Handle error scenario
+      console.error('Error:', error);
+    }
+  };
+
   
-        // Handle the response as needed (success or error)
-        // Example: if (response.ok) { /* Handle success */ } else { /* Handle error */ }
-      } catch (error) {
-        // Handle fetch error
-        console.error('Error:', error);
-      }
-    };
+
   return (
     <div>
       <h2>Credit Customer's Wallet</h2>
