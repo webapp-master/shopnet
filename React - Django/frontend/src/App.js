@@ -11,6 +11,7 @@ import RegisterScreen from "./components/screens/RegisterScreen";
 import ShippingScreen from "./components/screens/ShippingScreen";
 import BuyScreen from "./components/screens/BuyScreen";
 import WalletScreen from "./components/screens/WalletScreen";
+import CreditScreen from "./components/screens/CreditScreen";
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
           <Route path="/shipping" component={ShippingScreen} exact />
           <Route path="/buy" component={BuyScreen} exact />
           <Route path="/wallet" component={WalletScreen} exact />
+          <Route path="/credit" component={CreditScreen} exact />
 
 
 

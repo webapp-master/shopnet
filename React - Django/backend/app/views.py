@@ -145,37 +145,3 @@ def credit_wallet(user, amount):
 
 
 
-#below is what I use to test the credit_wallet function
-
-
-    # Access the Django shell
-python manage.py shell
-
-# Inside the Django shell
-from your_app.models import Wallet, Transaction  # Import necessary models
-from your_app.views import credit_wallet  # Import the credit_wallet function
-
-# Fetch a user object you want to credit (replace 'YourUserModel' and '1' with actual values)
-from django.contrib.auth.models import User
-user = User.objects.get(id=1)  # Replace '1' with the user ID you want to test
-
-# Display the initial wallet balance
-try:
-    wallet = Wallet.objects.get(user=user)
-    print(f"Initial Wallet Balance for {user.username}: {wallet.balance}")
-except Wallet.DoesNotExist:
-    print("Wallet not found for the user.")
-
-# Credit the wallet with $10
-success, transaction = credit_wallet(user, 10)
-
-if success:
-    print(f"Wallet credited successfully. New balance: {transaction.new_wallet_balance}")
-else:
-    print("Wallet not found for the user.") 
-
-    
-    
-
-
-
