@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from app.models import Product, Profile
+from app.models import Product, Transaction, Wallet
 from django.shortcuts import render
 from django.http import JsonResponse
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
@@ -15,10 +15,7 @@ from .serializer import ProductSerializer, UserSerializer, ProfileSerializer, Us
 
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
-
-
 from rest_framework.decorators import action
-
 from django.db import IntegrityError
 
 
@@ -117,6 +114,68 @@ def registerUser(request):
         message = {'details': f'Error occurred: {str(e)}'}
         return Response(message, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
+
+
+
+
+
+def credit_wallet(user, amount):
+    try:
+        wallet = Wallet.objects.get(user=user)
+        initial_balance = wallet.balance
+        new_balance = initial_balance + amount
+
+        # Record transaction details
+        transaction = Transaction.objects.create(
+            user=user,
+            initial_wallet_balance=initial_balance,
+            credit_by_admin=amount,
+            new_wallet_balance=new_balance
+        )
+
+        # Update Wallet balance
+        wallet.balance = new_balance
+        wallet.save()
+
+        return True, transaction
+    except Wallet.DoesNotExist:
+        return False, None
+
+
+
+
+#below is what I use to test the credit_wallet function
+
+
+    # Access the Django shell
+python manage.py shell
+
+# Inside the Django shell
+from your_app.models import Wallet, Transaction  # Import necessary models
+from your_app.views import credit_wallet  # Import the credit_wallet function
+
+# Fetch a user object you want to credit (replace 'YourUserModel' and '1' with actual values)
+from django.contrib.auth.models import User
+user = User.objects.get(id=1)  # Replace '1' with the user ID you want to test
+
+# Display the initial wallet balance
+try:
+    wallet = Wallet.objects.get(user=user)
+    print(f"Initial Wallet Balance for {user.username}: {wallet.balance}")
+except Wallet.DoesNotExist:
+    print("Wallet not found for the user.")
+
+# Credit the wallet with $10
+success, transaction = credit_wallet(user, 10)
+
+if success:
+    print(f"Wallet credited successfully. New balance: {transaction.new_wallet_balance}")
+else:
+    print("Wallet not found for the user.") 
+
+    
+    
 
 
 

@@ -4,3 +4,4 @@ from app.models import *
 admin.site.register(Profile)
 admin.site.register(Product)
 admin.site.register(Wallet)
+admin.site.register(Transaction)
