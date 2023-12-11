@@ -68,4 +68,3 @@ class WalletSerializer(serializers.ModelSerializer):
 
 
 
-
