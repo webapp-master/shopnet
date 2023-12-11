@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from app.models import Product, Transaction, Wallet
+from app.models import Product, Profile, Transaction, Wallet
 from django.shortcuts import render
 from django.http import JsonResponse
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
@@ -113,7 +113,6 @@ def registerUser(request):
     except Exception as e:
         message = {'details': f'Error occurred: {str(e)}'}
         return Response(message, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
 
 
 
