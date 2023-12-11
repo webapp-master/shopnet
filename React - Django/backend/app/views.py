@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from app.models import Product, Profile, Transaction, Wallet
 from django.shortcuts import render
-from django.http import JsonResponse
+
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.decorators import api_view
@@ -11,12 +11,13 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 
 from rest_framework import status
 from django.contrib.auth.hashers import make_password
-from .serializer import ProductSerializer, UserSerializer, ProfileSerializer, UserSerializerWithToken
+from .serializer import ProductSerializer, UserSerializer, ProfileSerializer, CreditWalletSerializer, UserSerializerWithToken
 
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import action
 from django.db import IntegrityError
+from django.shortcuts import get_object_or_404
 
 
 @api_view(['GET'])
@@ -77,9 +78,6 @@ def getUsers(request):
 
 # register the new users
 
-
-
-
 @api_view(['POST'])
 def registerUser(request):
     data = request.data
@@ -119,27 +117,36 @@ def registerUser(request):
 
 
 
-def credit_wallet(user, amount):
-    try:
-        wallet = Wallet.objects.get(user=user)
-        initial_balance = wallet.balance
-        new_balance = initial_balance + amount
 
-        # Record transaction details
+@api_view(['POST'])
+
+def credit_wallet(request):
+    serializer = CreditWalletSerializer(data=request.data)
+    if serializer.is_valid():
+        amount = serializer.validated_data['amount']
+        username = serializer.validated_data['username']
+        
+        user = get_object_or_404(User, username=username)
+        wallet = user.profile.wallet  # Assuming user profile has a OneToOneField to Wallet
+
+        initial_balance = wallet.balance
+        credit_by_admin = amount
+        new_wallet_balance = initial_balance + amount
+        
+        # Update the wallet balance
+        wallet.balance = new_wallet_balance
+        wallet.save()
+
+        # Record the transaction
         transaction = Transaction.objects.create(
             user=user,
             initial_wallet_balance=initial_balance,
-            credit_by_admin=amount,
-            new_wallet_balance=new_balance
+            credit_by_admin=credit_by_admin,
+            new_wallet_balance=new_wallet_balance
         )
-
-        # Update Wallet balance
-        wallet.balance = new_balance
-        wallet.save()
-
-        return True, transaction
-    except Wallet.DoesNotExist:
-        return False, None
+        
+        return Response({'message': 'Wallet credited successfully'}, status=status.HTTP_200_OK)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 

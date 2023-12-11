@@ -6,7 +6,11 @@ from django.contrib.auth.models import User  # If using Django's built-in User m
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     phoneNumber = models.CharField(max_length=15, blank=True, null=True)
-    City = models.CharField(max_length=200, null=True, blank=True) 
+    City = models.CharField(max_length=200, null=True, blank=True)
+    wallet = models.OneToOneField('Wallet', related_name='profile', on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__(self):
+        return f"Profile of {self.user.username}"
 
 
 
@@ -39,9 +43,6 @@ class Wallet(models.Model):
     def __str__(self):
         return f"Wallet of {self.user.username}"
     
-
-
-
 
 
 

@@ -1,7 +1,7 @@
 from django.db import models
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from app.models import Product, Profile
+from app.models import Product, Profile, Wallet
 from rest_framework_simplejwt.tokens import RefreshToken
 
 
@@ -42,12 +42,28 @@ class UserSerializerWithToken(UserSerializer):
     
 
 class ProfileSerializer(serializers.ModelSerializer):
-    phoneNumber = serializers.CharField(allow_null=True, allow_blank=True)
-    City = serializers.CharField(allow_null=True, allow_blank=True)
+    user = serializers.PrimaryKeyRelatedField(read_only=True)
 
     class Meta:
         model = Profile
-        fields = ['phoneNumber', 'City']
+        fields = ['user', 'phoneNumber', 'City']
+
+
+
+
+class CreditWalletSerializer(serializers.Serializer):
+    amount = serializers.DecimalField(max_digits=10, decimal_places=2)
+    username = serializers.CharField(max_length=150)
+
+
+
+class WalletSerializer(serializers.ModelSerializer):
+    user = serializers.PrimaryKeyRelatedField(read_only=True)
+
+    class Meta:
+        model = Wallet
+        fields = ['user', 'balance']
+
 
 
 
