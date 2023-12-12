@@ -152,5 +152,22 @@ it should redirect to the login page
 
 
 
+			17
+
+copyrights
+underline the top and bottom
+with color blue(same with header)
+the line should only span the width of the text
+
+
+
+			18
+
+for functional component rendering
+I want it such that if you're not authorized... you won't be able to view or navigate to the page 
+it will just pop a message.... "You don't have the clearance to view this page"
+
+
+
 
 

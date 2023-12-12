@@ -122,7 +122,7 @@ def registerUser(request):
             #Credit Wallet of Customer
 
 @api_view(['POST'])
-
+@permission_classes([IsAuthenticated])
 def credit_wallet(request):
     serializer = CreditWalletSerializer(data=request.data)
     if serializer.is_valid():

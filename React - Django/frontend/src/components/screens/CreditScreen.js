@@ -1,9 +1,21 @@
 import React, { useState } from 'react';
-import axios from 'axios'; // Make sure to import axios if you're using it
+import { useSelector } from 'react-redux';
+import axios from 'axios';
+
+
 
 const CreditScreen = () => {
   const [username, setUsername] = useState('');
   const [amount, setAmount] = useState('');
+  
+  console.log('Redux State:', useSelector(state => state)); // Log the entire state
+
+   // Access the token from Redux state
+  const accessToken = useSelector(state => state.userLogin.userInfo.access);
+  console.log('Access Token:', accessToken);
+
+  
+
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -33,13 +45,18 @@ const CreditScreen = () => {
       amount: amount,
     };
 
+    
+    
+
     try {
+
       const config = {
         headers: {
           'Content-Type': 'application/json',
-          // Include any necessary authorization headers if required
+          Authorization: `Bearer ${accessToken}`, // Include the token in the authorization header
         },
       };
+
 
       // Send a POST request to your backend API using axios
       await axios.post('/api/wallet/credit/', payload, config);
@@ -74,3 +91,4 @@ const CreditScreen = () => {
 };
 
 export default CreditScreen;
+
