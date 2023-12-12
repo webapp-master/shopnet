@@ -102,52 +102,82 @@ export const login = (username, password) => async (dispatch) => {
 
 
 
-export const register =
-  (firstName, lastName, userName, email, phoneNumber, City, password) => async (dispatch) => {
-    try {
-      dispatch({
-        type: USER_REGISTER_REQUEST,
-      });
 
-      const config = {
-        headers: {
-          "Content-type": "application/json",
-        },
-      };
 
-      const { data } = await axios.post(
-        "/api/users/register/",
-        {
-          firstName: firstName,
-          last_name: lastName,
-          username: userName,
-          email: email,
-          phoneNumber: phoneNumber,
-          City: City,
-          password: password, 
-        },
-        config
-      );
 
+export const register = (
+  firstName,
+  lastName,
+  userName,
+  email,
+  phoneNumber,
+  City,
+  password
+) => async (dispatch) => {
+  try {
+    dispatch({
+      type: USER_REGISTER_REQUEST,
+    });
+
+    const config = {
+      headers: {
+        'Content-type': 'application/json',
+      },
+    };
+
+    const { data } = await axios.post(
+      '/api/users/register/',
+      {
+        firstName: firstName,
+        last_name: lastName,
+        username: userName,
+        email: email,
+        phoneNumber: phoneNumber,
+        City: City,
+        password: password,
+      },
+      config
+    );
+
+    // Log the response data
+    console.log('Registration Response:', data);
+
+    // Check if the token is present in the response
+    if (data && data.token) {
+      // Dispatch success action with the received data
       dispatch({
         type: USER_REGISTER_SUCCESS,
         payload: data,
       });
 
-      localStorage.setItem("userInfo", JSON.stringify(data));
-    } catch (error) {
+      // Store user info in localStorage
+      localStorage.setItem('userInfo', JSON.stringify(data));
+    } else {
+      // If the token is not present, dispatch fail action with an error message
       dispatch({
         type: USER_REGISTER_FAIL,
-        payload:
-          error.response && error.response.data.detail
-            ? error.response.data.detail
-            : error.message,
+        payload: 'Token not found in response',
       });
     }
-  };
+  } catch (error) {
+    dispatch({
+      type: USER_REGISTER_FAIL,
+      payload:
+        error.response && error.response.data.detail
+          ? error.response.data.detail
+          : error.message,
+    });
+  }
+};
+
+
+
+
+
 
 export const logout = () => (dispatch) => {
   localStorage.removeItem("userInfo");
   dispatch({ type: USER_LOGOUT });
 };
+
 

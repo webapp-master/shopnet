@@ -25,11 +25,19 @@
 
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from django.contrib.auth.models import User  # Ensure you import the User model
-from .models import Wallet  # Import your Wallet model
+from django.contrib.auth.models import User
+from .models import Wallet, Profile
 
 @receiver(post_save, sender=User)
-def create_user_wallet(sender, instance, created, **kwargs):
+def create_user_profile_and_wallet(sender, instance, created, **kwargs):
     print('Signal Triggered')
     if created:
-        Wallet.objects.create(user=instance, balance=0.00)
+        # Create a Wallet instance for the new user
+        wallet_instance = Wallet.objects.create(user=instance, balance=0.00)
+
+        # Update the Profile instance with the created wallet
+        profile_instance, created_profile = Profile.objects.get_or_create(user=instance)
+        profile_instance.wallet = wallet_instance
+        profile_instance.phoneNumber = instance.profile.phoneNumber  # Ensure phoneNumber is handled
+        profile_instance.City = instance.profile.City  # Ensure City is handled
+        profile_instance.save()

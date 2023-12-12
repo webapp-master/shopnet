@@ -76,7 +76,7 @@ def getUsers(request):
 
 
 
-# register the new users
+                    # Register the new Users
 
 @api_view(['POST'])
 def registerUser(request):
@@ -95,10 +95,7 @@ def registerUser(request):
             user=user,
             phoneNumber=data.get('phoneNumber'),  # Save phoneNumber if provided
             City=data.get('City')
-        )
-
-        
-        
+        )      
 
         serializer = UserSerializerWithToken(user, many=False)
         return Response(serializer.data)
@@ -116,7 +113,7 @@ def registerUser(request):
 
 
 
-
+            #Credit Wallet of Customer
 
 @api_view(['POST'])
 
