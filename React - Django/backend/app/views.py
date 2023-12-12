@@ -91,11 +91,17 @@ def registerUser(request):
             password=make_password(data['password'])
         )
 
-        profile = Profile.objects.create(
-            user=user,
-            phoneNumber=data.get('phoneNumber'),  # Save phoneNumber if provided
-            City=data.get('City')
-        )      
+        # Get or create Profile instance for the user
+        profile, created = Profile.objects.get_or_create(user=user)
+        
+        # Update Profile fields (phoneNumber and City)
+        profile.phoneNumber = data.get('phoneNumber')  # Save phoneNumber if provided
+        profile.City = data.get('City')
+        profile.save()
+
+        # Create Wallet instance for the user if not already created by the signal
+        if not hasattr(profile, 'wallet'):
+            wallet = Wallet.objects.create(user=user, balance=0.00)
 
         serializer = UserSerializerWithToken(user, many=False)
         return Response(serializer.data)
@@ -144,6 +150,5 @@ def credit_wallet(request):
         
         return Response({'message': 'Wallet credited successfully'}, status=status.HTTP_200_OK)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
 
 
