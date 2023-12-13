@@ -73,7 +73,7 @@ const CreditScreen = () => {
                 placeholder="Enter Customer Username"
                 value={username}
                 onChange={handleUsernameChange}
-                style={{ textAlign: 'center', borderRadius: '7px' }}
+                style={{ textAlign: 'center', borderRadius: '7px', boxShadow: '0 0 5px rgba(0, 0, 0, 0.2)'}}
               />
             </Form.Group>
 
@@ -86,14 +86,14 @@ const CreditScreen = () => {
                   placeholder="Enter Amount"
                   value={amount}
                   onChange={handleAmountChange}
-                  style={{ textAlign: 'center', borderRadius: '20px' }}
+                  style={{ textAlign: 'center', borderRadius: '20px', boxShadow: '0 0 5px rgba(0, 0, 0, 0.2)' }}
                 />
               </InputGroup>
             </Form.Group>
 
             <div className="d-flex justify-content-center">
               <Button
-                style={{ backgroundColor: '#4091ed', color: 'white', borderRadius: '10px' }}
+                style={{ backgroundColor: '#4091ed', color: 'white', borderRadius: '10px', boxShadow: '0 0 5px rgba(0, 0, 0, 0.2)' }}
                 variant="primary"
                 onClick={handleCredit}
               >

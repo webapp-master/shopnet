@@ -3,7 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 
 function Footer() {
   return (
-    <footer>
+    <footer style={{ position: "relative", zIndex: 2 }}>
       <Container>
         <Row>
           <Col className="text-center  py-3">Copyrights @ToluTech 2024</Col>
