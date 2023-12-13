@@ -170,4 +170,11 @@ it will just pop a message.... "You don't have the clearance to view this page"
 
 
 
+			19
+all the "console.log" 
+verify what wil happpen in production environment
+4 security reasons 
+
+
+
 

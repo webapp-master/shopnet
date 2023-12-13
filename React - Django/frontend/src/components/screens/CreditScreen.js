@@ -1,21 +1,17 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
-
-
+import { Container, Row, Col, Form, InputGroup, Button } from 'react-bootstrap';
 
 const CreditScreen = () => {
   const [username, setUsername] = useState('');
   const [amount, setAmount] = useState('');
-  
+
   console.log('Redux State:', useSelector(state => state)); // Log the entire state
 
-   // Access the token from Redux state
+  // Access the token from Redux state
   const accessToken = useSelector(state => state.userLogin.userInfo.access);
   console.log('Access Token:', accessToken);
-
-  
-
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -26,69 +22,81 @@ const CreditScreen = () => {
   };
 
   const handleCredit = async () => {
-    // Perform validation - Check for empty fields
+    // Perform validation
     if (!username || !amount) {
       alert('Please fill in both username and amount fields.');
       return;
     }
 
-    // Validation - Check for valid amount
     const isValidAmount = !isNaN(parseFloat(amount)) && isFinite(amount);
     if (!isValidAmount || amount <= 0) {
       alert('Please enter a valid positive number for the amount.');
       return;
     }
 
-    // Create payload to send to backend
     const payload = {
-      username: username,
-      amount: amount,
+      username,
+      amount,
     };
 
-    
-    
-
     try {
-
       const config = {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${accessToken}`, // Include the token in the authorization header
+          Authorization: `Bearer ${accessToken}`,
         },
       };
 
-
-      // Send a POST request to your backend API using axios
+      // Send credit request to backend
       await axios.post('/api/wallet/credit/', payload, config);
 
-      // Handle success scenario (redirect or any other action)
+      // Success handling
+      alert('Customer wallet successfully credited!');
+      setUsername('');
+      setAmount('');
     } catch (error) {
-      // Handle error scenario
       console.error('Error:', error);
+      alert('An error occurred. Please try again.');
     }
   };
 
-  
-
   return (
-    <div>
-      <h2>Credit Customer's Wallet</h2>
-      <div>
-        <label>
-          Username:
-          <input type="text" value={username} onChange={handleUsernameChange} />
-        </label>
-      </div>
-      <div>
-        <label>
-          Amount to Credit:
-          <input type="number" value={amount} onChange={handleAmountChange} />
-        </label>
-      </div>
-      <button onClick={handleCredit}>Credit Wallet</button>
-    </div>
+    <Container>
+      <Row>
+        <Col md={{ span: 6, offset: 3 }}>
+          <h2>Credit Customer's Wallet</h2>
+          <Form>
+            <Form.Group className="mb-3">
+              <Form.Label>Username:</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter customer username"
+                value={username}
+                onChange={handleUsernameChange}
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label>Amount to Credit:</Form.Label>
+              <InputGroup>
+                <InputGroup.Text>$</InputGroup.Text>
+                <Form.Control
+                  type="number"
+                  placeholder="Enter amount"
+                  value={amount}
+                  onChange={handleAmountChange}
+                />
+              </InputGroup>
+            </Form.Group>
+
+            <Button variant="primary" onClick={handleCredit}>
+              Credit Wallet
+            </Button>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
 export default CreditScreen;
-
