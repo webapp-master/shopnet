@@ -61,10 +61,10 @@ const CreditScreen = () => {
   };
 
   return (
-    <Container>
+    <Container style={{ marginTop: '4rem' }}>
       <Row>
         <Col md={{ span: 6, offset: 3 }}>
-          <h2 style={{ color: "#4091ed", textAlign: "center" }}>Credit Customer's Wallet</h2>
+          <h2 style={{ color: '#4091ed', textAlign: 'center' }}>Credit Customer's Wallet</h2>
           <Form>
             <Form.Group className="mb-3">
               <Form.Label>Username:</Form.Label>
@@ -73,7 +73,7 @@ const CreditScreen = () => {
                 placeholder="Enter Customer Username"
                 value={username}
                 onChange={handleUsernameChange}
-                style={{ textAlign: "center" }}
+                style={{ textAlign: 'center', borderRadius: '7px' }}
               />
             </Form.Group>
 
@@ -86,19 +86,20 @@ const CreditScreen = () => {
                   placeholder="Enter Amount"
                   value={amount}
                   onChange={handleAmountChange}
-                  style={{ textAlign: "center" }}
+                  style={{ textAlign: 'center', borderRadius: '7px' }}
                 />
               </InputGroup>
             </Form.Group>
 
-            <Button
-              style={{ backgroundColor: "#4091ed", color: "white" }}
-              variant="primary"
-              onClick={handleCredit}
-              className="mx-auto"
-            >
-              Credit Wallet
-            </Button>
+            <div className="d-flex justify-content-center">
+              <Button
+                style={{ backgroundColor: '#4091ed', color: 'white', borderRadius: '10px' }}
+                variant="primary"
+                onClick={handleCredit}
+              >
+                Credit Wallet
+              </Button>
+            </div>
           </Form>
         </Col>
       </Row>
