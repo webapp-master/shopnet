@@ -61,10 +61,10 @@ const CreditScreen = () => {
   };
 
   return (
-    <Container style={{ marginTop: '4rem' }}>
+    <Container style={{ marginTop: '10rem' }}>
       <Row>
         <Col md={{ span: 6, offset: 3 }}>
-          <h2 style={{ color: '#4091ed', textAlign: 'center' }}>Credit Customer's Wallet</h2>
+          <h2 style={{ color: 'white', textAlign: 'center', marginBottom: '2rem' }}>Credit Customer's Wallet</h2>
           <Form>
             <Form.Group className="mb-3">
               <Form.Label>Username:</Form.Label>
@@ -86,7 +86,7 @@ const CreditScreen = () => {
                   placeholder="Enter Amount"
                   value={amount}
                   onChange={handleAmountChange}
-                  style={{ textAlign: 'center', borderRadius: '7px' }}
+                  style={{ textAlign: 'center', borderRadius: '20px' }}
                 />
               </InputGroup>
             </Form.Group>
@@ -107,4 +107,12 @@ const CreditScreen = () => {
   );
 };
 
-export default CreditScreen;
+const BackgroundWrapper = () => {
+  return (
+    <div style={{ backgroundColor: '#bbb2a0', height: '100vh', width: '100vw', position: 'fixed', top: 0, left: 0, zIndex: -1 }}>
+      {CreditScreen()}
+    </div>
+  );
+};
+
+export default BackgroundWrapper;
