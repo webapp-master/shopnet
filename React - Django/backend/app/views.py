@@ -1,23 +1,25 @@
 from django.contrib.auth.models import User
 from app.models import Product, Profile, Transaction, Wallet
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.decorators import api_view
+from app.permissions import IsManager, IsCashier
+
 from rest_framework.response import Response
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
-
+from rest_framework.decorators import action
 from rest_framework import status
+
 from django.contrib.auth.hashers import make_password
 from .serializer import ProductSerializer, UserSerializer, ProfileSerializer, CreditWalletSerializer, UserSerializerWithToken
 
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
-from rest_framework.decorators import action
+
 from django.db import IntegrityError
-from django.shortcuts import get_object_or_404
+
 
 
 @api_view(['GET'])
@@ -122,7 +124,7 @@ def registerUser(request):
             #Credit Wallet of Customer
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticated])
+@permission_classes([IsCashier])
 def credit_wallet(request):
     serializer = CreditWalletSerializer(data=request.data)
     if serializer.is_valid():
