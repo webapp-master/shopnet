@@ -70,19 +70,19 @@ const CreditScreen = () => {
               <Form.Label>Username:</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter customer username"
+                placeholder="Enter Customer Username"
                 value={username}
                 onChange={handleUsernameChange}
               />
             </Form.Group>
 
             <Form.Group className="mb-3">
-              <Form.Label>Amount to Credit:</Form.Label>
+              <Form.Label>Credit:</Form.Label>
               <InputGroup>
                 <InputGroup.Text>$</InputGroup.Text>
                 <Form.Control
                   type="number"
-                  placeholder="Enter amount"
+                  placeholder="Enter Amount"
                   value={amount}
                   onChange={handleAmountChange}
                 />
