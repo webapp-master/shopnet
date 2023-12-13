@@ -109,7 +109,7 @@ const CreditScreen = () => {
 
 const BackgroundWrapper = () => {
   return (
-    <div style={{ backgroundColor: '#bbb2a0', height: '100vh', width: '100vw', position: 'fixed', top: 0, left: 0, zIndex: -1 }}>
+    <div style={{ backgroundColor: '#bbb2a0', height: '100vh', width: '100vw', position: 'fixed', top: 0, left: 0}}>
       {CreditScreen()}
     </div>
   );
