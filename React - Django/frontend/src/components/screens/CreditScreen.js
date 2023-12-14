@@ -61,7 +61,7 @@ const CreditScreen = () => {
   };
 
   return (
-    <Container style={{ marginTop: '10rem' }}>
+    <Container style={{ margin: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
       <Row>
         <Col md={{ span: 6, offset: 3 }}>
           <h2 style={{ color: 'white', textAlign: 'center', marginBottom: '2rem', textShadow: '4px 4px 4px rgba(0, 0, 0, 0.5)' }}>Credit Customer's Wallet</h2>
@@ -109,7 +109,7 @@ const CreditScreen = () => {
 
 const BackgroundWrapper = () => {
   return (
-    <div style={{ backgroundColor: '#bbb2a0', height: '100vh', width: '100vw', position: 'fixed', top: 0, left: 0}}>
+    <div style={{ backgroundColor: '#bbb2a0', height: '100vh', width: '100vw'}}>
       {CreditScreen()}
     </div>
   );
