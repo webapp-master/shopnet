@@ -61,10 +61,10 @@ const CreditScreen = () => {
   };
 
   return (
-    <Container style={{ margin: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
+    <Container style={{ marginTop: '4rem' }}>
       <Row>
         <Col md={{ span: 6, offset: 3 }}>
-          <h2 style={{ color: 'white', textAlign: 'center', marginBottom: '2rem', textShadow: '4px 4px 4px rgba(0, 0, 0, 0.5)' }}>Credit Customer's Wallet</h2>
+          <h2 style={{ color: '#4091ed', textAlign: 'center' }}>Credit Customer's Wallet</h2>
           <Form>
             <Form.Group className="mb-3">
               <Form.Label>Username:</Form.Label>
@@ -73,7 +73,7 @@ const CreditScreen = () => {
                 placeholder="Enter Customer Username"
                 value={username}
                 onChange={handleUsernameChange}
-                style={{ textAlign: 'center', borderRadius: '7px', boxShadow: '0 0 5px rgba(0, 0, 0, 0.2)'}}
+                style={{ textAlign: 'center', borderRadius: '7px' }}
               />
             </Form.Group>
 
@@ -86,14 +86,14 @@ const CreditScreen = () => {
                   placeholder="Enter Amount"
                   value={amount}
                   onChange={handleAmountChange}
-                  style={{ textAlign: 'center', borderRadius: '20px', boxShadow: '0 0 5px rgba(0, 0, 0, 0.2)' }}
+                  style={{ textAlign: 'center', borderRadius: '7px' }}
                 />
               </InputGroup>
             </Form.Group>
 
             <div className="d-flex justify-content-center">
               <Button
-                style={{ backgroundColor: '#4091ed', color: 'white', borderRadius: '10px', boxShadow: '0 0 5px rgba(0, 0, 0, 0.2)' }}
+                style={{ backgroundColor: '#4091ed', color: 'white', borderRadius: '10px' }}
                 variant="primary"
                 onClick={handleCredit}
               >
@@ -107,12 +107,4 @@ const CreditScreen = () => {
   );
 };
 
-const BackgroundWrapper = () => {
-  return (
-    <div style={{ backgroundColor: '#bbb2a0', height: '100vh', width: '100vw'}}>
-      {CreditScreen()}
-    </div>
-  );
-};
-
-export default BackgroundWrapper;
+export default CreditScreen;
