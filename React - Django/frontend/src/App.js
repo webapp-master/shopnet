@@ -20,9 +20,9 @@ function App() {
   return (
     <Router>
 
-      <Header />
+      
 
-      <main className="py-3">
+      <main >
 
         <Container>
 
@@ -43,7 +43,7 @@ function App() {
 
       </main>
 
-      <Footer />
+      
 
     </Router>
   );

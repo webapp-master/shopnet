@@ -13,6 +13,7 @@ const BackgroundWrapper = () => {
         display: 'flex', // Ensuring child components take up full space
         justifyContent: 'center', // Center the child component horizontally
         alignItems: 'center', // Center the child component vertically
+        padding: '0', // Override the padding
       }}
     >
       <CreditScreen /> {/* Render your CreditScreen component here */}

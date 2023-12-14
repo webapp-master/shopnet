@@ -23,7 +23,7 @@ function Header() {
     <div>
       
 
-      <Navbar style={{ backgroundColor: "#4091ed", position: "relative", zIndex: 2 }}>
+      <Navbar style={{ backgroundColor: "#4091ed"}}>
         <Container fluid>
           <LinkContainer to="/" style={{ color: "#ffffff" }}>
             <Navbar.Brand>Shopnet</Navbar.Brand>
