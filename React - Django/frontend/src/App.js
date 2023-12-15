@@ -26,7 +26,7 @@ function App() {
 
       <main >
 
-      
+        <Container fluid>
 
           <Route path="/" component={HomeScreen} exact />
           <Route path="/login" component={LoginScreen} exact />
@@ -37,6 +37,10 @@ function App() {
           <Route path="/buy" component={BuyScreen} exact />
           <Route path="/wallet" component={WalletScreen} exact />
           <Route path="/credit" component={BackgroundWrapper} exact />
+          
+
+        </Container>
+
           
 
 
