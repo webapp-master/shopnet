@@ -61,7 +61,7 @@ const CreditScreen = () => {
   };
 
   return (
-    <Container style={{ marginTop: '10rem' }}>
+    <Container style={{ marginTop: '0rem' }}>
       <Row>
         <Col md={{ span: 6, offset: 3 }}>
           <h2 style={{ color: 'white', textAlign: 'center', marginBottom: '2rem', textShadow: '4px 4px 4px rgba(0, 0, 0, 0.5)' }}>Credit Customer's Wallet</h2>
