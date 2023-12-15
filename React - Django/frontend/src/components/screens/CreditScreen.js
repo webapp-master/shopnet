@@ -10,7 +10,7 @@ const CreditScreen = () => {
   console.log('Redux State:', useSelector(state => state)); // Log the entire state
 
   // Access the token from Redux state
-  const accessToken = useSelector(state => state.userLogin.userInfo.access);
+  const accessToken = useSelector(state => state.userLogin.userInfo?.access);
   console.log('Access Token:', accessToken);
 
   const handleUsernameChange = (e) => {

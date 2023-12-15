@@ -122,7 +122,7 @@ wallet summary
 			14
 
 inside the BuyScreen.js
-the shipping address display part
+the shipping address display 
 
 if the user adds "street" to his input while filling the form
 i need you to remove it
@@ -205,4 +205,14 @@ Sign In page enhancement with the use of Bard
 inside the header
 for active tab... i want to create something like button .... balck background with text in white 
 the button will have a enough borderRadius... making it curvature enough
+
+
+
+			25
+
+inside 'CreditScreen'
+whenever the alert pops up
+if i refresh the page instead of clicking the 'ok'
+the input field of the credit walllet becomes inactive 
+untill you bring back the alert and click ok
 
