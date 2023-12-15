@@ -8,12 +8,12 @@ const CreditBackground = () => {
       <div
         style={{
           backgroundColor: '#bbb2a0',
-          minHeight: '100vh',
+          minHeight: '80vh',
           width: '100%',
           display: 'flex',
           
           justifyContent: 'center',
-          alignItems: 'center',
+          
           
           
           padding: '0', 

@@ -186,3 +186,16 @@ there is something in all of those screens causing it
 			21
 I wish to reduce the height of the Header.js
 
+
+
+			22
+
+whenever i log out from the CreditScreen
+I receive error
+has to do with some info details running multiple times in the log backend 
+
+
+
+			23
+Sign In page enhancement with the use of Bard
+

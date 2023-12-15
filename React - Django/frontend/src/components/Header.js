@@ -20,7 +20,7 @@ function Header() {
   const isMobile = useMediaQuery({ maxWidth: 767 }); // Set the maximum width for mobile view
 
   return (
-    <div>
+    <div style={{ marginBottom: "20px" }}>
       
 
       <Navbar style={{ backgroundColor: "#4091ed", position: "relative", zIndex: 2 }}>

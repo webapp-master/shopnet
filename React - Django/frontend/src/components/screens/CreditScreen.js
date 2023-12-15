@@ -61,10 +61,11 @@ const CreditScreen = () => {
   };
 
   return (
-    <Container style={{ marginTop: '0rem' }}>
+    <Container  style={{ marginTop: '4rem' }}>
       <Row>
         <Col md={{ span: 6, offset: 3 }}>
           <h2 style={{ color: 'white', textAlign: 'center', marginBottom: '2rem', textShadow: '4px 4px 4px rgba(0, 0, 0, 0.5)' }}>Credit Customer's Wallet</h2>
+
           <Form>
             <Form.Group className="mb-3">
               <Form.Label>Username:</Form.Label>
@@ -100,7 +101,9 @@ const CreditScreen = () => {
                 Credit Wallet
               </Button>
             </div>
+
           </Form>
+
         </Col>
       </Row>
     </Container>
