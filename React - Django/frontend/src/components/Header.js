@@ -6,6 +6,8 @@ import { logout } from "../actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useMediaQuery } from 'react-responsive';
 import { useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+
 
 
 
@@ -14,8 +16,10 @@ function Header() {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
   const dispatch = useDispatch();
+  const history = useHistory(); // Get the history object
+
   const logoutHandler = () => {
-    dispatch(logout());
+    dispatch(logout(history)); // Pass history to the logout action
   };
 
   const isMobile = useMediaQuery({ maxWidth: 767 }); // Set the maximum width for mobile view

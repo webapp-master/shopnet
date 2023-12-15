@@ -13,7 +13,9 @@ import {
 
 import Message from "../Message";
 import { addToCart, removeFromCart } from "../../actions/cartActions";
-import axios from "axios";
+//import axios from "axios";
+
+
 
 function CartScreen({ match, location, history }) {
   const productId = match.params.id;
@@ -33,30 +35,30 @@ function CartScreen({ match, location, history }) {
     dispatch(removeFromCart(id));
   };
 
-  const checkoutHandler = async () => {
-    try {
-      const storedUserInfo = localStorage.getItem("userInfo");
+  //const checkoutHandler = async () => {
+    //try {
+      //const storedUserInfo = localStorage.getItem("userInfo");
 
-      if (!storedUserInfo) {
-        console.error("User info not found in localStorage.");
-        return;
-      }
+      //if (!storedUserInfo) {
+        //console.error("User info not found in localStorage.");
+        //return;
+      //}
 
-      const userInfo = JSON.parse(storedUserInfo);
+      //const userInfo = JSON.parse(storedUserInfo);
 
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${userInfo.access}`,
-        },
-      };
+      //const config = {
+        //headers: {
+          //"Content-Type": "application/json",
+          //Authorization: `Bearer ${userInfo.access}`,
+        //},
+      //};
 
-      const payload = {
-        cartItems: cartItems.map((item) => ({
-          product: item.product,
-          quantity: item.qty, // Include the quantity for each item
-        })),
-      };
+      //const payload = {
+        //cartItems: cartItems.map((item) => ({
+          //product: item.product,
+          //quantity: item.qty, // Include the quantity for each item
+        //})),
+      //};
 
       /* const response = await axios.post("/api/store-cart-items/", payload, config);
 
@@ -68,11 +70,11 @@ function CartScreen({ match, location, history }) {
       } */
 
 
-    } catch (error) {
-      console.error("Checkout Error:", error);
-    }
-    history.push("/login?redirect=shipping");
-  };
+    //} catch (error) {
+      //console.error("Checkout Error:", error);
+    //}
+    //history.push("/login?redirect=shipping");
+  //};
 
   return (
     <Row>
@@ -152,7 +154,7 @@ function CartScreen({ match, location, history }) {
               type="button"
               className="btn-block"
               disabled={cartItems.length === 0}
-              onClick={checkoutHandler}
+              //onClick={checkoutHandler}
               style={{ borderRadius: '20px' }} // Set the desired border radius
               >
               Proceed To Checkout

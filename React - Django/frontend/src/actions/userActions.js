@@ -104,7 +104,6 @@ export const login = (username, password) => async (dispatch) => {
 
 
 
-
 export const register = (
   firstName,
   lastName,
@@ -175,9 +174,11 @@ export const register = (
 
 
 
-export const logout = () => (dispatch) => {
+export const logout = (history) => (dispatch) => {
   localStorage.removeItem("userInfo");
   dispatch({ type: USER_LOGOUT });
+  history.push("/"); // Redirect to the home page ("/")
 };
+
 
 
