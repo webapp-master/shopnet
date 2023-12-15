@@ -5,6 +5,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import { logout } from "../actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useMediaQuery } from 'react-responsive';
+import { useLocation } from "react-router-dom";
 
 
 
@@ -18,11 +19,17 @@ function Header() {
   };
 
   const isMobile = useMediaQuery({ maxWidth: 767 }); // Set the maximum width for mobile view
+  const location = useLocation(); // Get the current location
+
+
+  // Check if the current route is "/credit"
+  const isCreditRoute = location.pathname === '/credit';
+
+
 
   return (
-    <div style={{ marginBottom: "20px" }}>
+    <div style={{ marginBottom: isCreditRoute ? "0" : "20px" }}> {/* Conditionally apply the margin */}
       
-
       <Navbar style={{ backgroundColor: "#4091ed", position: "relative", zIndex: 2 }}>
         <Container fluid>
           <LinkContainer to="/" style={{ color: "#ffffff" }}>
