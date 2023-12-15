@@ -26,7 +26,7 @@ function App() {
 
       <main >
 
-      <Container fluid>
+      
 
           <Route path="/" component={HomeScreen} exact />
           <Route path="/login" component={LoginScreen} exact />
@@ -41,7 +41,7 @@ function App() {
 
 
 
-        </Container>
+        
 
       </main>
 
