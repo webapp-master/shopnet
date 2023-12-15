@@ -16,6 +16,8 @@ import BackgroundWrapper from './components/screens/BackgroundWrapper';
 
 
 
+
+
 function App() {
   return (
     <Router>
@@ -24,7 +26,7 @@ function App() {
 
       <main >
 
-        <Container>
+      <Container fluid>
 
           <Route path="/" component={HomeScreen} exact />
           <Route path="/login" component={LoginScreen} exact />

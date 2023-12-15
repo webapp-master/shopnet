@@ -4,21 +4,26 @@ import CreditScreen from './CreditScreen';
 
 
 const BackgroundWrapper = () => {
-  return (
-    <div
-      style={{
-        backgroundColor: '#bbb2a0',
-        minHeight: '100vh', // Ensure it covers the entire vertical height of the viewport
-        width: '100%', // Take up the full width of the viewport
-        display: 'flex', // Ensuring child components take up full space
-        justifyContent: 'center', // Center the child component horizontally
-        alignItems: 'center', // Center the child component vertically
-        padding: '0', // Override the padding
-      }}
-    >
-      <CreditScreen /> {/* Render your CreditScreen component here */}
-    </div>
-  );
-};
-
-export default BackgroundWrapper;
+    return (
+      <div
+        style={{
+          backgroundColor: '#bbb2a0',
+          minHeight: '100vh',
+          width: '100%',
+          display: 'flex',
+          
+          justifyContent: 'center',
+          alignItems: 'center',
+          
+          
+          padding: '0', 
+          marginRight: '-40px',
+        }}
+      >   
+        <CreditScreen />
+      </div>
+    );
+  };
+  
+  export default BackgroundWrapper;
+  
