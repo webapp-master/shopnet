@@ -61,10 +61,10 @@ const CreditScreen = () => {
   };
 
   return (
-    <Container style={{ marginTop: '4rem' }}>
+    <Container style={{ marginTop: '10rem' }}>
       <Row>
         <Col md={{ span: 6, offset: 3 }}>
-          <h2 style={{ color: '#4091ed', textAlign: 'center' }}>Credit Customer's Wallet</h2>
+          <h2 style={{ color: 'white', textAlign: 'center', marginBottom: '2rem', textShadow: '4px 4px 4px rgba(0, 0, 0, 0.5)' }}>Credit Customer's Wallet</h2>
           <Form>
             <Form.Group className="mb-3">
               <Form.Label>Username:</Form.Label>
@@ -73,7 +73,7 @@ const CreditScreen = () => {
                 placeholder="Enter Customer Username"
                 value={username}
                 onChange={handleUsernameChange}
-                style={{ textAlign: 'center', borderRadius: '7px' }}
+                style={{ textAlign: 'center', borderRadius: '7px', boxShadow: '0 0 5px rgba(0, 0, 0, 0.2)'}}
               />
             </Form.Group>
 
@@ -86,14 +86,14 @@ const CreditScreen = () => {
                   placeholder="Enter Amount"
                   value={amount}
                   onChange={handleAmountChange}
-                  style={{ textAlign: 'center', borderRadius: '7px' }}
+                  style={{ textAlign: 'center', borderRadius: '20px', boxShadow: '0 0 5px rgba(0, 0, 0, 0.2)' }}
                 />
               </InputGroup>
             </Form.Group>
 
             <div className="d-flex justify-content-center">
               <Button
-                style={{ backgroundColor: '#4091ed', color: 'white', borderRadius: '10px' }}
+                style={{ backgroundColor: '#4091ed', color: 'white', borderRadius: '10px', boxShadow: '0 0 5px rgba(0, 0, 0, 0.2)' }}
                 variant="primary"
                 onClick={handleCredit}
               >

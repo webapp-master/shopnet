@@ -4,15 +4,21 @@ import { useLocation } from "react-router-dom";
 
 function Footer() {
   const location = useLocation();
+  const currentPath = window.location.pathname;
 
-  // Check if the current path matches '/credit'
-  const isCreditRoute = location.pathname === "/credit";
+  let backgroundColor = 'white'; // Default background color
+  let textColor = 'black'; // Default text color
+
+  if (currentPath === '/credit') {
+    backgroundColor = '#bbb2a0'; // Change background color for /credit route
+    textColor = 'red'; // Change text color for /credit route
+  }
 
   return (
-    <footer style={{ position: "relative", zIndex: 2, backgroundColor: isCreditRoute ? '#bbb2a0' : 'white' }}>
+    <footer style={{ position: "relative", zIndex: 2, backgroundColor }}>
       <Container>
         <Row>
-          <Col className="text-center  py-3">Copyrights @ToluTech 2024</Col>
+        <Col className="text-center py-3" style={{ color: textColor }}>Copyright © 2024 Shopnet, ICT TEAM| online store by ToluTech</Col>
         </Row>
       </Container>
     </footer>

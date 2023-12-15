@@ -178,3 +178,11 @@ verify what wil happpen in production environment
 
 
 
+			20
+home,cart and product details  all have horizontal scroll bar below the footer
+there is something in all of those screens causing it
+
+
+			21
+I wish to reduce the height of the Header.js
+
