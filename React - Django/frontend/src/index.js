@@ -20,10 +20,6 @@ ReactDOM.render(
 
 
 
-// Apply inline styles to the body element
-document.body.style.margin = 0;
-document.body.style.padding = 0;
-
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

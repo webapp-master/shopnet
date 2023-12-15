@@ -3,7 +3,7 @@ import CreditScreen from './CreditScreen';
 
 
 
-const BackgroundWrapper = () => {
+const CreditBackground = () => {
     return (
       <div
         style={{
@@ -17,7 +17,7 @@ const BackgroundWrapper = () => {
           
           
           padding: '0', 
-          marginRight: '-40px',
+         
         }}
       >   
         <CreditScreen />
@@ -25,5 +25,5 @@ const BackgroundWrapper = () => {
     );
   };
   
-  export default BackgroundWrapper;
+  export default CreditBackground;
   

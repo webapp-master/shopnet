@@ -11,46 +11,26 @@ import RegisterScreen from "./components/screens/RegisterScreen";
 import ShippingScreen from "./components/screens/ShippingScreen";
 import BuyScreen from "./components/screens/BuyScreen";
 import WalletScreen from "./components/screens/WalletScreen";
-import BackgroundWrapper from './components/screens/BackgroundWrapper';
-
-
-
-
-
+import CreditBackground from "./components/screens/CreditBackground";
 
 function App() {
   return (
     <Router>
+      <Header />
 
-      
-
-      <main >
-
-        <Container fluid>
-
-          <Route path="/" component={HomeScreen} exact />
-          <Route path="/login" component={LoginScreen} exact />
-          <Route path="/register" component={RegisterScreen} exact />
-          <Route path="/product/:id" component={ProductScreen} exact />
-          <Route path="/cart/:id?" component={CartScreen} exact />
-          <Route path="/shipping" component={ShippingScreen} exact />
-          <Route path="/buy" component={BuyScreen} exact />
-          <Route path="/wallet" component={WalletScreen} exact />
-          <Route path="/credit" component={BackgroundWrapper} exact />
-          
-
-        </Container>
-
-          
-
-
-
-        
-
+      <main>
+        <Route path="/" component={HomeScreen} exact />
+        <Route path="/login" component={LoginScreen} exact />
+        <Route path="/register" component={RegisterScreen} exact />
+        <Route path="/product/:id" component={ProductScreen} exact />
+        <Route path="/cart/:id?" component={CartScreen} exact />
+        <Route path="/shipping" component={ShippingScreen} exact />
+        <Route path="/buy" component={BuyScreen} exact />
+        <Route path="/wallet" component={WalletScreen} exact />
+        <Route path="/credit" component={CreditBackground} exact />
       </main>
 
-      
-
+      <Footer />
     </Router>
   );
 }
