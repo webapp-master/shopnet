@@ -68,8 +68,12 @@ function CartScreen({ match, location}) {
                     <Image src={item.image} alt={item.name} fluid rounded />
                   </Col>
 
+                  
+
                   <Col md={3}>
-                    <Link to={`/product/${item.product}`} style={{ color: 'blue' }}>{item.name}</Link>
+                    <Link to={`/product/${item.product}`} className="custom-link">
+                      {item.name}
+                    </Link>
                   </Col>
 
 
@@ -110,10 +114,9 @@ function CartScreen({ match, location}) {
       </Col>
 
       <Col md={4} className="d-flex align-items-center justify-content-center">
-
         <Card>
           <ListGroup variant="flush">
-          <ListGroup.Item className="text-center">
+            <ListGroup.Item className="text-center">
               <h2>
                 Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)})
                 items
@@ -131,15 +134,12 @@ function CartScreen({ match, location}) {
               className="btn-block"
               disabled={cartItems.length === 0}
               onClick={checkoutHandler}
-              style={{ borderRadius: '20px' }} // Set the desired border radius
-              >
+              style={{ borderRadius: "20px" }} // Set the desired border radius
+            >
               Proceed To Checkout
             </Button>
           </ListGroup.Item>
-
-
         </Card>
-
       </Col>
     </Row>
   );

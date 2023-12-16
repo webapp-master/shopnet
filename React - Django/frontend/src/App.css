@@ -79,3 +79,18 @@
 
 
 
+
+.custom-link {
+  color: blue;
+  text-decoration: underline; /* Add underline decoration by default */
+  transition: color 0.3s ease; /* Smooth transition for color change */
+
+  /* Hover effect */
+}
+
+.custom-link:hover {
+  color: red; /* Change color to red on hover */
+  text-decoration: none; /* Remove underline on hover */
+}
+
+
