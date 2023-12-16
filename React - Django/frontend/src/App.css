@@ -94,3 +94,17 @@
 }
 
 
+
+
+
+.list-group-item .custom-button {
+  background-color: black; /* Set the initial background color of the button to black */
+  transition: background-color 0.3s ease; /* Smooth transition for color change and box shadow */
+}
+
+.list-group-item .custom-button:hover {
+  background-color: blue; /* Change background color to '#4091ed' on hover */
+  
+}
+
+

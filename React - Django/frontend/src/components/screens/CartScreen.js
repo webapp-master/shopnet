@@ -68,7 +68,7 @@ function CartScreen({ match, location}) {
                     <Image src={item.image} alt={item.name} fluid rounded />
                   </Col>
 
-                  
+
 
                   <Col md={3}>
                     <Link to={`/product/${item.product}`} className="custom-link">
@@ -93,6 +93,7 @@ function CartScreen({ match, location}) {
                         <option key={x + 1} value={x + 1}>
                           {x + 1}
                         </option>
+                        
                       ))}
                     </Form.Control>
                   </Col>
@@ -106,6 +107,7 @@ function CartScreen({ match, location}) {
                       <i className="fas fa-trash"></i>
                     </Button>
                   </Col>
+
                 </Row>
               </ListGroup.Item>
             ))}
@@ -131,14 +133,16 @@ function CartScreen({ match, location}) {
           <ListGroup.Item className="text-center">
             <Button
               type="button"
-              className="btn-block"
+              className="btn-block custom-button" // Add a custom class to the button
               disabled={cartItems.length === 0}
               onClick={checkoutHandler}
-              style={{ borderRadius: "20px" }} // Set the desired border radius
+              style={{ borderRadius: "20px"}} // Set the desired border radius
             >
               Proceed To Checkout
             </Button>
           </ListGroup.Item>
+
+
         </Card>
       </Col>
     </Row>
