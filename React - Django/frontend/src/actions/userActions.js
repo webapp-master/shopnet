@@ -31,7 +31,7 @@ export const login = (username, password) => async (dispatch) => {
 
 
     // Log the 'data' received from the login request
-  console.log("Login data:", data);
+    console.log("Login data:", data);
 
     // Get user details after successful login
     const userInfoResponse = await axios.get("/api/user/profile/", {
@@ -94,12 +94,6 @@ export const login = (username, password) => async (dispatch) => {
     });
   }
 };
-
-
-
-
-
-
 
 
 

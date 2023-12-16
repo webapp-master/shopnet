@@ -7,7 +7,7 @@ const CreditBackground = () => {
     return (
       <div
         style={{
-          backgroundColor: '#bbb2a0',
+          backgroundColor: '#d7d1c6',
           minHeight: '80vh',
           width: '100%',
           display: 'flex',
