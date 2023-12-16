@@ -88,15 +88,21 @@ function CartScreen({ match, location}) {
                           addToCart(item.product, Number(e.target.value))
                         )
                       }
+                      style={{
+                        textAlign: "center",
+                        color: "blue",
+                      }}
                     >
                       {[...Array(item.countInStock).keys()].map((x) => (
                         <option key={x + 1} value={x + 1}>
                           {x + 1}
                         </option>
-                        
+
                       ))}
                     </Form.Control>
                   </Col>
+
+
 
                   <Col md={1}>
                     <Button
