@@ -13,14 +13,15 @@ import {
 
 import Message from "../Message";
 import { addToCart, removeFromCart } from "../../actions/cartActions";
-//import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 
 
-function CartScreen({ match, location, history }) {
+function CartScreen({ match, location}) {
   const productId = match.params.id;
   const qty = location.search ? Number(location.search.split("=")[1]) : 1;
   const dispatch = useDispatch();
+  const history = useHistory(); // Initialize useHistory
 
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
@@ -35,12 +36,17 @@ function CartScreen({ match, location, history }) {
     dispatch(removeFromCart(id));
   };
 
+  const isAuthenticated = useSelector((state) => state.userLogin.userInfo); // Access user authentication status
+
 
   const checkoutHandler = () => {
-    // Perform any necessary actions before redirecting, if needed
-    
-    // Redirect to the /shipping route
-    history.push("/shipping");
+    if (isAuthenticated) {
+      // If user is authenticated, redirect to shipping
+      history.push("/shipping");
+    } else {
+      // If user is not authenticated, redirect to login
+      history.push("/login");
+    }
   };
 
   
