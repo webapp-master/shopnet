@@ -47,26 +47,21 @@ function Header() {
               {/* Home */}
               {!isMobile && (
                 <React.Fragment>
-                  <LinkContainer to="/" className="whiteText">
-                    <Nav.Link>
-                       Products
-                    </Nav.Link>
+                  <LinkContainer to="/" className="whiteText" style={{ marginRight: "30px" }}>
+                    <Nav.Link>Products</Nav.Link>
                   </LinkContainer>
 
-                  <LinkContainer to="/cart" className="whiteText">
-                    <Nav.Link>
-                       Cart
-                    </Nav.Link>
+                  <LinkContainer to="/cart" className="whiteText" style={{ marginRight: "30px" }}>
+                    <Nav.Link>Cart</Nav.Link>
                   </LinkContainer>
+
                 </React.Fragment>
               )}
 
               {/* Wallet */}
               {!isMobile && userInfo && (
-                <LinkContainer to="/wallet" className="whiteText">
-                  <Nav.Link>
-                     Wallet
-                  </Nav.Link>
+                <LinkContainer to="/wallet" className="whiteText" style={{ marginRight: "30px" }}>
+                  <Nav.Link>Wallet</Nav.Link>
                 </LinkContainer>
               )}
 
@@ -93,9 +88,9 @@ function Header() {
 
               {/* Login link */}
               {!userInfo && (
-                <LinkContainer to="/login" className="whiteText">
+                <LinkContainer to="/login" className="whiteText" style={{ marginRight: "30px" }}>
                   <Nav.Link>
-                    <i className="fas fa-user"></i> Login
+                    Login
                   </Nav.Link>
                 </LinkContainer>
               )}
