@@ -32,11 +32,13 @@ function Header() {
 
 
   return (
-    <div style={{ marginBottom: isCreditRoute ? "0" : "20px" }}> {/* Conditionally apply the margin */}
-      
-      <Navbar style={{ backgroundColor: "#4091ed", position: "relative", zIndex: 2 }}>
+    <div style={{ marginBottom: isCreditRoute ? "0" : "20px" }}>
+      {" "}
+      {/* Conditionally apply the margin */}
+      <Navbar
+        style={{ backgroundColor: "#4091ed", position: "relative", zIndex: 2 }}
+      >
         <Container fluid>
-
           <LinkContainer to="/" style={{ color: "#ffffff", fontSize: "26px" }}>
             <Navbar.Brand>Shopnet</Navbar.Brand>
           </LinkContainer>
@@ -47,33 +49,54 @@ function Header() {
               {/* Home */}
               {!isMobile && (
                 <React.Fragment>
+                  <LinkContainer
+                    to="/"
+                    style={{
+                      marginRight: "30px",
+                      borderRadius: "30px",
+                      boxShadow: "none",
+                      outline: "none",
+                      border: "none",
+                      textShadow: "1px 1px 2px rgba(0, 0, 0, 0.6)",
+                    }}
+                  >
 
-                  <LinkContainer to="/" style={{ marginRight: "30px", borderRadius: "30px", boxShadow: "none", outline: "none", border: "none" }}>
-                    <Button variant="light">Products</Button>
+                    <Button
+                      variant="light"  
+                    >
+                      Products
+                    </Button>
+
                   </LinkContainer>
 
-
-
-
-
-
-                  <LinkContainer to="/cart" className="whiteText" style={{ marginRight: "30px" }}>
+                  <LinkContainer
+                    to="/cart"
+                    className="whiteText"
+                    style={{ marginRight: "30px" }}
+                  >
                     <Nav.Link>Cart</Nav.Link>
                   </LinkContainer>
-
                 </React.Fragment>
               )}
 
               {/* Wallet */}
               {!isMobile && userInfo && (
-                <LinkContainer to="/wallet" className="whiteText" style={{ marginRight: "30px" }}>
+                <LinkContainer
+                  to="/wallet"
+                  className="whiteText"
+                  style={{ marginRight: "30px" }}
+                >
                   <Nav.Link>Wallet</Nav.Link>
                 </LinkContainer>
               )}
 
               {/* Mobile dropdown for More options */}
               {isMobile && userInfo && (
-                <NavDropdown title="More" id="basic-nav-dropdown" className="dropdown-mobile custom-dropdown">
+                <NavDropdown
+                  title="More"
+                  id="basic-nav-dropdown"
+                  className="dropdown-mobile custom-dropdown"
+                >
                   <LinkContainer to="/cart">
                     <NavDropdown.Item>Cart</NavDropdown.Item>
                   </LinkContainer>
@@ -94,10 +117,12 @@ function Header() {
 
               {/* Login link */}
               {!userInfo && (
-                <LinkContainer to="/login" className="whiteText" style={{ marginRight: "30px" }}>
-                  <Nav.Link>
-                    Login
-                  </Nav.Link>
+                <LinkContainer
+                  to="/login"
+                  className="whiteText"
+                  style={{ marginRight: "30px" }}
+                >
+                  <Nav.Link>Login</Nav.Link>
                 </LinkContainer>
               )}
             </Nav>
@@ -106,34 +131,19 @@ function Header() {
           <Nav className="mr-auto my-2 my-lg-0" navbarScroll>
             {userInfo && (
               <React.Fragment>
-
-
-
-
-
-
                 {/* Large screen Dropdown */}
                 {!isMobile && (
                   <LinkContainer to="/">
-
-                    <NavDropdown title="More" className="custom-dropdown" >
-
+                    <NavDropdown title="More" className="custom-dropdown">
                       <LinkContainer to="/profile">
                         <NavDropdown.Item>Profile</NavDropdown.Item>
                       </LinkContainer>
                       <NavDropdown.Item onClick={logoutHandler}>
                         Logout
                       </NavDropdown.Item>
-                      
                     </NavDropdown>
-
                   </LinkContainer>
                 )}
-
-
-
-
-
 
                 <Nav.Item className="d-flex align-items-center">
                   {/* Place your profile picture URL in the src attribute */}
@@ -152,9 +162,6 @@ function Header() {
           </Nav>
         </Container>
 
-
-
-
         <div
           style={{
             position: "absolute",
@@ -166,16 +173,7 @@ function Header() {
             zIndex: 1, // Ensure it's above other content
           }}
         ></div>
-
-
       </Navbar>
-
-
-
-      
-
-      
-
     </div>
   );
 }
