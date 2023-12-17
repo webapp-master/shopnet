@@ -49,45 +49,35 @@ function Header() {
               {/* Home */}
               {!isMobile && (
                 <React.Fragment>
+
                   <LinkContainer
                     to="/"
-                    style={{
-                      marginRight: "30px",
-                      borderRadius: "30px",
-                      boxShadow: "none",
-                      outline: "none",
-                      border: "none",
-                      textShadow: "1px 1px 2px rgba(0, 0, 0, 0.6)",
-                    }}
+                    className="headerButtons" 
                   >
-
-                    <Button
-                      variant="light"  
-                    >
-                      Products
-                    </Button>
-
+                    <Button variant="light">Products</Button>
                   </LinkContainer>
+
 
                   <LinkContainer
                     to="/cart"
-                    className="whiteText"
-                    style={{ marginRight: "30px" }}
+                    className="headerButtons" 
                   >
-                    <Nav.Link>Cart</Nav.Link>
+                    <Button variant="light">Cart</Button>
                   </LinkContainer>
+
                 </React.Fragment>
               )}
 
               {/* Wallet */}
               {!isMobile && userInfo && (
+
                 <LinkContainer
-                  to="/wallet"
-                  className="whiteText"
-                  style={{ marginRight: "30px" }}
-                >
-                  <Nav.Link>Wallet</Nav.Link>
-                </LinkContainer>
+                    to="/wallet"
+                    className="headerButtons" 
+                  >
+                    <Button variant="light">Wallet</Button>
+                  </LinkContainer>
+                  
               )}
 
               {/* Mobile dropdown for More options */}
