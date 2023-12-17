@@ -216,3 +216,46 @@ if i refresh the page instead of clicking the 'ok'
 the input field of the credit walllet becomes inactive 
 untill you bring back the alert and click ok
 
+
+
+
+			26
+
+the home page 
+polish the name of the products
+the underline 
+do it like you did with the CartScreen.js
+
+
+
+			27
+rating 
+range 1- 5
+remove the decimal from the rating and review
+
+
+
+			28
+
+header
+
+margin in between the icon/button  
+change the icon of the wallet
+
+
+
+			29
+aside SHOPNET and MORE
+the header should have only 3 buttons
+I want the appearance of the 3 buttons to be dynamic moving from one page to another
+
+default---- background color : white
+	    color:  black
+
+hover  -----background color : black
+	    color:  white	
+ 
+
+
+			30
+click here! to debit Customer's wallet

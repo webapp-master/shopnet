@@ -48,7 +48,7 @@ function Header() {
                 <React.Fragment>
                   <LinkContainer to="/" className="whiteText">
                     <Nav.Link>
-                      <i className="fas fa-home"></i> Home
+                      <i className="fas fa-home"></i> Products
                     </Nav.Link>
                   </LinkContainer>
 

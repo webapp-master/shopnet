@@ -201,7 +201,7 @@ const ShippingScreen = ({ history }) => {
     }
   };
 
-  // ... (existing code)
+ 
 
   return (
     <Container>
