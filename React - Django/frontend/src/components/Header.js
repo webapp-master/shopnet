@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
+import { Navbar, Nav, Container, NavDropdown, Button } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { logout } from "../actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
@@ -47,9 +47,15 @@ function Header() {
               {/* Home */}
               {!isMobile && (
                 <React.Fragment>
-                  <LinkContainer to="/" className="whiteText" style={{ marginRight: "30px" }}>
-                    <Nav.Link>Products</Nav.Link>
+
+                  <LinkContainer to="/" style={{ marginRight: "30px", borderRadius: "30px", boxShadow: "none", outline: "none", border: "none" }}>
+                    <Button variant="light">Products</Button>
                   </LinkContainer>
+
+
+
+
+
 
                   <LinkContainer to="/cart" className="whiteText" style={{ marginRight: "30px" }}>
                     <Nav.Link>Cart</Nav.Link>
