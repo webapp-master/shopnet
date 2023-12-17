@@ -36,7 +36,8 @@ function Header() {
       
       <Navbar style={{ backgroundColor: "#4091ed", position: "relative", zIndex: 2 }}>
         <Container fluid>
-          <LinkContainer to="/" style={{ color: "#ffffff" }}>
+
+          <LinkContainer to="/" style={{ color: "#ffffff", fontSize: "26px" }}>
             <Navbar.Brand>Shopnet</Navbar.Brand>
           </LinkContainer>
 
@@ -48,13 +49,13 @@ function Header() {
                 <React.Fragment>
                   <LinkContainer to="/" className="whiteText">
                     <Nav.Link>
-                      <i className="fas fa-home"></i> Products
+                       Products
                     </Nav.Link>
                   </LinkContainer>
 
                   <LinkContainer to="/cart" className="whiteText">
                     <Nav.Link>
-                      <i className="fas fa-shopping-cart"></i> Cart
+                       Cart
                     </Nav.Link>
                   </LinkContainer>
                 </React.Fragment>
@@ -64,7 +65,7 @@ function Header() {
               {!isMobile && userInfo && (
                 <LinkContainer to="/wallet" className="whiteText">
                   <Nav.Link>
-                    <i className="fas fa-shopping-cart"></i> Wallet
+                     Wallet
                   </Nav.Link>
                 </LinkContainer>
               )}
