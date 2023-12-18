@@ -7,6 +7,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useMediaQuery } from 'react-responsive';
 import { useLocation } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
+
 
 
 
@@ -69,30 +72,40 @@ function Header() {
 
 
 
-              {/* Mobile dropdown for More options */}
               {isMobile && userInfo && (
                 <NavDropdown
-
-                  title="More"
+                  title={<>
+                    More 
+                  </>}
                   id="basic-nav-dropdown"
-                  className="dropdown-mobile custom-dropdown"
+                  className="dropdown-mobile custom-dropdown rounded-dropdown"
+                  
                 >
-                  <LinkContainer to="/cart">
-                    <NavDropdown.Item className="custom-dropdown-item">Cart</NavDropdown.Item>
-                  </LinkContainer>
-
-                  <LinkContainer to="/wallet">
-                    <NavDropdown.Item className="custom-dropdown-item">Wallet</NavDropdown.Item>
-                  </LinkContainer>
-
                   <LinkContainer to="/profile">
-                    <NavDropdown.Item className="custom-dropdown-item">Profile</NavDropdown.Item>
+                    <NavDropdown.Item className={`custom-dropdown-item ${location.pathname === '/profile' ? 'active' : ''}`}>
+                      Profile
+                    </NavDropdown.Item>
                   </LinkContainer>
-
+                  
+                  <hr className="dropdown-divider" /> {/* Example divider */}
+                  
+                  <LinkContainer to="/cart">
+                    <NavDropdown.Item className={`custom-dropdown-item ${location.pathname === '/cart' ? 'active' : ''}`}>
+                      Cart
+                    </NavDropdown.Item>
+                  </LinkContainer>
+                  
+                  <LinkContainer to="/wallet">
+                    <NavDropdown.Item className={`custom-dropdown-item ${location.pathname === '/wallet' ? 'active' : ''}`}>
+                      Wallet
+                    </NavDropdown.Item>
+                  </LinkContainer>
+                  
+                  <hr className="dropdown-divider" /> {/* Example divider */}
+                  
                   <NavDropdown.Item className="custom-dropdown-item" onClick={logoutHandler}>
                     Logout
                   </NavDropdown.Item>
-
                 </NavDropdown>
               )}
 

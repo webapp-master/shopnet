@@ -60,8 +60,13 @@
   color: #ffffff !important; /* Use !important if needed */
 }
 
+
+
+
 .custom-dropdown .dropdown-toggle {
   color: #ffffff !important; /* Set the text color to white */
+  
+  
 }
 
 
@@ -116,4 +121,10 @@
   display: flex !important;
   justify-content: center; /* Horizontal center alignment */
   width: 100%; /* Ensure full width */
+}
+
+
+/* Add this CSS for the rounded corners */
+.rounded-dropdown .dropdown-menu {
+  border-radius: 10px; /* Adjust the value to change the roundness */
 }
