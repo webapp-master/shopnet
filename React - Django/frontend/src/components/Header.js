@@ -49,35 +49,21 @@ function Header() {
               {/* Home */}
               {!isMobile && (
                 <React.Fragment>
-
-                  <LinkContainer
-                    to="/"
-                    className="headerButtons" 
-                  >
+                  <LinkContainer to="/" className="headerButtons">
                     <Button variant="light">Products</Button>
                   </LinkContainer>
 
-
-                  <LinkContainer
-                    to="/cart"
-                    className="headerButtons" 
-                  >
+                  <LinkContainer to="/cart" className="headerButtons">
                     <Button variant="light">Cart</Button>
                   </LinkContainer>
-
                 </React.Fragment>
               )}
 
               {/* Wallet */}
               {!isMobile && userInfo && (
-
-                <LinkContainer
-                    to="/wallet"
-                    className="headerButtons" 
-                  >
-                    <Button variant="light">Wallet</Button>
-                  </LinkContainer>
-                  
+                <LinkContainer to="/wallet" className="headerButtons">
+                  <Button variant="light">Wallet</Button>
+                </LinkContainer>
               )}
 
               {/* Mobile dropdown for More options */}
@@ -107,13 +93,11 @@ function Header() {
 
               {/* Login link */}
               {!userInfo && (
-                <LinkContainer
-                  to="/login"
-                  className="whiteText"
-                  style={{ marginRight: "30px" }}
-                >
-                  <Nav.Link>Login</Nav.Link>
+
+                <LinkContainer to="/login" className="headerButtons">
+                  <Button variant="light">Login</Button>
                 </LinkContainer>
+
               )}
             </Nav>
           </Navbar.Collapse>

@@ -91,6 +91,9 @@
 
 
 .headerButtons {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
   margin-right: 30px;
   border-radius: 30px !important;
   box-shadow: none !important;
