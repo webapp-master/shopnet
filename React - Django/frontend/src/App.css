@@ -111,3 +111,9 @@
   /* Additional hover styles if needed */
 }
 
+
+.custom-dropdown-item {
+  display: flex !important;
+  justify-content: center; /* Horizontal center alignment */
+  width: 100%; /* Ensure full width */
+}

@@ -78,18 +78,18 @@ function Header() {
                   className="dropdown-mobile custom-dropdown"
                 >
                   <LinkContainer to="/cart">
-                    <NavDropdown.Item>Cart</NavDropdown.Item>
+                    <NavDropdown.Item className="custom-dropdown-item">Cart</NavDropdown.Item>
                   </LinkContainer>
 
                   <LinkContainer to="/wallet">
-                    <NavDropdown.Item>Wallet</NavDropdown.Item>
+                    <NavDropdown.Item className="custom-dropdown-item">Wallet</NavDropdown.Item>
                   </LinkContainer>
 
                   <LinkContainer to="/profile">
-                    <NavDropdown.Item>Profile</NavDropdown.Item>
+                    <NavDropdown.Item className="custom-dropdown-item">Profile</NavDropdown.Item>
                   </LinkContainer>
 
-                  <NavDropdown.Item onClick={logoutHandler}>
+                  <NavDropdown.Item className="custom-dropdown-item" onClick={logoutHandler}>
                     Logout
                   </NavDropdown.Item>
 
@@ -97,7 +97,7 @@ function Header() {
               )}
 
 
-              
+
 
               {/* Login link */}
               {!userInfo && (
