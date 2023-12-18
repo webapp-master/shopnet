@@ -132,13 +132,15 @@ function Header() {
 
                   <LinkContainer to="/">
 
-                    <NavDropdown title="More" className="custom-dropdown">
+                    <NavDropdown title="More" className="custom-dropdown rounded-dropdown">
 
                       <LinkContainer to="/profile">
-                        <NavDropdown.Item>Profile</NavDropdown.Item>
+                        <NavDropdown.Item className={`custom-dropdown-item ${location.pathname === '/profile' ? 'active' : ''}`}>Profile</NavDropdown.Item>
                       </LinkContainer>
-                      
-                      <NavDropdown.Item onClick={logoutHandler}>
+
+                      <hr className="dropdown-divider" /> {/* Example divider */}
+
+                      <NavDropdown.Item className="custom-dropdown-item" onClick={logoutHandler}>
                         Logout
                       </NavDropdown.Item>
 
