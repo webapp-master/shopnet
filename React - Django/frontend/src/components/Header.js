@@ -129,16 +129,24 @@ function Header() {
               <React.Fragment>
                 {/* Large screen Dropdown */}
                 {!isMobile && (
+
                   <LinkContainer to="/">
+
                     <NavDropdown title="More" className="custom-dropdown">
+
                       <LinkContainer to="/profile">
                         <NavDropdown.Item>Profile</NavDropdown.Item>
                       </LinkContainer>
+                      
                       <NavDropdown.Item onClick={logoutHandler}>
                         Logout
                       </NavDropdown.Item>
+
                     </NavDropdown>
+
                   </LinkContainer>
+
+
                 )}
 
                 <Nav.Item className="d-flex align-items-center">
