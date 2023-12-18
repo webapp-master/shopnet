@@ -1,8 +1,3 @@
-
-
-
-
-
 .App {
   text-align: center;
 }
@@ -49,11 +44,6 @@
 }
 
 
-
-
-
-
-
 .my-profile {
   margin-right: -30px; 
   margin-left: -10px;
@@ -66,18 +56,13 @@
 }
 
 
-
 .whiteText {
   color: #ffffff !important; /* Use !important if needed */
 }
 
-
-
 .custom-dropdown .dropdown-toggle {
   color: #ffffff !important; /* Set the text color to white */
 }
-
-
 
 
 .custom-link {
@@ -94,9 +79,6 @@
 }
 
 
-
-
-
 .list-group-item .custom-button {
   background-color: black; /* Set the initial background color of the button to black */
   transition: background-color 0.3s ease; /* Smooth transition for color change and box shadow */
@@ -108,9 +90,6 @@
 }
 
 
-
-
-
 .headerButtons {
   margin-right: 30px;
   border-radius: 30px !important;
@@ -118,7 +97,8 @@
   outline: none !important;
   border: none !important; 
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6) !important;
-  /* Add any additional styles specific to this class */
+  width: 120px; 
+  height: 40px; 
 }
 
 .headerButtons:hover {
