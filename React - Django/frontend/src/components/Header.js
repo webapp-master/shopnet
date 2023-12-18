@@ -46,6 +46,7 @@ function Header() {
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav className="mr-auto my-2 my-lg-0" navbarScroll>
+
               {/* Home */}
               {!isMobile && (
                 <React.Fragment>
@@ -66,9 +67,12 @@ function Header() {
                 </LinkContainer>
               )}
 
+
+
               {/* Mobile dropdown for More options */}
               {isMobile && userInfo && (
                 <NavDropdown
+
                   title="More"
                   id="basic-nav-dropdown"
                   className="dropdown-mobile custom-dropdown"
@@ -88,8 +92,12 @@ function Header() {
                   <NavDropdown.Item onClick={logoutHandler}>
                     Logout
                   </NavDropdown.Item>
+
                 </NavDropdown>
               )}
+
+
+              
 
               {/* Login link */}
               {!userInfo && (
@@ -99,6 +107,7 @@ function Header() {
                 </LinkContainer>
 
               )}
+
             </Nav>
           </Navbar.Collapse>
 

@@ -259,3 +259,13 @@ hover  -----background color : black
 
 			30
 click here! to debit Customer's wallet
+
+
+			31
+Inside the Cart
+make the trash button red color
+
+
+
+			32
+buttons :::::: Latest
