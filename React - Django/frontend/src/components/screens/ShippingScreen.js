@@ -90,7 +90,7 @@ const ShippingScreen = ({ history }) => {
     Lagos: ["Lagos", "Ikeja", "Badagry", "Ikorodu"],
     Nasarawa: ["Lafia", "Akwanga", "Keffi", "Karu"],
     Niger: ["Minna", "Suleja", "Bida", "Kontagora"],
-    Ogun: ["Abeokuta", "Ijebu-Ode", "Sagamu", "Ilaro"],
+    Ogun: ["Abeokuta", "Ijebu-Ode", "Sagamu", "Ilaro", "Owode", "Odeda", "Ado-Ota", "Ijebu Ode", "Abeokuta North", "Ifo", "Imeko Afon", "Ijoko", "Wasinmi", "Atan", "Igbesa", "Ago-Iwoye", "Ijebu Itele", "Idogo", "Mowe", "Ayetoro", "Ogere", "Odogbolu", "Ota", "Ogun waterside", "Ewekoro", "Egbado North", "Remo North", "Egbado South", "Ikenne", "Ijebu North", "Ijebu North East", "Abeokuta South", "Idiroko", "Ijebu East", "Iwoye", "Ifoyintedo", "Iperu", "Ita Egbe", "Mobalufon"],
     Ondo: ["Akure", "Ondo City", "Owo", "Ikare"],
     Osun: ["Osogbo", "Ife", "Ilesa", "Ejigbo"],
     Oyo: ["Ibadan", "Ogbomoso", "Oyo", "Iseyin"],
