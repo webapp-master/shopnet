@@ -130,9 +130,9 @@ function Header() {
                 {/* Large screen Dropdown */}
                 {!isMobile && (
 
-                  <LinkContainer to="/">
+                  <LinkContainer  to="/">
 
-                    <NavDropdown title="More" className="custom-dropdown rounded-dropdown">
+                    <NavDropdown title="More" className="custom-dropdown rounded-dropdown addMargin">
 
                       <LinkContainer to="/profile">
                         <NavDropdown.Item className={`custom-dropdown-item ${location.pathname === '/profile' ? 'active' : ''}`}>Profile</NavDropdown.Item>

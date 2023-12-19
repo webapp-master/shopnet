@@ -128,3 +128,9 @@
 .rounded-dropdown .dropdown-menu {
   border-radius: 10px; /* Adjust the value to change the roundness */
 }
+
+
+.addMargin {
+margin-right: 3rem !important;
+}
+
