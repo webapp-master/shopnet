@@ -29,13 +29,14 @@ function Header() {
   const location = useLocation(); // Get the current location
 
 
-  // Check if the current route is "/credit"
+  // Check if the current route is "/login" or "/credit"
+  const isLoginRoute = location.pathname === '/login';
   const isCreditRoute = location.pathname === '/credit';
 
 
 
   return (
-    <div style={{ marginBottom: isCreditRoute ? "0" : "20px" }}>
+    <div style={{ marginBottom: isLoginRoute || isCreditRoute ? "0" : "20px" }}>
       {" "}
       {/* Conditionally apply the margin */}
       <Navbar

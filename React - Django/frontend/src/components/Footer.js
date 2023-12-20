@@ -15,10 +15,12 @@ function Footer() {
   }
 
   return (
-    <footer style={{ position: "relative", zIndex: 2, backgroundColor }}>
+    <footer style={{ position: "fixed", bottom: 0, width: "100%", backgroundColor, zIndex: 2 }}>
       <Container>
         <Row>
-        <Col className="text-center py-3" style={{ color: textColor }}>Copyright © 2024 ShopNET, ICT TEAM | online store by ToluTech</Col>
+          <Col className="text-center py-3" style={{ color: textColor }}>
+            Copyright © 2024 ShopNET, ICT TEAM | online store by ToluTech
+          </Col>
         </Row>
       </Container>
     </footer>

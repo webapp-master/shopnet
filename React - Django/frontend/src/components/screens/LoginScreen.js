@@ -80,8 +80,20 @@ const LoginScreen = () => {
           </div>
           <button type="submit" style={buttonStyle}>Login</button>
         </form>
+
+        
       </div>
+      
     </div>
+
+
+
+
+
+
+
+
+
   );
 };
 
