@@ -4,7 +4,10 @@ import { useLocation } from "react-router-dom";
 
 function Footer() {
   const location = useLocation();
-  const currentPath = window.location.pathname;
+  const currentPath = location.pathname;
+
+  // Define paths where you don't want to display the footer
+  const pathsToHideFooter = ["/login"];
 
   let backgroundColor = 'white'; // Default background color
   let textColor = 'black'; // Default text color
@@ -12,6 +15,15 @@ function Footer() {
   if (currentPath === '/credit') {
     backgroundColor = '#d7d1c6'; // Change background color for /credit route
     textColor = 'red'; // Change text color for /credit route
+  }
+
+
+  // Check if the current path is in the pathsToHideFooter array
+  const shouldHideFooter = pathsToHideFooter.includes(currentPath);
+
+  if (shouldHideFooter) {
+    // Return null if you don't want to render the footer
+    return null;
   }
 
   return (
