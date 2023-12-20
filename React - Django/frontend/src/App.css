@@ -139,7 +139,7 @@ margin-right: 3rem !important;
 .formContainer {
   border: 1px solid #050505; /* Border style */
   border-radius: 15px; /* Border radius */
-  padding: 20px; /* Padding inside the container */
+  padding: 0px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
 }
 
