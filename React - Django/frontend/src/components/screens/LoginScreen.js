@@ -1,107 +1,88 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import {
-  Row,
-  Col,
-  Image,
-  ListGroup,
-  Button,
-  Card,
-  Form,
-  Container,
-} from "react-bootstrap";
-import Loader from "../Loader";
-import Message from "../Message";
-import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../actions/userActions";
-import FormContainer from "../FormContainer";
+import React from 'react';
 
-function LoginScreen({ location, history }) {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const dispatch = useDispatch();
-
-  const redirect = location.search ? location.search.split("=")[1] : "/";
-
-  const userLogin = useSelector((state) => state.userLogin);
-  const { error, loading, userInfo } = userLogin;
-
-  useEffect(() => {
-    if (userInfo) {
-      history.push(redirect);
-    }
-  }, [history, userInfo, redirect]);
-
-  const submitHandler = (e) => {
+const LoginScreen = () => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(login(username, password));
+    // Add your login logic here
+  };
+
+  const containerStyle = {
+    width: '100%',
+    height: '100vh',
+    background: 'url("./images/hospital.jpg") no-repeat',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  };
+
+  const loginBoxStyle = {
+    position: 'relative',
+    width: '390px',
+    height: '420px',
+    backgroundColor: 'yellow',
+    border: '2px solid rgba(255, 255, 255, 0.5)',
+    borderRadius: '20px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backdropFilter: 'blur(15px)',
+  };
+
+  const inputBoxStyle = {
+    position: 'relative',
+    width: '310px',
+    margin: '30px 0',
+    borderBottom: '2px solid #fff',
+  };
+
+  const inputStyle = {
+    width: '100%',
+    height: '50px',
+    background: 'transparent',
+    border: 'none',
+    outline: 'none',
+    fontSize: '16px',
+    color: '#1f73c9',
+    padding: '0 35px 0 5px',
+  };
+
+  const buttonStyle = {
+    width: '100%',
+    height: '40px',
+    background: '#fff',
+    border: 'none',
+    outline: 'none',
+    borderRadius: '40px',
+    cursor: 'pointer',
+    fontSize: '16px',
+    color: '#000',
+    transition: 'all 0.5s',
   };
 
   return (
-    <Container
-      className="d-flex align-items-center justify-content-center text-center formContainer"
-      style={{ minHeight: "80vh", maxWidth: "40rem" }}
-    >
-      <Container>
-        <FormContainer>
-          <h1
-            style={{
-              marginBottom: "4rem",
-              boxShadow: "0 2px 1px rgba(0,0,0,0.6)",
-              textShadow: "2px 2px 4px rgba(0.2,0.4,0.7,0.3)",
-            }}
-          >
-            Sign IN
-          </h1>
-          {error && <Message variant="danger">{error}</Message>}
-          {loading && <Loader />}
-
-          <Form onSubmit={submitHandler}>
-            <Form.Group controlId="username">
-              <Form.Control
-                required
-                type="text"
-                placeholder="Username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                style={{ borderRadius: "10px" }} // Adding border radius to input field
-              ></Form.Control>
-            </Form.Group>
-            <br /> {/* Line break added here */}
-            <Form.Group controlId="password">
-              <Form.Control
-                required
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                style={{ borderRadius: "10px" }} // Adding border radius to input field
-              ></Form.Control>
-            </Form.Group>
-            <Button
-              className="mt-3"
-              type="submit"
-              variant="primary"
-              style={{ borderRadius: "10px" }}
-            >
-              Sign In
-            </Button>
-          </Form>
-
-          <Row className="py-3">
-            <Col>
-              New Customer?
-              <Link
-                to={redirect ? `/register?redirect=${redirect}` : "/register"}
-              >
-                Register
-              </Link>
-            </Col>
-          </Row>
-        </FormContainer>
-      </Container>
-    </Container>
+    <div style={containerStyle}>
+      <div style={loginBoxStyle}>
+        <form onSubmit={handleSubmit}>
+          <h2 style={{ fontSize: '28px', color: '#1f73c9', textAlign: 'center' }}>Login</h2>
+          <div style={inputBoxStyle}>
+            <span style={{ position: 'absolute', right: '8px', color: '#fff', fontSize: '18px', lineHeight: '50px' }}>
+              <i className="fa-solid fa-envelope"></i>
+            </span>
+            <input type="email" required placeholder="Email" style={inputStyle} />
+          </div>
+          <div style={inputBoxStyle}>
+            <span style={{ position: 'absolute', right: '8px', color: '#fff', fontSize: '18px', lineHeight: '50px' }}>
+              <i className="fa-solid fa-lock"></i>
+            </span>
+            <input type="password" placeholder="Password" required style={inputStyle} />
+          </div>
+          <button type="submit" style={buttonStyle}>Login</button>
+        </form>
+      </div>
+    </div>
   );
-}
+};
 
 export default LoginScreen;
