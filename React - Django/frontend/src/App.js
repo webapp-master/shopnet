@@ -16,7 +16,7 @@ import CreditBackground from "./components/screens/CreditBackground";
 function App() {
   return (
     <Router>
-      <Header />
+      
 
       <main>
         <Route path="/" component={HomeScreen} exact />
@@ -30,10 +30,9 @@ function App() {
         <Route path="/credit" component={CreditBackground} exact />
       </main>
 
-      <Footer />
+    
     </Router>
   );
 }
 
 export default App;
-

@@ -9,7 +9,7 @@ const LoginScreen = () => {
   const containerStyle = {
     width: '100%',
     height: '100vh',
-    background: 'url("./images/hospital.jpg") no-repeat',
+    background: 'yellow',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     display: 'flex',
@@ -21,7 +21,7 @@ const LoginScreen = () => {
     position: 'relative',
     width: '390px',
     height: '420px',
-    backgroundColor: 'yellow',
+    backgroundColor: 'transparent',
     border: '2px solid rgba(255, 255, 255, 0.5)',
     borderRadius: '20px',
     display: 'flex',
