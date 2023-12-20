@@ -40,7 +40,7 @@ function LoginScreen({ location, history }) {
   return (
     <Container
       className="d-flex align-items-center justify-content-center text-center formContainer"
-      style={{ minHeight: "80vh", maxWidth: "800px" }}
+      style={{ minHeight: "80vh", maxWidth: "40rem" }}
     >
       <Container>
         <FormContainer>
