@@ -85,23 +85,25 @@ function LoginScreen({ location, history }) {
     border: "none",
     outline: "none",
     fontSize: "16px",
-    color: "#1f73c9",
+    color: "white",
     padding: "0 35px 0 5px",
 
     borderRadius: "50px",
   };
 
   const buttonStyle = {
-    width: "100%",
+    width: "50%",
     height: "40px",
     background: "#fff",
     border: "none",
     outline: "none",
-    borderRadius: "40px",
+    borderRadius: "10px",
     cursor: "pointer",
     fontSize: "16px",
     color: "#000",
     transition: "all 0.5s",
+    display: "block", // Make the button a block-level element
+    margin: "0 auto", // Center the button horizontally
   };
 
   return (
