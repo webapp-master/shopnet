@@ -1,10 +1,45 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import {
+  Row,
+  Col,
+  Image,
+  ListGroup,
+  Button,
+  Card,
+  Form,
+  Container,
+} from "react-bootstrap";
+import Loader from "../Loader";
+import Message from "../Message";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../actions/userActions";
+import FormContainer from "../FormContainer";
 
-const LoginScreen = () => {
-  const handleSubmit = (e) => {
+
+
+
+function LoginScreen({ location, history }) {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+
+  const redirect = location.search ? location.search.split("=")[1] : "/";
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { error, loading, userInfo } = userLogin;
+
+  useEffect(() => {
+    if (userInfo) {
+      history.push(redirect);
+    }
+  }, [history, userInfo, redirect]);
+
+  const submitHandler = (e) => {
     e.preventDefault();
-    // Add your login logic here
+    dispatch(login(username, password));
   };
+
 
   const containerStyle = {
     width: '100%',
@@ -59,42 +94,61 @@ const LoginScreen = () => {
     fontSize: '16px',
     color: '#000',
     transition: 'all 0.5s',
+
   };
 
-  return (
-    <div style={containerStyle}>
-      <div style={loginBoxStyle}>
-        <form onSubmit={handleSubmit}>
-          <h2 style={{ fontSize: '28px', color: '#1f73c9', textAlign: 'center' }}>Login</h2>
-          <div style={inputBoxStyle}>
-            <span style={{ position: 'absolute', right: '8px', color: '#fff', fontSize: '18px', lineHeight: '50px' }}>
-              <i className="fa-solid fa-envelope"></i>
-            </span>
-            <input type="email" required placeholder="Email" style={inputStyle} />
-          </div>
-          <div style={inputBoxStyle}>
-            <span style={{ position: 'absolute', right: '8px', color: '#fff', fontSize: '18px', lineHeight: '50px' }}>
-              <i className="fa-solid fa-lock"></i>
-            </span>
-            <input type="password" placeholder="Password" required style={inputStyle} />
-          </div>
-          <button type="submit" style={buttonStyle}>Login</button>
-        </form>
 
+
+  return (
+
+    
+      <div style={containerStyle}>
+        <div style={loginBoxStyle}>
+          <form onSubmit={handleSubmit}>
+            <h2 style={{ fontSize: '28px', color: '#1f73c9', textAlign: 'center' }}>Login</h2>
+            <div style={inputBoxStyle}>
+              <span style={{ position: 'absolute', right: '8px', color: '#fff', fontSize: '18px', lineHeight: '50px' }}>
+                <i className="fa-solid fa-envelope"></i>
+              </span>
+              <input type="email" required placeholder="Email" style={inputStyle} />
+            </div>
+            <div style={inputBoxStyle}>
+              <span style={{ position: 'absolute', right: '8px', color: '#fff', fontSize: '18px', lineHeight: '50px' }}>
+                <i className="fa-solid fa-lock"></i>
+              </span>
+              <input type="password" placeholder="Password" required style={inputStyle} />
+            </div>
+            <button type="submit" style={buttonStyle}>Login</button>
+          </form>
+  
+          
+        </div>
         
       </div>
-      
-    </div>
-
-
-
-
-
-
-
-
-
+  
+   
   );
-};
+}
 
 export default LoginScreen;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
