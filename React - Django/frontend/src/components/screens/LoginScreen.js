@@ -95,12 +95,15 @@ function LoginScreen({ location, history }) {
   return (
     <div style={containerStyle}>
       <div style={loginBoxStyle}>
+
         <form onSubmit={submitHandler}>
+
           <h2
             style={{ fontSize: "28px", color: "#1f73c9", textAlign: "center" }}
           >
             Login
           </h2>
+
           <div style={inputBoxStyle}>
             <span
               style={{
@@ -114,12 +117,14 @@ function LoginScreen({ location, history }) {
               <i className="fa-solid fa-envelope"></i>
             </span>
             <input
-              type="email"
+              type="text"
               required
-              placeholder="Email"
+              placeholder="Username"
               style={inputStyle}
             />
           </div>
+
+          
           <div style={inputBoxStyle}>
             <span
               style={{
@@ -139,10 +144,13 @@ function LoginScreen({ location, history }) {
               style={inputStyle}
             />
           </div>
+
           <button type="submit" style={buttonStyle}>
             Login
           </button>
+
         </form>
+
       </div>
     </div>
   );
