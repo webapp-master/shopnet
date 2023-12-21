@@ -121,7 +121,7 @@ function LoginScreen({ location, history }) {
               style={{
                 position: "absolute",
                 right: "8px",
-                color: "#fff",
+                color: "#1f73c9",
                 fontSize: "18px",
                 lineHeight: "50px",
               }}
@@ -144,7 +144,7 @@ function LoginScreen({ location, history }) {
               style={{
                 position: "absolute",
                 right: "8px",
-                color: "#fff",
+                color: "#1f73c9",
                 fontSize: "18px",
                 lineHeight: "50px",
               }}
