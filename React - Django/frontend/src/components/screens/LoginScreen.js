@@ -92,10 +92,11 @@ function LoginScreen({ location, history }) {
     transition: "all 0.5s",
   };
 
+  
+
   return (
     <div style={containerStyle}>
       <div style={loginBoxStyle}>
-
         <form onSubmit={submitHandler}>
 
           <h2
@@ -106,6 +107,7 @@ function LoginScreen({ location, history }) {
 
           <div style={inputBoxStyle}>
             <span
+
               style={{
                 position: "absolute",
                 right: "8px",
@@ -121,12 +123,15 @@ function LoginScreen({ location, history }) {
               required
               placeholder="Username"
               style={inputStyle}
+              value={username} // Binding value to username state
+              onChange={(e) => setUsername(e.target.value)} // Updating username state on change
             />
           </div>
 
-          
+
           <div style={inputBoxStyle}>
             <span
+
               style={{
                 position: "absolute",
                 right: "8px",
@@ -134,6 +139,7 @@ function LoginScreen({ location, history }) {
                 fontSize: "18px",
                 lineHeight: "50px",
               }}
+
             >
               <i className="fa-solid fa-lock"></i>
             </span>
@@ -142,18 +148,21 @@ function LoginScreen({ location, history }) {
               placeholder="Password"
               required
               style={inputStyle}
+              value={password} // Binding value to password state
+              onChange={(e) => setPassword(e.target.value)} // Updating password state on change
             />
           </div>
+
 
           <button type="submit" style={buttonStyle}>
             Login
           </button>
-
+          
         </form>
-
       </div>
     </div>
   );
+  
 }
 
 export default LoginScreen;
