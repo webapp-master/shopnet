@@ -52,7 +52,7 @@ function LoginScreen({ location, history }) {
     position: "relative",
     width: "390px",
     height: "420px",
-    backgroundColor: "transparent",
+    backgroundColor: "#e6e4fb",
     border: "2px solid rgba(255, 255, 255, 0.5)",
     borderRadius: "20px",
     display: "flex",
@@ -66,6 +66,7 @@ function LoginScreen({ location, history }) {
     width: "310px",
     margin: "30px 0",
     borderBottom: "2px solid #fff",
+    borderRadius: "30px", // Add border radius to input boxes
   };
 
   const inputStyle = {
@@ -77,6 +78,7 @@ function LoginScreen({ location, history }) {
     fontSize: "16px",
     color: "#1f73c9",
     padding: "0 35px 0 5px",
+    borderRadius: "10px",
   };
 
   const buttonStyle = {
@@ -157,7 +159,7 @@ function LoginScreen({ location, history }) {
           <button type="submit" style={buttonStyle}>
             Login
           </button>
-          
+
         </form>
       </div>
     </div>
