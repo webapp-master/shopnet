@@ -15,6 +15,8 @@ import Message from "../Message";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../actions/userActions";
 import FormContainer from "../FormContainer";
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 
 function LoginScreen({ location, history }) {
   const [username, setUsername] = useState("");
@@ -52,7 +54,7 @@ function LoginScreen({ location, history }) {
     position: "relative",
     width: "390px",
     height: "420px",
-    backgroundColor: "#e6e4fb",
+    backgroundColor: "transparent",
     border: "2px solid rgba(255, 255, 255, 0.5)",
     borderRadius: "20px",
     display: "flex",
