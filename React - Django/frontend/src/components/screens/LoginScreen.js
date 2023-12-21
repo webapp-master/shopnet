@@ -15,8 +15,7 @@ import Message from "../Message";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../actions/userActions";
 import FormContainer from "../FormContainer";
-import '@fortawesome/fontawesome-free/css/all.min.css';
-
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 function LoginScreen({ location, history }) {
   const [username, setUsername] = useState("");
@@ -67,20 +66,23 @@ function LoginScreen({ location, history }) {
     position: "relative",
     width: "310px",
     margin: "30px 0",
+    
     borderBottom: "2px solid #fff",
-    borderRadius: "30px", // Add border radius to input boxes
+    
   };
 
   const inputStyle = {
     width: "100%",
     height: "50px",
     background: "transparent",
+    
     border: "none",
     outline: "none",
     fontSize: "16px",
     color: "#1f73c9",
     padding: "0 35px 0 5px",
-    borderRadius: "10px",
+
+    borderRadius: "50px",
   };
 
   const buttonStyle = {
@@ -96,13 +98,10 @@ function LoginScreen({ location, history }) {
     transition: "all 0.5s",
   };
 
-  
-
   return (
     <div style={containerStyle}>
       <div style={loginBoxStyle}>
         <form onSubmit={submitHandler}>
-
           <h2
             style={{ fontSize: "28px", color: "#1f73c9", textAlign: "center" }}
           >
@@ -111,7 +110,6 @@ function LoginScreen({ location, history }) {
 
           <div style={inputBoxStyle}>
             <span
-
               style={{
                 position: "absolute",
                 right: "8px",
@@ -122,6 +120,7 @@ function LoginScreen({ location, history }) {
             >
               <i className="fa-solid fa-envelope"></i>
             </span>
+
             <input
               type="text"
               required
@@ -132,10 +131,8 @@ function LoginScreen({ location, history }) {
             />
           </div>
 
-
           <div style={inputBoxStyle}>
             <span
-
               style={{
                 position: "absolute",
                 right: "8px",
@@ -143,7 +140,6 @@ function LoginScreen({ location, history }) {
                 fontSize: "18px",
                 lineHeight: "50px",
               }}
-
             >
               <i className="fa-solid fa-lock"></i>
             </span>
@@ -157,16 +153,13 @@ function LoginScreen({ location, history }) {
             />
           </div>
 
-
           <button type="submit" style={buttonStyle}>
             Login
           </button>
-
         </form>
       </div>
     </div>
   );
-  
 }
 
 export default LoginScreen;
