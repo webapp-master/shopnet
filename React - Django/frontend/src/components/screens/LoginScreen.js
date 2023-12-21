@@ -17,6 +17,11 @@ import { login } from "../../actions/userActions";
 import FormContainer from "../FormContainer";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
+
+
+
+
+
 function LoginScreen({ location, history }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -39,14 +44,15 @@ function LoginScreen({ location, history }) {
   };
 
   const containerStyle = {
-    width: "100%",
-    height: "100vh",
-    background: "yellow",
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
+    width: '100%',
+    height: '100vh',
+    backgroundImage: `url(${process.env.PUBLIC_URL}/images/login_background.jpg)`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    
   };
 
   const loginBoxStyle = {
