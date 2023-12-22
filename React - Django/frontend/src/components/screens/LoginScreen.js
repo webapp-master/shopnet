@@ -115,7 +115,7 @@ function LoginScreen({ location, history }) {
     textAlign: "center",
     color: "#fff", // Adjust the color as needed
     padding: "10px 0", // Add some padding for better readability
-    marginBottom: "-3px",
+    //marginBottom: "-3px",
   };
 
   const contentWrapperStyle = {
