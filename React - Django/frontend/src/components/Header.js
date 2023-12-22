@@ -1,18 +1,12 @@
-
 import React from "react";
 import { Navbar, Nav, Container, NavDropdown, Button } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { logout } from "../actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
-import { useMediaQuery } from 'react-responsive';
+import { useMediaQuery } from "react-responsive";
 import { useLocation } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
-
-
-
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 function Header() {
@@ -28,19 +22,21 @@ function Header() {
   const isMobile = useMediaQuery({ maxWidth: 767 }); // Set the maximum width for mobile view
   const location = useLocation(); // Get the current location
 
-
   // Check if the current route is "/login" or "/credit"
-  const isLoginRoute = location.pathname === '/login';
-  const isCreditRoute = location.pathname === '/credit';
-
-
+  const isLoginRoute = location.pathname === "/login";
+  const isCreditRoute = location.pathname === "/credit";
 
   return (
     <div style={{ marginBottom: isLoginRoute || isCreditRoute ? "0" : "20px" }}>
       {" "}
       {/* Conditionally apply the margin */}
       <Navbar
-        style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/images/login_background.jpg)`, position: "relative", zIndex: 2 }}
+        style={{
+          backgroundImage: `url(${process.env.PUBLIC_URL}/images/login_background.jpg)`,
+          position: "relative",
+          zIndex: 2,
+          height: "5.5rem",
+        }}
       >
         <Container fluid>
           <LinkContainer to="/" style={{ color: "#ffffff", fontSize: "26px" }}>
@@ -50,7 +46,6 @@ function Header() {
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav className="mr-auto my-2 my-lg-0" navbarScroll>
-
               {/* Home */}
               {!isMobile && (
                 <React.Fragment>
@@ -71,57 +66,56 @@ function Header() {
                 </LinkContainer>
               )}
 
-
-
               {isMobile && userInfo && (
                 <NavDropdown
-                  title={<>
-                    More 
-                  </>}
+                  title={<>More</>}
                   id="basic-nav-dropdown"
                   className="dropdown-mobile custom-dropdown rounded-dropdown"
-                  
                 >
                   <LinkContainer to="/profile">
-                    <NavDropdown.Item className={`custom-dropdown-item ${location.pathname === '/profile' ? 'active' : ''}`}>
+                    <NavDropdown.Item
+                      className={`custom-dropdown-item ${
+                        location.pathname === "/profile" ? "active" : ""
+                      }`}
+                    >
                       Profile
                     </NavDropdown.Item>
                   </LinkContainer>
-                  
                   <hr className="dropdown-divider" /> {/* Example divider */}
-                  
                   <LinkContainer to="/cart">
-                    <NavDropdown.Item className={`custom-dropdown-item ${location.pathname === '/cart' ? 'active' : ''}`}>
+                    <NavDropdown.Item
+                      className={`custom-dropdown-item ${
+                        location.pathname === "/cart" ? "active" : ""
+                      }`}
+                    >
                       Cart
                     </NavDropdown.Item>
                   </LinkContainer>
-                  
                   <LinkContainer to="/wallet">
-                    <NavDropdown.Item className={`custom-dropdown-item ${location.pathname === '/wallet' ? 'active' : ''}`}>
+                    <NavDropdown.Item
+                      className={`custom-dropdown-item ${
+                        location.pathname === "/wallet" ? "active" : ""
+                      }`}
+                    >
                       Wallet
                     </NavDropdown.Item>
                   </LinkContainer>
-                  
                   <hr className="dropdown-divider" /> {/* Example divider */}
-                  
-                  <NavDropdown.Item className="custom-dropdown-item" onClick={logoutHandler}>
+                  <NavDropdown.Item
+                    className="custom-dropdown-item"
+                    onClick={logoutHandler}
+                  >
                     Logout
                   </NavDropdown.Item>
                 </NavDropdown>
               )}
 
-
-
-
               {/* Login link */}
               {!userInfo && (
-
                 <LinkContainer to="/login" className="headerButtons">
                   <Button variant="light">Login</Button>
                 </LinkContainer>
-
               )}
-
             </Nav>
           </Navbar.Collapse>
 
@@ -130,26 +124,30 @@ function Header() {
               <React.Fragment>
                 {/* Large screen Dropdown */}
                 {!isMobile && (
-
-                  <LinkContainer  to="/">
-
-                    <NavDropdown title="More" className="custom-dropdown rounded-dropdown addMargin">
-
+                  <LinkContainer to="/">
+                    <NavDropdown
+                      title="More"
+                      className="custom-dropdown rounded-dropdown addMargin"
+                    >
                       <LinkContainer to="/profile">
-                        <NavDropdown.Item className={`custom-dropdown-item ${location.pathname === '/profile' ? 'active' : ''}`}>Profile</NavDropdown.Item>
+                        <NavDropdown.Item
+                          className={`custom-dropdown-item ${
+                            location.pathname === "/profile" ? "active" : ""
+                          }`}
+                        >
+                          Profile
+                        </NavDropdown.Item>
                       </LinkContainer>
-
-                      <hr className="dropdown-divider" /> {/* Example divider */}
-
-                      <NavDropdown.Item className="custom-dropdown-item" onClick={logoutHandler}>
+                      <hr className="dropdown-divider" />{" "}
+                      {/* Example divider */}
+                      <NavDropdown.Item
+                        className="custom-dropdown-item"
+                        onClick={logoutHandler}
+                      >
                         Logout
                       </NavDropdown.Item>
-
                     </NavDropdown>
-
                   </LinkContainer>
-
-
                 )}
 
                 <Nav.Item className="d-flex align-items-center">
