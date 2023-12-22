@@ -106,8 +106,25 @@ function LoginScreen({ location, history }) {
     margin: "0 auto", // Center the button horizontally
   };
 
+
+  const footerStyle = {
+    position: "absolute",
+    bottom: "0",
+    width: "100%",
+    textAlign: "center",
+    color: "#fff", // Adjust the color as needed
+    padding: "10px 0", // Add some padding for better readability
+  };
+
+  const contentWrapperStyle = {
+    position: "relative",
+    minHeight: "100vh",
+  };
+
+
   return (
-    <div style={containerStyle}>
+    <div style={contentWrapperStyle}>
+      <div style={containerStyle}>
       <div style={loginBoxStyle}>
         <form onSubmit={submitHandler}>
           <h2
@@ -165,6 +182,12 @@ function LoginScreen({ location, history }) {
             Login
           </button>
         </form>
+      </div>
+      </div>
+      <div style={footerStyle}>
+        <p>
+          Copyright © 2024 ShopNET, ICT TEAM | online store by ToluTech
+        </p>
       </div>
     </div>
   );

@@ -6,8 +6,8 @@ function Footer() {
   const location = useLocation();
   const currentPath = location.pathname;
 
-  // Define paths where you  want to insert backgroundImage for the footer
-  const pathsToChangeFooter = ["/login"];
+  // Define paths where you don't want to display the footer
+  const pathsToHideFooter = ["/login"];
 
   let backgroundColor = 'white'; // Default background color
   let textColor = 'black'; // Default text color
@@ -18,20 +18,12 @@ function Footer() {
   }
 
 
-  // Check if the current path is in the pathsToChangeFooter array
-  const shouldChangeFooter =   pathsToChangeFooter.includes(currentPath);
+  // Check if the current path is in the pathsToHideFooter array
+  const shouldHideFooter = pathsToHideFooter.includes(currentPath);
 
-  if (shouldChangeFooter) {
-    // Return footer with a background image
-    return (
-      <footer style={{ position: "relative", zIndex: 2, backgroundImage: `url(${process.env.PUBLIC_URL}/images/login_background.jpg)`}}>
-        <Container>
-          <Row>
-          <Col className="text-center py-3" style={{ color: textColor }}>Copyright © 2024 ShopNET, ICT TEAM | online store by ToluTech</Col>
-          </Row>
-        </Container>
-      </footer>
-    );
+  if (shouldHideFooter) {
+    // Return null if you don't want to render the footer
+    return null;
   }
 
   return (
