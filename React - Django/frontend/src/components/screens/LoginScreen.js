@@ -122,7 +122,7 @@ function LoginScreen({ location, history }) {
           <form onSubmit={submitHandler}>
             <h2
               style={{
-                fontSize: "28px",
+                fontSize: "2.4rem",
                 color: "#1f73c9",
                 textAlign: "center",
               }}

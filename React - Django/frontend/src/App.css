@@ -110,10 +110,11 @@
 }
 
 .headerButtons:hover {
-  background-color: black !important;
+  background-color: #1f73c9 !important;
   color: white !important;
   text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.6) !important;
-  /* Additional hover styles if needed */
+  box-shadow: 0 0 20px 12px rgba(255, 255, 255, 0.5) !important; /* White box shadow on hover */
+ 
 }
 
 
