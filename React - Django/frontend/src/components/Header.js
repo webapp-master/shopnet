@@ -40,7 +40,7 @@ function Header() {
       {" "}
       {/* Conditionally apply the margin */}
       <Navbar
-        style={{ backgroundColor: "#4091ed", position: "relative", zIndex: 2 }}
+        style={{ backgroundColor: "#1f73c9" /*#4091ed previous color*/, position: "relative", zIndex: 2 }}
       >
         <Container fluid>
           <LinkContainer to="/" style={{ color: "#ffffff", fontSize: "26px" }}>
