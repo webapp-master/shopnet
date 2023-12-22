@@ -125,6 +125,7 @@ function LoginScreen({ location, history }) {
                 fontSize: "2.4rem",
                 color: "#1f73c9",
                 textAlign: "center",
+                textTransform: "capitalize", // Add this line for title case
               }}
             >
               Login
