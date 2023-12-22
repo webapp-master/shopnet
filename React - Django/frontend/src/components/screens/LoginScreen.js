@@ -66,6 +66,7 @@ function LoginScreen({ location, history }) {
     justifyContent: "center",
     alignItems: "center",
     backdropFilter: "blur(15px)",
+    marginTop: "-5rem",
   };
 
   const inputBoxStyle = {
