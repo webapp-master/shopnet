@@ -52,7 +52,7 @@ function LoginScreen({ location, history }) {
   const loginBoxStyle = {
     position: "relative",
     width: "390px",
-    height: "420px",
+    height: "400px",
     backgroundColor: "transparent",
     border: "2px solid rgba(255, 255, 255, 0.5)",
     borderRadius: "20px",
@@ -60,7 +60,8 @@ function LoginScreen({ location, history }) {
     justifyContent: "center",
     alignItems: "center",
     backdropFilter: "blur(15px)",
-    marginTop: "-5rem",
+    marginTop: "-4rem",
+    
   };
 
   const inputBoxStyle = {
@@ -120,16 +121,23 @@ function LoginScreen({ location, history }) {
       <div style={containerStyle}>
         <div style={loginBoxStyle}>
           <form onSubmit={submitHandler}>
-            <h2
+            <div
               style={{
-                fontSize: "2.4rem",
-                color: "#1f73c9",
-                textAlign: "center",
-                textTransform: "capitalize", // Add this line for title case
+                alignSelf: "flex-start",
+                marginBottom: "5rem",
               }}
             >
-              Login
-            </h2>
+              <h2
+                style={{
+                  fontSize: "2.4rem",
+                  color: "#1f73c9",
+                  textAlign: "center",
+                  textTransform: "capitalize", // Add this line for title case
+                }}
+              >
+                Login
+              </h2>
+            </div>
 
             <div style={inputBoxStyle}>
               <span
