@@ -170,7 +170,7 @@ function Header() {
         <div
           style={{
             position: "absolute",
-            bottom: "10%",
+            bottom: "15%",
             left: 0,
             right: 0,
             height: "2px",
