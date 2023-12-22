@@ -17,11 +17,6 @@ import { login } from "../../actions/userActions";
 import FormContainer from "../FormContainer";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
-
-
-
-
-
 function LoginScreen({ location, history }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -44,15 +39,14 @@ function LoginScreen({ location, history }) {
   };
 
   const containerStyle = {
-    width: '100%',
-    height: '100vh',
+    width: "100%",
+    height: "100vh",
     backgroundImage: `url(${process.env.PUBLIC_URL}/images/login_background.jpg)`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   };
 
   const loginBoxStyle = {
@@ -73,16 +67,15 @@ function LoginScreen({ location, history }) {
     position: "relative",
     width: "310px",
     margin: "30px 0",
-    
+
     borderBottom: "2px solid #fff",
-    
   };
 
   const inputStyle = {
     width: "100%",
     height: "50px",
     background: "transparent",
-    
+
     border: "none",
     outline: "none",
     fontSize: "16px",
@@ -107,7 +100,6 @@ function LoginScreen({ location, history }) {
     margin: "0 auto", // Center the button horizontally
   };
 
-
   const footerStyle = {
     position: "absolute",
     bottom: "0",
@@ -123,73 +115,74 @@ function LoginScreen({ location, history }) {
     minHeight: "100vh",
   };
 
-
   return (
     <div style={contentWrapperStyle}>
       <div style={containerStyle}>
-      <div style={loginBoxStyle}>
-        <form onSubmit={submitHandler}>
-          <h2
-            style={{ fontSize: "28px", color: "#1f73c9", textAlign: "center" }}
-          >
-            Login
-          </h2>
-
-          <div style={inputBoxStyle}>
-            <span
+        <div style={loginBoxStyle}>
+          <form onSubmit={submitHandler}>
+            <h2
               style={{
-                position: "absolute",
-                right: "8px",
+                fontSize: "28px",
                 color: "#1f73c9",
-                fontSize: "18px",
-                lineHeight: "50px",
+                textAlign: "center",
               }}
             >
-              <i className="fa-solid fa-envelope"></i>
-            </span>
+              Login
+            </h2>
 
-            <input
-              type="text"
-              required
-              placeholder="Username"
-              style={inputStyle}
-              value={username} // Binding value to username state
-              onChange={(e) => setUsername(e.target.value)} // Updating username state on change
-            />
-          </div>
+            <div style={inputBoxStyle}>
+              <span
+                style={{
+                  position: "absolute",
+                  right: "8px",
+                  color: "#1f73c9",
+                  fontSize: "18px",
+                  lineHeight: "50px",
+                }}
+              >
+                <i className="fa-solid fa-envelope"></i>
+              </span>
 
-          <div style={inputBoxStyle}>
-            <span
-              style={{
-                position: "absolute",
-                right: "8px",
-                color: "#1f73c9",
-                fontSize: "18px",
-                lineHeight: "50px",
-              }}
-            >
-              <i className="fa-solid fa-lock"></i>
-            </span>
-            <input
-              type="password"
-              placeholder="Password"
-              required
-              style={inputStyle}
-              value={password} // Binding value to password state
-              onChange={(e) => setPassword(e.target.value)} // Updating password state on change
-            />
-          </div>
+              <input
+                type="text"
+                required
+                placeholder="Username"
+                style={inputStyle}
+                value={username} // Binding value to username state
+                onChange={(e) => setUsername(e.target.value)} // Updating username state on change
+              />
+            </div>
 
-          <button type="submit" style={buttonStyle}>
-            Login
-          </button>
-        </form>
-      </div>
+            <div style={inputBoxStyle}>
+              <span
+                style={{
+                  position: "absolute",
+                  right: "8px",
+                  color: "#1f73c9",
+                  fontSize: "18px",
+                  lineHeight: "50px",
+                }}
+              >
+                <i className="fa-solid fa-lock"></i>
+              </span>
+              <input
+                type="password"
+                placeholder="Password"
+                required
+                style={inputStyle}
+                value={password} // Binding value to password state
+                onChange={(e) => setPassword(e.target.value)} // Updating password state on change
+              />
+            </div>
+
+            <button type="submit" style={buttonStyle} className="buttonStyle">
+              Login
+            </button>
+          </form>
+        </div>
       </div>
       <div style={footerStyle}>
-        <p>
-          Copyright © 2024 ShopNET, ICT TEAM | online store by ToluTech
-        </p>
+        <p>Copyright © 2024 ShopNET, ICT TEAM | online store by ToluTech</p>
       </div>
     </div>
   );
