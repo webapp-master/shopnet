@@ -13,13 +13,13 @@ from rest_framework.decorators import action
 from rest_framework import status
 
 from django.contrib.auth.hashers import make_password
-from .serializer import ProductSerializer, UserSerializer, ProfileSerializer, CreditWalletSerializer, UserSerializerWithToken
+from .serializer import ProductSerializer, UserSerializer, ProfileSerializer, CreditWalletSerializer, UserSerializerWithToken, DebitWalletSerializer
 
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 
 from django.db import IntegrityError
-from decimal import Decimal
+
 
 
 
@@ -158,21 +158,25 @@ def credit_wallet(request):
 
 
 
-
+                        # admin debit User's wallet  Manually
 
 @api_view(['POST'])
 def debit_wallet(request):
-    username = request.data.get('username')
-    amount = Decimal(request.data.get('amount'))  # Convert amount to Decimal
+    serializer = DebitWalletSerializer(data=request.data)
+    if serializer.is_valid():
+        validated_data = serializer.validated_data
+        username = validated_data.get('username')
+        amount = validated_data.get('amount')
 
-    # Retrieve user's wallet
-    user = get_object_or_404(User, username=username)
-    wallet = user.profile.wallet
+        # Retrieve user's wallet
+        user = get_object_or_404(User, username=username)
+        wallet = user.profile.wallet
 
-    # Debit the wallet
-    if wallet.balance >= amount:  # Check if sufficient balance is available
-        wallet.balance -= amount
-        wallet.save()
-        return Response({'message': f'Wallet debited by {amount} successfully'})
-    else:
-        return Response({'error': 'Insufficient balance'}, status=status.HTTP_400_BAD_REQUEST)
+        # Debit the wallet
+        if wallet.balance >= amount:  # Check if sufficient balance is available
+            wallet.balance -= amount
+            wallet.save()
+            return Response({'message': f'Wallet debited by {amount} successfully'})
+        else:
+            return Response({'error': 'Insufficient balance'}, status=status.HTTP_400_BAD_REQUEST)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
