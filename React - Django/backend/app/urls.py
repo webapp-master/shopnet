@@ -5,12 +5,6 @@ from rest_framework_simplejwt.views import (
 
 )
 
-
-
-
-
-
-
 urlpatterns = [
     path('', views.getRoutes, name="getRoutes"),
     path('users/register/', views.registerUser, name='register'),
@@ -21,10 +15,4 @@ urlpatterns = [
     path('users/', views.getUsers, name="getUsers"),
     path('wallet/credit/', views.credit_wallet, name='credit_wallet'),
     
-
 ]
-
-
-
-
-

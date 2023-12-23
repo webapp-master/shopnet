@@ -276,3 +276,33 @@ buttons :::::: Latest
 Header.js
 isMoble  AND !userInfo
 I want the login button to be at the extreme right side
+
+
+
+			34
+inside the "product details"
+beside "in stock" put a small cirle in red color
+inside the circle----- put the number in stock (maybe in white color)
+
+			
+
+
+			35
+LoginScreen.js
+
+load message/alert   ----- is not yet incorporated
+
+
+			36
+inside /buy
+
+place your order col
+
+add some box shadow
+ask AI *wanna make the box look 3-D    (add some thickness)*
+
+
+			37
+inside the LoginScreen.js
+
+create a link for new users to register
