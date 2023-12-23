@@ -14,5 +14,6 @@ urlpatterns = [
     path('products/<str:pk>', views.getProduct, name="getProduct"),
     path('users/', views.getUsers, name="getUsers"),
     path('wallet/credit/', views.credit_wallet, name='credit_wallet'),
+    path('wallet/debit/', views.debit_wallet, name='debit_wallet'),
     
 ]

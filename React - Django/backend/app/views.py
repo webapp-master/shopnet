@@ -19,6 +19,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 
 from django.db import IntegrityError
+from decimal import Decimal
 
 
 
@@ -154,3 +155,24 @@ def credit_wallet(request):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+
+
+
+
+
+@api_view(['POST'])
+def debit_wallet(request):
+    username = request.data.get('username')
+    amount = Decimal(request.data.get('amount'))  # Convert amount to Decimal
+
+    # Retrieve user's wallet
+    user = get_object_or_404(User, username=username)
+    wallet = user.profile.wallet
+
+    # Debit the wallet
+    if wallet.balance >= amount:  # Check if sufficient balance is available
+        wallet.balance -= amount
+        wallet.save()
+        return Response({'message': f'Wallet debited by {amount} successfully'})
+    else:
+        return Response({'error': 'Insufficient balance'}, status=status.HTTP_400_BAD_REQUEST)
