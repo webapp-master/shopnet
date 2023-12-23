@@ -133,26 +133,29 @@ def credit_wallet(request):
         username = serializer.validated_data['username']
         
         user = get_object_or_404(User, username=username)
-        wallet = user.profile.wallet  # Assuming user profile has a OneToOneField to Wallet
+        wallet = user.profile.wallet
 
-        initial_balance = wallet.balance
-        credit_by_admin = amount
-        new_wallet_balance = initial_balance + amount
+        previous_balance = wallet.balance
+        
+        new_balance = previous_balance + amount
         
         # Update the wallet balance
-        wallet.balance = new_wallet_balance
+        wallet.balance = new_balance
         wallet.save()
 
         # Record the transaction
+        description = "Your wallet was credited by the Admin"
         transaction = Transaction.objects.create(
             user=user,
-            initial_wallet_balance=initial_balance,
-            credit_by_admin=credit_by_admin,
-            new_wallet_balance=new_wallet_balance
+            description=description,
+            amount=amount,
+            previous_balance=previous_balance,
+            new_balance=new_balance
         )
         
         return Response({'message': 'Wallet credited successfully'}, status=status.HTTP_200_OK)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 
 
