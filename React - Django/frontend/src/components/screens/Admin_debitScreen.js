@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import debitWallet from "../../actions/admin_debitActions";
 
-
-
 const Admin_debitScreen = () => {
   const [username, setUsername] = useState('');
-  const [amount, setAmount] = useState();
+  const [amount, setAmount] = useState('');
 
   const handleDebit = async () => {
     try {
       const response = await debitWallet(username, amount);
       console.log(response); // Handle success or show a success message
+
+      // Clear input fields after successful request
+      setUsername('');
+      setAmount('');
     } catch (error) {
       console.error('Error:', error); // Handle error or display error message
     }
