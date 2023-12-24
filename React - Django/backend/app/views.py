@@ -190,7 +190,7 @@ def debit_wallet(request):
                 previous_balance=previous_balance,
                 new_balance=new_balance
             )
-            return Response({'message': f'Wallet debited by {amount} successfully'})
+            return Response({'message': f'Wallet debited successfully by ${amount}'})
         else:
             return Response({'error': 'Insufficient balance'}, status=status.HTTP_400_BAD_REQUEST)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

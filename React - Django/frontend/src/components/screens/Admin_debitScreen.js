@@ -12,20 +12,30 @@ const Admin_debitScreen = () => {
     try {
       setError(''); // Clear any previous errors
       setSuccess(''); // Clear any previous success messages
-
+  
       const response = await debitWallet(username, amount);
-
-      // Handle success (e.g., display a success message)
-      setSuccess('Wallet debited successfully!');
-
+  
+      // Check for a response message and display it accordingly
+      if (response && response.message) {
+        setSuccess(response.message); // Display success message
+      } else {
+        setError('Unknown error occurred'); // Display generic error message if no response message found
+      }
+  
       // Clear input fields after successful request
       setUsername('');
       setAmount('');
     } catch (error) {
-      // Handle error and display error message
-      setError(error.message);
+      // Handle error response from the server
+      if (error.response && error.response.data && error.response.data.error) {
+        setError(error.response.data.error); // Display the specific error message from the backend
+      } else {
+        setError('Unknown error occurred'); // Display a generic error if no specific error message is received
+      }
     }
   };
+  
+  
 
   return (
     <div className="container mt-4">
