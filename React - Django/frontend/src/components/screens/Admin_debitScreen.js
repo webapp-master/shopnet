@@ -5,7 +5,7 @@ import debitWallet from "../../actions/admin_debitActions";
 
 const Admin_debitScreen = () => {
   const [username, setUsername] = useState('');
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState();
 
   const handleDebit = async () => {
     try {

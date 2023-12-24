@@ -55,10 +55,4 @@ class Transaction(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Transaction for {self.user.username} at {self.timestamp}"
-
-
-
-
-
-
+        return f"Transaction for {self.user.username} at {self.timestamp}" 

@@ -159,8 +159,6 @@ def credit_wallet(request):
 
 
 
-
-
                         # admin debit User's wallet  Manually
 
 @api_view(['POST'])
@@ -175,10 +173,23 @@ def debit_wallet(request):
         user = get_object_or_404(User, username=username)
         wallet = user.profile.wallet
 
-        # Debit the wallet
-        if wallet.balance >= amount:  # Check if sufficient balance is available
+        # Debit the wallet if sufficient balance is available
+        if wallet.balance >= amount:
+            previous_balance = wallet.balance
             wallet.balance -= amount
             wallet.save()
+
+            new_balance = wallet.balance
+
+            # Record the transaction
+            description = "Your wallet was debited by the Admin"
+            transaction = Transaction.objects.create(
+                user=user,
+                description=description,
+                amount=amount,
+                previous_balance=previous_balance,
+                new_balance=new_balance
+            )
             return Response({'message': f'Wallet debited by {amount} successfully'})
         else:
             return Response({'error': 'Insufficient balance'}, status=status.HTTP_400_BAD_REQUEST)

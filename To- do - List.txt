@@ -305,4 +305,26 @@ ask AI *wanna make the box look 3-D    (add some thickness)*
 			37
 inside the LoginScreen.js
 
-create a link for new users to register
+create a link for new users to register 
+you can put the link below the login button OR inside the header .... replace Loginbutton with "Register"
+create a logic such that the button only appears inside the LoginScreen.js
+
+
+			38
+
+inside the Transaction model
+description field
+"Your wallet was credited by the Admin by ${amount}"
+
+
+
+			39
+MORE button
+
+the hover effect is not bright enough
+
+
+			40
+inside the buy path route
+cost of products........... has plenty decimal places
+limit it to 2 d.p
