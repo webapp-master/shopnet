@@ -336,3 +336,10 @@ limit it to 2 d.p
 			41
 inside the header.js
 add another line at the intersection btw the header and the content
+
+
+
+			42
+inside the list products page 
+inside te card body 
+make the background color #f0f0f0

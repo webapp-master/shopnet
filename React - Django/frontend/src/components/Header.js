@@ -22,12 +22,13 @@ function Header() {
   const isMobile = useMediaQuery({ maxWidth: 767 }); // Set the maximum width for mobile view
   const location = useLocation(); // Get the current location
 
-  // Check if the current route is "/login" or "/credit"
+  // Check if the current route is "/login" or "/credit" or "/debit"
   const isLoginRoute = location.pathname === "/login";
   const isCreditRoute = location.pathname === "/credit";
+  const isDebitRoute = location.pathname === "/debit";
 
   return (
-    <div style={{ marginBottom: isLoginRoute || isCreditRoute ? "0" : "20px" }}>
+    <div style={{ marginBottom: isLoginRoute || isCreditRoute || isDebitRoute ? "0" : "20px" }}>
       {" "}
       {/* Conditionally apply the margin */}
       <Navbar

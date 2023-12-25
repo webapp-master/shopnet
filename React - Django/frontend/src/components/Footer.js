@@ -12,9 +12,9 @@ function Footer() {
   let backgroundColor = 'white'; // Default background color
   let textColor = 'black'; // Default text color
 
-  if (currentPath === '/credit') {
-    backgroundColor = '#d7d1c6'; // Change background color for /credit route
-    textColor = 'red'; // Change text color for /credit route
+  if (currentPath === '/credit' || currentPath === '/debit') {
+    backgroundColor = '#f0f0f0'; 
+    textColor = 'red'; 
   }
 
 
