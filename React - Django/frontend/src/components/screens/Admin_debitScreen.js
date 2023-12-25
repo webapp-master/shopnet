@@ -46,6 +46,7 @@ const Admin_debitScreen = () => {
             <div className="card-body">
               {error && <div className="alert alert-danger">{error}</div>}
               {success && <div className="alert alert-success">{success}</div>}
+
               <form>
                 <div className="form-group">
                   <label htmlFor="username">Username:</label>
@@ -57,6 +58,7 @@ const Admin_debitScreen = () => {
                     onChange={(e) => setUsername(e.target.value)}
                   />
                 </div>
+
                 <div className="form-group">
                   <label htmlFor="amount">Amount:</label>
                   <input
@@ -67,10 +69,13 @@ const Admin_debitScreen = () => {
                     onChange={(e) => setAmount(e.target.value)}
                   />
                 </div>
+
                 <button type="button" className="btn btn-primary btn-block" onClick={handleDebit}>
                   Debit Wallet
                 </button>
+                
               </form>
+
             </div>
           </div>
         </div>
