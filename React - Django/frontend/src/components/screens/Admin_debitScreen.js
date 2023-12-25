@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 import React, { useState } from 'react';
 import debitWallet from "../../actions/admin_debitActions";
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
@@ -41,49 +34,20 @@ const Admin_debitScreen = () => {
       }
     }
   };
-
-
-
+  
+  
 
   return (
-    <div style={{ position: 'relative', width: '100%', height: '100vh' }}>
-      {/* Your "Canvas" replaced with a styled div */}
-      <div
-        style={{
-          position: 'absolute',
-          top: '0',
-          left: '0',
-          width: '100%',
-          height: '100%',
-          backgroundColor: '#f0f0f0', // Example background color
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        {/* Text */}
-        <h1 style={{ marginBottom: '20px' }}>Debit User's Wallet</h1>
+    <div className="container mt-4">
+      <h2 className="text-center mb-4">Debit User's Wallet</h2>
+      <div className="row">
+        <div className="col-md-6 offset-md-3">
+          <div className="card border-primary">
+            <div className="card-body">
+              {error && <div className="alert alert-danger">{error}</div>}
+              {success && <div className="alert alert-success">{success}</div>}
 
-        {/* Plane/Clickable Element */}
-        <button
-          style={{
-            padding: '10px 20px',
-            backgroundColor: 'blue',
-            color: 'white',
-            border: 'none',
-            borderRadius: '5px',
-            cursor: 'pointer',
-          }}
-          onClick={handleDebit}
-        >
-          Debit Wallet
-        </button>
-
-        {/* Rest of your form */}
-        <div className="container mt-4">
-
-        <form>
+              <form>
                 <div className="form-group">
                   <label htmlFor="username">Username:</label>
                   <input
@@ -106,17 +70,14 @@ const Admin_debitScreen = () => {
                   />
                 </div>
 
-                
+                <button type="button" className="btn btn-primary btn-block" onClick={handleDebit}>
+                  Debit Wallet
+                </button>
                 
               </form>
 
-
-        </div>
-
-        {/* Error and success messages */}
-        <div>
-          {error && <div className="alert alert-danger">{error}</div>}
-          {success && <div className="alert alert-success">{success}</div>}
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -13,6 +13,7 @@ import BuyScreen from "./components/screens/BuyScreen";
 import WalletScreen from "./components/screens/WalletScreen";
 import CreditBackground from "./components/screens/CreditBackground";
 import Admin_debitScreen from "./components/screens/Admin_debitScreen";
+import DebitBackground from "./components/screens/DebitBackground";
 
 function App() {
   return (
@@ -31,7 +32,7 @@ function App() {
         <Route path="/buy" component={BuyScreen} exact />
         <Route path="/wallet" component={WalletScreen} exact />
         <Route path="/credit" component={CreditBackground} exact />
-        <Route path="/debit" component={Admin_debitScreen} exact />
+        <Route path="/debit" component={DebitBackground} exact />
       </main>
 
       <Footer/>
