@@ -328,3 +328,11 @@ the hover effect is not bright enough
 inside the buy path route
 cost of products........... has plenty decimal places
 limit it to 2 d.p
+
+
+
+
+
+			41
+inside the header.js
+add another line at the intersection btw the header and the content
