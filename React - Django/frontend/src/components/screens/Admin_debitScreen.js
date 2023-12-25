@@ -1,6 +1,9 @@
+
 import React, { useState } from 'react';
-import debitWallet from "../../actions/admin_debitActions";
-import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
+import debitWallet from '../../actions/admin_debitActions';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { MeshBasicMaterial, MeshStandardMaterial } from 'three';
+import { Text, Plane } from '@react-three/drei';
 
 const Admin_debitScreen = () => {
   const [username, setUsername] = useState('');
@@ -34,11 +37,28 @@ const Admin_debitScreen = () => {
       }
     }
   };
-  
-  
 
   return (
-    <div className="container mt-4">
+    <Canvas>
+      <ambientLight />
+      <pointLight position={[10, 10, 10]} />
+
+      <mesh>
+        <boxGeometry args={[2, 1, 0.1]} />
+        <meshStandardMaterial map={texture} /> {/* Replace 'texture' with your desired texture */}
+      </mesh>
+
+      <Text position={[0, 0.5, 0]}>
+        Debit User's Wallet
+      </Text>
+
+      <Plane position={[0, -0.3, 0]} onClick={handleDebit}>
+        <Text as="span" position={[0, 0.1, 0]}>
+          Debit Wallet
+        </Text>
+      </Plane>
+
+      <div className="container mt-4">
       <h2 className="text-center mb-4">Debit User's Wallet</h2>
       <div className="row">
         <div className="col-md-6 offset-md-3">
@@ -81,7 +101,9 @@ const Admin_debitScreen = () => {
         </div>
       </div>
     </div>
+    </Canvas>
   );
 };
 
 export default Admin_debitScreen;
+
