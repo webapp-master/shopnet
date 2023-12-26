@@ -351,3 +351,15 @@ make the background color #f0f0f0
 for each product
 add another field
 let the field record info on the supplier for the outsource of the product
+
+
+
+			44
+I opened several tab
+and the cashier is logged in
+in al the 3 tabs, i was in the credit wallet page
+inside one of the tab, i logged out
+of which the tab redirects me to the home 
+
+but the other two tabs are still active as long as you don't refresh
+infact, you can succesfully credit user wallet even tho you have logged out via the 1st tab

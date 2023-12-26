@@ -134,7 +134,7 @@ margin-right: 3rem !important;
   /* Add any additional styles needed on hover */
 }
 
-.customCreditButton {
+.creditContainer button.customCreditButton {
   background-color: #4091ed;
   color: white;
   border-radius: 10px;
@@ -142,14 +142,17 @@ margin-right: 3rem !important;
   transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for color and background change */
 }
 
-.customCreditButton:hover {
+.creditContainer button.customCreditButton:hover {
   background-color: #54ff47;
   color: white;
 }
 
 /* Visual feedback for click for the credit button class */
-.customCreditButton:active {
+.creditContainer button.customCreditButton:active {
   transform: translateY(2px); /* Adjust the distance as needed */
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2) inset; /* Adding an inset shadow to simulate a click effect */
 }
+
+
+
 

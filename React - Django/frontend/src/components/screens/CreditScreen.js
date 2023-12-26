@@ -112,7 +112,7 @@ const CreditScreen = () => {
               </InputGroup>
             </Form.Group>
 
-            <div className="d-flex justify-content-center">
+            <div className="d-flex justify-content-center creditContainer">
 
               <Button
                 className="customCreditButton" // Add the new unique className
