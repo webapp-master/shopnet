@@ -8,7 +8,6 @@ import { useLocation } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-
 function Header() {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -28,7 +27,12 @@ function Header() {
   const isDebitRoute = location.pathname === "/debit";
 
   return (
-    <div style={{ marginBottom: isLoginRoute || isCreditRoute || isDebitRoute ? "0" : "20px" }}>
+    <div
+      style={{
+        marginBottom:
+          isLoginRoute || isCreditRoute || isDebitRoute ? "0" : "20px",
+      }}
+    >
       {" "}
       {/* Conditionally apply the margin */}
       <Navbar
@@ -172,6 +176,18 @@ function Header() {
           style={{
             position: "absolute",
             bottom: "15%",
+            left: 0,
+            right: 0,
+            height: "2px",
+            backgroundColor: "#ffffff", // White color for the line
+            zIndex: 1, // Ensure it's above other content
+          }}
+        ></div>
+
+        <div
+          style={{
+            position: "absolute",
+            bottom: 0,
             left: 0,
             right: 0,
             height: "2px",
