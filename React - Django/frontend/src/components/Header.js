@@ -7,6 +7,9 @@ import { useMediaQuery } from "react-responsive";
 import { useLocation } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect, useState } from "react"; 
+
+
 
 function Header() {
   const userLogin = useSelector((state) => state.userLogin);
@@ -25,6 +28,17 @@ function Header() {
   const isLoginRoute = location.pathname === "/login";
   const isCreditRoute = location.pathname === "/credit";
   const isDebitRoute = location.pathname === "/debit";
+
+  const [bottomPosition, setBottomPosition] = useState("15%"); // State to manage bottom position
+
+  useEffect(() => {
+    // Update bottom position based on route path
+    if (location.pathname === "/login") {
+      setBottomPosition("0%");
+    } else {
+      setBottomPosition("15%");
+    }
+  }, [location.pathname]);
 
   return (
     <div
@@ -175,7 +189,7 @@ function Header() {
         <div
           style={{
             position: "absolute",
-            bottom: "15%",
+            bottom: bottomPosition, // Use the state value for bottom position
             left: 0,
             right: 0,
             height: "2px",
