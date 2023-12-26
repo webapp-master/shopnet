@@ -155,4 +155,14 @@ margin-right: 3rem !important;
 
 
 
+.container-custom-button .custom-button {
+  background-color: blue; 
+  color: white; 
+  transition: background-color 0.3s ease, color 0.3s ease; 
+}
 
+
+.container-custom-button .custom-button:hover {
+  background-color: red; 
+  color: white; 
+}

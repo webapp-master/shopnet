@@ -41,7 +41,6 @@ const Admin_debitScreen = () => {
       <div className="row">
         <div className="col-md-6 offset-md-3">
           <div className="card border-primary">
-
             <div className="card-body">
               {error && <div className="alert alert-danger">{error}</div>}
               {success && <div className="alert alert-success">{success}</div>}
@@ -69,21 +68,20 @@ const Admin_debitScreen = () => {
                   />
                 </div>
 
-                <div className="d-flex justify-content-center">
+                <div className="d-flex justify-content-center container-custom-button">
                   {" "}
                   {/* Center content horizontally */}
                   <button
                     type="button"
-                    className="btn btn-primary btn-block"
+                    className="btn btn-primary btn-block custom-button"
                     onClick={handleDebit}
-                    style={{ width: "350px" }} // Set a specific width for the button if needed
+                    style={{ width: "350px", borderRadius: "8px", transition: "transform 0.2s" }}
                   >
                     Debit Wallet
                   </button>
                 </div>
               </form>
             </div>
-
           </div>
         </div>
       </div>
