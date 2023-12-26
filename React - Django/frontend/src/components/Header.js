@@ -184,17 +184,7 @@ function Header() {
           }}
         ></div>
 
-        <div
-          style={{
-            position: "absolute",
-            bottom: 0,
-            left: 0,
-            right: 0,
-            height: "2px",
-            backgroundColor: "#ffffff", // White color for the line
-            zIndex: 1, // Ensure it's above other content
-          }}
-        ></div>
+        
       </Navbar>
     </div>
   );

@@ -343,3 +343,11 @@ add another line at the intersection btw the header and the content
 inside the list products page 
 inside te card body 
 make the background color #f0f0f0
+
+
+
+			43
+
+for each product
+add another field
+let the field record info on the supplier for the outsource of the product
