@@ -30,13 +30,16 @@ function Header() {
   const isDebitRoute = location.pathname === "/debit";
 
   const [bottomPosition, setBottomPosition] = useState("15%"); // State to manage bottom position
+  const [navbarHeight, setNavbarHeight] = useState("5.5rem"); // State to manage Navbar height
 
   useEffect(() => {
     // Update bottom position based on route path
     if (location.pathname === "/login") {
       setBottomPosition("0%");
+      setNavbarHeight("4.5rem"); // Update Navbar height for /login route
     } else {
       setBottomPosition("15%");
+      setNavbarHeight("5.5rem"); // Set default Navbar height for other routes
     }
   }, [location.pathname]);
 
@@ -54,7 +57,7 @@ function Header() {
           backgroundImage: `url(${process.env.PUBLIC_URL}/images/login_background.jpg)`,
           position: "relative",
           zIndex: 2,
-          height: "5.5rem",
+          height: navbarHeight, // Use the state value for Navbar height
         }}
       >
         <Container fluid>
