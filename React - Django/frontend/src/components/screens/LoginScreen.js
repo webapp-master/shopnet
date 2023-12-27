@@ -156,7 +156,7 @@ function LoginScreen({ location, history }) {
                 style={{
                   position: "absolute",
                   right: "8px",
-                  color: usernameIconColor ? "white" : "#1f73c9",
+                  color: usernameIconColor ? "#1f73c9" : "white",
                   fontSize: "18px",
                   lineHeight: "50px",
                 }}
@@ -175,14 +175,14 @@ function LoginScreen({ location, history }) {
                 onChange={(e) => setPassword(e.target.value)}
                 autoComplete="new-password"
                 onFocus={() => setPasswordIconColor(true)}
-                onBlur={() => setPasswordIconColor(false)}
+                onBlur={() => setPasswordIconColor(true)}
                 className={`${passwordIconColor ? "Icon-white" : ""} Placeholder-color`}
               />
               <span
                 style={{
                   position: "absolute",
                   right: "8px",
-                  color: passwordIconColor ? "white" : "#1f73c9",
+                  color: passwordIconColor ? "#1f73c9" : "white",
                   fontSize: "18px",
                   lineHeight: "50px",
                 }}
