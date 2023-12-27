@@ -113,6 +113,8 @@ function LoginScreen({ location, history }) {
     minHeight: "100vh",
   };
 
+
+
   return (
     <div style={contentWrapperStyle}>
       <div style={containerStyle}>
@@ -146,7 +148,7 @@ function LoginScreen({ location, history }) {
                 onChange={(e) => setUsername(e.target.value)}
                 autoComplete="username"
                 onFocus={() => setUsernameIconColor(true)}
-                onBlur={() => setUsernameIconColor(false)}
+                onBlur={() => setUsernameIconColor(true)}
                 className={`${usernameIconColor ? "Icon-white" : ""} Placeholder-color`}
                 
               />
