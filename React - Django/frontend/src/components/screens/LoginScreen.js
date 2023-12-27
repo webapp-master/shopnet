@@ -68,7 +68,6 @@ function LoginScreen({ location, history }) {
     position: "relative",
     width: "310px",
     margin: "30px 0",
-
     borderBottom: "2px solid #fff",
   };
 
@@ -76,7 +75,6 @@ function LoginScreen({ location, history }) {
     width: "100%",
     height: "50px",
     background: "transparent",
-
     border: "none",
     outline: "none",
     fontSize: "16px",
@@ -115,7 +113,7 @@ function LoginScreen({ location, history }) {
     position: "relative",
     minHeight: "100vh",
   };
-  
+
 
   return (
     <div style={contentWrapperStyle}>
@@ -140,7 +138,7 @@ function LoginScreen({ location, history }) {
               </h2>
             </div>
 
-            <div style={inputBoxStyle}>
+            <div className="custom-login-input" style={inputBoxStyle}>
               <span
                 style={{
                   position: "absolute",
@@ -153,7 +151,7 @@ function LoginScreen({ location, history }) {
                 <i className="fa-solid fa-envelope"></i>
               </span>
 
-              <input
+              <input className="input-field-login"
                 type="text"
                 required
                 placeholder="Username"
