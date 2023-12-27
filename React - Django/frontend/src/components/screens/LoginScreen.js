@@ -148,7 +148,7 @@ function LoginScreen({ location, history }) {
                 onChange={(e) => setUsername(e.target.value)}
                 autoComplete="username"
                 onFocus={() => setUsernameIconColor(true)}
-                onBlur={() => setUsernameIconColor(true)}
+                onBlur={() => setUsernameIconColor(false)}
                 className={`${usernameIconColor ? "Icon-white" : ""} Placeholder-color`}
                 
               />
@@ -175,7 +175,7 @@ function LoginScreen({ location, history }) {
                 onChange={(e) => setPassword(e.target.value)}
                 autoComplete="new-password"
                 onFocus={() => setPasswordIconColor(true)}
-                onBlur={() => setPasswordIconColor(true)}
+                onBlur={() => setPasswordIconColor(false)}
                 className={`${passwordIconColor ? "Icon-white" : ""} Placeholder-color`}
               />
               <span
