@@ -138,7 +138,7 @@ function LoginScreen({ location, history }) {
               </h2>
             </div>
 
-            <div className="custom-login-input" style={inputBoxStyle}>
+            <div style={inputBoxStyle}>
               <span
                 style={{
                   position: "absolute",
@@ -151,7 +151,7 @@ function LoginScreen({ location, history }) {
                 <i className="fa-solid fa-envelope"></i>
               </span>
 
-              <input className="input-field-login"
+              <input
                 type="text"
                 required
                 placeholder="Username"

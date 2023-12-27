@@ -143,21 +143,7 @@ margin-right: 3rem !important;
 
 
 
-/* Target the input fields within form-control class */
-.custom-login-input .input-field-login:focus,
-.custom-login-input .input-field-login:active {
-  box-shadow: none !important;
-  border: none !important;
-  outline: none !important;
-}
 
-
-/* Target the input fields within form-control class */
-.inputBoxStyle .inputStyle input:focus {
-  box-shadow: none !important;
-  border: none !important;
-  outline: none !important;
-}
 
 
 
