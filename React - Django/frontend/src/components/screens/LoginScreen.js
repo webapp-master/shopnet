@@ -155,7 +155,8 @@ function LoginScreen({ location, history }) {
                 style={inputStyle}
                 value={username} // Binding value to username state
                 onChange={(e) => setUsername(e.target.value)} // Updating username state on change
-                autocomplete="username" // Disable username autofill
+                autocomplete="username" // Disable username 
+                className="Placeholder-color"
               />
             </div>
 
@@ -179,6 +180,7 @@ function LoginScreen({ location, history }) {
                 value={password} // Binding value to password state
                 onChange={(e) => setPassword(e.target.value)} // Updating password state on change
                 autoComplete="new-password" // Disable browser autocomplete
+                className="Placeholder-color"
               />
             </div>
 

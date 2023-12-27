@@ -134,6 +134,12 @@ margin-right: 3rem !important;
   /* Add any additional styles needed on hover */
 }
 
+.Placeholder-color::placeholder {
+  color: white; /* Placeholder text color */
+  opacity: 1; /* Ensure the placeholder is fully visible */
+}
+
+
 .creditContainer button.customCreditButton {
   background-color: #4091ed;
   color: white;
