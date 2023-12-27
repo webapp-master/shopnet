@@ -46,7 +46,8 @@ const Admin_debitScreen = () => {
               {success && <div className="alert alert-success">{success}</div>}
 
               <form>
-                <div className="form-group">
+
+                <div className="form-group debit-remove-shadow">
                   <label htmlFor="username">Username:</label>
                   <input
                     type="text"
@@ -54,10 +55,15 @@ const Admin_debitScreen = () => {
                     id="username"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
+                    style={{
+                      borderRadius: '3rem',
+                      boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
+                    }}
+                    
                   />
                 </div>
 
-                <div className="form-group">
+                <div className="form-group debit-remove-shadow">
                   <label htmlFor="amount">Amount:</label>
                   <input
                     type="number"
@@ -65,17 +71,29 @@ const Admin_debitScreen = () => {
                     id="amount"
                     value={amount}
                     onChange={(e) => setAmount(e.target.value)}
+                    style={{
+                      borderRadius: '3rem',
+                      boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)' // Adjust shadow values as needed
+                    }}
+                    
+                  
                   />
                 </div>
 
                 <div className="d-flex justify-content-center container-custom-button">
                   {" "}
                   {/* Center content horizontally */}
+
                   <button
                     type="button"
                     className="btn btn-primary btn-block custom-button"
                     onClick={handleDebit}
-                    style={{ width: "350px", borderRadius: "8px", transition: "transform 0.2s" }}
+                    style={{
+                      width: "350px",
+                      borderRadius: "8px",
+                      transition: "transform 0.2s",
+                      marginTop: "2rem",
+                    }}
                   >
                     Debit Wallet
                   </button>

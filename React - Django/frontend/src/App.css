@@ -153,16 +153,26 @@ margin-right: 3rem !important;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2) inset; /* Adding an inset shadow to simulate a click effect */
 }
 
-
-
 .container-custom-button .custom-button {
   background-color: blue; 
   color: white; 
   transition: background-color 0.3s ease, color 0.3s ease; 
 }
 
-
 .container-custom-button .custom-button:hover {
   background-color: red; 
   color: white; 
 }
+
+.container-custom-button .custom-button:focus {
+  box-shadow: none;
+}
+
+/* Target the input fields within form-control class */
+.debit-remove-shadow .form-control:focus {
+  box-shadow: none;
+}
+
+
+
+

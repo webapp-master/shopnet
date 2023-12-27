@@ -97,7 +97,7 @@ const CreditScreen = () => {
             <Form.Group className="mb-3">
               <Form.Label>Credit:</Form.Label>
               <InputGroup>
-                <InputGroup.Text>$</InputGroup.Text>
+              <InputGroup.Text style={{ backgroundColor: 'white', marginRight: '10px' }}>$</InputGroup.Text>
                 <Form.Control
                   type="number"
                   placeholder="Enter Amount"
@@ -105,7 +105,7 @@ const CreditScreen = () => {
                   onChange={handleAmountChange}
                   style={{
                     textAlign: "center",
-                    borderRadius: "20px",
+                    borderRadius: "60px",
                     boxShadow: "0 0 5px rgba(0, 0, 0, 0.2)",
                   }}
                 />
