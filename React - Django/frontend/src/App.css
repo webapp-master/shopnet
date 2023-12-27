@@ -179,11 +179,3 @@ margin-right: 3rem !important;
   box-shadow: none;
 }
 
-.Icon-white {
-  color: white;
-}
-
-/* Adjust the color when input is focused */
-.Icon-white:focus {
-  color: white;
-}
