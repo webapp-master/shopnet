@@ -129,9 +129,10 @@ margin-right: 3rem !important;
 
         /* Add styles for login button hover effect */
 .buttonStyle:hover {
-  background-color: #1f73c9 !important;
-  color: white !important;
-  /* Add any additional styles needed on hover */
+  background-color: #fff !important;
+  color:  #1f73c9 !important;
+  font-size: 26px !important;
+  font-weight: 700 !important;
 }
 
 .Placeholder-color::placeholder {

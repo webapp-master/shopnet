@@ -86,13 +86,13 @@ function LoginScreen({ location, history }) {
   const buttonStyle = {
     width: "50%",
     height: "40px",
-    background: "#fff",
+    background: "#1f73c9",
     border: "none",
     outline: "none",
     borderRadius: "10px",
     cursor: "pointer",
     fontSize: "16px",
-    color: "#000",
+    color: "#fff",
     transition: "all 0.5s",
     display: "block", // Make the button a block-level element
     margin: "0 auto", // Center the button horizontally
@@ -161,7 +161,7 @@ function LoginScreen({ location, history }) {
                   lineHeight: "50px",
                 }}
               >
-                <i className="fa-solid fa-envelope"></i>
+                <i className="fa-solid fa-user"></i>
               </span>
             </div>
 
