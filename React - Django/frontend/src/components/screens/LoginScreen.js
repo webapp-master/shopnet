@@ -21,9 +21,7 @@ function LoginScreen({ location, history }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-
   const redirect = location.search ? location.search.split("=")[1] : "/";
-
   const userLogin = useSelector((state) => state.userLogin);
   const { error, loading, userInfo } = userLogin;
 
@@ -80,8 +78,7 @@ function LoginScreen({ location, history }) {
     fontSize: "16px",
     color: "white",
     padding: "0 35px 0 5px",
-
-    borderRadius: "50px",
+    borderRadius: "10px",
   };
 
   const buttonStyle = {
@@ -158,6 +155,7 @@ function LoginScreen({ location, history }) {
                 style={inputStyle}
                 value={username} // Binding value to username state
                 onChange={(e) => setUsername(e.target.value)} // Updating username state on change
+                autocomplete="username" // Disable username autofill
               />
             </div>
 
@@ -180,6 +178,7 @@ function LoginScreen({ location, history }) {
                 style={inputStyle}
                 value={password} // Binding value to password state
                 onChange={(e) => setPassword(e.target.value)} // Updating password state on change
+                autoComplete="new-password" // Disable browser autocomplete
               />
             </div>
 
