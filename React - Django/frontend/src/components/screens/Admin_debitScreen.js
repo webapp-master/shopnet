@@ -36,17 +36,17 @@ const Admin_debitScreen = () => {
   };
 
   return (
-    <div className="container" style={{ marginTop: '70px' }}>
+    <div className="container" style={{ marginTop: "70px" }}>
       <h2
-            style={{
-              color: "red",
-              textAlign: "center",
-              marginBottom: "2rem",
-              textShadow: "3px 3px 4px rgba(0, 0, 0, 0.5)",
-            }}
-          >
-            Debit Customer's Wallet
-          </h2>
+        style={{
+          color: "red",
+          textAlign: "center",
+          marginBottom: "2rem",
+          textShadow: "3px 3px 4px rgba(0, 0, 0, 0.5)",
+        }}
+      >
+        Debit Customer's Wallet
+      </h2>
       <div className="row">
         <div className="col-md-6 offset-md-3">
           <div className="card border-primary">
@@ -55,7 +55,6 @@ const Admin_debitScreen = () => {
               {success && <div className="alert alert-success">{success}</div>}
 
               <form>
-
                 <div className="form-group debit-remove-shadow">
                   <label htmlFor="username">Username:</label>
                   <input
@@ -65,10 +64,9 @@ const Admin_debitScreen = () => {
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     style={{
-                      borderRadius: '3rem',
-                      boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
+                      borderRadius: "3rem",
+                      boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
                     }}
-                    
                   />
                 </div>
 
@@ -81,18 +79,15 @@ const Admin_debitScreen = () => {
                     value={amount}
                     onChange={(e) => setAmount(e.target.value)}
                     style={{
-                      borderRadius: '3rem',
-                      boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)' // Adjust shadow values as needed
+                      borderRadius: "3rem",
+                      boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)", // Adjust shadow values as needed
                     }}
-                    
-                  
                   />
                 </div>
 
                 <div className="d-flex justify-content-center container-custom-button">
                   {" "}
                   {/* Center content horizontally */}
-
                   <button
                     type="button"
                     className="btn btn-primary btn-block custom-button"
