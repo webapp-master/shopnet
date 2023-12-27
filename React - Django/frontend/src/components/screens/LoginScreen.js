@@ -20,6 +20,9 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 function LoginScreen({ location, history }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [usernameIconColor, setUsernameIconColor] = useState(false);
+  const [passwordIconColor, setPasswordIconColor] = useState(false);
+
   const dispatch = useDispatch();
   const redirect = location.search ? location.search.split("=")[1] : "/";
   const userLogin = useSelector((state) => state.userLogin);
@@ -59,7 +62,6 @@ function LoginScreen({ location, history }) {
     alignItems: "center",
     backdropFilter: "blur(15px)",
     marginTop: "-4rem",
-    
   };
 
   const inputBoxStyle = {
@@ -111,7 +113,6 @@ function LoginScreen({ location, history }) {
     minHeight: "100vh",
   };
 
-
   return (
     <div style={contentWrapperStyle}>
       <div style={containerStyle}>
@@ -136,52 +137,56 @@ function LoginScreen({ location, history }) {
             </div>
 
             <div style={inputBoxStyle}>
+              <input
+                type="text"
+                required
+                placeholder="Username"
+                style={inputStyle}
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                autoComplete="username"
+                onFocus={() => setUsernameIconColor(true)}
+                onBlur={() => setUsernameIconColor(false)}
+                className={`${usernameIconColor ? "Icon-white" : ""} Placeholder-color`}
+                
+              />
               <span
                 style={{
                   position: "absolute",
                   right: "8px",
-                  color: "#1f73c9",
+                  color: usernameIconColor ? "white" : "#1f73c9",
                   fontSize: "18px",
                   lineHeight: "50px",
                 }}
               >
                 <i className="fa-solid fa-envelope"></i>
               </span>
-
-              <input
-                type="text"
-                required
-                placeholder="Username"
-                style={inputStyle}
-                value={username} // Binding value to username state
-                onChange={(e) => setUsername(e.target.value)} // Updating username state on change
-                autocomplete="username" // Disable username 
-                className="Placeholder-color"
-              />
             </div>
 
             <div style={inputBoxStyle}>
+              <input
+                type="password"
+                placeholder="Password"
+                required
+                style={inputStyle}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                autoComplete="new-password"
+                onFocus={() => setPasswordIconColor(true)}
+                onBlur={() => setPasswordIconColor(false)}
+                className={`${passwordIconColor ? "Icon-white" : ""} Placeholder-color`}
+              />
               <span
                 style={{
                   position: "absolute",
                   right: "8px",
-                  color: "#1f73c9",
+                  color: passwordIconColor ? "white" : "#1f73c9",
                   fontSize: "18px",
                   lineHeight: "50px",
                 }}
               >
                 <i className="fa-solid fa-lock"></i>
               </span>
-              <input
-                type="password"
-                placeholder="Password"
-                required
-                style={inputStyle}
-                value={password} // Binding value to password state
-                onChange={(e) => setPassword(e.target.value)} // Updating password state on change
-                autoComplete="new-password" // Disable browser autocomplete
-                className="Placeholder-color"
-              />
             </div>
 
             <button type="submit" style={buttonStyle} className="buttonStyle">
