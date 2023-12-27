@@ -36,8 +36,17 @@ const Admin_debitScreen = () => {
   };
 
   return (
-    <div className="container mt-4">
-      <h2 className="text-center mb-4">Debit User's Wallet</h2>
+    <div className="container" style={{ marginTop: '70px' }}>
+      <h2
+            style={{
+              color: "red",
+              textAlign: "center",
+              marginBottom: "2rem",
+              textShadow: "3px 3px 4px rgba(0, 0, 0, 0.5)",
+            }}
+          >
+            Debit Customer's Wallet
+          </h2>
       <div className="row">
         <div className="col-md-6 offset-md-3">
           <div className="card border-primary">

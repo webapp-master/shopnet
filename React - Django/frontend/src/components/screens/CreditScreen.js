@@ -69,10 +69,10 @@ const CreditScreen = () => {
         <Col md={{ span: 6, offset: 3 }}>
           <h2
             style={{
-              color: "#54ff47",
+              color: "green",
               textAlign: "center",
               marginBottom: "2rem",
-              textShadow: "4px 4px 4px rgba(0, 0, 0, 0.5)",
+              textShadow: "3px 3px 4px rgba(0, 0, 0, 0.5)",
             }}
           >
             Credit Customer's Wallet

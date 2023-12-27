@@ -115,6 +115,7 @@ function LoginScreen({ location, history }) {
     position: "relative",
     minHeight: "100vh",
   };
+  
 
   return (
     <div style={contentWrapperStyle}>
