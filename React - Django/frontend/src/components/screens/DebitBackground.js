@@ -8,7 +8,7 @@ const DebitBackground = () => {
       <div
         style={{
           backgroundColor: '#f0f0f0',
-          minHeight: '80vh',
+          minHeight: '100vh',
           width: '100%',
           display: 'flex',
           

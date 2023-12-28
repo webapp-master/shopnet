@@ -39,12 +39,24 @@ const Admin_debitScreen = () => {
     <div
       className="container"
       style={{
-        marginTop: "70px",
         border: "2px solid #ccc",
         borderRadius: "10px",
         padding: "20px",
+        display: "flex", 
+        alignItems: "center", 
+        justifyContent: "center", 
       }}
-    ></div>
+    >
+      <div
+        style={{
+          backgroundColor: "#d7d1c6",
+          width: "45rem", 
+          height: "45rem", 
+        }}
+      >
+        {/* Content inside the centered box */}
+      </div>
+    </div>
   );
 };
 
