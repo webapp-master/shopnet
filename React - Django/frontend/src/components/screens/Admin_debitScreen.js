@@ -37,6 +37,8 @@ const Admin_debitScreen = () => {
 
   return (
     <div className="container" style={{ marginTop: "70px" }}>
+
+
       <h2
         style={{
           color: "red",
@@ -47,9 +49,13 @@ const Admin_debitScreen = () => {
       >
         Debit Customer's Wallet
       </h2>
+
       <div className="row">
         <div className="col-md-6 offset-md-3">
-          <div className="card border-primary">
+
+          <div className="card border-primary" style={{ border: "none" }}>
+
+
             <div className="card-body">
               {error && <div className="alert alert-danger">{error}</div>}
               {success && <div className="alert alert-success">{success}</div>}
@@ -106,7 +112,13 @@ const Admin_debitScreen = () => {
             </div>
           </div>
         </div>
+
+
       </div>
+
+
+
+
     </div>
   );
 };
