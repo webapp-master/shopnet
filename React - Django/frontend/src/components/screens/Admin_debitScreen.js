@@ -42,30 +42,45 @@ const Admin_debitScreen = () => {
         border: "2px solid #ccc",
         borderRadius: "10px",
         padding: "20px",
-        display: "flex", 
-        
-        justifyContent: "center", 
+        display: "flex",
+
+        justifyContent: "center",
       }}
     >
       <div
         style={{
           backgroundColor: "#d7d1c6",
-          width: "40rem", 
-          height: "25rem", 
-          marginTop: "20px"
+          width: "40rem",
+          height: "25rem",
+          marginTop: "20px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
         }}
       >
-        
         <h2
-        style={{
-          color: "red",
-          textAlign: "center",
-          textShadow: "3px 3px 4px rgba(0, 0, 0, 0.5)",
-          margin: "2rem auto"
-        }}
-      >
-        Debit Customer's Wallet
-      </h2>
+          style={{
+            color: "red",
+            textAlign: "center",
+            textShadow: "3px 3px 4px rgba(0, 0, 0, 0.5)",
+            margin: "2rem auto",
+          }}
+        >
+          Debit Customer's Wallet
+        </h2>
+
+        <div
+          className="card"
+          style={{
+            border: "1px solid #000", // Add border to the card
+            padding: "20px", // Optional padding for the card content
+          }}
+        >
+
+
+
+        </div>
+
 
 
       </div>
