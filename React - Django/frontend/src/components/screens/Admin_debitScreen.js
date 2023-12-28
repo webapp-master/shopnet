@@ -56,6 +56,7 @@ const Admin_debitScreen = () => {
           alignItems: "center",
           justifyContent: "center",
           flexDirection: "column", // Ensure elements are stacked vertically
+          borderRadius: "290px",
         }}
       >
         <h2
@@ -63,13 +64,14 @@ const Admin_debitScreen = () => {
             color: "red",
             textAlign: "center",
             textShadow: "3px 3px 4px rgba(0, 0, 0, 0.5)",
-            margin: "2rem auto",
+            marginBottom: "1rem",
+            width: "100%",
           }}
         >
           Debit Customer's Wallet
         </h2>
 
-        <div className="card">
+        <div className="card" style={{ width: "80%" }}>
           <div className="card-body">
             {error && <div className="alert alert-danger">{error}</div>}
             {success && <div className="alert alert-success">{success}</div>}
