@@ -43,18 +43,31 @@ const Admin_debitScreen = () => {
         borderRadius: "10px",
         padding: "20px",
         display: "flex", 
-        alignItems: "center", 
+        
         justifyContent: "center", 
       }}
     >
       <div
         style={{
           backgroundColor: "#d7d1c6",
-          width: "45rem", 
-          height: "45rem", 
+          width: "40rem", 
+          height: "25rem", 
+          marginTop: "20px"
         }}
       >
-        {/* Content inside the centered box */}
+        
+        <h2
+        style={{
+          color: "red",
+          textAlign: "center",
+          textShadow: "3px 3px 4px rgba(0, 0, 0, 0.5)",
+          margin: "2rem auto"
+        }}
+      >
+        Debit Customer's Wallet
+      </h2>
+
+
       </div>
     </div>
   );

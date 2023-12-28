@@ -363,3 +363,9 @@ of which the tab redirects me to the home
 
 but the other two tabs are still active as long as you don't refresh
 infact, you can succesfully credit user wallet even tho you have logged out via the 1st tab
+
+
+
+			45
+Inside Admin_debitScreen.js
+I want to make the 2nd <div> rounded to oval shape
