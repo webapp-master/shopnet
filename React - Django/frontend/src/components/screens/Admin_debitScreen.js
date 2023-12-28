@@ -36,7 +36,7 @@ const Admin_debitScreen = () => {
   };
 
   return (
-    <div className="container" style={{ marginTop: "70px" }}>
+    <div className="container" style={{ marginTop: "70px", border: "2px solid #ccc", borderRadius: "10px", padding: "20px", marginLeft: "10px", marginRight: "10px" }}>
 
 
       <h2
@@ -45,6 +45,7 @@ const Admin_debitScreen = () => {
           textAlign: "center",
           marginBottom: "2rem",
           textShadow: "3px 3px 4px rgba(0, 0, 0, 0.5)",
+          padding: "0",
         }}
       >
         Debit Customer's Wallet
@@ -53,7 +54,7 @@ const Admin_debitScreen = () => {
       <div className="row">
         <div className="col-md-6 offset-md-3">
 
-          <div className="card border-primary" style={{ border: "none" }}>
+        <div className="card" >
 
 
             <div className="card-body">
