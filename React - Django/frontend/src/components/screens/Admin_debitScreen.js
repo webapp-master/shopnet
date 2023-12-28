@@ -70,7 +70,7 @@ const Admin_debitScreen = () => {
         </h2>
 
         <div className="row">
-          <div className="col-md-6 offset-md-3">
+          <div className="">
             <div className="card">
               <div className="card-body">
                 {error && <div className="alert alert-danger">{error}</div>}
