@@ -66,12 +66,13 @@ const Admin_debitScreen = () => {
             textShadow: "3px 3px 4px rgba(0, 0, 0, 0.5)",
             marginBottom: "1rem",
             width: "100%",
+            marginTop: "-2.4rem",
           }}
         >
           Debit Customer's Wallet
         </h2>
 
-        <div className="card" style={{ width: "80%" }}>
+        <div className="card" style={{ width: "80%", borderRadius: "20px" }}>
           <div className="card-body">
             {error && <div className="alert alert-danger">{error}</div>}
             {success && <div className="alert alert-success">{success}</div>}
