@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import debitWallet from "../../actions/admin_debitActions";
 import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
 
@@ -7,6 +7,30 @@ const Admin_debitScreen = () => {
   const [amount, setAmount] = useState("");
   const [error, setError] = useState(""); // State for error message
   const [success, setSuccess] = useState(""); // State for success message
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [borderRadius, setBorderRadius] = useState("390");
+
+  const handleWindowSizeChange = () => {
+    setWindowWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleWindowSizeChange);
+    return () => {
+      window.removeEventListener("resize", handleWindowSizeChange);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (windowWidth <= 767) {
+      setBorderRadius("50");
+    } else if (windowWidth >= 768 && windowWidth <= 1023) {
+      setBorderRadius("150");
+    } else {
+      setBorderRadius("390");
+    }
+  }, [windowWidth]);
+
 
   const handleDebit = async () => {
     try {
@@ -56,7 +80,7 @@ const Admin_debitScreen = () => {
           alignItems: "center",
           justifyContent: "center",
           flexDirection: "column", // Ensure elements are stacked vertically
-          borderRadius: "290px",
+          borderRadius: `${borderRadius}px`,
         }}
       >
         <h2
