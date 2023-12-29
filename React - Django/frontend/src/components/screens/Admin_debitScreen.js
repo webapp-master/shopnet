@@ -31,7 +31,6 @@ const Admin_debitScreen = () => {
     }
   }, [windowWidth]);
 
-
   const handleDebit = async () => {
     try {
       setError(""); // Clear any previous errors
@@ -96,10 +95,26 @@ const Admin_debitScreen = () => {
           Debit Customer's Wallet
         </h2>
 
-        <div className="card" style={{ width: "80%", borderRadius: "20px", border: "2px solid red"}}>
+        <div
+          className="card"
+          style={{
+            width: "80%",
+            borderRadius: "20px",
+            border: "2px solid red",
+          }}
+        >
           <div className="card-body">
-            {error && <div className="alert alert-danger">{error}</div>}
-            {success && <div className="alert alert-success">{success}</div>}
+
+            {error && (
+              <div className="alert alert-danger text-center">
+                <span className="d-block">{error}</span>
+              </div>
+            )}
+            {success && (
+              <div className="alert alert-success text-center">
+                <span className="d-block">{success}</span>
+              </div>
+            )}
 
             <form>
               <div className="form-group debit-remove-shadow">
