@@ -63,8 +63,8 @@ const Admin_debitScreen = () => {
     <div
       className="container"
       style={{
-        border: "2px solid #ccc",
-        borderRadius: "10px",
+        borderLeft: "3px solid #ccc",
+        borderRight: "3px solid #ccc",
         padding: "20px",
         display: "flex",
         justifyContent: "center",
@@ -96,7 +96,7 @@ const Admin_debitScreen = () => {
           Debit Customer's Wallet
         </h2>
 
-        <div className="card" style={{ width: "80%", borderRadius: "20px" }}>
+        <div className="card" style={{ width: "80%", borderRadius: "20px", border: "2px solid red"}}>
           <div className="card-body">
             {error && <div className="alert alert-danger">{error}</div>}
             {success && <div className="alert alert-success">{success}</div>}

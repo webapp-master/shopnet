@@ -369,3 +369,19 @@ infact, you can succesfully credit user wallet even tho you have logged out via 
 			45
 Inside Admin_debitScreen.js
 I want to make the 2nd <div> rounded to oval shape
+
+
+
+			46
+buy screen
+
+two buttons
+
+a)  Make Payment		red button		it will use wallet 
+b)  Fund Wallet			green button
+
+
+two options to fund walllet
+
+do transfer to the admin and notify
+ATM card
