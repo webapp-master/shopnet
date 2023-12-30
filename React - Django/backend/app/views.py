@@ -21,8 +21,6 @@ from django.views.decorators.csrf import csrf_exempt
 from django.db import IntegrityError
 
 
-
-
 @api_view(['GET'])
 def getRoutes(request):
     return Response('Hello')
@@ -65,8 +63,6 @@ def getUserProfiles(request):
     return Response(serializer.data)
 
 
-
-
 @api_view(['GET'])
 @permission_classes([IsAdminUser])
 def getUsers(request):
@@ -74,12 +70,8 @@ def getUsers(request):
     serializer = UserSerializer(user, many=True)
     return Response(serializer.data)
 
+    # Register the new Users
 
-
-
-
-
-                    # Register the new Users
 
 @api_view(['POST'])
 def registerUser(request):
@@ -96,9 +88,10 @@ def registerUser(request):
 
         # Get or create Profile instance for the user
         profile, created = Profile.objects.get_or_create(user=user)
-        
+
         # Update Profile fields (phoneNumber and City)
-        profile.phoneNumber = data.get('phoneNumber')  # Save phoneNumber if provided
+        # Save phoneNumber if provided
+        profile.phoneNumber = data.get('phoneNumber')
         profile.City = data.get('City')
         profile.save()
 
@@ -118,11 +111,8 @@ def registerUser(request):
         message = {'details': f'Error occurred: {str(e)}'}
         return Response(message, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+        # Credit Wallet of Customer
 
-
-
-
-            #Credit Wallet of Customer
 
 @api_view(['POST'])
 @permission_classes([IsCashier])
@@ -131,14 +121,14 @@ def credit_wallet(request):
     if serializer.is_valid():
         amount = serializer.validated_data['amount']
         username = serializer.validated_data['username']
-        
+
         user = get_object_or_404(User, username=username)
         wallet = user.profile.wallet
 
         previous_balance = wallet.balance
-        
+
         new_balance = previous_balance + amount
-        
+
         # Update the wallet balance
         wallet.balance = new_balance
         wallet.save()
@@ -152,14 +142,12 @@ def credit_wallet(request):
             previous_balance=previous_balance,
             new_balance=new_balance
         )
-        
+
         return Response({'message': 'Wallet credited successfully'}, status=status.HTTP_200_OK)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+    # admin debit User's wallet  Manually
 
-
-
-                        # admin debit User's wallet  Manually
 
 @api_view(['POST'])
 def debit_wallet(request):
@@ -173,9 +161,10 @@ def debit_wallet(request):
         user = get_object_or_404(User, username=username)
         wallet = user.profile.wallet
 
-        # Debit the wallet if sufficient balance is available
         if wallet.balance >= amount:
             previous_balance = wallet.balance
+
+            # Debit the wallet
             wallet.balance -= amount
             wallet.save()
 
@@ -190,7 +179,15 @@ def debit_wallet(request):
                 previous_balance=previous_balance,
                 new_balance=new_balance
             )
-            return Response({'message': f'Wallet debited successfully by ${amount}'})
+
+            # Formulate the success message including amount, previous balance, and new balance
+            success_message = (
+                f'Wallet debited successfully by ${amount}\n'
+                f'Previous balance: ${previous_balance}\n'
+                f'New balance: ${new_balance}'
+            )
+
+            return Response({'message': success_message})
         else:
             return Response({'error': 'Insufficient balance'}, status=status.HTTP_400_BAD_REQUEST)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

@@ -36,7 +36,7 @@ const Admin_debitScreen = () => {
     setTimeout(() => {
       setError("");
       setSuccess("");
-    }, 3000);
+    }, 60000);
   };
 
   const handleDebit = async () => {
@@ -126,7 +126,7 @@ const Admin_debitScreen = () => {
             )}
             {success && (
               <div className="alert alert-success text-center">
-                <span className="d-block">{success}</span>
+                <span className="d-block"style={{ whiteSpace: 'pre-line' }}>{success}</span>
               </div>
             )}
 
