@@ -179,3 +179,8 @@ margin-right: 3rem !important;
 .debit-remove-shadow .form-control:focus {
   box-shadow: none;
 }
+
+.custom-container {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}

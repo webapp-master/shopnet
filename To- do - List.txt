@@ -385,3 +385,10 @@ two options to fund walllet
 
 do transfer to the admin and notify
 ATM card
+
+
+
+
+			47
+footer
+automate the date

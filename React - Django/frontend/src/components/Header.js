@@ -60,7 +60,8 @@ function Header() {
           height: navbarHeight, // Use the state value for Navbar height
         }}
       >
-        <Container fluid>
+        <Container fluid className="custom-container">
+
           <LinkContainer to="/" style={{ color: "#ffffff", fontSize: "26px" }}>
             <Navbar.Brand>Shopnet</Navbar.Brand>
           </LinkContainer>
@@ -70,7 +71,7 @@ function Header() {
 
 
             <Nav className="mr-auto my-2 my-lg-0" navbarScroll>
-              
+
               {/* Home */}
               {!isMobile && (
                 <React.Fragment>
