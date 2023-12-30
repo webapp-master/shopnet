@@ -88,7 +88,7 @@ const Admin_debitScreen = () => {
           backgroundColor: "#d7d1c6",
           width: "40rem",
           height: "25rem",
-          marginTop: "20px",
+          marginTop: "35px",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",

@@ -67,7 +67,10 @@ function Header() {
 
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
+
+
             <Nav className="mr-auto my-2 my-lg-0" navbarScroll>
+              
               {/* Home */}
               {!isMobile && (
                 <React.Fragment>
@@ -132,13 +135,25 @@ function Header() {
                 </NavDropdown>
               )}
 
+
+
+
+
+
               {/* Login link */}
               {!userInfo && (
                 <LinkContainer to="/login" className="headerButtons">
                   <Button variant="light">Login</Button>
                 </LinkContainer>
               )}
+
+
+
+
+
+
             </Nav>
+
           </Navbar.Collapse>
 
           <Nav className="mr-auto my-2 my-lg-0" navbarScroll>
