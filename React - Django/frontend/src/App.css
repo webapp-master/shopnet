@@ -148,13 +148,7 @@ margin-right: 3rem !important;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
 }
 
-        /* Add styles for login button hover effect */
-.buttonStyle:hover {
-  background-color: #fff !important;
-  color:  #1f73c9 !important;
-  font-size: 26px !important;
-  font-weight: 700 !important;
-}
+      
 
 .Placeholder-color::placeholder {
   color: white; /* Placeholder text color */
@@ -204,4 +198,9 @@ margin-right: 3rem !important;
 .custom-container {
   padding-left: 5px !important;
   padding-right: 0 !important;
+}
+
+/* Define a class for title case transformation */
+.titleCaseText {
+  text-transform: capitalize !important; /* Converts the first character of each word to uppercase */
 }
