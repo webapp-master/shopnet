@@ -191,7 +191,7 @@ function Header() {
           <Row>
 
             <Col className="d-flex justify-content-end">
-              {/* Login link */}
+              {/* Register link */}
               {!userInfo && (
                 <LinkContainer to="/register" className="headerButtons">
                   <Button variant="light">Register</Button>
