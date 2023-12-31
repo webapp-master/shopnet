@@ -1,5 +1,13 @@
 import React from "react";
-import { Navbar, Nav, Container, NavDropdown, Button, Row, Col } from "react-bootstrap";
+import {
+  Navbar,
+  Nav,
+  Container,
+  NavDropdown,
+  Button,
+  Row,
+  Col,
+} from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { logout } from "../actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,9 +15,7 @@ import { useMediaQuery } from "react-responsive";
 import { useLocation } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react"; 
-
-
+import { useEffect, useState } from "react";
 
 function Header() {
   const userLogin = useSelector((state) => state.userLogin);
@@ -61,7 +67,6 @@ function Header() {
         }}
       >
         <Container fluid className="custom-container">
-
           <LinkContainer to="/" style={{ color: "#ffffff", fontSize: "26px" }}>
             <Navbar.Brand>Shopnet</Navbar.Brand>
           </LinkContainer>
@@ -69,10 +74,7 @@ function Header() {
           <Navbar.Toggle aria-controls="navbarScroll" />
 
           <Navbar.Collapse id="navbarScroll">
-
-
             <Nav className="mr-auto my-2 my-lg-0" navbarScroll>
-
               {/* Home */}
               {!isMobile && (
                 <React.Fragment>
@@ -136,21 +138,7 @@ function Header() {
                   </NavDropdown.Item>
                 </NavDropdown>
               )}
-
-
-
-
-
-
-   
-
-
-
-
-
-
             </Nav>
-
           </Navbar.Collapse>
 
           <Nav className="mr-auto my-2 my-lg-0" navbarScroll>
@@ -201,18 +189,26 @@ function Header() {
           </Nav>
 
           <Row>
-    <Col className="d-flex justify-content-end">
-      {/* Login link */}
-      {!userInfo && (
-        <LinkContainer to="/login" className="headerButtons">
-          <Button variant="light">Login</Button>
-        </LinkContainer>
-      )}
-    </Col>
-  </Row>
 
+            <Col className="d-flex justify-content-end">
+              {/* Login link */}
+              {!userInfo && (
+                <LinkContainer to="/register" className="headerButtons">
+                  <Button variant="light">Register</Button>
+                </LinkContainer>
+              )}
+            </Col>
 
+            <Col className="d-flex justify-content-end">
+              {/* Login link */}
+              {!userInfo && (
+                <LinkContainer to="/login" className="headerButtons">
+                  <Button variant="light">Login</Button>
+                </LinkContainer>
+              )}
+            </Col>
 
+          </Row>
 
         </Container>
 
@@ -227,8 +223,6 @@ function Header() {
             zIndex: 1, // Ensure it's above other content
           }}
         ></div>
-
-        
       </Navbar>
     </div>
   );
