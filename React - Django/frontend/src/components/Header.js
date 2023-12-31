@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Nav, Container, NavDropdown, Button } from "react-bootstrap";
+import { Navbar, Nav, Container, NavDropdown, Button, Row, Col } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { logout } from "../actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
@@ -67,6 +67,7 @@ function Header() {
           </LinkContainer>
 
           <Navbar.Toggle aria-controls="navbarScroll" />
+
           <Navbar.Collapse id="navbarScroll">
 
 
@@ -141,12 +142,7 @@ function Header() {
 
 
 
-              {/* Login link */}
-              {!userInfo && (
-                <LinkContainer to="/login" className="headerButtons">
-                  <Button variant="light">Login</Button>
-                </LinkContainer>
-              )}
+   
 
 
 
@@ -203,6 +199,21 @@ function Header() {
               </React.Fragment>
             )}
           </Nav>
+
+          <Row>
+    <Col className="d-flex justify-content-end">
+      {/* Login link */}
+      {!userInfo && (
+        <LinkContainer to="/login" className="headerButtons">
+          <Button variant="light">Login</Button>
+        </LinkContainer>
+      )}
+    </Col>
+  </Row>
+
+
+
+
         </Container>
 
         <div
