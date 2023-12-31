@@ -189,26 +189,27 @@ function Header() {
           </Nav>
 
           <Row>
+  {!userInfo && location.pathname == "/login" && (
+    <Col className="d-flex justify-content-end">
+      {/* Register link */}
+      <LinkContainer to="/register" className="header-right-Buttons">
+        <Button variant="light">Register</Button>
+      </LinkContainer>
+    </Col>
+  )}
 
-            <Col className="d-flex justify-content-end">
-              {/* Register link */}
-              {!userInfo && (
-                <LinkContainer to="/register" className="headerButtons">
-                  <Button variant="light">Register</Button>
-                </LinkContainer>
-              )}
-            </Col>
+  {location.pathname !== "/login" && (
+    <Col className="d-flex justify-content-end">
+      {/* Login link */}
+      {!userInfo && (
+        <LinkContainer to="/login" className="header-right-Buttons">
+          <Button variant="light">Login</Button>
+        </LinkContainer>
+      )}
+    </Col>
+  )}
+</Row>
 
-            <Col className="d-flex justify-content-end">
-              {/* Login link */}
-              {!userInfo && (
-                <LinkContainer to="/login" className="headerButtons">
-                  <Button variant="light">Login</Button>
-                </LinkContainer>
-              )}
-            </Col>
-
-          </Row>
 
         </Container>
 
