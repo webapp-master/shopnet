@@ -1,0 +1,1 @@
+chrome-extension://difoiogjjojoaoomphldepapgpbgkhkb/fonts/Noto-Sans-Regular.woff2

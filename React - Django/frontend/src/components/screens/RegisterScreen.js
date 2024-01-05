@@ -111,4 +111,14 @@ function RegisterScreen() {
   );
 }
 
+const styles = {
+  formContainer: {
+    /* Include all the CSS styles here */
+  },
+  formTitle: {
+    /* Style for the form title */
+  },
+  /* Include other styles as needed */
+};
+
 export default RegisterScreen;
