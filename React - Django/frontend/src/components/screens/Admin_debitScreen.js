@@ -36,7 +36,7 @@ const Admin_debitScreen = () => {
     setTimeout(() => {
       setError("");
       setSuccess("");
-    }, 60000);
+    }, 3000);
   };
 
   const handleDebit = async () => {
