@@ -34,6 +34,7 @@ function Header() {
   const isLoginRoute = location.pathname === "/login";
   const isCreditRoute = location.pathname === "/credit";
   const isDebitRoute = location.pathname === "/debit";
+  const isRegisterRoute = location.pathname === "/register";
 
   const [bottomPosition, setBottomPosition] = useState("15%"); // State to manage bottom position
   const [navbarHeight, setNavbarHeight] = useState("5.5rem"); // State to manage Navbar height
@@ -53,7 +54,7 @@ function Header() {
     <div
       style={{
         marginBottom:
-          isLoginRoute || isCreditRoute || isDebitRoute ? "0" : "20px",
+          isLoginRoute || isCreditRoute || isDebitRoute || isRegisterRoute ? "0" : "20px",
       }}
     >
       {" "}

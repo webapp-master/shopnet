@@ -31,7 +31,7 @@ function RegisterScreen() {
                 </center>
 
                 <div className="container-fluid main">
-                <div className="form_wrapper" style={{ backgroundImage: 'url("/images/login_background.jpg")' }}>
+                <div className="form_wrapper" style={{  }}>
                     <div className="form_container">
                       <div className="title_container">
                         <h2 style={{ backgroundColor: "#7f3d59" }}>
