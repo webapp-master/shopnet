@@ -1,7 +1,14 @@
 import React from "react";
 import { Form, Button } from "react-bootstrap";
 
+
+
+
 function RegisterScreen() {
+
+  
+
+
   return (
     <div className="row">
       <div className="col-xs-12 col-md-4 col-md-offset-4">
@@ -24,7 +31,7 @@ function RegisterScreen() {
                 </center>
 
                 <div className="container-fluid main">
-                  <div className="form_wrapper">
+                <div className="form_wrapper" style={{ backgroundImage: 'url("/images/login_background.jpg")' }}>
                     <div className="form_container">
                       <div className="title_container">
                         <h2 style={{ backgroundColor: "#7f3d59" }}>
