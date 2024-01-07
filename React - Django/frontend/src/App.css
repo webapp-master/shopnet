@@ -541,6 +541,12 @@ margin-right: 3rem !important;
   color: #e1a70a;
 }
 
+
+
+
+
+
+
 @-webkit-keyframes check {
   0% {
       height: 0;
@@ -680,6 +686,7 @@ margin-right: 3rem !important;
       opacity: 1;
   }
 }
+
 
 @media (max-width: 600px) {
   .form_wrapper .col_half {
