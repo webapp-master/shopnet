@@ -11,7 +11,7 @@ function RegisterScreen() {
 
   return (
     <div className="row">
-      <div className="col-xs-12 col-md-12 col-md-offset-12">
+      <div>
         <div className="header-panel">
           <div className="container-fluid">
             <div className="row">
