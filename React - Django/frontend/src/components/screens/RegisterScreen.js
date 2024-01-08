@@ -82,7 +82,7 @@ function RegisterScreen() {
                             </div>
 
                             <br />
-                            <center>
+                            <center className="regButton">
                               <Button
                                 style={{
                                   width: "90%",
