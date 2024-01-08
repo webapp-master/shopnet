@@ -68,8 +68,8 @@ function Header() {
         }}
       >
         <Container fluid className="custom-container">
-          <LinkContainer to="/" style={{ color: "#ffffff", fontSize: "26px" }}>
-            <Navbar.Brand>Shopnet</Navbar.Brand>
+          <LinkContainer to="/" style={{ color: "#ffffff", fontSize: "26px", textTransform: "none" }}>
+            <Navbar.Brand>ShopNET</Navbar.Brand>
           </LinkContainer>
 
           <Navbar.Toggle aria-controls="navbarScroll" />

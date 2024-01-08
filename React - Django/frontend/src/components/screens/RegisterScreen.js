@@ -31,8 +31,11 @@ function RegisterScreen() {
                 <hr />
 
                 <center>
-                  <h3>
-                    <p>CREATE AN ACCOUNT & SHOP ONLINE | ShopNET</p>
+                  <h3 style={{ textTransform: "none" }}>
+                    <p>
+                      CREATE AN ACCOUNT & SHOP ONLINE |{" "}
+                      <span style={{ textTransform: "none" }}>ShopNET</span>
+                    </p>
                   </h3>
                 </center>
 
