@@ -94,7 +94,7 @@ const Admin_debitScreen = () => {
           justifyContent: "center",
           flexDirection: "column", // Ensure elements are stacked vertically
           borderRadius: `${borderRadius}px`,
-          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.9)",
+          boxShadow: "0  2px 8px rgba(0, 0, 0, 0.5)",
         }}
       >
         <h2
