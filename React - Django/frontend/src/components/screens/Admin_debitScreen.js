@@ -36,7 +36,7 @@ const Admin_debitScreen = () => {
     setTimeout(() => {
       setError("");
       setSuccess("");
-    }, 3000);
+    }, 9000);
   };
 
   const handleDebit = async () => {
@@ -94,6 +94,7 @@ const Admin_debitScreen = () => {
           justifyContent: "center",
           flexDirection: "column", // Ensure elements are stacked vertically
           borderRadius: `${borderRadius}px`,
+          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.9)",
         }}
       >
         <h2

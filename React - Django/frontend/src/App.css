@@ -222,6 +222,7 @@ margin-right: 3rem !important;
 
 .form_wrapper {
   /*background-color: #d7d1c6;*/
+  position: relative;
   width: 30rem;
   max-width: 100%;
   box-sizing: border-box;
@@ -232,8 +233,7 @@ margin-right: 3rem !important;
   border-top: 5px solid #cc0000;
   border-left: 2px solid #d7d1c6;
   border-right: 2px solid #d7d1c6;
-  border-bottom: 2px solid #d7d1c6;
-  border-bottom-length: 50%;
+  
   -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
@@ -248,6 +248,17 @@ margin-right: 3rem !important;
   opacity: 0;
 }
 
+.form_wrapper::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 37%;
+  transform: translateX(-25%); /* Half of the width (50%) to center */
+  width: 50%; /* Adjust the width of the pseudo-element to control the length of the "shortened" border */
+  height: 2px; /* Height/thickness of the border */
+  background-color: #7f3d59; /* Color of the border */
+}
+
 .form_wrapper h2 {
   font-size: 1.5em;
   line-height: 1.5em;
@@ -255,7 +266,7 @@ margin-right: 3rem !important;
 }
 
 .regButton .button {
-  background-color: #7f3d59;
+  background-color: blue;
   border: none;
   color: #ffffff;
   padding: 12px;

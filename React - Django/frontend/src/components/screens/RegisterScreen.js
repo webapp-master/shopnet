@@ -34,7 +34,7 @@ function RegisterScreen() {
                 <div className="form_wrapper" style={{  }}>
                     <div className="form_container">
                       <div className="title_container">
-                        <h2 style={{ backgroundColor: "#7f3d59" }}>
+                        <h2 style={{ backgroundColor: "blue", borderRadius: "29px" }}>
                           <font color="#ffffff">
                             <b>FILL THE FORM BELOW</b>
                           </font>
