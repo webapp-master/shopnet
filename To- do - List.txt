@@ -394,3 +394,9 @@ ATM card
 			47
 footer
 automate the date
+
+
+
+			48
+
+the marquee  inside the RegisterScreen.js the link to the WhatsApp is not clickable

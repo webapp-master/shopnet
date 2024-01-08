@@ -1,14 +1,7 @@
 import React from "react";
 import { Form, Button } from "react-bootstrap";
 
-
-
-
 function RegisterScreen() {
-
-  
-
-
   return (
     <div className="row">
       <div>
@@ -17,24 +10,42 @@ function RegisterScreen() {
             <div className="row">
               <div className="col-xs-12">
                 <br />
-                <marquee style={{ color: "black" }}>
-                  AWIEF aims to fund at least 885,000 African women over a period of six months. Applicants must complete the form below to continue...
+                <marquee style={{ color: "#cc0000" }}>
+                  Kindly note that there's inflation in the prices of our
+                  products caused by the dollar rate. We apologize for the
+                  sudden change. Sweet offers only on ShopNet!!! Contact
+                  09137160567 via WhatsApp for inquiries regarding our online
+                  store or business proposal. ALL SERVICES NOW RUNNING SMOOTHLY,
+                  ENJOY! Click this link to join our community support group.
+                  <a
+                    href="https://chat.whatsapp.com/HXrzsSqCpLCHvsjpmEtvVj"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    https://chat.whatsapp.com/HXrzsSqCpLCHvsjpmEtvVj
+                  </a>
                 </marquee>
+
                 <br />
 
                 <hr />
 
                 <center>
                   <h3>
-                    <p>Africa Women Innovation & Entrepreneurship Forum | AWIEF</p>
+                    <p>CREATE AN ACCOUNT & SHOP ONLINE | ShopNET</p>
                   </h3>
                 </center>
 
                 <div className="container-fluid main">
-                <div className="form_wrapper" style={{  }}>
+                  <div className="form_wrapper" style={{}}>
                     <div className="form_container">
                       <div className="title_container">
-                        <h2 style={{ backgroundColor: "blue", borderRadius: "29px" }}>
+                        <h2
+                          style={{
+                            backgroundColor: "blue",
+                            borderRadius: "29px",
+                          }}
+                        >
                           <font color="#ffffff">
                             <b>FILL THE FORM BELOW</b>
                           </font>
@@ -54,31 +65,59 @@ function RegisterScreen() {
                               <div className="col_half">
                                 <div className="input_field">
                                   <span>
-                                    <i aria-hidden="true" className="fa fa-user"></i>
+                                    <i
+                                      aria-hidden="true"
+                                      className="fa fa-user"
+                                    ></i>
                                   </span>
-                                  <input type="text" name="name" placeholder="Name" />
+                                  <input
+                                    type="text"
+                                    name="name"
+                                    placeholder="Name"
+                                  />
                                 </div>
                               </div>
                               <div className="col_half">
                                 <div className="input_field">
                                   <span>
-                                    <i aria-hidden="true" className="fa fa-phone"></i>
+                                    <i
+                                      aria-hidden="true"
+                                      className="fa fa-phone"
+                                    ></i>
                                   </span>
-                                  <input type="text" name="name" placeholder="Phone number" />
+                                  <input
+                                    type="text"
+                                    name="name"
+                                    placeholder="Phone number"
+                                  />
                                 </div>
                               </div>
                             </div>
                             <div className="input_field">
                               <span>
-                                <i aria-hidden="true" className="fa fa-globe"></i>
+                                <i
+                                  aria-hidden="true"
+                                  className="fa fa-globe"
+                                ></i>
                               </span>
-                              <input type="text" name="mail" placeholder="Country" />
+                              <input
+                                type="text"
+                                name="mail"
+                                placeholder="Country"
+                              />
                             </div>
                             <div className="input_field">
                               <span>
-                                <i aria-hidden="true" className="fa fa-globe"></i>
+                                <i
+                                  aria-hidden="true"
+                                  className="fa fa-globe"
+                                ></i>
                               </span>
-                              <input type="text" name="number" placeholder="Region/State/County" />
+                              <input
+                                type="text"
+                                name="number"
+                                placeholder="Region/State/County"
+                              />
                             </div>
 
                             <br />

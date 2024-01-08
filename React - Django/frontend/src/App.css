@@ -282,7 +282,7 @@ margin-right: 3rem !important;
 }
 
 .regButton .button:hover {
-  background: #1f73c9;
+  background: #cc0000;
   -webkit-transition: background 0.3s ease-in-out;
   -moz-transition: background 0.3s ease-in-out;
   transition: background-color 0.3s ease-in-out;
