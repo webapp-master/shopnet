@@ -211,7 +211,7 @@ function RegisterScreen() {
                                   display: "block",
                                   marginTop: "10px",
                                 }}
-                                href="https://awieforum-org.applyforms.me"
+                                
                                 className="button final"
                               >
                                 APPLY
