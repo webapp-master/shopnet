@@ -54,10 +54,14 @@ function RegisterScreen() {
                           </font>
                         </h2>
                       </div>
+
+
                       <div className="row clearfix">
                         <div className="">
                           <Form action="index.html">
+                            
                             <div className="row clearfix">
+
                               <div className="input_field select_option">
                                 <select>
                                   <option>Select your gender</option>
@@ -65,6 +69,8 @@ function RegisterScreen() {
                                   <option value="mtn">Female</option>
                                 </select>
                               </div>
+
+
                               <div className="col_half">
                                 <div className="input_field">
                                   <span>
@@ -73,13 +79,16 @@ function RegisterScreen() {
                                       className="fa fa-user"
                                     ></i>
                                   </span>
+
                                   <input
                                     type="text"
-                                    name="name"
-                                    placeholder="Name"
+                                    name="firstName"
+                                    placeholder="First Name"
                                   />
                                 </div>
                               </div>
+
+
                               <div className="col_half">
                                 <div className="input_field">
                                   <span>
@@ -95,7 +104,12 @@ function RegisterScreen() {
                                   />
                                 </div>
                               </div>
+
+
+
                             </div>
+
+
                             <div className="input_field">
                               <span>
                                 <i
