@@ -206,11 +206,7 @@ margin-right: 3rem !important;
   text-transform: capitalize !important; /* Converts the first character of each word to uppercase */
 }
 
-
-
-
-
-
+                            /*  Styles for  RegisterScreen.js  */
 
 .clearfix:after {
   content: "";
@@ -556,12 +552,6 @@ margin-right: 3rem !important;
 .credit a {
   color: #e1a70a;
 }
-
-
-
-
-
-
 
 @-webkit-keyframes check {
   0% {

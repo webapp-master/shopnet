@@ -125,12 +125,12 @@ function RegisterScreen() {
                                   <span>
                                     <i
                                       aria-hidden="true"
-                                      className="fa fa-user"
+                                      className="fa fa-envelope"
                                     ></i>
                                   </span>
 
                                   <input
-                                    type="text"
+                                    type="email"
                                     name="email"
                                     placeholder="Email"
                                   />
@@ -172,7 +172,7 @@ function RegisterScreen() {
                                   <span>
                                     <i
                                       aria-hidden="true"
-                                      className="fa fa-user"
+                                      className="fa fa-lock"
                                     ></i>
                                   </span>
 
@@ -189,7 +189,7 @@ function RegisterScreen() {
                                   <span>
                                     <i
                                       aria-hidden="true"
-                                      className="fa fa-user"
+                                      className="fa fa-lock"
                                     ></i>
                                   </span>
 
