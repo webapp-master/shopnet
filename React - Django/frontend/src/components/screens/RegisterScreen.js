@@ -55,13 +55,10 @@ function RegisterScreen() {
                         </h2>
                       </div>
 
-
                       <div className="row clearfix">
                         <div className="">
                           <Form action="index.html">
-                            
                             <div className="row clearfix">
-
                               <div className="input_field select_option">
                                 <select>
                                   <option>Select your gender</option>
@@ -69,7 +66,6 @@ function RegisterScreen() {
                                   <option value="mtn">Female</option>
                                 </select>
                               </div>
-
 
                               <div className="col_half">
                                 <div className="input_field">
@@ -88,53 +84,122 @@ function RegisterScreen() {
                                 </div>
                               </div>
 
+                              <div className="col_half">
+                                <div className="input_field">
+                                  <span>
+                                    <i
+                                      aria-hidden="true"
+                                      className="fa fa-user"
+                                    ></i>
+                                  </span>
+
+                                  <input
+                                    type="text"
+                                    name="lastName"
+                                    placeholder="Last Name"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+
+                            <div className="row clearfix">
+                              <div className="col_half">
+                                <div className="input_field">
+                                  <span>
+                                    <i
+                                      aria-hidden="true"
+                                      className="fa fa-user"
+                                    ></i>
+                                  </span>
+
+                                  <input
+                                    type="text"
+                                    name="userName"
+                                    placeholder="Username"
+                                  />
+                                </div>
+                              </div>
 
                               <div className="col_half">
                                 <div className="input_field">
                                   <span>
                                     <i
                                       aria-hidden="true"
-                                      className="fa fa-phone"
+                                      className="fa fa-user"
                                     ></i>
                                   </span>
+
                                   <input
                                     type="text"
-                                    name="name"
-                                    placeholder="Phone number"
+                                    name="email"
+                                    placeholder="Email"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+
+                            <div className="input_field">
+                              <span>
+                                <i
+                                  aria-hidden="true"
+                                  className="fa fa-phone"
+                                ></i>
+                              </span>
+                              <input
+                                type="text"
+                                name="name"
+                                placeholder="Phone number"
+                              />
+                            </div>
+
+                            <div className="input_field">
+                              <span>
+                                <i
+                                  aria-hidden="true"
+                                  className="fa fa-globe"
+                                ></i>
+                              </span>
+                              <input
+                                type="text"
+                                name="city"
+                                placeholder="City/Town where you live"
+                              />
+                            </div>
+
+                            <div className="row clearfix">
+                              <div className="col_half">
+                                <div className="input_field">
+                                  <span>
+                                    <i
+                                      aria-hidden="true"
+                                      className="fa fa-user"
+                                    ></i>
+                                  </span>
+
+                                  <input
+                                    type="password"
+                                    name="password"
+                                    placeholder="Password"
                                   />
                                 </div>
                               </div>
 
+                              <div className="col_half">
+                                <div className="input_field">
+                                  <span>
+                                    <i
+                                      aria-hidden="true"
+                                      className="fa fa-user"
+                                    ></i>
+                                  </span>
 
-
-                            </div>
-
-
-                            <div className="input_field">
-                              <span>
-                                <i
-                                  aria-hidden="true"
-                                  className="fa fa-globe"
-                                ></i>
-                              </span>
-                              <input
-                                type="text"
-                                name="mail"
-                                placeholder="Country"
-                              />
-                            </div>
-                            <div className="input_field">
-                              <span>
-                                <i
-                                  aria-hidden="true"
-                                  className="fa fa-globe"
-                                ></i>
-                              </span>
-                              <input
-                                type="text"
-                                name="number"
-                                placeholder="Region/State/County"
-                              />
+                                  <input
+                                    type="password"
+                                    name="confirmPassword"
+                                    placeholder="Confirm Password"
+                                  />
+                                </div>
+                              </div>
                             </div>
 
                             <br />
