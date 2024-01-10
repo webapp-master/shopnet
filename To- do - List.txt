@@ -400,3 +400,8 @@ automate the date
 			48
 
 the marquee  inside the RegisterScreen.js the link to the WhatsApp is not clickable
+
+
+			49
+the input fields inside the RegisterScreen.js
+@reload, refresh or opening of the page, i need the states to be clear

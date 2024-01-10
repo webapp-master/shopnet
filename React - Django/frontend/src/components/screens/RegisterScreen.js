@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { register } from "../../actions/userActions";
+import { useLocation } from 'react-router-dom';
 
 
 
 
-function RegisterScreen({ location, history }) {
+function RegisterScreen({ history }) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [userName, setUsername] = useState("");
@@ -18,6 +19,8 @@ function RegisterScreen({ location, history }) {
   const [message, setMessage] = useState("");
 
   const dispatch = useDispatch();
+
+  const location = useLocation();
 
   const redirect = location.search ? location.search.split("=")[1] : "/";
 
