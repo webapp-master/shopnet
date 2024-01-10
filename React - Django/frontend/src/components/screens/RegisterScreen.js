@@ -1,7 +1,63 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { register } from "../../actions/userActions";
 
-function RegisterScreen() {
+
+
+
+function RegisterScreen({ location, history }) {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [userName, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [City, setCiTy] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [message, setMessage] = useState("");
+
+  const dispatch = useDispatch();
+
+  const redirect = location.search ? location.search.split("=")[1] : "/";
+
+  const userRegister = useSelector((state) => state.userRegister);
+
+  const { error, loading, userInfo } = userRegister;
+
+  useEffect(() => {
+    if (userInfo) {
+      history.push("/login"); // Redirect to the login page
+    }
+  }, [history, userInfo]);
+
+
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    if (password != confirmPassword) {
+      setMessage("Password do not Match");
+    } else {
+      dispatch(register(firstName, lastName, userName, email, phoneNumber, City, password));
+    }
+  };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   return (
     <div className="row">
       <div>
@@ -147,8 +203,8 @@ function RegisterScreen() {
                               </span>
                               <input
                                 type="text"
-                                name="name"
-                                placeholder="Phone number"
+                                name="phoneNumber"
+                                placeholder="Phone Number"
                               />
                             </div>
 
