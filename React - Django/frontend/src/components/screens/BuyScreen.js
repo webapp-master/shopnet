@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Col, Container, Row, Card, Button } from "react-bootstrap";
+import axios from "axios";
 
 const BuyScreen = () => {
   const cart = useSelector((state) => state.cart);
@@ -141,6 +142,33 @@ const BuyScreen = () => {
     concatenatedShippingAddress
   );
 
+
+  const [walletBalance, setWalletBalance] = useState(null);
+
+  useEffect(() => {
+    const fetchWalletBalance = async () => {
+      try {
+        const response = await axios.get("/api/user/wallet/balance", {
+          headers: {
+            Authorization: `Bearer ${userInfo.access}`,
+          },
+        });
+
+        // Assuming the response contains the user's wallet balance
+        const { balance } = response.data;
+
+        setWalletBalance(balance);
+      } catch (error) {
+        // Handle error
+        console.error("Error fetching wallet balance:", error);
+      }
+    };
+
+    // Fetch wallet balance when the component mounts
+    fetchWalletBalance();
+  }, [userInfo]);
+
+
   
 
   return (
@@ -170,7 +198,7 @@ const BuyScreen = () => {
               style={{ backgroundColor: cardBodyColor, borderRadius: "75px" }}
             >
               <Card.Text className="text-center">
-                <p style={boldText}>Wallet Balance: $700</p>
+              <p style={boldText}>Wallet Balance: ${walletBalance !== null ? walletBalance : "Loading..."}</p>
 
                 <p>Product List:</p>
                 <ul style={listBorderStyle}>
