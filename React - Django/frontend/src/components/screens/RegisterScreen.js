@@ -2,10 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { register } from "../../actions/userActions";
-import { useLocation } from 'react-router-dom';
-
-
-
+import { useLocation } from "react-router-dom";
 
 function RegisterScreen({ history }) {
   const [firstName, setFirstName] = useState("");
@@ -34,32 +31,24 @@ function RegisterScreen({ history }) {
     }
   }, [history, userInfo]);
 
-
-
   const submitHandler = (e) => {
     e.preventDefault();
     if (password != confirmPassword) {
       setMessage("Password do not Match");
     } else {
-      dispatch(register(firstName, lastName, userName, email, phoneNumber, City, password));
+      dispatch(
+        register(
+          firstName,
+          lastName,
+          userName,
+          email,
+          phoneNumber,
+          City,
+          password
+        )
+      );
     }
   };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   return (
     <div className="row">
@@ -116,7 +105,9 @@ function RegisterScreen({ history }) {
 
                       <div className="row clearfix">
                         <div className="">
-                          <Form action="index.html">
+
+
+                          <Form onSubmit={submitHandler}>
                             <div className="row clearfix">
                               <div className="input_field select_option">
                                 <select>
@@ -137,8 +128,12 @@ function RegisterScreen({ history }) {
 
                                   <input
                                     type="text"
-                                    name="firstName"
                                     placeholder="First Name"
+                                    value={firstName}
+                                    onChange={(e) =>
+                                      setFirstName(e.target.value)
+                                    }
+                                    required
                                   />
                                 </div>
                               </div>
@@ -154,8 +149,12 @@ function RegisterScreen({ history }) {
 
                                   <input
                                     type="text"
-                                    name="lastName"
                                     placeholder="Last Name"
+                                    value={lastName}
+                                    onChange={(e) =>
+                                      setLastName(e.target.value)
+                                    }
+                                    required
                                   />
                                 </div>
                               </div>
@@ -173,8 +172,12 @@ function RegisterScreen({ history }) {
 
                                   <input
                                     type="text"
-                                    name="userName"
                                     placeholder="Username"
+                                    value={userName}
+                                    onChange={(e) =>
+                                      setUsername(e.target.value)
+                                    }
+                                    required
                                   />
                                 </div>
                               </div>
@@ -190,8 +193,9 @@ function RegisterScreen({ history }) {
 
                                   <input
                                     type="email"
-                                    name="email"
                                     placeholder="Email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
                                   />
                                 </div>
                               </div>
@@ -206,8 +210,9 @@ function RegisterScreen({ history }) {
                               </span>
                               <input
                                 type="text"
-                                name="phoneNumber"
                                 placeholder="Phone Number"
+                                value={phoneNumber}
+                                onChange={(e) => setPhoneNumber(e.target.value)}
                               />
                             </div>
 
@@ -220,8 +225,10 @@ function RegisterScreen({ history }) {
                               </span>
                               <input
                                 type="text"
-                                name="city"
                                 placeholder="City/Town where you live"
+                                value={City}
+                                onChange={(e) => setCiTy(e.target.value)}
+                                required
                               />
                             </div>
 
@@ -237,8 +244,11 @@ function RegisterScreen({ history }) {
 
                                   <input
                                     type="password"
-                                    name="password"
                                     placeholder="Password"
+                                    value={password}
+                                    onChange={(e) =>
+                                      setPassword(e.target.value)
+                                    }
                                   />
                                 </div>
                               </div>
@@ -254,14 +264,19 @@ function RegisterScreen({ history }) {
 
                                   <input
                                     type="password"
-                                    name="confirmPassword"
                                     placeholder="Confirm Password"
+                                    value={confirmPassword}
+                                    onChange={(e) =>
+                                      setConfirmPassword(e.target.value)
+                                    }
                                   />
                                 </div>
                               </div>
                             </div>
 
                             <br />
+
+
                             <center className="regButton">
                               <Button
                                 style={{
@@ -270,13 +285,17 @@ function RegisterScreen({ history }) {
                                   display: "block",
                                   marginTop: "10px",
                                 }}
-                                
                                 className="button final"
+                                type="submit"
                               >
                                 APPLY
                               </Button>
                             </center>
+
+
                           </Form>
+
+                          
                         </div>
                       </div>
                     </div>
