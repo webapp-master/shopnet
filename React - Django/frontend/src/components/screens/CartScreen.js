@@ -93,6 +93,7 @@ function CartScreen({ match, location }) {
                         style={{
                           textAlign: "center",
                           color: "blue",
+                          borderRadius: "25px",
                         }}
                       >
                         {[...Array(item.countInStock).keys()].map((x) => (
