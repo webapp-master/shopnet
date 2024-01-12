@@ -50,7 +50,7 @@ function CartScreen({ match, location }) {
   return (
     <Container fluid>
       <Row>
-      <Col md={8} className="text-center">
+        <Col md={8} className="text-center">
           <h1>Shopping Cart</h1>
           {cartItems.length === 0 ? (
             <Message variant="info">
@@ -62,9 +62,14 @@ function CartScreen({ match, location }) {
                 <ListGroup.Item key={item.product}>
                   <Row>
                     <Col md={2}>
-                      <Image src={item.image} alt={item.name} fluid rounded />
+                      <Image
+                        src={item.image}
+                        alt={item.name}
+                        fluid
+                        rounded
+                        className="cart_image"
+                      />
                     </Col>
-
                     <Col md={3}>
                       <Link
                         to={`/product/${item.product}`}
@@ -146,8 +151,6 @@ function CartScreen({ match, location }) {
           </Card>
         </Col>
       </Row>
-        
-      
     </Container>
   );
 }
