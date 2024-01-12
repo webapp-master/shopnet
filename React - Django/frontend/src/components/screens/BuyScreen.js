@@ -143,6 +143,9 @@ const BuyScreen = () => {
   );
 
 
+  // Get user information from Redux state
+  const userInfo = useSelector((state) => state.userLogin.userInfo);
+
   const [walletBalance, setWalletBalance] = useState(null);
 
   useEffect(() => {
@@ -150,7 +153,7 @@ const BuyScreen = () => {
       try {
         const response = await axios.get("/api/user/wallet/balance", {
           headers: {
-            Authorization: `Bearer ${userInfo.access}`,
+            Authorization: `Bearer ${userInfo ? userInfo.access : ''}`,
           },
         });
 
@@ -165,9 +168,10 @@ const BuyScreen = () => {
     };
 
     // Fetch wallet balance when the component mounts
-    fetchWalletBalance();
+    if (userInfo) {
+      fetchWalletBalance();
+    }
   }, [userInfo]);
-
 
   
 
@@ -263,3 +267,7 @@ const BuyScreen = () => {
 };
 
 export default BuyScreen;
+
+
+
+

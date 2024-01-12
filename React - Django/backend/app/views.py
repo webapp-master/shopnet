@@ -191,3 +191,25 @@ def debit_wallet(request):
         else:
             return Response({'error': 'Insufficient balance'}, status=status.HTTP_400_BAD_REQUEST)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_wallet_balance(request):
+    # Get the user from the request
+    user = request.user
+
+    try:
+        # Assuming each user has only one wallet, you can adjust as needed
+        wallet = Wallet.objects.get(user=user.profile.user)
+        balance = wallet.balance
+
+        return Response({'balance': balance})
+    except Wallet.DoesNotExist:
+        return Response({'error': 'Wallet not found for this user'}, status=404)
+    except Exception as e:
+        return Response({'error': str(e)}, status=500)

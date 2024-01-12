@@ -15,5 +15,6 @@ urlpatterns = [
     path('users/', views.getUsers, name="getUsers"),
     path('wallet/credit/', views.credit_wallet, name='credit_wallet'),
     path('wallet/debit/', views.debit_wallet, name='debit_wallet'),
+    path('user/wallet/balance', views.get_wallet_balance, name='get_wallet_balance'),
     
 ]
