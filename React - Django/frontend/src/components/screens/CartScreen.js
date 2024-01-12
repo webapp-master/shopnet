@@ -94,6 +94,7 @@ function CartScreen({ match, location }) {
                           textAlign: "center",
                           color: "blue",
                           borderRadius: "25px",
+                          width: "60px",
                         }}
                       >
                         {[...Array(item.countInStock).keys()].map((x) => (
@@ -109,10 +110,14 @@ function CartScreen({ match, location }) {
                         type="button"
                         variant="light"
                         onClick={() => removeFromCartHandler(item.product)}
+                        style={{
+                          color: "red",
+                        }}
                       >
                         <i className="fas fa-trash"></i>
                       </Button>
                     </Col>
+
                   </Row>
                 </ListGroup.Item>
               ))}
@@ -141,10 +146,10 @@ function CartScreen({ match, location }) {
             <ListGroup.Item className="text-center">
               <Button
                 type="button"
-                className="btn-block custom-button" // Add a custom class to the button
+                className="btn-block custom-button" 
                 disabled={cartItems.length === 0}
                 onClick={checkoutHandler}
-                style={{ borderRadius: "20px" }} // Set the desired border radius
+                style={{ borderRadius: "20px" }} 
               >
                 Proceed To Checkout
               </Button>
