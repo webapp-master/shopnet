@@ -3,8 +3,10 @@ import { Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { register } from "../../actions/userActions";
 import { useLocation } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 
-function RegisterScreen({ history }) {
+function RegisterScreen() {
+  const history = useHistory();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [userName, setUsername] = useState("");
@@ -295,7 +297,7 @@ function RegisterScreen({ history }) {
 
                           </Form>
 
-                          
+
                         </div>
                       </div>
                     </div>
