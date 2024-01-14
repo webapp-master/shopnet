@@ -25,8 +25,11 @@ function HomeScreen() {
                         marginTop: "25px",
                         borderRadius: "390px",
                         boxShadow: "0  2px 8px rgba(0, 0, 0, 0.5)",
+                        color: "white", 
+                        textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)"
                       }}
-                    >Latest Products</h1>
+                    >
+                    Latest Products</h1>
 
                     {loading ?(
                         <Loader />
