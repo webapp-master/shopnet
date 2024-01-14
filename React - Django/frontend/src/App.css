@@ -84,6 +84,7 @@
   
 }
 
+
 .headerButtons {
   display: flex !important;
   justify-content: center;
@@ -716,4 +717,17 @@ margin-right: 3rem !important;
 
 .list-group .cart_image {
   border-radius: 36px !important;
+}
+
+
+                      /*Styles for ProductScreen.js*/
+
+.product .product-custom {
+  background-color: #1f73c9; 
+  transition: background-color 0.3s ease; 
+  border-radius: 10px;
+}
+
+.product .product-custom:hover {
+  background-color: blue; /* Change background color to '#4091ed' on hover */ 
 }

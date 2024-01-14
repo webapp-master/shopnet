@@ -345,11 +345,12 @@ const ShippingScreen = ({ history }) => {
 
               {/* Submit button */}
 
-              <div className="text-center mb-5">
+              <div className="text-center mb-5 product">
                 <Button
                   variant="primary"
                   type="submit"
                   disabled={!state || !city}
+                  className="product-custom"
                 >
                   {" "}
                   {/*Disable the button if state or city is not selected*/}
