@@ -59,7 +59,10 @@ function CartScreen({ match, location }) {
               boxShadow: "0  2px 8px rgba(0, 0, 0, 0.5)",
             }}
           >
-            <h1>Shopping Cart</h1>
+           <h1 style={{ color: "white", textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}>
+  Shopping Cart
+</h1>
+
             {cartItems.length === 0 ? (
               <Message variant="info">
                 Your cart is empty <Link to="/">Go Back</Link>
@@ -102,7 +105,7 @@ function CartScreen({ match, location }) {
                             textAlign: "center",
                             color: "blue",
                             borderRadius: "25px",
-                            width: "60px",
+                            width: "90px",
                           }}
                         >
                           {[...Array(item.countInStock).keys()].map((x) => (
@@ -137,13 +140,16 @@ function CartScreen({ match, location }) {
           md={4}
           className="d-flex align-items-center justify-content-center"
         >
+
+
+
           <Card>
             <ListGroup variant="flush">
               <ListGroup.Item
                 className="text-center"
                 style={{ backgroundColor: "#d7d1c6" }}
               >
-                <h2>
+                <h2 style={{ color: "white", textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}>
                   Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)}
                   ) items
                 </h2>
@@ -153,6 +159,8 @@ function CartScreen({ match, location }) {
                   .toFixed(2)}
               </ListGroup.Item>
             </ListGroup>
+
+            <div style={{ borderTop: "1px solid white", marginBottom: "1px" }}></div>
 
             <ListGroup.Item
               className="text-center"
@@ -169,6 +177,9 @@ function CartScreen({ match, location }) {
               </Button>
             </ListGroup.Item>
           </Card>
+
+
+
         </Col>
       </Row>
     </Container>
