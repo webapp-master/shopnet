@@ -19,7 +19,14 @@ function HomeScreen() {
         <Container fluid>
 
                 <div>
-                    <h1 className="text-center">Latest Products</h1>
+                    <h1 className="text-center"
+                    style={{
+                        backgroundColor: "#d7d1c6",
+                        marginTop: "25px",
+                        borderRadius: "390px",
+                        boxShadow: "0  2px 8px rgba(0, 0, 0, 0.5)",
+                      }}
+                    >Latest Products</h1>
 
                     {loading ?(
                         <Loader />

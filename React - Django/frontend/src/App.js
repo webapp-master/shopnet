@@ -3,7 +3,7 @@ import { Container } from "react-bootstrap";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import HomeScreen from "./components/screens/HomeScreen";
+import HomeScreenBackground from "./components/screens/HomeScreenBackground";
 import ProductScreen from "./components/screens/ProductScreen";
 import CartScreen from "./components/screens/CartScreen";
 import LoginScreen from "./components/screens/LoginScreen";
@@ -23,7 +23,7 @@ function App() {
       
 
       <main>
-        <Route path="/" component={HomeScreen}  exact />
+        <Route path="/" component={HomeScreenBackground}  exact />
         <Route path="/login" component={LoginScreen} exact/>
         <Route path="/register" component={RegisterBackground} exact />
         <Route path="/product/:id" component={ProductScreen} exact />
@@ -33,6 +33,7 @@ function App() {
         <Route path="/wallet" component={WalletScreen} exact />
         <Route path="/credit" component={CreditBackground} exact />
         <Route path="/debit" component={DebitBackground} exact />
+        
       </main>
 
       <Footer/>

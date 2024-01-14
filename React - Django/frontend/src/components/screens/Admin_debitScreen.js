@@ -83,7 +83,7 @@ const Admin_debitScreen = () => {
         justifyContent: "center",
       }}
     >
-      <div
+      <div 
         style={{
           backgroundColor: "#d7d1c6",
           width: "40rem",

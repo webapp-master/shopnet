@@ -13,7 +13,7 @@ function Product({ product }) {
         <Card.Img src={product.image} />
       </Link>
 
-      <Card.Body className="d-flex flex-column align-items-center justify-content-center">
+      <Card.Body className="d-flex flex-column align-items-center justify-content-center" style={{ backgroundColor: ""}}>
 
         <Link to={`/product/${product.id}`} className="text-center">
           <Card.Title as="div">
