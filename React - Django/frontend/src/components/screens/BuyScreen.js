@@ -11,7 +11,7 @@ const BuyScreen = () => {
   const shippingAddress = useSelector((state) => state.shippingAddress);
   const { shippingCost, phoneNumber } = shippingAddress;
 
-  const headerFooterColor = "#bdbdbd"; // Deeper version of the color
+  const headerFooterColor = "#bdbdbd"; 
   const cardBodyColor = "#fff7eb"; // Desired background color for the card body
   const listBorderStyle = {
     listStyleType: "none",
@@ -173,6 +173,30 @@ const BuyScreen = () => {
     }
   }, [userInfo]);
 
+
+
+
+  const handlePurchase = async () => {
+    try {
+        const response = await axios.post('/api/make_purchase/', { totalAmount }, {
+            headers: {
+                Authorization: `Bearer ${userInfo ? userInfo.access : ''}`,
+            },
+        });
+
+        // Assuming the new wallet is returned in the response
+        const newWallet = response.data.newWallet;
+
+        // You can update your state or perform any necessary actions with the new wallet data
+        setWalletBalance(newWallet.balance);
+        console.log('Purchase successful. New wallet balance:', newWallet.balance);
+    } catch (error) {
+        // Handle errors
+        console.error('Error making purchase:', error);
+    }
+};
+
+
   
 
   return (
@@ -239,9 +263,11 @@ const BuyScreen = () => {
                 variant="danger"
                 className="rounded-pill titleCaseText"
                 style={buttonStyle}
+                onClick={handlePurchase}
               >
                 Make Payment
               </Button>
+
               <Button
                 variant="success"
                 className="rounded-pill titleCaseText"

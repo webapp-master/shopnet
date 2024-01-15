@@ -19,6 +19,9 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 
 from django.db import IntegrityError
+from django.http import JsonResponse
+from .serializer import WalletSerializer
+from decimal import Decimal
 
 
 @api_view(['GET'])
@@ -213,3 +216,37 @@ def get_wallet_balance(request):
         return Response({'error': 'Wallet not found for this user'}, status=404)
     except Exception as e:
         return Response({'error': str(e)}, status=500)
+    
+
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def make_purchase(request):
+    user = request.user
+
+    # Fetch the user's wallet
+    wallet = Wallet.objects.get(user=user)
+
+    # Assuming totalAmount is passed in the request data
+    total_amount = Decimal(request.data.get('totalAmount', '0.0'))  # Use Decimal for total_amount
+
+    # Fetch the current wallet balance
+    previous_balance = wallet.balance
+
+    # Check if the user has sufficient balance
+    if previous_balance >= total_amount:
+        # Subtract totalAmount from the current balance
+        new_balance = previous_balance - total_amount
+
+        # Update the wallet balance
+        wallet.balance = new_balance
+        wallet.save()
+
+        # Serialize the updated wallet
+        wallet_serializer = WalletSerializer(wallet)
+
+        # Return the new wallet balance in the response
+        return JsonResponse({'message': 'Purchase successful', 'newWallet': wallet_serializer.data})
+    else:
+        return JsonResponse({'error': 'Insufficient balance'}, status=400)
