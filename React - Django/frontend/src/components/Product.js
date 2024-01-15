@@ -4,18 +4,21 @@ import Rating from "../components/Rating";
 import { Link } from "react-router-dom";
 
 function Product({ product }) {
-
   return (
-
     <Card className="my-3 p-3 rounded">
-
       <Link to={`/product/${product.id}`}>
-        <Card.Img src={product.image} />
+        <Card.Img style={{ borderRadius: "30px" }} src={product.image} />
       </Link>
 
-      <Card.Body className="d-flex flex-column align-items-center justify-content-center" style={{ backgroundColor: ""}}>
-
-        <Link to={`/product/${product.id}`} className="text-center">
+      <Card.Body
+        className="d-flex flex-column align-items-center justify-content-center"
+        style={{ backgroundColor: "" }}
+      >
+        <Link
+          to={`/product/${product.id}`}
+          className="text-center"
+          style={{ color: "#1f73c9" }}
+        >
           <Card.Title as="div">
             <strong>{product.name}</strong>
           </Card.Title>
@@ -31,15 +34,9 @@ function Product({ product }) {
           ${product.price}
         </Card.Text>
 
-        <Rating
-          value={product.rating}
-          color={"#f8e825"}
-        />
-
+        <Rating value={product.rating} color={"#f8e825"} />
       </Card.Body>
-
     </Card>
-
   );
 }
 
