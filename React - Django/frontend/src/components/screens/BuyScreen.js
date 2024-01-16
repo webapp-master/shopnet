@@ -195,9 +195,13 @@ const BuyScreen = () => {
         console.log('Purchase successful. New wallet balance:', newWallet.balance);
 
         // Reset the cart after successful purchase
-      dispatch(resetCart());
+        dispatch(resetCart()); 
 
       history.push("/cart"); 
+
+        // Force a page reload to clear browser cache
+    window.location.reload(true);
+
 
     } catch (error) {
         // Handle errors

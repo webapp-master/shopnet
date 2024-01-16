@@ -16,14 +16,19 @@ import Message from "../Message";
 import { addToCart, removeFromCart } from "../../actions/cartActions";
 import { useHistory } from "react-router-dom";
 
+
+
+
 function CartScreen({ match, location }) {
   const productId = match.params.id;
   const qty = location.search ? Number(location.search.split("=")[1]) : 1;
   const dispatch = useDispatch();
-  const history = useHistory(); // Initialize useHistory
+  const history = useHistory(); 
 
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
+
+  
 
   useEffect(() => {
     if (productId) {
