@@ -243,6 +243,16 @@ def make_purchase(request):
         wallet.balance = new_balance
         wallet.save()
 
+        # Record the transaction
+        description = "Order was placed by the User"
+        transaction = Transaction.objects.create(
+            user=user,
+            description=description,
+            amount=total_amount,
+            previous_balance=previous_balance,
+            new_balance=new_balance
+        )
+
         # Serialize the updated wallet
         wallet_serializer = WalletSerializer(wallet)
 
