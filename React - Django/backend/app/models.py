@@ -56,3 +56,27 @@ class Transaction(models.Model):
 
     def __str__(self):
         return f"Transaction for {self.user.username} at {self.timestamp}" 
+
+
+class Order(models.Model):
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    name = models.CharField(max_length=255, null=True, blank=True)
+    amountPaid = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
+    isPaid = models.BooleanField(default=True)
+    isProcessed = models.BooleanField(default=False)
+    processedAt = models.DateTimeField(auto_now_add=False, null=True, blank=True)
+    isDelivered = models.BooleanField(default=False)
+    deliveredAt = models.DateTimeField(auto_now_add=False, null=True, blank=True)
+    createdAt = models.DateTimeField(auto_now_add=True)
+    name = models.CharField(max_length=255, null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        # Set the 'name' field to the concatenation of 'firstName' and 'last_name'
+        if self.user:
+            self.name = f"{self.user.first_name} {self.user.last_name}"
+
+        super(Order, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return str(self.createdAt)
+

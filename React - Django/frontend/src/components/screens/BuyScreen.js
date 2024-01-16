@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Col, Container, Row, Card, Button } from "react-bootstrap";
 import axios from "axios";
+import { resetCart } from "../actions/cartActions";
 
 const BuyScreen = () => {
   const cart = useSelector((state) => state.cart);
@@ -175,6 +176,11 @@ const BuyScreen = () => {
 
 
 
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+
+
 
   const handlePurchase = async () => {
     try {
@@ -190,6 +196,13 @@ const BuyScreen = () => {
         // You can update your state or perform any necessary actions with the new wallet data
         setWalletBalance(newWallet.balance);
         console.log('Purchase successful. New wallet balance:', newWallet.balance);
+
+        // Reset the cart after successful purchase
+      dispatch(resetCart());
+
+      // Redirect to a success page or handle the success as needed
+      history.push("/success"); 
+
     } catch (error) {
         // Handle errors
         console.error('Error making purchase:', error);
