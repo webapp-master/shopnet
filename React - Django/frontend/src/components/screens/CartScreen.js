@@ -141,8 +141,6 @@ function CartScreen({ match, location }) {
           className="d-flex align-items-center justify-content-center"
         >
 
-
-
           <Card>
             <ListGroup variant="flush">
               <ListGroup.Item

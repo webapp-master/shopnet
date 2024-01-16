@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { Col, Container, Row, Card, Button } from "react-bootstrap";
 import axios from "axios";
-import { resetCart } from "../actions/cartActions";
+import { resetCart } from "../../actions/cartActions";
 
 const BuyScreen = () => {
   const cart = useSelector((state) => state.cart);
@@ -174,12 +175,8 @@ const BuyScreen = () => {
     }
   }, [userInfo]);
 
-
-
   const dispatch = useDispatch();
   const history = useHistory();
-
-
 
 
   const handlePurchase = async () => {
@@ -200,8 +197,7 @@ const BuyScreen = () => {
         // Reset the cart after successful purchase
       dispatch(resetCart());
 
-      // Redirect to a success page or handle the success as needed
-      history.push("/success"); 
+      history.push("/cart"); 
 
     } catch (error) {
         // Handle errors
