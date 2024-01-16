@@ -225,6 +225,7 @@ def get_wallet_balance(request):
 def make_purchase(request):
     user = request.user
 
+
     # Fetch the user's wallet
     wallet = Wallet.objects.get(user=user)
 
@@ -244,7 +245,7 @@ def make_purchase(request):
         wallet.save()
 
         # Record the transaction
-        description = "Order was placed by the User"
+        description = f"Order was placed by the User {user.username}"
         transaction = Transaction.objects.create(
             user=user,
             description=description,
