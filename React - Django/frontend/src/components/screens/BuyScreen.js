@@ -13,7 +13,7 @@ const BuyScreen = () => {
   const shippingAddress = useSelector((state) => state.shippingAddress);
   const { shippingCost, phoneNumber } = shippingAddress;
 
-  const headerFooterColor = "#bdbdbd"; 
+  const headerFooterColor = "#bdbdbd";
   const cardBodyColor = "#fff7eb"; // Desired background color for the card body
   const listBorderStyle = {
     listStyleType: "none",
@@ -144,7 +144,6 @@ const BuyScreen = () => {
     concatenatedShippingAddress
   );
 
-
   // Get user information from Redux state
   const userInfo = useSelector((state) => state.userLogin.userInfo);
 
@@ -155,7 +154,7 @@ const BuyScreen = () => {
       try {
         const response = await axios.get("/api/user/wallet/balance", {
           headers: {
-            Authorization: `Bearer ${userInfo ? userInfo.access : ''}`,
+            Authorization: `Bearer ${userInfo ? userInfo.access : ""}`,
           },
         });
 
@@ -178,39 +177,40 @@ const BuyScreen = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-
   const handlePurchase = async () => {
     try {
-        const response = await axios.post('/api/make_purchase/', { totalAmount }, {
-            headers: {
-                Authorization: `Bearer ${userInfo ? userInfo.access : ''}`,
-            },
-        });
+      const response = await axios.post(
+        "/api/make_purchase/",
+        { totalAmount },
+        {
+          headers: {
+            Authorization: `Bearer ${userInfo ? userInfo.access : ""}`,
+          },
+        }
+      );
 
-        // Assuming the new wallet is returned in the response
-        const newWallet = response.data.newWallet;
+      // Assuming the new wallet is returned in the response
+      const newWallet = response.data.newWallet;
 
-        // You can update your state or perform any necessary actions with the new wallet data
-        setWalletBalance(newWallet.balance);
-        console.log('Purchase successful. New wallet balance:', newWallet.balance);
+      // You can update your state or perform any necessary actions with the new wallet data
+      setWalletBalance(newWallet.balance);
+      console.log(
+        "Purchase successful. New wallet balance:",
+        newWallet.balance
+      );
 
-        // Reset the cart after successful purchase
-        dispatch(resetCart()); 
+      // Reset the cart after successful purchase
+      dispatch(resetCart());
 
-      history.push("/cart"); 
+      history.push("/cart");
 
-        // Force a page reload to clear browser cache
-    window.location.reload(true);
-
-
+      // Force a page reload to clear browser cache
+      window.location.reload(true);
     } catch (error) {
-        // Handle errors
-        console.error('Error making purchase:', error);
+      // Handle errors
+      console.error("Error making purchase:", error);
     }
-};
-
-
-  
+  };
 
   return (
     <Container>
@@ -239,7 +239,10 @@ const BuyScreen = () => {
               style={{ backgroundColor: cardBodyColor, borderRadius: "75px" }}
             >
               <Card.Text className="text-center">
-              <p style={boldText}>Wallet Balance: ${walletBalance !== null ? walletBalance : "Loading..."}</p>
+                <p style={boldText}>
+                  Wallet Balance: $
+                  {walletBalance !== null ? walletBalance : "Loading..."}
+                </p>
 
                 <p>Product List:</p>
                 <ul style={listBorderStyle}>
@@ -263,8 +266,6 @@ const BuyScreen = () => {
                 <p>Phone Number: {phoneNumber}</p>
               </Card.Text>
             </Card.Body>
-
-
             <Card.Footer
               className="d-flex justify-content-between align-items-center"
               style={{
@@ -296,8 +297,6 @@ const BuyScreen = () => {
                 WhatsApp us
               </Button>
             </Card.Footer>
-
-
           </Card>
         </Col>
       </Row>
@@ -306,7 +305,3 @@ const BuyScreen = () => {
 };
 
 export default BuyScreen;
-
-
-
-

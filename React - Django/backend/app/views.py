@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from app.models import Product, Profile, Transaction, Wallet
+from app.models import Product, Profile, Transaction, Wallet, Order
 from django.shortcuts import render, get_object_or_404
 
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
@@ -196,10 +196,6 @@ def debit_wallet(request):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-
-
-
-
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_wallet_balance(request):
@@ -216,8 +212,6 @@ def get_wallet_balance(request):
         return Response({'error': 'Wallet not found for this user'}, status=404)
     except Exception as e:
         return Response({'error': str(e)}, status=500)
-    
-
 
 
 @api_view(['POST'])
@@ -225,12 +219,12 @@ def get_wallet_balance(request):
 def make_purchase(request):
     user = request.user
 
-
     # Fetch the user's wallet
     wallet = Wallet.objects.get(user=user)
 
     # Assuming totalAmount is passed in the request data
-    total_amount = Decimal(request.data.get('totalAmount', '0.0'))  # Use Decimal for total_amount
+    # Use Decimal for total_amount
+    total_amount = Decimal(request.data.get('totalAmount', '0.0'))
 
     # Fetch the current wallet balance
     previous_balance = wallet.balance
@@ -256,6 +250,13 @@ def make_purchase(request):
 
         # Serialize the updated wallet
         wallet_serializer = WalletSerializer(wallet)
+
+
+             # Create an instance of the Order model
+        order = Order.objects.create(
+            user=user,
+            amountPaid=total_amount,
+        )
 
         # Return the new wallet balance in the response
         return JsonResponse({'message': 'Purchase successful', 'newWallet': wallet_serializer.data})

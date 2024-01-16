@@ -68,7 +68,6 @@ class Order(models.Model):
     isDelivered = models.BooleanField(default=False)
     deliveredAt = models.DateTimeField(auto_now_add=False, null=True, blank=True)
     createdAt = models.DateTimeField(auto_now_add=True)
-    name = models.CharField(max_length=255, null=True, blank=True)
 
     def save(self, *args, **kwargs):
         # Set the 'name' field to the concatenation of 'firstName' and 'last_name'
