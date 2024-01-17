@@ -185,36 +185,39 @@ const BuyScreen = () => {
         qty: item.qty,
         price: item.price,
       }));
-
+  
+      // Create the request payload
+      const payload = {
+        totalAmount: parseFloat(totalAmount), // Ensure totalAmount is a number
+        orderItems,
+        items: calculateTotalItems(), // Include the number of items
+        tax: parseFloat(totalTax), // Ensure tax is a number
+        shippingCost: parseFloat(shippingCost), // Ensure shippingCost is a number
+      };
+  
       // Send a request to the backend to create an order
       const response = await axios.post(
         "/api/make_purchase/",
-        {
-          totalAmount,
-          orderItems,
-        },
+        payload,
         {
           headers: {
             Authorization: `Bearer ${userInfo ? userInfo.access : ""}`,
           },
         }
       );
-
+  
       // Assuming the new wallet is returned in the response
       const newWallet = response.data.newWallet;
-
+  
       // You can update your state or perform any necessary actions with the new wallet data
       setWalletBalance(newWallet.balance);
-      console.log(
-        "Purchase successful. New wallet balance:",
-        newWallet.balance
-      );
-
-      // Reset the cart after successful purchase
+      console.log("Purchase successful. New wallet balance:", newWallet.balance);
+  
+      // Reset the cart after a successful purchase
       dispatch(resetCart());
-
+  
       history.push("/cart");
-
+  
       // Force a page reload to clear browser cache
       window.location.reload(true);
     } catch (error) {
@@ -222,6 +225,7 @@ const BuyScreen = () => {
       console.error("Error making purchase:", error);
     }
   };
+  
 
   return (
     <Container>

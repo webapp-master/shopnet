@@ -222,8 +222,7 @@ def make_purchase(request):
     # Fetch the user's wallet
     wallet = Wallet.objects.get(user=user)
 
-     # Assuming totalAmount and orderItems are passed in the request data
-     # Use Decimal for total_amount
+    # Assuming totalAmount and orderItems are passed in the request data
     total_amount = Decimal(request.data.get('totalAmount', '0.0'))
     order_items = request.data.get('orderItems', [])
 
@@ -242,13 +241,21 @@ def make_purchase(request):
         # Serialize the updated wallet
         wallet_serializer = WalletSerializer(wallet)
 
+        # Calculate additional fields from the request payload
+        total_items = request.data.get('items', 0)
+        tax = Decimal(request.data.get('tax', '0.0'))
+        shipping_cost = Decimal(request.data.get('shippingCost', '0.0'))
 
-             # Create an instance of the Order model
+        # Create an instance of the Order model
         order = Order.objects.create(
             user=user,
+            items=total_items,
             amountPaid=total_amount,
+            tax=tax,
+            shippingCost=shipping_cost,
         )
-            # Record the transaction
+
+        # Record the transaction
         description = f"Order was placed by the User {user.username}"
         transaction = Transaction.objects.create(
             user=user,
@@ -258,7 +265,8 @@ def make_purchase(request):
             new_balance=new_balance,
             order=order,
         )
-                # Create instances of the OrderItem model
+
+        # Create instances of the OrderItem model
         for order_item_data in order_items:
             product_name = order_item_data['product']
             product = Product.objects.get(name=product_name)
@@ -270,7 +278,7 @@ def make_purchase(request):
                 price=order_item_data['price'],
                 image=product.image,  # Set the image field from the Product
             )
-    
+
         # Return the new wallet balance in the response
         return JsonResponse({'message': 'Purchase successful', 'newWallet': wallet_serializer.data})
     else:
