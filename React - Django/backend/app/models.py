@@ -91,6 +91,7 @@ class OrderItem(models.Model):
     qty=models.IntegerField(null=True,blank=True,default=0)
     price=models.DecimalField(max_digits=7,decimal_places=2,null=True,blank=True)
     image = models.ImageField(null=True, blank=True)
+    unitTax=models.DecimalField(max_digits=7,decimal_places=2,null=True,blank=True)
         
     def __str__(self):
         return f"{self.product.name} - Qty: {self.qty}, Price: {self.price}"
@@ -107,8 +108,6 @@ class ShippingAddress(models.Model):
     phoneNumber = models.CharField(max_length=15, blank=True, null=True)
     shippingCost=models.DecimalField(max_digits=7,decimal_places=2,null=True,blank=True)
     
-    
-
     def __str__(self):
-        return f"{self.state} {self.city} {self.phoneNumber}"
+        return f"State: {self.state}, City: {self.city}, Phone Number: {self.phoneNumber}"
 

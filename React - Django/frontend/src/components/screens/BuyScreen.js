@@ -11,7 +11,7 @@ const BuyScreen = () => {
 
   // Assuming shippingAddress is available in the Redux state
   const shippingAddress = useSelector((state) => state.shippingAddress);
-  const { shippingCost, phoneNumber } = shippingAddress;
+  const { state, city, area, street, houseNumber, phoneNumber, shippingCost } = shippingAddress;
 
   const headerFooterColor = "#bdbdbd";
   const cardBodyColor = "#fff7eb"; // Desired background color for the card body
@@ -184,15 +184,25 @@ const BuyScreen = () => {
         product: item.name,
         qty: item.qty,
         price: item.price,
+        unitTax: item.tax,
       }));
   
       // Create the request payload
       const payload = {
-        totalAmount: parseFloat(totalAmount), // Ensure totalAmount is a number
+        totalAmount: parseFloat(totalAmount),
         orderItems,
-        items: calculateTotalItems(), // Include the number of items
-        tax: parseFloat(totalTax), // Ensure tax is a number
-        shippingCost: parseFloat(shippingCost), // Ensure shippingCost is a number
+        items: calculateTotalItems(),
+        tax: parseFloat(totalTax),
+        shippingCost: parseFloat(shippingCost),
+        shippingAddress: {
+          state,
+          city,
+          area,
+          street,
+          houseNumber,
+          phoneNumber,
+          shippingCost,
+        },
       };
   
       // Send a request to the backend to create an order

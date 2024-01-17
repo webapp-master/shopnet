@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from app.models import Product, Profile, Transaction, Wallet, Order, OrderItem
+from app.models import Product, Profile, Transaction, Wallet, Order, OrderItem, ShippingAddress
 from django.shortcuts import render, get_object_or_404
 
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
@@ -277,7 +277,22 @@ def make_purchase(request):
                 qty=order_item_data['qty'],
                 price=order_item_data['price'],
                 image=product.image,  # Set the image field from the Product
+                unitTax=order_item_data['unitTax'],
             )
+
+                 # Create an instance of the ShippingAddress model
+        shipping_address_data = request.data.get('shippingAddress', {})
+        ShippingAddress.objects.create(
+            order=order,
+            state=shipping_address_data.get('state'),
+            city=shipping_address_data.get('city'),
+            area=shipping_address_data.get('area'),
+            street=shipping_address_data.get('street'),
+            houseNumber=shipping_address_data.get('houseNumber'),
+            phoneNumber=shipping_address_data.get('phoneNumber'),
+            shippingCost=shipping_address_data.get('shippingCost'),
+        )
+
 
         # Return the new wallet balance in the response
         return JsonResponse({'message': 'Purchase successful', 'newWallet': wallet_serializer.data})

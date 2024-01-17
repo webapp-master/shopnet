@@ -426,3 +426,10 @@ the button to select quantity needs to be horizontally alligned to the center
 			60
 inside the CartScreen.js
 i want to display the <marquee>
+
+
+
+			61
+
+when the cart is empty.... every other pages shouldn't open .... 
+redirects to the CartScreen.js
