@@ -179,9 +179,20 @@ const BuyScreen = () => {
 
   const handlePurchase = async () => {
     try {
+      // Extract necessary information from the Redux store state
+      const orderItems = cartItems.map((item) => ({
+        product: item.name,
+        qty: item.qty,
+        price: item.price,
+      }));
+
+      // Send a request to the backend to create an order
       const response = await axios.post(
         "/api/make_purchase/",
-        { totalAmount },
+        {
+          totalAmount,
+          orderItems,
+        },
         {
           headers: {
             Authorization: `Bearer ${userInfo ? userInfo.access : ""}`,

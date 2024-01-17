@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from app.models import Product, Profile, Transaction, Wallet, Order
+from app.models import Product, Profile, Transaction, Wallet, Order, OrderItem
 from django.shortcuts import render, get_object_or_404
 
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
@@ -222,9 +222,10 @@ def make_purchase(request):
     # Fetch the user's wallet
     wallet = Wallet.objects.get(user=user)
 
-    # Assuming totalAmount is passed in the request data
-    # Use Decimal for total_amount
+     # Assuming totalAmount and orderItems are passed in the request data
+     # Use Decimal for total_amount
     total_amount = Decimal(request.data.get('totalAmount', '0.0'))
+    order_items = request.data.get('orderItems', [])
 
     # Fetch the current wallet balance
     previous_balance = wallet.balance
@@ -259,6 +260,18 @@ def make_purchase(request):
             order=order,
         )
 
+
+                # Create instances of the OrderItem model
+        for order_item_data in order_items:
+            product_name = order_item_data['product']
+            product = Product.objects.get(name=product_name)
+
+            OrderItem.objects.create(
+                product=product,
+                order=order,
+                qty=order_item_data['qty'],
+                price=order_item_data['price'],
+            )
     
         # Return the new wallet balance in the response
         return JsonResponse({'message': 'Purchase successful', 'newWallet': wallet_serializer.data})

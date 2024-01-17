@@ -89,5 +89,5 @@ class OrderItem(models.Model):
     price=models.DecimalField(max_digits=7,decimal_places=2,null=True,blank=True)
         
     def __str__(self):
-        return self.name
+        return f"{self.product.name} - Qty: {self.qty}, Price: {self.price}"
 
