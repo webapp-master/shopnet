@@ -241,13 +241,14 @@ def make_purchase(request):
         # Serialize the updated wallet
         wallet_serializer = WalletSerializer(wallet)
 
+
              # Create an instance of the Order model
         order = Order.objects.create(
             user=user,
             amountPaid=total_amount,
         )
 
-        # Record the transaction
+            # Record the transaction
         description = f"Order was placed by the User {user.username}"
         transaction = Transaction.objects.create(
             user=user,
@@ -258,6 +259,7 @@ def make_purchase(request):
             order=order,
         )
 
+    
         # Return the new wallet balance in the response
         return JsonResponse({'message': 'Purchase successful', 'newWallet': wallet_serializer.data})
     else:
