@@ -248,7 +248,6 @@ def make_purchase(request):
             user=user,
             amountPaid=total_amount,
         )
-
             # Record the transaction
         description = f"Order was placed by the User {user.username}"
         transaction = Transaction.objects.create(
@@ -259,8 +258,6 @@ def make_purchase(request):
             new_balance=new_balance,
             order=order,
         )
-
-
                 # Create instances of the OrderItem model
         for order_item_data in order_items:
             product_name = order_item_data['product']
@@ -271,6 +268,7 @@ def make_purchase(request):
                 order=order,
                 qty=order_item_data['qty'],
                 price=order_item_data['price'],
+                image=product.image,  # Set the image field from the Product
             )
     
         # Return the new wallet balance in the response

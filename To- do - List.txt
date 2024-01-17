@@ -421,3 +421,8 @@ hint: when you hover; i need the size and font of the login to change--- increas
 mobile view......
 CartScreen.js
 the button to select quantity needs to be horizontally alligned to the center
+
+
+			60
+inside the CartScreen.js
+i want to display the <marquee>
