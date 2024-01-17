@@ -94,4 +94,21 @@ class OrderItem(models.Model):
         
     def __str__(self):
         return f"{self.product.name} - Qty: {self.qty}, Price: {self.price}"
+    
+
+
+class ShippingAddress(models.Model):
+    order=models.OneToOneField(Order,on_delete=models.CASCADE,null=True,blank=True)
+    state=models.CharField(max_length=200,null=True,blank=True)
+    city=models.CharField(max_length=200,null=True,blank=True)
+    area=models.CharField(max_length=200,null=True,blank=True)
+    street=models.CharField(max_length=200,null=True,blank=True)
+    houseNumber = models.CharField(max_length=15, blank=True, null=True)
+    phoneNumber = models.CharField(max_length=15, blank=True, null=True)
+    shippingCost=models.DecimalField(max_digits=7,decimal_places=2,null=True,blank=True)
+    
+    
+
+    def __str__(self):
+        return f"{self.state} {self.city} {self.phoneNumber}"
 
