@@ -51,11 +51,19 @@ function Header() {
     }
   }, [location.pathname]);
 
+  const currentLocation = useLocation();
+
   return (
     <div
       style={{
         marginBottom:
-          isLoginRoute || isCreditRoute || isDebitRoute || isRegisterRoute || isHomeRoute ? "0" : "20px",
+          isLoginRoute ||
+          isCreditRoute ||
+          isDebitRoute ||
+          isRegisterRoute ||
+          isHomeRoute
+            ? "0"
+            : "20px",
       }}
     >
       {" "}
@@ -69,7 +77,10 @@ function Header() {
         }}
       >
         <Container fluid className="custom-container">
-          <LinkContainer to="/" style={{ color: "#ffffff", fontSize: "26px", textTransform: "" }}>
+          <LinkContainer
+            to="/"
+            style={{ color: "#ffffff", fontSize: "26px", textTransform: "" }}
+          >
             <Navbar.Brand>ShopNET</Navbar.Brand>
           </LinkContainer>
 
@@ -77,25 +88,62 @@ function Header() {
 
           <Navbar.Collapse id="navbarScroll">
             <Nav className="mr-auto my-2 my-lg-0" navbarScroll>
-              {/* Home */}
               {!isMobile && (
                 <React.Fragment>
-                  <LinkContainer to="/" className="headerButtons">
-                    <Button variant="light">Products</Button>
-                  </LinkContainer>
+                  {/* Check if the current path is neither "/buy" nor "/all" */}
+                  {currentLocation.pathname !== "/buy" &&
+                    currentLocation.pathname !== "/all" && (
+                      <LinkContainer to="/all" className="headerButtons">
+                        <Button variant="light">Products</Button>
+                      </LinkContainer>
+                    )}
 
-                  <LinkContainer to="/cart" className="headerButtons">
-                    <Button variant="light">Cart</Button>
-                  </LinkContainer>
+                  {/* Check if the current path does not include "/cart" */}
+                  {currentLocation.pathname !== "/cart" && (
+                    <LinkContainer to="/cart" className="headerButtons">
+                      <Button variant="light">Cart</Button>
+                    </LinkContainer>
+                  )}
+
+                  {/* Check if the current path is "/buy" */}
+                  {currentLocation.pathname == "/buy" && (
+                    <LinkContainer to="/shipping" className="headerButtons">
+                      <Button variant="light">Shipping</Button>
+                    </LinkContainer>
+                  )}
+
+                  {/* Check if the current path is "/all" */}
+                  {currentLocation.pathname == "/all" && (
+                    <LinkContainer to="/" className="headerButtons">
+                      <Button variant="light">Latest</Button>
+                    </LinkContainer>
+                  )}
+
+                  {/* Check if the current path is "/cart" */}
+                  {currentLocation.pathname == "/cart" && (
+                    <LinkContainer to="/" className="headerButtons">
+                      <Button variant="light">Latest</Button>
+                    </LinkContainer>
+                  )}
+
+                  {/* Check if the current path is "/wallet" */}
+                  {currentLocation.pathname == "/wallet" && (
+                    <LinkContainer to="/transaction" className="headerButtons">
+                      <Button variant="light">Transaction</Button>
+                    </LinkContainer>
+                  )}
+
                 </React.Fragment>
               )}
 
-              {/* Wallet */}
-              {!isMobile && userInfo && (
-                <LinkContainer to="/wallet" className="headerButtons">
-                  <Button variant="light">Wallet</Button>
-                </LinkContainer>
-              )}
+              {/* Check if the current path is not "/wallet" */}
+              {!isMobile &&
+                userInfo &&
+                currentLocation.pathname !== "/wallet" && (
+                  <LinkContainer to="/wallet" className="headerButtons">
+                    <Button variant="light">Wallet</Button>
+                  </LinkContainer>
+                )}
 
               {isMobile && userInfo && (
                 <NavDropdown
@@ -191,28 +239,26 @@ function Header() {
           </Nav>
 
           <Row>
-  {!userInfo && location.pathname == "/login" && (
-    <Col className="d-flex justify-content-end">
-      {/* Register link */}
-      <LinkContainer to="/register" className="header-right-Buttons">
-        <Button variant="light">Register</Button>
-      </LinkContainer>
-    </Col>
-  )}
+            {!userInfo && location.pathname == "/login" && (
+              <Col className="d-flex justify-content-end">
+                {/* Register link */}
+                <LinkContainer to="/register" className="header-right-Buttons">
+                  <Button variant="light">Register</Button>
+                </LinkContainer>
+              </Col>
+            )}
 
-  {location.pathname !== "/login" && (
-    <Col className="d-flex justify-content-end">
-      {/* Login link */}
-      {!userInfo && (
-        <LinkContainer to="/login" className="header-right-Buttons">
-          <Button variant="light">Login</Button>
-        </LinkContainer>
-      )}
-    </Col>
-  )}
-</Row>
-
-
+            {location.pathname !== "/login" && (
+              <Col className="d-flex justify-content-end">
+                {/* Login link */}
+                {!userInfo && (
+                  <LinkContainer to="/login" className="header-right-Buttons">
+                    <Button variant="light">Login</Button>
+                  </LinkContainer>
+                )}
+              </Col>
+            )}
+          </Row>
         </Container>
 
         <div
