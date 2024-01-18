@@ -235,6 +235,14 @@ const BuyScreen = () => {
       console.error("Error making purchase:", error);
     }
   };
+
+  useEffect(() => {
+    // Check if the cart is empty
+    if (cartItems.length === 0) {
+      // Redirect the user to the CartScreen
+      history.push("/cart");
+    }
+  }, [cartItems, history]);
   
 
   return (
@@ -308,19 +316,21 @@ const BuyScreen = () => {
               </Button>
 
               <Button
-                variant="success"
-                className="rounded-pill titleCaseText"
-                style={buttonStyle}
-              >
-                Fund Wallet
-              </Button>
-              <Button
                 variant="primary"
                 className="rounded-pill titleCaseText"
                 style={buttonStyle}
               >
                 WhatsApp us
               </Button>
+
+              <Button
+                variant="success"
+                className="rounded-pill titleCaseText"
+                style={buttonStyle}
+              >
+                Fund Wallet
+              </Button>
+              
             </Card.Footer>
           </Card>
         </Col>

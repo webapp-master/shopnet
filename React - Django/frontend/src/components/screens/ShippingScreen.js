@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { saveShippingAddress } from "../../actions/shippingActions";
 import { Form, Button, Container, Row, Col, Card } from "react-bootstrap";
-import axios from "axios"; // Import Axios
+
 
 const ShippingScreen = ({ history }) => {
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ const ShippingScreen = ({ history }) => {
   const [street, setStreet] = useState("");
   const [houseNumber, setHouseNumber] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [shippingCost, setShippingCost] = useState(null);
+  const [shippingCost, setShippingCost] = useState("");
 
   const states = [
     "Abia",
@@ -90,7 +90,47 @@ const ShippingScreen = ({ history }) => {
     Lagos: ["Lagos", "Ikeja", "Badagry", "Ikorodu"],
     Nasarawa: ["Lafia", "Akwanga", "Keffi", "Karu"],
     Niger: ["Minna", "Suleja", "Bida", "Kontagora"],
-    Ogun: ["Abeokuta", "Ijebu-Ode", "Sagamu", "Ilaro", "Owode", "Odeda", "Ado-Ota", "Ijebu Ode", "Abeokuta North", "Ifo", "Imeko Afon", "Ijoko", "Wasinmi", "Atan", "Igbesa", "Ago-Iwoye", "Ijebu Itele", "Idogo", "Mowe", "Ayetoro", "Ogere", "Odogbolu", "Ota", "Ogun waterside", "Ewekoro", "Egbado North", "Remo North", "Egbado South", "Ikenne", "Ijebu North", "Ijebu North East", "Abeokuta South", "Idiroko", "Ijebu East", "Iwoye", "Ifoyintedo", "Iperu", "Ita Egbe", "Mobalufon"],
+    Ogun: [
+      "Abeokuta",
+      "Ijebu-Ode",
+      "Sagamu",
+      "Ilaro",
+      "Owode",
+      "Odeda",
+      "Ado-Ota",
+      "Ijebu Ode",
+      "Abeokuta North",
+      "Ifo",
+      "Imeko Afon",
+      "Ijoko",
+      "Wasinmi",
+      "Atan",
+      "Igbesa",
+      "Ago-Iwoye",
+      "Ijebu Itele",
+      "Idogo",
+      "Mowe",
+      "Ayetoro",
+      "Ogere",
+      "Odogbolu",
+      "Ota",
+      "Ogun waterside",
+      "Ewekoro",
+      "Egbado North",
+      "Remo North",
+      "Egbado South",
+      "Ikenne",
+      "Ijebu North",
+      "Ijebu North East",
+      "Abeokuta South",
+      "Idiroko",
+      "Ijebu East",
+      "Iwoye",
+      "Ifoyintedo",
+      "Iperu",
+      "Ita Egbe",
+      "Mobalufon",
+    ],
     Ondo: ["Akure", "Ondo City", "Owo", "Ikare"],
     Osun: ["Osogbo", "Ife", "Ilesa", "Ejigbo"],
     Oyo: ["Ibadan", "Ogbomoso", "Oyo", "Iseyin"],
@@ -112,22 +152,38 @@ const ShippingScreen = ({ history }) => {
 
     const selectedCity = e.target.value;
     if (
-      ["Bukuru", "Shendam", "Oyo", "Ife", "Lagos", "Jebba", "Abeokuta", "Ado-Ekiti"].includes(
+      [
+        "Bukuru",
+        "Shendam",
+        "Oyo",
+        "Ife",
+        "Lagos",
+        "Jebba",
+        "Abeokuta",
+        "Ado-Ekiti",
+      ].includes(selectedCity)
+    ) {
+      setShippingCost(2);
+    } else if (
+      [
+        "Ibadan",
+        "Hadejia",
+        "Ilorin",
+        "Bida",
+        "Ejigbo",
+        "Badagry",
+        "Ijebu-Ode",
+        "Osogbo",
+        "Ikere-Ekiti",
+      ].includes(selectedCity)
+    ) {
+      setShippingCost(4);
+    } else if (
+      ["Ogbomoso", "Ikeja", "Offa", "Sagamu", "Ilesa", "Ikole-Ekiti"].includes(
         selectedCity
       )
     ) {
-      setShippingCost(2);
-      
-    } else if (
-      ["Ibadan", "Hadejia", "Ilorin", "Bida", "Ejigbo", "Badagry", "Ijebu-Ode", "Osogbo", "Ikere-Ekiti"].includes(selectedCity)
-    ) {
-      setShippingCost(4);
-
-    } else if (
-      ["Ogbomoso", "Ikeja", "Offa", "Sagamu", "Ilesa", "Ikole-Ekiti"].includes(selectedCity)
-    ) {
       setShippingCost(9);
-
     } else {
       setShippingCost(1); // Default shipping cost for other cities
     }
@@ -154,54 +210,15 @@ const ShippingScreen = ({ history }) => {
     );
 
     console.log(userInfo); // Log the userInfo object to the console
-
-    // Construct orderData object
-    const orderData = {
-      user: userInfo.id, // Include the user's primary key (assuming it's 'id' field)
-      paymentMethod: "Wallet",
-      shippingCost: shippingCost || 0, // Use shippingCost state value, defaulting to 0 if it's null
-      totalAmount: totalPrice, // Value from the frontend's totalPrice
-      isPaid: false,
-      isDelivered: false,
-      totalItem: totalItems,
-    };
-
-    // Construct orderItemsData array based on cartItems
-
-    const orderItemsData = cartItems.map((item) => ({
-      product: item.product, // Use item.product assuming it contains the ID of the product
-      qty: item.qty,
-      unitPrice: item.price,
-      totalPrice: (item.qty * item.price).toFixed(2),
-    }));
-
-    // Construct the payload to send to the backend
-    const payload = {
-      order: orderData,
-      orderItems: orderItemsData,
-    };
-
-    try {
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-          // Include any necessary authorization headers if required
-        },
-      };
-
-      // Send a POST request to your backend API using axios
-      // await axios.post('/api/orders/save_order_data/', payload, config);
-
-      // Handle success scenario (redirect or any other action)
-
-      history.push("/login?redirect=buy");
-    } catch (error) {
-      // Handle error scenario
-      console.error("Error:", error);
-    }
   };
 
- 
+  useEffect(() => {
+    // Check if the cart is empty
+    if (cartItems.length === 0) {
+      // Redirect the user to the CartScreen
+      history.push("/cart");
+    }
+  }, [cartItems, history]);
 
   return (
     <Container>
