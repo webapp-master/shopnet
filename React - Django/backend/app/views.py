@@ -257,6 +257,10 @@ def make_purchase(request):
 
         # Record the transaction
         description = f"Order was placed by the User {user.username}"
+
+        # Create a string representation of order items for the 'details' field
+        details = f"{description}, " + ", ".join([f"{item['product']} (Qty: {item['qty']}) (unit-price: {item['price']})" for item in order_items])
+
         transaction = Transaction.objects.create(
             user=user,
             description=description,
@@ -264,6 +268,7 @@ def make_purchase(request):
             previous_balance=previous_balance,
             new_balance=new_balance,
             order=order,
+            details=details,
         )
 
         # Create instances of the OrderItem model
