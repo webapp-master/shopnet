@@ -433,3 +433,18 @@ i want to display the <marquee>
 
 when the cart is empty.... every other pages shouldn't open .... 
 redirects to the CartScreen.js
+
+
+
+			62
+!userifo
+the headerButtons is not complete 
+
+
+
+
+
+			63
+"/buy"
+in the case of insufficient fund
+I need a pop up message to alert that there is insufficient fund

@@ -210,6 +210,7 @@ const ShippingScreen = ({ history }) => {
     );
 
     console.log(userInfo); // Log the userInfo object to the console
+    history.push("/login?redirect=buy");
   };
 
   useEffect(() => {
