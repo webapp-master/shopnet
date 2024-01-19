@@ -49,12 +49,9 @@ class ProfileSerializer(serializers.ModelSerializer):
         fields = ['user', 'phoneNumber', 'City']
 
 
-
-
 class CreditWalletSerializer(serializers.Serializer):
     amount = serializers.DecimalField(max_digits=10, decimal_places=2)
     username = serializers.CharField(max_length=150)
-
 
 
 class WalletSerializer(serializers.ModelSerializer):
@@ -63,10 +60,6 @@ class WalletSerializer(serializers.ModelSerializer):
     class Meta:
         model = Wallet
         fields = ['user', 'balance']
-
-
-
-
 
 
 class DebitWalletSerializer(serializers.Serializer):

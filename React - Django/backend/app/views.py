@@ -153,6 +153,7 @@ def credit_wallet(request):
 
 
 @api_view(['POST'])
+@permission_classes([IsCashier])
 def debit_wallet(request):
     serializer = DebitWalletSerializer(data=request.data)
     if serializer.is_valid():
@@ -173,11 +174,16 @@ def debit_wallet(request):
 
             new_balance = wallet.balance
 
+            # Extract the username of the person making the request
+            requester_username = request.user.username if request.user else 'Anonymous User'
+
             # Record the transaction
-            description = "Your wallet was debited by the Admin"
+            description = f"{requester_username} debited the wallet of {user.username}"
+            details = f"Debit amount: ${amount}"
             transaction = Transaction.objects.create(
                 user=user,
                 description=description,
+                details=details,  # Include the additional details
                 amount=amount,
                 previous_balance=previous_balance,
                 new_balance=new_balance

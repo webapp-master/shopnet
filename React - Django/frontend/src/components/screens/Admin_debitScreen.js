@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import debitWallet from "../../actions/admin_debitActions";
-import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
+import "bootstrap/dist/css/bootstrap.min.css";
+import { useSelector } from "react-redux";
+
 
 const Admin_debitScreen = () => {
   const [username, setUsername] = useState("");
@@ -39,12 +41,15 @@ const Admin_debitScreen = () => {
     }, 9000);
   };
 
+  const accessToken = useSelector((state) => state.userLogin.userInfo?.access);
+
   const handleDebit = async () => {
     try {
+
       setError(""); // Clear any previous errors
       setSuccess(""); // Clear any previous success messages
 
-      const response = await debitWallet(username, amount);
+      const response = await debitWallet(username, amount, accessToken);
 
       // Check for a response message and display it accordingly
       if (response && response.message) {
@@ -71,7 +76,6 @@ const Admin_debitScreen = () => {
   };
 
   
-
   return (
     <div
       className="container"
