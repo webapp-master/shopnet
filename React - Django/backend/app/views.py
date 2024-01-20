@@ -178,8 +178,8 @@ def debit_wallet(request):
             requester_username = request.user.username if request.user else 'Anonymous User'
 
             # Record the transaction
-            description = f"{requester_username} debited the wallet of {user.username}"
-            details = f"Debit amount: ${amount}"
+            description = f"Admin debited your wallet by ${amount}"
+            details = f"{requester_username} debited the wallet of {user.username} by ${amount}"
             transaction = Transaction.objects.create(
                 user=user,
                 description=description,
