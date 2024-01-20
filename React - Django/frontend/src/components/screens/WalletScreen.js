@@ -13,7 +13,7 @@ const WalletScreen = () => {
       <table className="transaction-table">
         <thead>
           <tr>
-            <th>Reference  </th>
+            <th>Id Number</th>
             <th>Amount</th>
             <th>Product</th>
             <th>Previous Balance</th>
@@ -24,14 +24,60 @@ const WalletScreen = () => {
         <tbody>
           {/* Map through your transaction data and render rows here */}
           <tr>
-            <td>12345</td>
-            <td>$50.00</td>
-            <td>bag </td>
+            <td>34335</td>
+            <td>$100</td>
+            <td>Ordered Items; Logitech G-Series Gaming Mouse (Qty: 5) (unit-price: 7.89), Amazon Echo Dot 3rd Generation (Qty: 2) (unit-price: 29.99)</td>
             <td>$50.00</td>
             <td>$100.00</td>
             <td>2023-11-10 14:30:00</td>
           </tr>
-          {/* Add more rows as needed */}
+
+          <tr>
+            <td>34335</td>
+            <td>$100</td>
+            <td>Ordered Items; Logitech G-Series Gaming Mouse (Qty: 5) (unit-price: 7.89), Amazon Echo Dot 3rd Generation (Qty: 2) (unit-price: 29.99)</td>
+            <td>$50.00</td>
+            <td>$100.00</td>
+            <td>2023-11-10 14:30:00</td>
+          </tr>
+
+          <tr>
+            <td>34335</td>
+            <td>$100</td>
+            <td>Ordered Items; Logitech G-Series Gaming Mouse (Qty: 5) (unit-price: 7.89), Amazon Echo Dot 3rd Generation (Qty: 2) (unit-price: 29.99)</td>
+            <td>$50.00</td>
+            <td>$100.00</td>
+            <td>2023-11-10 14:30:00</td>
+          </tr>
+
+          <tr>
+            <td>34335</td>
+            <td>$100</td>
+            <td>Ordered Items; Logitech G-Series Gaming Mouse (Qty: 5) (unit-price: 7.89), Amazon Echo Dot 3rd Generation (Qty: 2) (unit-price: 29.99)</td>
+            <td>$50.00</td>
+            <td>$100.00</td>
+            <td>2023-11-10 14:30:00</td>
+          </tr>
+
+          <tr>
+            <td>34335</td>
+            <td>$100</td>
+            <td>Ordered Items; Logitech G-Series Gaming Mouse (Qty: 5) (unit-price: 7.89), Amazon Echo Dot 3rd Generation (Qty: 2) (unit-price: 29.99)</td>
+            <td>$50.00</td>
+            <td>$100.00</td>
+            <td>2023-11-10 14:30:00</td>
+          </tr>
+
+
+          <tr>
+            <td>34335</td>
+            <td>$100</td>
+            <td>Ordered Items; Logitech G-Series Gaming Mouse (Qty: 5) (unit-price: 7.89), Amazon Echo Dot 3rd Generation (Qty: 2) (unit-price: 29.99)</td>
+            <td>$50.00</td>
+            <td>$100.00</td>
+            <td>2023-11-10 14:30:00</td>
+          </tr>
+          
         </tbody>
       </table>
     </div>
