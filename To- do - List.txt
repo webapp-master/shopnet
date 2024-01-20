@@ -448,3 +448,9 @@ the headerButtons is not complete
 "/buy"
 in the case of insufficient fund
 I need a pop up message to alert that there is insufficient fund
+
+
+			64
+create a django backend for your client (Admin)
+and limit the power
+remove all power to modify data

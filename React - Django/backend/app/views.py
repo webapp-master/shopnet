@@ -136,11 +136,16 @@ def credit_wallet(request):
         wallet.balance = new_balance
         wallet.save()
 
+        # Extract the username of the person making the request
+        requester_username = request.user.username if request.user else 'Anonymous User'
+
         # Record the transaction
-        description = "Your wallet was credited by the Admin"
+        description = f"Admin credited your wallet by ${amount}"
+        details = f"{requester_username} credited the wallet of {user.username} by ${amount}"
         transaction = Transaction.objects.create(
             user=user,
             description=description,
+            details=details,
             amount=amount,
             previous_balance=previous_balance,
             new_balance=new_balance
@@ -262,10 +267,10 @@ def make_purchase(request):
         )
 
         # Record the transaction
-        description = f"Order was placed by the User {user.username}"
+        description = f"Ordered Items; " + ", ".join([f"{item['product']} (Qty: {item['qty']}) (unit-price: {item['price']})" for item in order_items])
 
         # Create a string representation of order items for the 'details' field
-        details = f"{description}, " + ", ".join([f"{item['product']} (Qty: {item['qty']}) (unit-price: {item['price']})" for item in order_items])
+        details = f"{user.username} placed an order for the items below; " + ", ".join([f"{item['product']} (Qty: {item['qty']}) (unit-price: {item['price']})" for item in order_items])
 
         transaction = Transaction.objects.create(
             user=user,
