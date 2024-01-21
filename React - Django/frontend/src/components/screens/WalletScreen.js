@@ -34,14 +34,19 @@ const WalletScreen = () => {
   }, []);
 
   return (
-    <div>
-      <h2>User Transactions</h2>
+    <div className="wallet-container">
+      <div className="wallet-header">
+        <h1>Wallet Summary</h1>
+        <div className="search-bar">
+          <input type="text" placeholder="Search Transactions" />
+        </div>
+      </div>
       {loading ? (
         <p>Loading...</p>
       ) : error ? (
         <p>Error: {error}</p>
       ) : (
-        <table className="table">
+        <table className="transaction-table  ">
           <thead>
             <tr>
               <th>Description</th>
