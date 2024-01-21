@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useSelector } from "react-redux";
 
 const WalletScreen = () => {
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  // Access the token from Redux state
+  const accessToken = useSelector((state) => state.userLogin.userInfo?.access);
+  console.log("Access Token:", accessToken);
 
   useEffect(() => {
     const fetchTransactions = async () => {
@@ -12,7 +17,7 @@ const WalletScreen = () => {
         const response = await axios.get('/api/user/transactions/', {
           headers: {
             'Content-Type': 'application/json',
-            // Include any authentication headers if needed
+            Authorization: `Bearer ${accessToken}`,
           },
         });
 
