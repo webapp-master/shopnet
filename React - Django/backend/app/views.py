@@ -13,7 +13,7 @@ from rest_framework.decorators import action
 from rest_framework import status
 
 from django.contrib.auth.hashers import make_password
-from .serializer import ProductSerializer, UserSerializer, ProfileSerializer, CreditWalletSerializer, UserSerializerWithToken, DebitWalletSerializer
+from .serializer import ProductSerializer, UserSerializer, ProfileSerializer, CreditWalletSerializer, UserSerializerWithToken, DebitWalletSerializer, TransactionSerializer
 
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
@@ -22,6 +22,7 @@ from django.db import IntegrityError
 from django.http import JsonResponse
 from .serializer import WalletSerializer
 from decimal import Decimal
+from rest_framework import generics
 
 
 @api_view(['GET'])
@@ -314,3 +315,13 @@ def make_purchase(request):
         return JsonResponse({'message': 'Purchase successful', 'newWallet': wallet_serializer.data})
     else:
         return JsonResponse({'error': 'Insufficient balance'}, status=400)
+    
+
+
+class UserTransactionsView(generics.ListAPIView):
+    serializer_class = TransactionSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        return Transaction.objects.filter(user=user)
