@@ -54,7 +54,7 @@ const WalletScreen = () => {
               <tr key={transaction.id}>
                 <td>{transaction.description}</td>
                 <td>{transaction.amount}</td>
-                <td>{transaction.timestamp}</td>
+                <td>{formatTimestamp(transaction.timestamp)}</td>
               </tr>
             ))}
           </tbody>
@@ -62,6 +62,21 @@ const WalletScreen = () => {
       )}
     </div>
   );
+};
+
+// Function to format timestamp
+const formatTimestamp = (timestamp) => {
+  const options = {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: true,
+  };
+
+  const formattedDate = new Date(timestamp).toLocaleDateString('en-US', options);
+  return formattedDate;
 };
 
 export default WalletScreen;

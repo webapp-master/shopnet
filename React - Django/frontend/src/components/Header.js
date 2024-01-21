@@ -90,9 +90,11 @@ function Header() {
             <Nav className="mr-auto my-2 my-lg-0" navbarScroll>
               {!isMobile && (
                 <React.Fragment>
-                  {/* Check if the current path is neither "/buy" nor "/all" */}
+                  {/* Check if the current path is neither the following below... */}
                   {currentLocation.pathname !== "/buy" &&
-                    currentLocation.pathname !== "/all" && (
+                    currentLocation.pathname !== "/all" &&
+                    currentLocation.pathname !== "/debit" &&
+                    currentLocation.pathname !== "/credit" && (
                       <LinkContainer to="/all" className="headerButtons">
                         <Button variant="light">Products</Button>
                       </LinkContainer>
@@ -130,6 +132,20 @@ function Header() {
                   {currentLocation.pathname == "/wallet" && (
                     <LinkContainer to="/transaction" className="headerButtons">
                       <Button variant="light">Transaction</Button>
+                    </LinkContainer>
+                  )}
+
+                  {/* Check if the current path is "/debit" */}
+                  {currentLocation.pathname == "/debit" && (
+                    <LinkContainer to="/credit" className="headerButtons">
+                      <Button variant="light">Credit</Button>
+                    </LinkContainer>
+                  )}
+
+                  {/* Check if the current path is "/credit" */}
+                  {currentLocation.pathname == "/credit" && (
+                    <LinkContainer to="/debit" className="headerButtons">
+                      <Button variant="light">Debit</Button>
                     </LinkContainer>
                   )}
 
