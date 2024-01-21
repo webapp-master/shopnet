@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { useSelector } from "react-redux";
 
 const WalletScreen = () => {
@@ -14,9 +14,9 @@ const WalletScreen = () => {
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
-        const response = await axios.get('/api/user/transactions/', {
+        const response = await axios.get("/api/user/transactions/", {
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
             Authorization: `Bearer ${accessToken}`,
           },
         });
@@ -25,7 +25,7 @@ const WalletScreen = () => {
         setLoading(false);
       } catch (error) {
         console.error(error.message);
-        setError('Failed to fetch transactions');
+        setError("Failed to fetch transactions");
         setLoading(false);
       }
     };
@@ -34,12 +34,13 @@ const WalletScreen = () => {
   }, []);
 
   return (
-    <div className="wallet-container">
+    <div>
+      <div className="search-bar">
+        <input type="text" placeholder="Search Transactions" />
+      </div>
+      <div className="wallet-container">
       <div className="wallet-header">
         <h1>Wallet Summary</h1>
-        <div className="search-bar">
-          <input type="text" placeholder="Search Transactions" />
-        </div>
       </div>
       {loading ? (
         <p>Loading...</p>
@@ -66,21 +67,25 @@ const WalletScreen = () => {
         </table>
       )}
     </div>
+    </div>
   );
 };
 
 // Function to format timestamp
 const formatTimestamp = (timestamp) => {
   const options = {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
     hour12: true,
   };
 
-  const formattedDate = new Date(timestamp).toLocaleDateString('en-US', options);
+  const formattedDate = new Date(timestamp).toLocaleDateString(
+    "en-US",
+    options
+  );
   return formattedDate;
 };
 

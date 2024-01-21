@@ -733,13 +733,19 @@
 
 .wallet-header {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column; /* Change to column direction */
+  justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 2px;
 }
 
+.wallet-header h1 {
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+
 .search-bar {
-  width: 200px;
+  width: 200px; 
 }
 
 .wallet-balance {
