@@ -1,21 +1,26 @@
 import React from 'react';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const WalletScreen = () => {
   return (
-    <div>
-      <h1>Wallet Summary</h1>
+    <div className="wallet-container">
+      <div className="wallet-header">
+        <h1>Wallet Summary</h1>
+        <div className="search-bar">
+          <input type="text" placeholder="Search Transactions" />
+        </div>
+      </div>
 
       <div className="wallet-balance">
         <h2>Wallet Balance: $100.00</h2>
-        <input type="text" placeholder="Search Transactions" />
       </div>
 
-      <table className="transaction-table">
-        <thead>
+      <table className="transaction-table  ">
+        <thead className=''>
           <tr>
             <th>Id Number</th>
             <th>Amount</th>
-            <th>Product</th>
+            <th>Description</th>
             <th>Previous Balance</th>
             <th>New Balance</th>
             <th>Date & Time</th>
