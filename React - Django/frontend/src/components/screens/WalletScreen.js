@@ -47,6 +47,7 @@ const WalletScreen = () => {
             ) : error ? (
               <p>Error: {error}</p>
             ) : (
+
               <Table responsive className="transaction-table">
                 <thead>
                   <tr>
@@ -55,6 +56,7 @@ const WalletScreen = () => {
                     <th>Timestamp</th>
                   </tr>
                 </thead>
+
                 <tbody>
                   {transactions.map((transaction) => (
                     <tr key={transaction.id}>
@@ -64,7 +66,9 @@ const WalletScreen = () => {
                     </tr>
                   ))}
                 </tbody>
+                
               </Table>
+
             )}
           </div>
         </Col>
