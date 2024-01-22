@@ -18,27 +18,22 @@ import DebitBackground from "./components/screens/DebitBackground";
 function App() {
   return (
     <Router>
-      
-
       <Header />
 
-<main>
-  <Route path="/" component={HomeScreenBackground} exact />
-  <Route path="/login" component={LoginScreen} exact />
-  <Route path="/register" component={RegisterBackground} exact />
-  <Route path="/product/:id" component={ProductScreen} exact />
-  <Route path="/cart/:id?" component={CartScreen} exact />
-  <Route path="/shipping" component={ShippingScreen} exact />
-  <Route path="/buy" component={BuyScreen} exact />
-  <Route path="/wallet" component={WalletScreen} exact />
-  <Route path="/credit" component={CreditBackground} exact />
-  <Route path="/debit" component={DebitBackground} exact />
-</main>
+      <main>
+        <Route path="/" component={HomeScreenBackground} exact />
+        <Route path="/login" component={LoginScreen} exact />
+        <Route path="/register" component={RegisterBackground} exact />
+        <Route path="/product/:id" component={ProductScreen} exact />
+        <Route path="/cart/:id?" component={CartScreen} exact />
+        <Route path="/shipping" component={ShippingScreen} exact />
+        <Route path="/buy" component={BuyScreen} exact />
+        <Route path="/wallet" component={WalletScreen} exact />
+        <Route path="/credit" component={CreditBackground} exact />
+        <Route path="/debit" component={DebitBackground} exact />
+      </main>
 
-<Footer />
-
-      
-      
+      <Footer />
     </Router>
   );
 }
