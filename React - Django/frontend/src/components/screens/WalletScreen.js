@@ -37,7 +37,7 @@ const WalletScreen = () => {
   return (
     <Container fluid>
       <Row>
-        <Col xs={12} md={6} lg={8}>
+        <Col>
           <div className="wallet-container">
             <div className="wallet-header">
               <h1>Wallet Summary</h1>
@@ -68,13 +68,7 @@ const WalletScreen = () => {
             )}
           </div>
         </Col>
-        <Col xs={12} md={6} lg={4}>
-          <div className="search-bar">
-            <InputGroup className="mb-3">
-              <FormControl placeholder="Search Transactions" />
-            </InputGroup>
-          </div>
-        </Col>
+        
       </Row>
     </Container>
   );
