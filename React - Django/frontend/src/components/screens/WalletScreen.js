@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { Container, Row, Col, Table, InputGroup, FormControl } from 'react-bootstrap';
 
 const WalletScreen = () => {
   const [transactions, setTransactions] = useState([]);
@@ -31,51 +32,51 @@ const WalletScreen = () => {
     };
 
     fetchTransactions();
-  }, []);
+  }, [accessToken]);
 
   return (
-    <div>
-      <div className="search-bar">
-        <input type="text" placeholder="Search Transactions" />
-      </div>
-      <div className="wallet-container">
-        <div className="wallet-header">
-          <h1>Wallet Summary</h1>
-        </div>
-        {loading ? (
-          <p>Loading...</p>
-        ) : error ? (
-          <p>Error: {error}</p>
-        ) : (
-          <table className="transaction-table  ">
-            <thead>
-              <tr>
-                <th>Description</th>
-                <th>Amount</th>
-                <th>Timestamp</th>
-                <th>Description</th>
-                <th>Amount</th>
-                <th>Timestamp</th>
-                
-              </tr>
-            </thead>
-            <tbody>
-              {transactions.map((transaction) => (
-                <tr key={transaction.id}>
-                  <td>{transaction.description}</td>
-                  <td>{transaction.amount}</td>
-                  <td>{formatTimestamp(transaction.timestamp)}</td>
-                  <td>{transaction.description}</td>
-                  <td>{transaction.amount}</td>
-                  <td>{formatTimestamp(transaction.timestamp)}</td>
-                  
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
-      </div>
-    </div>
+    <Container fluid>
+      <Row>
+        <Col xs={12} md={6} lg={8}>
+          <div className="wallet-container">
+            <div className="wallet-header">
+              <h1>Wallet Summary</h1>
+            </div>
+            {loading ? (
+              <p>Loading...</p>
+            ) : error ? (
+              <p>Error: {error}</p>
+            ) : (
+              <Table responsive className="transaction-table">
+                <thead>
+                  <tr>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>Timestamp</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {transactions.map((transaction) => (
+                    <tr key={transaction.id}>
+                      <td>{transaction.description}</td>
+                      <td>{transaction.amount}</td>
+                      <td>{formatTimestamp(transaction.timestamp)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+            )}
+          </div>
+        </Col>
+        <Col xs={12} md={6} lg={4}>
+          <div className="search-bar">
+            <InputGroup className="mb-3">
+              <FormControl placeholder="Search Transactions" />
+            </InputGroup>
+          </div>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
