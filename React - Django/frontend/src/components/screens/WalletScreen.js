@@ -39,34 +39,34 @@ const WalletScreen = () => {
         <input type="text" placeholder="Search Transactions" />
       </div>
       <div className="wallet-container">
-      <div className="wallet-header">
-        <h1>Wallet Summary</h1>
-      </div>
-      {loading ? (
-        <p>Loading...</p>
-      ) : error ? (
-        <p>Error: {error}</p>
-      ) : (
-        <table className="transaction-table  ">
-          <thead>
-            <tr>
-              <th>Description</th>
-              <th>Amount</th>
-              <th>Timestamp</th>
-            </tr>
-          </thead>
-          <tbody>
-            {transactions.map((transaction) => (
-              <tr key={transaction.id}>
-                <td>{transaction.description}</td>
-                <td>{transaction.amount}</td>
-                <td>{formatTimestamp(transaction.timestamp)}</td>
+        <div className="wallet-header">
+          <h1>Wallet Summary</h1>
+        </div>
+        {loading ? (
+          <p>Loading...</p>
+        ) : error ? (
+          <p>Error: {error}</p>
+        ) : (
+          <table className="transaction-table  ">
+            <thead>
+              <tr>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Timestamp</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
-    </div>
+            </thead>
+            <tbody>
+              {transactions.map((transaction) => (
+                <tr key={transaction.id}>
+                  <td>{transaction.description}</td>
+                  <td>{transaction.amount}</td>
+                  <td>{formatTimestamp(transaction.timestamp)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </div>
     </div>
   );
 };

@@ -729,6 +729,8 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  
+  
 }
 
 .wallet-header {
@@ -743,10 +745,6 @@
   text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
 }
 
-
-.search-bar {
-  width: 200px; 
-}
 
 .wallet-balance {
   margin-bottom: 20px;
@@ -771,3 +769,10 @@
 .transaction-table tbody tr:hover {
   background-color: #f5f5f5;
 }
+
+
+
+.search-bar {
+  float: right;
+}
+
