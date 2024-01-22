@@ -27,8 +27,8 @@ function Header() {
     dispatch(logout(history)); // Pass history to the logout action
   };
 
-  const isMobile = useMediaQuery({ maxWidth: 767 }); // Set the maximum width for mobile view
-  const location = useLocation(); // Get the current location
+  const isMobile = useMediaQuery({ maxWidth: 867 });
+  const location = useLocation(); 
 
   // Check if the current route is "/login" or "/credit" or "/debit"
   const isLoginRoute = location.pathname === "/login";
