@@ -66,13 +66,14 @@ function Header() {
             : "20px",
       }}
     >
+      {" "}
       {/* Conditionally apply the margin */}
       <Navbar
         style={{
+          backgroundImage: `url(${process.env.PUBLIC_URL}/images/login_background.jpg)`,
           position: "relative",
           zIndex: 2,
-          height: navbarHeight,
-          backgroundColor: "#4091ed",
+          height: navbarHeight, // Use the state value for Navbar height
         }}
       >
         <Container fluid className="custom-container">
@@ -83,57 +84,208 @@ function Header() {
             <Navbar.Brand>ShopNET</Navbar.Brand>
           </LinkContainer>
 
-          {/* More Dropdown */}
-          <LinkContainer
-            to="/"
-            className="ml-auto" // Pushes the dropdown to the right
-          >
-            <NavDropdown
-              title="More"
-              className="custom-dropdown rounded-dropdown addMargin"
-            >
-              <LinkContainer to="/profile">
-                <NavDropdown.Item
-                  className={`custom-dropdown-item ${
-                    location.pathname === "/profile" ? "active" : ""
-                  }`}
-                >
-                  Profile
-                </NavDropdown.Item>
-              </LinkContainer>
-              <hr className="dropdown-divider" />
-              <NavDropdown.Item
-                className="custom-dropdown-item"
-                onClick={logoutHandler}
-              >
-                Logout
-              </NavDropdown.Item>
-            </NavDropdown>
-          </LinkContainer>
+          <Navbar.Toggle aria-controls="navbarScroll" />
 
-          {/* Profile Image */}
-          <Nav.Item className="d-flex align-items-center ml-auto">
-            <img
-              src="/images/my_dp.jpg"
-              alt="Profile"
-              className="rounded-circle my-profile"
-              style={{
-                width: "45px",
-                height: "45px",
-              }}
-            />
-          </Nav.Item>
+          <Navbar.Collapse id="navbarScroll">
+            <Nav className="mr-auto my-2 my-lg-0" navbarScroll>
+              {!isMobile && (
+                <React.Fragment>
+                  {/* Check if the current path is neither the following below... */}
+                  {currentLocation.pathname !== "/buy" &&
+                    currentLocation.pathname !== "/all" &&
+                    currentLocation.pathname !== "/debit" &&
+                    currentLocation.pathname !== "/credit" && (
+                      <LinkContainer to="/all" className="headerButtons">
+                        <Button variant="light">Products</Button>
+                      </LinkContainer>
+                    )}
+
+                  {/* Check if the current path does not include "/cart" */}
+                  {currentLocation.pathname !== "/cart" && (
+                    <LinkContainer to="/cart" className="headerButtons">
+                      <Button variant="light">Cart</Button>
+                    </LinkContainer>
+                  )}
+
+                  {/* Check if the current path is "/buy" */}
+                  {currentLocation.pathname == "/buy" && (
+                    <LinkContainer to="/shipping" className="headerButtons">
+                      <Button variant="light">Shipping</Button>
+                    </LinkContainer>
+                  )}
+
+                  {/* Check if the current path is "/all" */}
+                  {currentLocation.pathname == "/all" && (
+                    <LinkContainer to="/" className="headerButtons">
+                      <Button variant="light">Latest</Button>
+                    </LinkContainer>
+                  )}
+
+                  {/* Check if the current path is "/cart" */}
+                  {currentLocation.pathname == "/cart" && (
+                    <LinkContainer to="/" className="headerButtons">
+                      <Button variant="light">Latest</Button>
+                    </LinkContainer>
+                  )}
+
+                  {/* Check if the current path is "/wallet" */}
+                  {currentLocation.pathname == "/wallet" && (
+                    <LinkContainer to="/transaction" className="headerButtons">
+                      <Button variant="light">Transaction</Button>
+                    </LinkContainer>
+                  )}
+
+                  {/* Check if the current path is "/debit" */}
+                  {currentLocation.pathname == "/debit" && (
+                    <LinkContainer to="/credit" className="headerButtons">
+                      <Button variant="light">Credit</Button>
+                    </LinkContainer>
+                  )}
+
+                  {/* Check if the current path is "/credit" */}
+                  {currentLocation.pathname == "/credit" && (
+                    <LinkContainer to="/debit" className="headerButtons">
+                      <Button variant="light">Debit</Button>
+                    </LinkContainer>
+                  )}
+
+                </React.Fragment>
+              )}
+
+              {/* Check if the current path is not "/wallet" */}
+              {!isMobile &&
+                userInfo &&
+                currentLocation.pathname !== "/wallet" && (
+                  <LinkContainer to="/wallet" className="headerButtons">
+                    <Button variant="light">Wallet</Button>
+                  </LinkContainer>
+                )}
+
+              {isMobile && userInfo && (
+                <NavDropdown
+                  title={<>More</>}
+                  id="basic-nav-dropdown"
+                  className="dropdown-mobile custom-dropdown rounded-dropdown"
+                >
+                  <LinkContainer to="/profile">
+                    <NavDropdown.Item
+                      className={`custom-dropdown-item ${
+                        location.pathname === "/profile" ? "active" : ""
+                      }`}
+                    >
+                      Profile
+                    </NavDropdown.Item>
+                  </LinkContainer>
+                  <hr className="dropdown-divider" /> {/* Example divider */}
+                  <LinkContainer to="/cart">
+                    <NavDropdown.Item
+                      className={`custom-dropdown-item ${
+                        location.pathname === "/cart" ? "active" : ""
+                      }`}
+                    >
+                      Cart
+                    </NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to="/wallet">
+                    <NavDropdown.Item
+                      className={`custom-dropdown-item ${
+                        location.pathname === "/wallet" ? "active" : ""
+                      }`}
+                    >
+                      Wallet
+                    </NavDropdown.Item>
+                  </LinkContainer>
+                  <hr className="dropdown-divider" /> {/* Example divider */}
+                  <NavDropdown.Item
+                    className="custom-dropdown-item"
+                    onClick={logoutHandler}
+                  >
+                    Logout
+                  </NavDropdown.Item>
+                </NavDropdown>
+              )}
+            </Nav>
+          </Navbar.Collapse>
+
+          <Nav className="mr-auto my-2 my-lg-0" navbarScroll>
+            {userInfo && (
+              <React.Fragment>
+                {/* Large screen Dropdown */}
+                {!isMobile && (
+                  <LinkContainer to="/">
+                    <NavDropdown
+                      title="More"
+                      className="custom-dropdown rounded-dropdown addMargin"
+                    >
+                      <LinkContainer to="/profile">
+                        <NavDropdown.Item
+                          className={`custom-dropdown-item ${
+                            location.pathname === "/profile" ? "active" : ""
+                          }`}
+                        >
+                          Profile
+                        </NavDropdown.Item>
+                      </LinkContainer>
+                      <hr className="dropdown-divider" />{" "}
+                      {/* Example divider */}
+                      <NavDropdown.Item
+                        className="custom-dropdown-item"
+                        onClick={logoutHandler}
+                      >
+                        Logout
+                      </NavDropdown.Item>
+                    </NavDropdown>
+                  </LinkContainer>
+                )}
+
+                <Nav.Item className="d-flex align-items-center">
+                  {/* Place your profile picture URL in the src attribute */}
+                  <img
+                    src="/images/my_dp.jpg"
+                    alt="Profile"
+                    className="rounded-circle my-profile"
+                    style={{
+                      width: "45px",
+                      height: "45px",
+                    }}
+                  />
+                </Nav.Item>
+              </React.Fragment>
+            )}
+          </Nav>
+
+          <Row>
+            {!userInfo && location.pathname == "/login" && (
+              <Col className="d-flex justify-content-end">
+                {/* Register link */}
+                <LinkContainer to="/register" className="header-right-Buttons">
+                  <Button variant="light">Register</Button>
+                </LinkContainer>
+              </Col>
+            )}
+
+            {location.pathname !== "/login" && (
+              <Col className="d-flex justify-content-end">
+                {/* Login link */}
+                {!userInfo && (
+                  <LinkContainer to="/login" className="header-right-Buttons">
+                    <Button variant="light">Login</Button>
+                  </LinkContainer>
+                )}
+              </Col>
+            )}
+          </Row>
         </Container>
 
         <div
           style={{
             position: "absolute",
-            bottom: bottomPosition,
+            bottom: bottomPosition, // Use the state value for bottom position
             left: 0,
             right: 0,
             height: "2px",
-            backgroundColor: "#ffffff",
-            zIndex: 1,
+            backgroundColor: "#ffffff", // White color for the line
+            zIndex: 1, // Ensure it's above other content
           }}
         ></div>
       </Navbar>
