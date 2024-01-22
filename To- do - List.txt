@@ -454,3 +454,10 @@ I need a pop up message to alert that there is insufficient fund
 create a django backend for your client (Admin)
 and limit the power
 remove all power to modify data
+
+
+			65
+Header.js
+looks like it has width constraint 
+when i increased the num. of columns/width of the table in WalletScreen.js
+I nticed that the Header.js did not span throughout the top of the table 

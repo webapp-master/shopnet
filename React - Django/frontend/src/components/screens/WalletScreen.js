@@ -53,6 +53,10 @@ const WalletScreen = () => {
                 <th>Description</th>
                 <th>Amount</th>
                 <th>Timestamp</th>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Timestamp</th>
+                
               </tr>
             </thead>
             <tbody>
@@ -61,6 +65,10 @@ const WalletScreen = () => {
                   <td>{transaction.description}</td>
                   <td>{transaction.amount}</td>
                   <td>{formatTimestamp(transaction.timestamp)}</td>
+                  <td>{transaction.description}</td>
+                  <td>{transaction.amount}</td>
+                  <td>{formatTimestamp(transaction.timestamp)}</td>
+                  
                 </tr>
               ))}
             </tbody>
