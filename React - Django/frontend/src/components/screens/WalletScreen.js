@@ -46,10 +46,19 @@ const WalletScreen = () => {
       <Row className="justify-content-center">
         <Col md={12}>
           <div className="wallet-container">
+
             <div className="wallet-header">
+
               <div className="wallet-balance">
                 <p>Your wallet balance is: $2000</p>
               </div>
+
+              
+              <h1>Wallet Summary</h1>
+              
+
+              
+
               <div className="search-bar">
                 {/* Add your search box input here */}
                 <InputGroup className="mb-3">
@@ -63,8 +72,11 @@ const WalletScreen = () => {
                   </InputGroup.Append>
                 </InputGroup>
               </div>
-              <h1>Wallet Summary</h1>
+
+
+              
             </div>
+
 
             {loading ? (
               <p>Loading...</p>

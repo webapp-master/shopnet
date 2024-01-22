@@ -727,7 +727,6 @@
 /*Styles for WalletScreen.js*/
 
 .wallet-container {
-  
   margin-right: 30px;
   margin-left: 30px;
   margin-top: 5px;
@@ -739,8 +738,7 @@
 
 .wallet-header {
   display: flex;
-  flex-direction: column; /* Change to column direction */
-  justify-content: center;
+  justify-content: space-evenly; /* Updated to space-between */
   align-items: center;
   margin-bottom: 2px;
 }
@@ -751,12 +749,15 @@
 
 
 .search-bar {
-  width: 200px; 
-  float: right;
+  width: 300px;
 }
 
 .wallet-balance {
   margin-bottom: 20px;
+}
+
+.wallet-balance {
+  margin-right: auto; 
 }
 
 .transaction-table {
@@ -781,20 +782,9 @@
 
 
 
-/* ... (existing styles) */
-
-.wallet-balance {
-  margin-right: auto; /* Pushes the balance to the left */
-}
-
-.search-bar {
-  width: 300px; /* Adjust the width as needed */
-  margin-left: auto; /* Pushes the search bar to the right */
-}
-
 .wallet-balance p {
-  margin: 0; /* Remove default margin for the paragraph */
+  margin: 0;
   font-size: 16px;
 }
 
-/* ... (existing styles) */
+
