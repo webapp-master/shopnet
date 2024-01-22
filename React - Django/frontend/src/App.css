@@ -79,6 +79,12 @@
   background-color: blue; /* Change background color to '#4091ed' on hover */
 }
 
+.custom-container {
+  padding-left: 5px !important;
+  padding-right: 0 !important;
+  
+}
+
 .headerButtons {
   display: flex !important;
   justify-content: center;
@@ -187,10 +193,8 @@
   box-shadow: none;
 }
 
-.custom-container {
-  padding-left: 5px !important;
-  padding-right: 0 !important;
-}
+
+
 
 /* Define a class for title case transformation */
 .titleCaseText {

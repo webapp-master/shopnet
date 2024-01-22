@@ -36,8 +36,8 @@ const WalletScreen = () => {
 
   return (
     <Container fluid>
-      <Row>
-        <Col>
+      <Row className="justify-content-center">
+      <Col md={12}>
           <div className="wallet-container">
             <div className="wallet-header">
               <h1>Wallet Summary</h1>
@@ -66,7 +66,7 @@ const WalletScreen = () => {
                     </tr>
                   ))}
                 </tbody>
-                
+
               </Table>
 
             )}
