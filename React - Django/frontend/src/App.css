@@ -757,6 +757,24 @@
   width: 300px;
 }
 
+.search-field .form-control {
+  background-color: #b7bec3;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-field .form-control:focus {
+  box-shadow: none;
+  border: 2px solid #1f73c9;
+}
+
+.search-field .form-control::placeholder {
+  color: red; 
+}
+
+.search-field .form-control:focus::placeholder {
+  color: green; 
+}
+
 .wallet-balance p {
   margin: 0;
   font-size: 16px;
@@ -788,3 +806,4 @@
 .transaction-table tbody tr:hover {
   background-color: #e7e7e7;
 }
+

@@ -57,13 +57,15 @@ const WalletScreen = () => {
 
               <div className="search-bar">
                 
-                <InputGroup className="">
+                <InputGroup className="search-field">
 
                   <FormControl
                     placeholder="Search transactions..."
                     aria-label="Search transactions"
                     aria-describedby="basic-addon2"
+                    style={{ borderRadius: "5px", /*border: "2px solid #1f73c9"*/}}
                   />
+
                   <InputGroup.Append>
                     <InputGroup.Text id="basic-addon2">Search</InputGroup.Text>
                   </InputGroup.Append>
@@ -72,7 +74,7 @@ const WalletScreen = () => {
               </div>
               
             </div>
-            
+
             {loading ? (
               <p>Loading...</p>
             ) : error ? (
