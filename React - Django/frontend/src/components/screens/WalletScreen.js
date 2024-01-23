@@ -53,11 +53,7 @@ const WalletScreen = () => {
                 <p>Your wallet balance is: $2000</p>
               </div>
 
-              
               <h1>Wallet Summary</h1>
-              
-
-              
 
               <div className="search-bar">
                 
@@ -74,12 +70,9 @@ const WalletScreen = () => {
 
                 </InputGroup>
               </div>
-
-
               
             </div>
-
-
+            
             {loading ? (
               <p>Loading...</p>
             ) : error ? (
