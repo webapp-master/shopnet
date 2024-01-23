@@ -724,6 +724,8 @@
   background-color: blue; /* Change background color to '#4091ed' on hover */
 }
 
+
+
 /*Styles for WalletScreen.js*/
 
 .wallet-container {
@@ -738,27 +740,32 @@
 
 .wallet-header {
   display: flex;
-  justify-content: space-evenly; /* Updated to space-between */
+  flex-direction: row; /* Updated to row direction */
+  justify-content: space-between;
   align-items: center;
-  margin-bottom: 2px;
+  margin-bottom: 0.5rem;
 }
 
 .wallet-header h1 {
   text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  margin: 0;
+  text-align: center;
+  flex-grow: 1; 
 }
-
 
 .search-bar {
   width: 300px;
 }
 
-.wallet-balance {
-  margin-bottom: 20px;
+.wallet-balance p {
+  margin: 0;
+  font-size: 16px;
 }
 
 .wallet-balance {
   margin-right: auto; 
 }
+
 
 .transaction-table {
   width: 100%;
@@ -779,12 +786,3 @@
 .transaction-table tbody tr:hover {
   background-color: #f5f5f5;
 }
-
-
-
-.wallet-balance p {
-  margin: 0;
-  font-size: 16px;
-}
-
-

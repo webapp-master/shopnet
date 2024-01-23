@@ -60,8 +60,9 @@ const WalletScreen = () => {
               
 
               <div className="search-bar">
-                {/* Add your search box input here */}
-                <InputGroup className="mb-3">
+                
+                <InputGroup className="">
+
                   <FormControl
                     placeholder="Search transactions..."
                     aria-label="Search transactions"
@@ -70,6 +71,7 @@ const WalletScreen = () => {
                   <InputGroup.Append>
                     <InputGroup.Text id="basic-addon2">Search</InputGroup.Text>
                   </InputGroup.Append>
+
                 </InputGroup>
               </div>
 
