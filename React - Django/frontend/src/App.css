@@ -131,11 +131,12 @@
   display: flex !important;
   justify-content: center; /* Horizontal center alignment */
   width: 100%; /* Ensure full width */
+  
 }
 
 /* Add this CSS for the rounded corners */
 .rounded-dropdown .dropdown-menu {
-  border-radius: 10px; /* Adjust the value to change the roundness */
+  border-radius: 10px; 
 }
 
 .addMargin {

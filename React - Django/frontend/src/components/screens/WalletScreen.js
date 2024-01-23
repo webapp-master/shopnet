@@ -16,6 +16,7 @@ const WalletScreen = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+
   // Access the token from Redux state
   const accessToken = useSelector((state) => state.userLogin.userInfo?.access);
   console.log("Access Token:", accessToken);
@@ -42,6 +43,36 @@ const WalletScreen = () => {
     fetchTransactions();
   }, [accessToken]);
 
+  // Get user information from Redux state
+  const userInfo = useSelector((state) => state.userLogin.userInfo);
+
+  const [walletBalance, setWalletBalance] = useState(null);
+
+  useEffect(() => {
+    const fetchWalletBalance = async () => {
+      try {
+        const response = await axios.get("/api/user/wallet/balance", {
+          headers: {
+            Authorization: `Bearer ${userInfo ? userInfo.access : ""}`,
+          },
+        });
+
+        // Assuming the response contains the user's wallet balance
+        const { balance } = response.data;
+
+        setWalletBalance(balance);
+      } catch (error) {
+        // Handle error
+        console.error("Error fetching wallet balance:", error);
+      }
+    };
+
+    // Fetch wallet balance when the component mounts
+    if (userInfo) {
+      fetchWalletBalance();
+    }
+  }, [userInfo]);
+
   const handleSearch = () => {
     // Add logic for handling search here
     // You can perform the search operation based on the input value
@@ -54,7 +85,10 @@ const WalletScreen = () => {
           <div className="wallet-container">
             <div className="wallet-header">
               <div className="wallet-balance">
-                <p>Your wallet balance is: $2000</p>
+              <p style={{}}>
+                  Wallet Balance: $
+                  {walletBalance !== null ? walletBalance : "Loading..."}
+                </p>
               </div>
 
               <h1>Wallet Summary</h1>
@@ -79,7 +113,6 @@ const WalletScreen = () => {
                       Search
                     </Button>
                   </InputGroup.Append>
-
                 </InputGroup>
               </div>
             </div>

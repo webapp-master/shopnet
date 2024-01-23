@@ -72,7 +72,7 @@ function Header() {
         style={{
           backgroundImage: `url(${process.env.PUBLIC_URL}/images/login_background.jpg)`,
           position: "relative",
-          zIndex: 2,
+          zIndex: 3,
           height: navbarHeight, // Use the state value for Navbar height
         }}
       >
