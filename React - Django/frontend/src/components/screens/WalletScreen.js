@@ -16,7 +16,6 @@ const WalletScreen = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-
   // Access the token from Redux state
   const accessToken = useSelector((state) => state.userLogin.userInfo?.access);
   console.log("Access Token:", accessToken);
@@ -85,7 +84,7 @@ const WalletScreen = () => {
           <div className="wallet-container">
             <div className="wallet-header">
               <div className="wallet-balance">
-              <p style={{}}>
+                <p style={{}}>
                   Wallet Balance: $
                   {walletBalance !== null ? walletBalance : "Loading..."}
                 </p>
@@ -125,29 +124,23 @@ const WalletScreen = () => {
               <Table responsive className="transaction-table">
                 <thead>
                   <tr>
-                    <th>Description</th>
+                    <th>Reference</th>
                     <th>Amount</th>
-                    <th>Timestamp</th>
                     <th>Description</th>
-                    <th>Amount</th>
-                    <th>Timestamp</th>
-                    <th>Description</th>
-                    <th>Amount</th>
-                    <th>Timestamp</th>
+                    <th>Previous Balance</th>
+                    <th>New Balance</th>
+                    <th>Date/Time</th>
                   </tr>
                 </thead>
 
                 <tbody>
                   {transactions.map((transaction) => (
                     <tr key={transaction.id}>
-                      <td>{transaction.description}</td>
+                      <td>{transaction.id}</td>
                       <td>{transaction.amount}</td>
-                      <td>{formatTimestamp(transaction.timestamp)}</td>
                       <td>{transaction.description}</td>
-                      <td>{transaction.amount}</td>
-                      <td>{formatTimestamp(transaction.timestamp)}</td>
-                      <td>{transaction.description}</td>
-                      <td>{transaction.amount}</td>
+                      <td>{transaction.previous_balance}</td>
+                      <td>{transaction.new_balance}</td>
                       <td>{formatTimestamp(transaction.timestamp)}</td>
                     </tr>
                   ))}

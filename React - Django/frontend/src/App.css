@@ -796,8 +796,7 @@
 .transaction-table td {
   border: 1.2px solid #ddd;
   padding: 10px;
-  text-align: left;
-  
+  text-align: center;
 }
 
 .transaction-table th {
