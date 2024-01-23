@@ -777,7 +777,8 @@
 
 .wallet-balance p {
   margin: 0;
-  font-size: 16px;
+  font-size: 14px;
+  color: blue;
 }
 
 .wallet-balance {
@@ -807,3 +808,28 @@
   background-color: #e7e7e7;
 }
 
+
+.search-field .input-group-text {
+  background-color: #1f73c9; 
+  color: white; 
+  border-radius: 10px;
+  cursor: pointer; 
+  transition: background-color 0.5s ease, color 0.5s ease, font-size 0.5s ease; 
+}
+
+.search-field .input-group-text:hover {
+  background-color: #155292; 
+  color: white;
+  font-size: 14px;
+}
+
+.search-field .input-group-text:focus {
+  box-shadow: none !important;
+  color: white !important;
+  background-color: blue;
+}
+
+.search-field .custom-button-text {
+  font-size: 10px;
+  transition: font-size 0.5s ease;
+}

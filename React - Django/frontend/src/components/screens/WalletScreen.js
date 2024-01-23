@@ -8,6 +8,7 @@ import {
   Table,
   InputGroup,
   FormControl,
+  Button,
 } from "react-bootstrap";
 
 const WalletScreen = () => {
@@ -41,14 +42,17 @@ const WalletScreen = () => {
     fetchTransactions();
   }, [accessToken]);
 
+  const handleSearch = () => {
+    // Add logic for handling search here
+    // You can perform the search operation based on the input value
+  };
+
   return (
     <Container fluid>
       <Row className="justify-content-center">
         <Col md={12}>
           <div className="wallet-container">
-
             <div className="wallet-header">
-
               <div className="wallet-balance">
                 <p>Your wallet balance is: $2000</p>
               </div>
@@ -56,23 +60,28 @@ const WalletScreen = () => {
               <h1>Wallet Summary</h1>
 
               <div className="search-bar">
-                
                 <InputGroup className="search-field">
-
                   <FormControl
                     placeholder="Search transactions..."
                     aria-label="Search transactions"
                     aria-describedby="basic-addon2"
-                    style={{ borderRadius: "5px", /*border: "2px solid #1f73c9"*/}}
+                    style={{
+                      borderRadius: "5px" /*border: "2px solid #1f73c9"*/,
+                    }}
                   />
 
                   <InputGroup.Append>
-                    <InputGroup.Text id="basic-addon2">Search</InputGroup.Text>
+                    <Button
+                      variant=""
+                      className={`input-group-text custom-button-text`}
+                      onClick={handleSearch}
+                    >
+                      Search
+                    </Button>
                   </InputGroup.Append>
 
                 </InputGroup>
               </div>
-              
             </div>
 
             {loading ? (
