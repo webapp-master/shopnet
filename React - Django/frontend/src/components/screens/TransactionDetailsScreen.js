@@ -38,79 +38,71 @@ const TransactionDetailsScreen = ({ match }) => {
                 <p style={{}}>Shipping Cost: $1.89</p>
               </div>
 
-              
-                <h1 style={{ marginLeft: "-135px" }}>
-                  Transaction Details: {transactionId}
-                </h1>
-              
+              <h1 style={{ marginLeft: "-135px" }}>
+                Transaction Details: {transactionId}
+              </h1>
             </div>
 
             <Table responsive className="transaction-table">
               <thead>
                 <tr>
-                  <th>Reference</th>
-                  <th>Amount</th>
-                  <th>Description</th>
-                  <th>Previous Balance</th>
-                  <th>New Balance</th>
-                  <th>Date/Time</th>
+                  <th>Product</th>
+                  <th>Quantity</th>
+                  <th>Unit Price</th>
+                  <th>Unit Tax</th>
+                  <th>Total Amount</th>
+                  <th>Status</th>
                 </tr>
               </thead>
 
               <tbody>
                 <tr>
-                  <td>23344</td>
-                  <td>456</td>
-                  <td>hhdkdddddddddddd</td>
-                  <td>444444</td>
-                  <td>443333</td>
-                  <td>3333333</td>
+                  <td> iPhone 11 Pro 256GB Memory </td>
+                  <td>4</td>
+                  <td>345</td>
+                  <td>4</td>
+                  <td>443</td>
+                  <td>Order SEEN at 26th of January, 2024</td>
                 </tr>
 
                 <tr>
-                  <td>23344</td>
-                  <td>456</td>
-                  <td>hhdkdddddddddddd</td>
-                  <td>444444</td>
-                  <td>443333</td>
-                  <td>3333333</td>
+                  <td> Logitech G-Series Gaming Mouse </td>
+                  <td>7</td>
+                  <td>50</td>
+                  <td>400</td>
+                  <td>1443</td>
+                  <td>Order PROCESSED at 29th of January, 2024</td>
+                </tr>
+
+                
+
+                <tr>
+                  <td> Sun King Solar Fan With 20W Solar Panel </td>
+                  <td>41</td>
+                  <td>5</td>
+                  <td>40</td>
+                  <td>300</td>
+                  <td>Order SENT at 30th of January, 2024</td>
                 </tr>
 
                 <tr>
-                  <td>23344</td>
-                  <td>456</td>
-                  <td>hhdkdddddddddddd</td>
-                  <td>444444</td>
-                  <td>443333</td>
-                  <td>3333333</td>
+                  <td> Goldcrown Portable Dry Pressing Iron </td>
+                  <td>2</td>
+                  <td>34</td>
+                  <td>1</td>
+                  <td>44</td>
+                  <td>Order SENT at 1st of Febuary, 2024</td>
                 </tr>
 
                 <tr>
-                  <td>23344</td>
-                  <td>456</td>
-                  <td>hhdkdddddddddddd</td>
-                  <td>444444</td>
-                  <td>443333</td>
-                  <td>3333333</td>
+                  <td> Hisense 7.5kg Twin Tub Washing Machine - (WSQB 753 (JF)) </td>
+                  <td>12</td>
+                  <td>1134</td>
+                  <td>12</td>
+                  <td>5644</td>
+                  <td>Order DELIVERED at 22nd of Febuary, 2024</td>
                 </tr>
 
-                <tr>
-                  <td>23344</td>
-                  <td>456</td>
-                  <td>hhdkdddddddddddd</td>
-                  <td>444444</td>
-                  <td>443333</td>
-                  <td>3333333</td>
-                </tr>
-
-                <tr>
-                  <td>23344</td>
-                  <td>456</td>
-                  <td>hhdkdddddddddddd</td>
-                  <td>444444</td>
-                  <td>443333</td>
-                  <td>3333333</td>
-                </tr>
               </tbody>
             </Table>
           </div>

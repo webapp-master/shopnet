@@ -467,3 +467,11 @@ I nticed that the Header.js did not span throughout the top of the table
 in product 
 make all the text to align center
 some product description needs to be limited
+
+
+			67
+wallet summary
+adjust the description 
+instead of the unit-price-------use Amount= qty*unit price
+
+already, the transaction details will explicit the unit price 
