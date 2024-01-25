@@ -38,9 +38,13 @@ const TransactionDetailsScreen = ({ match }) => {
                 <p style={{}}>Shipping Cost: $1.89</p>
               </div>
 
-              <h1 style={{ marginLeft: "-135px" }}>
+              <h1 style={{ }}>
                 Transaction Details: {transactionId}
               </h1>
+
+              <div className="wallet-balance">
+                <p>Total Amount: $4567</p>
+              </div>
             </div>
 
             <Table responsive className="transaction-table">
@@ -50,7 +54,7 @@ const TransactionDetailsScreen = ({ match }) => {
                   <th>Quantity</th>
                   <th>Unit Price</th>
                   <th>Unit Tax</th>
-                  <th>Total Amount</th>
+                  <th>Amount</th>
                   <th>Status</th>
                 </tr>
               </thead>
