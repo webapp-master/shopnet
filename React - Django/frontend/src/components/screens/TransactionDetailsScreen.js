@@ -34,89 +34,85 @@ const TransactionDetailsScreen = ({ match }) => {
         <Col md={12}>
           <div className="wallet-container">
             <div className="wallet-header">
+              <div className="wallet-balance">
+                <p style={{}}>Shipping Cost: $1.89</p>
+              </div>
 
-            <div className="wallet-balance">
-                <p style={{}}>
-                  Shipping Cost: $1.89
-                  
-                </p>
-            </div>
-    
-              <h1>Transaction Details: {transactionId}</h1>
-
-            </div>
-
-           
               
-              <Table responsive className="transaction-table">
-                <thead>
-                  <tr>
-                    <th>Reference</th>
-                    <th>Amount</th>
-                    <th>Description</th>
-                    <th>Previous Balance</th>
-                    <th>New Balance</th>
-                    <th>Date/Time</th>
-                  </tr>
-                </thead>
+                <h1 style={{ marginLeft: "-135px" }}>
+                  Transaction Details: {transactionId}
+                </h1>
+              
+            </div>
 
-                <tbody>
-                  <tr>
-                    <td>23344</td>
-                    <td>456</td>
-                    <td>hhdkdddddddddddd</td>
-                    <td>444444</td>
-                    <td>443333</td>
-                    <td>3333333</td>
-                  </tr>
+            <Table responsive className="transaction-table">
+              <thead>
+                <tr>
+                  <th>Reference</th>
+                  <th>Amount</th>
+                  <th>Description</th>
+                  <th>Previous Balance</th>
+                  <th>New Balance</th>
+                  <th>Date/Time</th>
+                </tr>
+              </thead>
 
-                  <tr>
-                    <td>23344</td>
-                    <td>456</td>
-                    <td>hhdkdddddddddddd</td>
-                    <td>444444</td>
-                    <td>443333</td>
-                    <td>3333333</td>
-                  </tr>
+              <tbody>
+                <tr>
+                  <td>23344</td>
+                  <td>456</td>
+                  <td>hhdkdddddddddddd</td>
+                  <td>444444</td>
+                  <td>443333</td>
+                  <td>3333333</td>
+                </tr>
 
-                  <tr>
-                    <td>23344</td>
-                    <td>456</td>
-                    <td>hhdkdddddddddddd</td>
-                    <td>444444</td>
-                    <td>443333</td>
-                    <td>3333333</td>
-                  </tr>
+                <tr>
+                  <td>23344</td>
+                  <td>456</td>
+                  <td>hhdkdddddddddddd</td>
+                  <td>444444</td>
+                  <td>443333</td>
+                  <td>3333333</td>
+                </tr>
 
-                  <tr>
-                    <td>23344</td>
-                    <td>456</td>
-                    <td>hhdkdddddddddddd</td>
-                    <td>444444</td>
-                    <td>443333</td>
-                    <td>3333333</td>
-                  </tr>
+                <tr>
+                  <td>23344</td>
+                  <td>456</td>
+                  <td>hhdkdddddddddddd</td>
+                  <td>444444</td>
+                  <td>443333</td>
+                  <td>3333333</td>
+                </tr>
 
-                  <tr>
-                    <td>23344</td>
-                    <td>456</td>
-                    <td>hhdkdddddddddddd</td>
-                    <td>444444</td>
-                    <td>443333</td>
-                    <td>3333333</td>
-                  </tr>
+                <tr>
+                  <td>23344</td>
+                  <td>456</td>
+                  <td>hhdkdddddddddddd</td>
+                  <td>444444</td>
+                  <td>443333</td>
+                  <td>3333333</td>
+                </tr>
 
-                  <tr>
-                    <td>23344</td>
-                    <td>456</td>
-                    <td>hhdkdddddddddddd</td>
-                    <td>444444</td>
-                    <td>443333</td>
-                    <td>3333333</td>
-                  </tr>
-                </tbody>
-              </Table>
-            
+                <tr>
+                  <td>23344</td>
+                  <td>456</td>
+                  <td>hhdkdddddddddddd</td>
+                  <td>444444</td>
+                  <td>443333</td>
+                  <td>3333333</td>
+                </tr>
+
+                <tr>
+                  <td>23344</td>
+                  <td>456</td>
+                  <td>hhdkdddddddddddd</td>
+                  <td>444444</td>
+                  <td>443333</td>
+                  <td>3333333</td>
+                </tr>
+              </tbody>
+            </Table>
           </div>
         </Col>
       </Row>
