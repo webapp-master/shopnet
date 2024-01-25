@@ -34,15 +34,16 @@ const TransactionDetailsScreen = ({ match }) => {
         <Col md={12}>
           <div className="wallet-container">
             <div className="wallet-header">
-              <div className="wallet-balance">
-                <p style={{}}></p>
-              </div>
 
+            <div className="wallet-balance">
+                <p style={{}}>
+                  Shipping Cost: $1.89
+                  
+                </p>
+            </div>
+    
               <h1>Transaction Details: {transactionId}</h1>
 
-              <div className="search-bar">
-                <InputGroup className="search-field"></InputGroup>
-              </div>
             </div>
 
            
