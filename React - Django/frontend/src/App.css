@@ -802,6 +802,7 @@
 .transaction-table th {
   background-color: #1f73c9 !important;
   color: white !important;
+  vertical-align: middle;
 }
 
 .transaction-table tbody tr:hover {

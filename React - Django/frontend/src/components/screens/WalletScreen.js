@@ -10,6 +10,7 @@ import {
   FormControl,
   Button,
 } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const WalletScreen = () => {
   const [transactions, setTransactions] = useState([]);
@@ -136,7 +137,14 @@ const WalletScreen = () => {
                 <tbody>
                   {transactions.map((transaction) => (
                     <tr key={transaction.id}>
-                      <td>{transaction.id}</td>
+                      <td>
+                        <Link
+                          to={`/transaction/details/${transaction.id}`}
+                          style={{ textDecoration: "underline", color: "blue" }}
+                        >
+                          {transaction.id}
+                        </Link>
+                      </td>
                       <td>{transaction.amount}</td>
                       <td>{transaction.description}</td>
                       <td>{transaction.previous_balance}</td>

@@ -461,3 +461,9 @@ Header.js
 looks like it has width constraint 
 when i increased the num. of columns/width of the table in WalletScreen.js
 I nticed that the Header.js did not span throughout the top of the table 
+
+
+			66
+in product 
+make all the text to align center
+some product description needs to be limited
