@@ -33,7 +33,7 @@ const TransactionDetailsScreen = ({ match }) => {
       <Row className="justify-content-center">
         <Col md={12}>
           <div className="wallet-container">
-            <div className="wallet-header">
+            <div style={{backgroundColor: ""}} className="wallet-header">
               <div className="wallet-balance">
                 <p style={{}}>Shipping Cost: $1.89</p>
               </div>
@@ -48,7 +48,7 @@ const TransactionDetailsScreen = ({ match }) => {
             </div>
 
             <Table responsive className="transaction-table">
-              <thead>
+              <thead >
                 <tr>
                   <th>Product</th>
                   <th>Quantity</th>

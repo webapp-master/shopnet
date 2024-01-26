@@ -475,3 +475,9 @@ adjust the description
 instead of the unit-price-------use Amount= qty*unit price
 
 already, the transaction details will explicit the unit price 
+
+
+
+			68
+the cart and buy
+make the images uniform 

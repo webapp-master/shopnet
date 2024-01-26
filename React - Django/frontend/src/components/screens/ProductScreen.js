@@ -15,7 +15,6 @@ import Loader from "../Loader";
 import Message from "../Message";
 import { useDispatch, useSelector } from "react-redux";
 import { listProductDetails } from "../../actions/productAction";
-import { productDetailsReducers } from "../../reducers/productReducers";
 
 function ProductScreen({ match, history }) {
   const [qty, setQty] = useState(1);
@@ -34,12 +33,11 @@ function ProductScreen({ match, history }) {
   return (
     <Container fluid>
       <div className="product">
-      <Link to="/">
+        <Link to="/">
           <Button className="btn-block product-custom my-1" type="button">
             Go Back
           </Button>
         </Link>
-        
 
         {loading ? (
           <Loader />
@@ -48,26 +46,31 @@ function ProductScreen({ match, history }) {
         ) : (
           <Row>
             <Col md={6}>
-              <Image src={product.image} alt={product.name} fluid />
+              <Image style={{borderRadius: "10px"}} src={product.image} alt={product.name} fluid />
             </Col>
 
             <Col md={3}>
               <ListGroup variant="flush">
-                <ListGroup.Item>
+
+                <ListGroup.Item className="text-center">
                   <h3>{product.name}</h3>
                 </ListGroup.Item>
-                <ListGroup.Item>
+
+                <ListGroup.Item className="text-center">
                   <Rating
                     value={product.rating}
                     text={`${product.numReviews} reviews`}
                     color={"#f8e825"}
                   />
                 </ListGroup.Item>
-                <ListGroup.Item>Price: ${product.price}</ListGroup.Item>
 
-                <ListGroup.Item>
-                  Description: {product.description}
+                <ListGroup.Item className="text-center">Price: ${product.price}</ListGroup.Item>
+
+                <ListGroup.Item className="">
+                 <p style={{fontSize: "20px", color: "red"}}> Description: </p> 
+                   {product.description}
                 </ListGroup.Item>
+
               </ListGroup>
             </Col>
             <Col md={3}>
