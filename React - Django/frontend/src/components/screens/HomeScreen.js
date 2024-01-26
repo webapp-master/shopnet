@@ -45,6 +45,7 @@ function HomeScreen() {
         ) : (
           <Row>
             {products
+              .slice(0, 16) // Take only the first 16 items
               .sort((a, b) => b.id - a.id) // Sort products by ID in descending order
               .map((product) => (
                 <Col key={product.id} sm={12} md={6} lg={4} xl={3}>
