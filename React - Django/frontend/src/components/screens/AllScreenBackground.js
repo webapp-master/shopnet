@@ -1,9 +1,9 @@
 import React from 'react';
-import HomeScreen from './HomeScreen'; 
+import AllproductsScreen from './AllproductsScreen';
 
 
 
-const HomeScreenBackground = () => {
+const AllScreenBackground = () => {
     return (
       <div
         style={{
@@ -12,16 +12,16 @@ const HomeScreenBackground = () => {
           width: '100%',
           display: 'flex',
           
-          justifyContent: 'center',
-                  
+          justifyContent: 'center',   
+          
           padding: '0', 
          
         }}
       >   
-        <HomeScreen />
+        <AllproductsScreen/>
       </div>
     );
   };
   
-  export default HomeScreenBackground;
+  export default AllScreenBackground;
   

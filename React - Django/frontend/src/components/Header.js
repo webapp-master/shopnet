@@ -30,12 +30,13 @@ function Header() {
   const isMobile = useMediaQuery({ maxWidth: 867 });
   const location = useLocation(); 
 
-  // Check if the current route is "/login" or "/credit" or "/debit"
+  // Check if the current route is "/login" or "/credit" or "/debit" or ...
   const isLoginRoute = location.pathname === "/login";
   const isCreditRoute = location.pathname === "/credit";
   const isDebitRoute = location.pathname === "/debit";
   const isRegisterRoute = location.pathname === "/register";
   const isHomeRoute = location.pathname === "/";
+  const isAllRoute = location.pathname === "/all";
 
   const [bottomPosition, setBottomPosition] = useState("15%"); // State to manage bottom position
   const [navbarHeight, setNavbarHeight] = useState("5.5rem"); // State to manage Navbar height
@@ -61,7 +62,8 @@ function Header() {
           isCreditRoute ||
           isDebitRoute ||
           isRegisterRoute ||
-          isHomeRoute
+          isHomeRoute ||
+          isAllRoute
             ? "0"
             : "20px",
       }}

@@ -12,9 +12,9 @@ import ShippingScreen from "./components/screens/ShippingScreen";
 import BuyScreen from "./components/screens/BuyScreen";
 import WalletScreen from "./components/screens/WalletScreen";
 import CreditBackground from "./components/screens/CreditBackground";
-import Admin_debitScreen from "./components/screens/Admin_debitScreen";
 import DebitBackground from "./components/screens/DebitBackground";
 import TransactionDetailsScreen from "./components/screens/TransactionDetailsScreen";
+import AllScreenBackground from "./components/screens/AllScreenBackground";
 
 function App() {
   return (
@@ -33,6 +33,7 @@ function App() {
         <Route path="/credit" component={CreditBackground} exact />
         <Route path="/debit" component={DebitBackground} exact />
         <Route path="/transaction/details/:id" component={TransactionDetailsScreen} exact />
+        <Route path="/all" component={AllScreenBackground} exact />
       </main>
 
       <Footer />

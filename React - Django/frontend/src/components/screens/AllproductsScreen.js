@@ -6,7 +6,7 @@ import { listProducts } from "../../actions/productAction";
 import Loader from "../Loader";
 import Message from "../Message";
 
-function HomeScreen() {
+function AllproductsScreen() {
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
   const { error, loading, products } = productList;
@@ -35,7 +35,7 @@ function HomeScreen() {
             fontSize: "27px"
           }}
         >
-          Latest Products
+          {toTitleCase("All Available Products")}
         </p>
 
         {loading ? (
@@ -44,14 +44,12 @@ function HomeScreen() {
           <Message variant="danger">{error}</Message>
         ) : (
           <Row>
-            {products
-              .sort((a, b) => b.id - a.id) // Sort products by ID in descending order
-              .map((product) => (
-                <Col key={product.id} sm={12} md={6} lg={4} xl={3}>
-                  {/* <h3>{product.name}</h3> */}
-                  <Product product={product} />
-                </Col>
-              ))}
+            {products.map((product) => (
+              <Col key={product.id} sm={12} md={6} lg={4} xl={3}>
+                {/* <h3>{product.name}</h3> */}
+                <Product product={product} />
+              </Col>
+            ))}
           </Row>
         )}
       </div>
@@ -59,4 +57,4 @@ function HomeScreen() {
   );
 }
 
-export default HomeScreen;
+export default AllproductsScreen;
