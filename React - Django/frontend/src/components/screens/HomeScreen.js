@@ -27,7 +27,7 @@ function HomeScreen() {
           className="text-center"
           style={{
             backgroundColor: "#d7d1c6",
-            marginTop: "25px",
+            marginTop: "20px",
             borderRadius: "390px",
             boxShadow: "0  2px 8px rgba(0, 0, 0, 0.5)",
             color: "white",

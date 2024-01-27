@@ -78,6 +78,8 @@ const WalletScreen = () => {
     // You can perform the search operation based on the input value
   };
 
+  const sortedTransactions = transactions.slice().sort((a, b) => b.id - a.id);
+
   return (
     <Container fluid>
       <Row className="justify-content-center">
@@ -135,7 +137,7 @@ const WalletScreen = () => {
                 </thead>
 
                 <tbody>
-                  {transactions.map((transaction) => (
+                  {sortedTransactions.map((transaction) => (
                     <tr key={transaction.id}>
                       <td>
                         <Link

@@ -53,7 +53,7 @@ function ProductScreen({ match, history }) {
               <ListGroup variant="flush">
 
                 <ListGroup.Item className="text-center">
-                  <h3>{product.name}</h3>
+                  <p style={{fontSize: "20px"}}> {product.name} </p>
                 </ListGroup.Item>
 
                 <ListGroup.Item className="text-center">
@@ -74,9 +74,9 @@ function ProductScreen({ match, history }) {
               </ListGroup>
             </Col>
             <Col md={3}>
-              <Card>
+              <Card >
                 <ListGroup variant="flush">
-                  <ListGroup.Item>
+                  <ListGroup.Item style={{ backgroundColor: "#b7bec3"}} >
                     <Row>
                       <Col>Price:</Col>
                       <Col>
@@ -84,7 +84,9 @@ function ProductScreen({ match, history }) {
                       </Col>
                     </Row>
                   </ListGroup.Item>
-                  <ListGroup.Item>
+                  <div style={{ borderTop: "2px solid white" }}></div>
+
+                  <ListGroup.Item style={{ backgroundColor: "#b7bec3"}}>
                     <Row>
                       <Col>Status:</Col>
                       <Col>
@@ -94,7 +96,7 @@ function ProductScreen({ match, history }) {
                   </ListGroup.Item>
 
                   {product.countInStock > 0 && (
-                    <ListGroup.Item>
+                    <ListGroup.Item style={{ backgroundColor: "#d4d4d4"}}>
                       <Row>
                         <Col>Qty</Col>
                         <Col xs="auto" className="my-1">
@@ -102,6 +104,7 @@ function ProductScreen({ match, history }) {
                             as="select"
                             value={qty}
                             onChange={(e) => setQty(e.target.value)}
+                            style={{borderRadius: "10px"}}
                           >
                             {[...Array(product.countInStock).keys()].map(
                               (x) => (
@@ -116,7 +119,7 @@ function ProductScreen({ match, history }) {
                     </ListGroup.Item>
                   )}
 
-                  <ListGroup.Item>
+                  <ListGroup.Item style={{ backgroundColor: "#b7bec3"}}>
                     <Button
                       className="btn-block product-custom"
                       disabled={product.countInStock == 0}
