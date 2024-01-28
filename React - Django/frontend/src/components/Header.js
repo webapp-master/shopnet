@@ -102,8 +102,9 @@ function Header() {
                       </LinkContainer>
                     )}
 
-                  {/* Check if the current path does not include "/cart" */}
-                  {currentLocation.pathname !== "/cart" && (
+                  {/* Check if the current path does not include "/cart"  or "/cart/:id" */}
+                  {currentLocation.pathname !== "/cart/:id" &&
+                  currentLocation.pathname !== "/cart" && (
                     <LinkContainer to="/cart" className="headerButtons">
                       <Button variant="light">Cart</Button>
                     </LinkContainer>
