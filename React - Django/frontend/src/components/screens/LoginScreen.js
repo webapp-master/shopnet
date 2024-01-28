@@ -129,7 +129,7 @@ function LoginScreen({ location, history }) {
               <h2
                 style={{
                   fontSize: "2.4rem",
-                  color: "#1f73c9",
+                  color: "white",
                   textAlign: "center",
                   textTransform: "capitalize", // Add this line for title case
                 }}

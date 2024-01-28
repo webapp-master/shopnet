@@ -481,3 +481,16 @@ already, the transaction details will explicit the unit price
 			68
 the cart and buy
 make the images uniform 
+
+
+			69
+!userinfo
+create a button 
+"Contact"
+
+
+			70
+!userinfo
+there is increased width
+like negative width
+horizontal scroll button

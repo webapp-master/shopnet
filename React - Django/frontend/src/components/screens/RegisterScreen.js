@@ -33,6 +33,7 @@ function RegisterScreen() {
     }
   }, [history, userInfo]);
 
+  
   const submitHandler = (e) => {
     e.preventDefault();
     if (password != confirmPassword) {
@@ -135,7 +136,9 @@ function RegisterScreen() {
                                     onChange={(e) =>
                                       setFirstName(e.target.value)
                                     }
+                                    autoComplete="firstName"
                                     required
+                                    
                                   />
                                 </div>
                               </div>
@@ -251,6 +254,7 @@ function RegisterScreen() {
                                     onChange={(e) =>
                                       setPassword(e.target.value)
                                     }
+                                    autoComplete="new-password"
                                   />
                                 </div>
                               </div>
