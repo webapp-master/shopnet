@@ -19,7 +19,6 @@ import { useEffect, useState } from "react";
 
 function Header() {
   const userLogin = useSelector((state) => state.userLogin);
-  const cart = useSelector((state) => state.cart);
   const { userInfo } = userLogin;
   const dispatch = useDispatch();
   const history = useHistory(); // Get the history object
@@ -29,8 +28,7 @@ function Header() {
   };
 
   const isMobile = useMediaQuery({ maxWidth: 867 });
-  const location = useLocation(); 
-  
+  const location = useLocation();
 
   // Check if the current route is "/login" or "/credit" or "/debit" or ...
   const isLoginRoute = location.pathname === "/login";
@@ -55,8 +53,6 @@ function Header() {
   }, [location.pathname]);
 
   const currentLocation = useLocation();
-  const isOnCartScreen = currentLocation.pathname === "/cart";
-  const isCartEmpty = isOnCartScreen && cart.length === 0;
 
   return (
     <div
@@ -106,13 +102,6 @@ function Header() {
                       </LinkContainer>
                     )}
 
-                  {/* Check if the current path does not include "/cart" */}
-                  {currentLocation.pathname !== "/cart" && (
-                    <LinkContainer to="/cart" className="headerButtons">
-                      <Button variant="light">Cart</Button>
-                    </LinkContainer>
-                  )}
-
                   {/* Check if the current path is "/buy" */}
                   {currentLocation.pathname == "/buy" && (
                     <LinkContainer to="/shipping" className="headerButtons">
@@ -127,15 +116,20 @@ function Header() {
                     </LinkContainer>
                   )}
 
-                  {/* Check if the current path does not include "/cart" */}
-{currentLocation.pathname !== "/cart" && currentLocation.pathname === "/cart" && isCartEmpty && "Cart" && (
-  <LinkContainer to="/cart" className="headerButtons">
-    <Button variant="light">
-      
-    </Button>
-  </LinkContainer>
-)}
+                  {/* Check if the current path includes "/cart" */}
+                  {currentLocation.pathname.includes("/cart") && (
+                    <LinkContainer to="/" className="headerButtons">
+                      <Button variant="light">Latest</Button>
+                    </LinkContainer>
+                  )}
 
+                  {/* Check if the current path is "/" or "/all" */}
+                  {(currentLocation.pathname === "/" ||
+                    currentLocation.pathname === "/all") && (
+                    <LinkContainer to="/cart" className="headerButtons">
+                      <Button variant="light">Cart</Button>
+                    </LinkContainer>
+                  )}
 
                   {/* Check if the current path is "/wallet" */}
                   {currentLocation.pathname == "/wallet" && (
@@ -157,7 +151,6 @@ function Header() {
                       <Button variant="light">Debit</Button>
                     </LinkContainer>
                   )}
-
                 </React.Fragment>
               )}
 
