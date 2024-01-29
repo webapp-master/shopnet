@@ -47,6 +47,10 @@ function ProductScreen({ match, history }) {
           <Row>
             <Col md={6}>
               <Image style={{borderRadius: "10px"}} src={product.image} alt={product.name} fluid />
+              <ListGroup.Item className="">
+                 <p style={{fontSize: "20px", color: "red"}}> Description: </p> 
+                   {product.description}
+                </ListGroup.Item>
             </Col>
 
             <Col md={3}>
@@ -66,10 +70,7 @@ function ProductScreen({ match, history }) {
 
                 <ListGroup.Item className="text-center">Price: ${product.price}</ListGroup.Item>
 
-                <ListGroup.Item className="">
-                 <p style={{fontSize: "20px", color: "red"}}> Description: </p> 
-                   {product.description}
-                </ListGroup.Item>
+                
 
               </ListGroup>
             </Col>

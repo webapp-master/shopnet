@@ -116,16 +116,19 @@ function Header() {
                     </LinkContainer>
                   )}
 
-                  {/* Check if the current path includes "/cart" */}
-                  {currentLocation.pathname.includes("/cart") && (
+                  {/* Check if the current path includes "/cart" or "/buy" */}
+                  {(currentLocation.pathname.includes("/cart") || 
+                    currentLocation.pathname === "/buy") && (
                     <LinkContainer to="/" className="headerButtons">
                       <Button variant="light">Latest</Button>
                     </LinkContainer>
                   )}
 
-                  {/* Check if the current path is "/" or "/all" */}
+                  {/* Check if the current path is "/" or "/all" or "/product/:id" */}
                   {(currentLocation.pathname === "/" ||
-                    currentLocation.pathname === "/all") && (
+                    currentLocation.pathname === "/all" ||
+                    currentLocation.pathname === "/shipping" ||
+                    currentLocation.pathname.includes("/product")) && (
                     <LinkContainer to="/cart" className="headerButtons">
                       <Button variant="light">Cart</Button>
                     </LinkContainer>
