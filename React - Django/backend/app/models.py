@@ -22,6 +22,8 @@ class Product(models.Model):
     brand = models.CharField(max_length=200, null=True, blank=True)
     category = models.CharField(max_length=200, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
+    specification = models.TextField(null=True, blank=True)
+    sku = models.CharField(max_length=50, null=True, blank=True, unique=True)
     rating = models.IntegerField(null=True, blank=True)
     numReviews = models.IntegerField(null=True, blank=True, default=0)
     price = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
@@ -112,3 +114,22 @@ class ShippingAddress(models.Model):
     def __str__(self):
         return f"State: {self.state}, City: {self.city}, Phone Number: {self.phoneNumber}"
 
+
+
+class Supplier(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    name = models.CharField(max_length=200)
+    shop_address = models.TextField(blank=True, null=True)
+    home_address = models.TextField(blank=True, null=True)
+    instagram_handle = models.CharField(max_length=100, blank=True, null=True)
+    website = models.URLField(blank=True, null=True)
+    phone_number = models.CharField(max_length=15, blank=True, null=True)
+    whatsapp_number = models.CharField(max_length=15, blank=True, null=True)
+    cost_price = models.DecimalField(max_digits=7, decimal_places=2, blank=True, null=True)
+    gender = models.CharField(max_length=10, choices=[('male', 'Male'), ('female', 'Female'), ('other', 'Other')], blank=True, null=True)
+    terms_and_conditions = models.TextField(blank=True, null=True)
+    business_relationship_status = models.CharField(max_length=20, choices=[('active', 'Active'), ('inactive', 'Inactive')], default='active')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.name} - {self.product.name} Supplier"
