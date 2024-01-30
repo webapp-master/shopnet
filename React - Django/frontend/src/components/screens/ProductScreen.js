@@ -40,11 +40,8 @@ function ProductScreen({ match, history }) {
           </Button>
         </Link>
 
-        {loading ? (
-          <Loader />
-        ) : error ? (
-          <Message variant="danger">{error} </Message>
-        ) : (
+      
+
           <Row>
             <Col md={6}>
               <Image style={{borderRadius: "10px"}} src={product.image} alt={product.name} fluid />
@@ -135,18 +132,21 @@ function ProductScreen({ match, history }) {
 
 
           <Row>
-            <Col md={8}>
-            <ListGroup.Item className="">
-                 <p style={{fontSize: "20px", color: "red"}}> Description: </p> 
-                   {product.description}
-                </ListGroup.Item>
-                
+            <Col md={6}>
+              <ListGroup.Item className="">
+                <div>
+                  <p style={{ fontSize: "20px", color: "red" }}> Description: </p>
+                  {product.description}
+                </div>
+              </ListGroup.Item>
             </Col>
           </Row>
 
+
+
          
 
-        )}
+        
       </div>
     </Container>
   );
