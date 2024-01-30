@@ -40,6 +40,13 @@ function ProductScreen({ match, history }) {
           </Button>
         </Link>
 
+
+        {loading ? (
+          <Loader />
+        ) : error ? (
+          <Message variant="danger">{error} </Message>
+        ) : (
+
       
 
           <Row>
@@ -129,6 +136,8 @@ function ProductScreen({ match, history }) {
               </Card>
             </Col>
           </Row>
+
+        )}
 
 
           <Row>
