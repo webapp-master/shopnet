@@ -76,6 +76,28 @@ function ProductScreen({ match, history }) {
                 >
                   {/* Content for Container 1 */}
                   {/* You can add your content here */}
+
+                  <ListGroup variant="flush">
+
+                <ListGroup.Item className="text-center">
+                  <p style={{fontSize: "20px"}}> {product.name} </p>
+                </ListGroup.Item>
+
+                <ListGroup.Item className="text-center">
+                  <Rating
+                    value={product.rating}
+                    text={`${product.numReviews} reviews`}
+                    color={"#f8e825"}
+                  />
+                </ListGroup.Item>
+
+                <ListGroup.Item className="text-center">Price: ${product.price}</ListGroup.Item>
+
+                
+
+              </ListGroup>
+
+
                 </div>
 
                 {/* Container 2 */}
@@ -89,6 +111,31 @@ function ProductScreen({ match, history }) {
                 >
                   {/* Content for Container 2 */}
                   {/* You can add your content here */}
+
+
+                  <ListGroup variant="flush">
+
+                <ListGroup.Item className="text-center">
+                  <p style={{fontSize: "20px"}}> {product.name} </p>
+                </ListGroup.Item>
+
+                <ListGroup.Item className="text-center">
+                  <Rating
+                    value={product.rating}
+                    text={`${product.numReviews} reviews`}
+                    color={"#f8e825"}
+                  />
+                </ListGroup.Item>
+
+                <ListGroup.Item className="text-center">Price: ${product.price}</ListGroup.Item>
+
+                
+
+              </ListGroup>
+
+
+
+
                 </div>
               </div>
 
