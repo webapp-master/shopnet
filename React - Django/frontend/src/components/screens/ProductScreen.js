@@ -33,6 +33,7 @@ function ProductScreen({ match, history }) {
   return (
     <Container fluid>
       <div className="product">
+
         <Link to="/">
           <Button className="btn-block product-custom my-1" type="button">
             Go Back
@@ -47,10 +48,7 @@ function ProductScreen({ match, history }) {
           <Row>
             <Col md={6}>
               <Image style={{borderRadius: "10px"}} src={product.image} alt={product.name} fluid />
-              <ListGroup.Item className="">
-                 <p style={{fontSize: "20px", color: "red"}}> Description: </p> 
-                   {product.description}
-                </ListGroup.Item>
+              
             </Col>
 
             <Col md={3}>
@@ -70,10 +68,10 @@ function ProductScreen({ match, history }) {
 
                 <ListGroup.Item className="text-center">Price: ${product.price}</ListGroup.Item>
 
-                
-
               </ListGroup>
             </Col>
+
+
             <Col md={3}>
               <Card >
                 <ListGroup variant="flush">
@@ -134,6 +132,20 @@ function ProductScreen({ match, history }) {
               </Card>
             </Col>
           </Row>
+
+
+          <Row>
+            <Col md={8}>
+            <ListGroup.Item className="">
+                 <p style={{fontSize: "20px", color: "red"}}> Description: </p> 
+                   {product.description}
+                </ListGroup.Item>
+                
+            </Col>
+          </Row>
+
+         
+
         )}
       </div>
     </Container>
