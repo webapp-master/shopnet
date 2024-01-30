@@ -55,8 +55,6 @@ function ProductScreen({ match, history }) {
             </Col>
 
             <Col md={6}>
-
-
               <div
                 style={{
                   display: "flex",
@@ -71,33 +69,44 @@ function ProductScreen({ match, history }) {
                     padding: "10px",
                     border: "1px solid #ccc",
                     borderRadius: "8px",
-                    backgroundColor: "red"
+                    backgroundColor: "red",
+                    display: "flex",
+                    flexDirection: "row",
                   }}
                 >
-                  {/* Content for Container 1 */}
-                  {/* You can add your content here */}
+                  {/* Division 1 */}
+                  <div
+                    style={{
+                      flex: 1,
+                      borderRight: "1px solid #ccc",
+                      paddingRight: "10px",
+                    }}
+                  >
+                    {/* Content for Division 1 */}
+                    <ListGroup variant="flush">
+                      <ListGroup.Item className="text-center">
+                        <p style={{ fontSize: "20px" }}> {product.name} </p>
+                      </ListGroup.Item>
 
-                  <ListGroup variant="flush">
+                      <ListGroup.Item className="text-center">
+                        <Rating
+                          value={product.rating}
+                          text={`${product.numReviews} reviews`}
+                          color={"#f8e825"}
+                        />
+                      </ListGroup.Item>
 
-                <ListGroup.Item className="text-center">
-                  <p style={{fontSize: "20px"}}> {product.name} </p>
-                </ListGroup.Item>
+                      <ListGroup.Item className="text-center">
+                        Price: ${product.price}
+                      </ListGroup.Item>
+                    </ListGroup>
+                  </div>
 
-                <ListGroup.Item className="text-center">
-                  <Rating
-                    value={product.rating}
-                    text={`${product.numReviews} reviews`}
-                    color={"#f8e825"}
-                  />
-                </ListGroup.Item>
-
-                <ListGroup.Item className="text-center">Price: ${product.price}</ListGroup.Item>
-
-                
-
-              </ListGroup>
-
-
+                  {/* Division 2 */}
+                  <div style={{ flex: 1, paddingLeft: "10px" }}>
+                    {/* Content for Division 2 */}
+                    {/* You can add your content here */}
+                  </div>
                 </div>
 
                 {/* Container 2 */}
@@ -106,40 +115,19 @@ function ProductScreen({ match, history }) {
                     padding: "10px",
                     border: "1px solid #ccc",
                     borderRadius: "8px",
-                    backgroundColor: "blue"
+                    backgroundColor: "blue",
                   }}
                 >
                   {/* Content for Container 2 */}
-                  {/* You can add your content here */}
-
-
-                  <ListGroup variant="flush">
-
-                <ListGroup.Item className="text-center">
-                  <p style={{fontSize: "20px"}}> {product.name} </p>
-                </ListGroup.Item>
-
-                <ListGroup.Item className="text-center">
-                  <Rating
-                    value={product.rating}
-                    text={`${product.numReviews} reviews`}
-                    color={"#f8e825"}
-                  />
-                </ListGroup.Item>
-
-                <ListGroup.Item className="text-center">Price: ${product.price}</ListGroup.Item>
-
-                
-
-              </ListGroup>
-
-
-
-
+                  <ListGroup.Item className="">
+                    <p style={{ fontSize: "20px", color: "red" }}>
+                      {" "}
+                      Specifications:{" "}
+                    </p>
+                    {product.specification}
+                  </ListGroup.Item>
                 </div>
               </div>
-
-
             </Col>
           </Row>
         )}
