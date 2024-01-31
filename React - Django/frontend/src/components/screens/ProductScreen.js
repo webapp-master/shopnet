@@ -72,7 +72,6 @@ function ProductScreen({ match, history }) {
                     backgroundColor: "",
                     display: "flex",
                     flexDirection: "row",
-                    
                   }}
                 >
                   {/* Division 1 */}
@@ -104,11 +103,26 @@ function ProductScreen({ match, history }) {
                   </div>
 
                   {/* Division 2 */}
-                  <div style={{ flex: 1, paddingLeft: "10px", display: 'flex', flexDirection: 'column' }}>
+                  <div
+                    style={{
+                      flex: 1,
+                      paddingLeft: "10px",
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
                     {/* Content for Division 2 */}
-                    <Card style={{ height: "100%" }}>
-                    <ListGroup variant="flush" style={{ height: "100%" }}>
-                        <ListGroup.Item style={{ backgroundColor: "#b7bec3", height: "100%" }}>
+                    <Card
+                      style={{
+                        flex: 1,
+                        display: "flex",
+                        flexDirection: "column",
+                      }}
+                    >
+                      <ListGroup variant="flush" style={{ flex: 1 }}>
+                        <ListGroup.Item
+                          style={{ backgroundColor: "#b7bec3", height: "100%"}}
+                        >
                           <Row>
                             <Col>Price:</Col>
                             <Col>
@@ -177,10 +191,11 @@ function ProductScreen({ match, history }) {
                     border: "1px solid #ccc",
                     borderRadius: "8px",
                     backgroundColor: "",
+                    height: "100%"
                   }}
                 >
                   {/* Content for Container 2 */}
-                  <ListGroup.Item className="">
+                  <ListGroup.Item className="" style={{ backgroundColor: "#b7bec3", height:"100%"}}>
                     <p style={{ fontSize: "20px", color: "red" }}>
                       {" "}
                       Specifications:{" "}
