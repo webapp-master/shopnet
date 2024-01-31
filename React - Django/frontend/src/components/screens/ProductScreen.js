@@ -32,12 +32,26 @@ function ProductScreen({ match, history }) {
   };
 
   // Use react-bootstrap useMediaQuery hook to get the screen size
-  const isMobile = useMediaQuery('(max-width: 575px)');
-  const isTablet = useMediaQuery('(max-width: 767px)');
-  const isLaptop = useMediaQuery('(max-width: 991px)');
+const isSmallScreen = useMediaQuery('(max-width: 500px)');
+const isMediumScreen = useMediaQuery('(min-width: 501px) and (max-width: 750px)');
+const isLargeScreen = useMediaQuery('(min-width: 751px) and (max-width: 900px)');
+const isXLargeScreen = useMediaQuery('(min-width: 901px)');
 
-  // Determine flexDirection based on screen size
-  const flexDirection = isMobile || isTablet ? 'column' : 'row';
+// Determine flexDirection based on screen size
+let flexDirection;
+
+if (isSmallScreen) {
+  flexDirection = 'column';
+} else if (isMediumScreen) {
+  flexDirection = 'column';
+} else if (isLargeScreen) {
+  flexDirection = 'row';
+} else if (isXLargeScreen) {
+  flexDirection = 'row';
+} else {
+  flexDirection = 'row';
+}
+
 
 
   return (
