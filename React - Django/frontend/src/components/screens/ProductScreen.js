@@ -66,7 +66,7 @@ function ProductScreen({ match, history }) {
                 <div
                   style={{
                     marginBottom: "20px",
-                    padding: "10px",
+                    padding: "3px",
                     border: "1px solid #ccc",
                     borderRadius: "8px",
                     backgroundColor: "",
@@ -172,7 +172,7 @@ function ProductScreen({ match, history }) {
                 {/* Container 2 */}
                 <div
                   style={{
-                    padding: "10px",
+                    padding: "3px",
                     border: "1px solid #ccc",
                     borderRadius: "8px",
                     backgroundColor: "",
