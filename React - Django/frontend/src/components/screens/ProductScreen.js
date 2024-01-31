@@ -72,6 +72,7 @@ function ProductScreen({ match, history }) {
                     backgroundColor: "",
                     display: "flex",
                     flexDirection: "row",
+                    
                   }}
                 >
                   {/* Division 1 */}
@@ -103,11 +104,11 @@ function ProductScreen({ match, history }) {
                   </div>
 
                   {/* Division 2 */}
-                  <div style={{ flex: 1, paddingLeft: "10px" }}>
+                  <div style={{ flex: 1, paddingLeft: "10px", display: 'flex', flexDirection: 'column' }}>
                     {/* Content for Division 2 */}
-                    <Card>
-                      <ListGroup variant="flush">
-                        <ListGroup.Item style={{ backgroundColor: "#b7bec3" }}>
+                    <Card style={{ height: "100%" }}>
+                    <ListGroup variant="flush" style={{ height: "100%" }}>
+                        <ListGroup.Item style={{ backgroundColor: "#b7bec3", height: "100%" }}>
                           <Row>
                             <Col>Price:</Col>
                             <Col>
