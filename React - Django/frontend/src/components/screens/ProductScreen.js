@@ -69,7 +69,7 @@ function ProductScreen({ match, history }) {
                     padding: "10px",
                     border: "1px solid #ccc",
                     borderRadius: "8px",
-                    backgroundColor: "red",
+                    backgroundColor: "",
                     display: "flex",
                     flexDirection: "row",
                   }}
@@ -105,7 +105,67 @@ function ProductScreen({ match, history }) {
                   {/* Division 2 */}
                   <div style={{ flex: 1, paddingLeft: "10px" }}>
                     {/* Content for Division 2 */}
-                    {/* You can add your content here */}
+                    <Card>
+                      <ListGroup variant="flush">
+                        <ListGroup.Item style={{ backgroundColor: "#b7bec3" }}>
+                          <Row>
+                            <Col>Price:</Col>
+                            <Col>
+                              <strong>${product.price}</strong>
+                            </Col>
+                          </Row>
+                        </ListGroup.Item>
+                        <div style={{ borderTop: "2px solid white" }}></div>
+
+                        <ListGroup.Item style={{ backgroundColor: "#b7bec3" }}>
+                          <Row>
+                            <Col>Status:</Col>
+                            <Col>
+                              {product.countInStock > 0
+                                ? "In Stock"
+                                : "Out of Stock"}
+                            </Col>
+                          </Row>
+                        </ListGroup.Item>
+
+                        {product.countInStock > 0 && (
+                          <ListGroup.Item
+                            style={{ backgroundColor: "#d4d4d4" }}
+                          >
+                            <Row>
+                              <Col>Qty</Col>
+                              <Col xs="auto" className="my-1">
+                                <Form.Control
+                                  as="select"
+                                  value={qty}
+                                  onChange={(e) => setQty(e.target.value)}
+                                  style={{ borderRadius: "10px" }}
+                                >
+                                  {[...Array(product.countInStock).keys()].map(
+                                    (x) => (
+                                      <option key={x + 1} value={x + 1}>
+                                        {x + 1}
+                                      </option>
+                                    )
+                                  )}
+                                </Form.Control>
+                              </Col>
+                            </Row>
+                          </ListGroup.Item>
+                        )}
+
+                        <ListGroup.Item style={{ backgroundColor: "#b7bec3" }}>
+                          <Button
+                            className="btn-block product-custom"
+                            disabled={product.countInStock == 0}
+                            type="button"
+                            onClick={addToCartHandler}
+                          >
+                            Add to Cart
+                          </Button>
+                        </ListGroup.Item>
+                      </ListGroup>
+                    </Card>
                   </div>
                 </div>
 
@@ -115,7 +175,7 @@ function ProductScreen({ match, history }) {
                     padding: "10px",
                     border: "1px solid #ccc",
                     borderRadius: "8px",
-                    backgroundColor: "blue",
+                    backgroundColor: "",
                   }}
                 >
                   {/* Content for Container 2 */}
