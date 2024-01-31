@@ -31,7 +31,7 @@ function ProductScreen({ match, history }) {
     history.push(`/cart/${match.params.id}?qty=${qty}`);
   };
 
-  // Use react-bootstrap useMediaQuery hook to get the screen size
+{/*  // Use react-bootstrap useMediaQuery hook to get the screen size
 const isSmallScreen = useMediaQuery('(max-width: 500px)');
 const isMediumScreen = useMediaQuery('(min-width: 501px) and (max-width: 750px)');
 const isLargeScreen = useMediaQuery('(min-width: 751px) and (max-width: 900px)');
@@ -50,8 +50,12 @@ if (isSmallScreen) {
   flexDirection = 'row';
 } else {
   flexDirection = 'row';
-}
+} */}
 
+const isMobile = useMediaQuery('(max-width: 575px)');
+const isLaptop = useMediaQuery('(max-width: 991px)');
+
+const flexDirection = isMobile || isLaptop ? 'column' : 'row';
 
 
   return (
