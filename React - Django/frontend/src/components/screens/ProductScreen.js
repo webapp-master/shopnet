@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useMediaQuery } from '@react-hook/media-query';
 import {
   Row,
   Col,
@@ -29,6 +30,15 @@ function ProductScreen({ match, history }) {
   const addToCartHandler = () => {
     history.push(`/cart/${match.params.id}?qty=${qty}`);
   };
+
+  // Use react-bootstrap useMediaQuery hook to get the screen size
+  const isMobile = useMediaQuery('(max-width: 575px)');
+  const isTablet = useMediaQuery('(max-width: 767px)');
+  const isLaptop = useMediaQuery('(max-width: 991px)');
+
+  // Determine flexDirection based on screen size
+  const flexDirection = isMobile || isTablet ? 'column' : 'row';
+
 
   return (
     <Container fluid>
@@ -71,7 +81,7 @@ function ProductScreen({ match, history }) {
                     borderRadius: "8px",
                     backgroundColor: "",
                     display: "flex",
-                    flexDirection: "row",
+                    flexDirection: flexDirection,
                   }}
                 >
                   {/* Division 1 */}
