@@ -134,9 +134,12 @@ const flexDirection = isMobile || isLaptop ? 'column' : 'row';
                   <div
                     style={{
                       flex: 1,
-                      paddingLeft: "10px",
+                      paddingLeft: "35px",
+                      paddingRight: "35px",
                       display: "flex",
                       flexDirection: "column",
+                      
+                      
                     }}
                   >
                     {/* Content for Division 2 */}
@@ -145,9 +148,11 @@ const flexDirection = isMobile || isLaptop ? 'column' : 'row';
                         flex: 1,
                         display: "flex",
                         flexDirection: "column",
+                        marginBottom: "10px"
+                        
                       }}
                     >
-                      <ListGroup variant="flush" style={{ flex: 1 }}>
+                      <ListGroup variant="flush" style={{ flex: 1, borderRadius: "30px"}}>
                         <ListGroup.Item
                           style={{ backgroundColor: "#b7bec3", height: "100%"}}
                         >
