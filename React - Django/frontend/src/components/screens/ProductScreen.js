@@ -66,9 +66,7 @@ function ProductScreen({ match, history }) {
             <Col md={6}>
               <div
                 style={{
-                  display: "",
-                  flexDirection: "column",
-                  alignItems: "center",
+                  
                 }}
               >
                 {/* Container 1 */}
