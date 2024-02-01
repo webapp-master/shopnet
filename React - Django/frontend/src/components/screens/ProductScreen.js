@@ -31,31 +31,13 @@ function ProductScreen({ match, history }) {
     history.push(`/cart/${match.params.id}?qty=${qty}`);
   };
 
-{/*  // Use react-bootstrap useMediaQuery hook to get the screen size
-const isSmallScreen = useMediaQuery('(max-width: 500px)');
-const isMediumScreen = useMediaQuery('(min-width: 501px) and (max-width: 750px)');
-const isLargeScreen = useMediaQuery('(min-width: 751px) and (max-width: 900px)');
-const isXLargeScreen = useMediaQuery('(min-width: 901px)');
+  // Use react-bootstrap useMediaQuery hook to get the screen size
+  const isMobile = useMediaQuery('(max-width: 575px)');
+  const isTablet = useMediaQuery('(max-width: 767px)');
+  const isLaptop = useMediaQuery('(max-width: 991px)');
 
-// Determine flexDirection based on screen size
-let flexDirection;
-
-if (isSmallScreen) {
-  flexDirection = 'column';
-} else if (isMediumScreen) {
-  flexDirection = 'column';
-} else if (isLargeScreen) {
-  flexDirection = 'row';
-} else if (isXLargeScreen) {
-  flexDirection = 'row';
-} else {
-  flexDirection = 'row';
-} */}
-
-const isMobile = useMediaQuery('(max-width: 575px)');
-const isLaptop = useMediaQuery('(max-width: 991px)');
-
-const flexDirection = isMobile || isLaptop ? 'column' : 'row';
+  // Determine flexDirection based on screen size
+  const flexDirection = isMobile || isTablet ? 'column' : 'row';
 
 
   return (
@@ -134,12 +116,9 @@ const flexDirection = isMobile || isLaptop ? 'column' : 'row';
                   <div
                     style={{
                       flex: 1,
-                      paddingLeft: "35px",
-                      paddingRight: "35px",
+                      paddingLeft: "10px",
                       display: "flex",
                       flexDirection: "column",
-                      
-                      
                     }}
                   >
                     {/* Content for Division 2 */}
@@ -148,11 +127,9 @@ const flexDirection = isMobile || isLaptop ? 'column' : 'row';
                         flex: 1,
                         display: "flex",
                         flexDirection: "column",
-                        marginBottom: "10px"
-                        
                       }}
                     >
-                      <ListGroup variant="flush" style={{ flex: 1, borderRadius: "30px"}}>
+                      <ListGroup variant="flush" style={{ flex: 1 }}>
                         <ListGroup.Item
                           style={{ backgroundColor: "#b7bec3", height: "100%"}}
                         >
