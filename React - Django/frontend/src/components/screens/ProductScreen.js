@@ -234,8 +234,10 @@ function ProductScreen({ match, history }) {
           <Col md={6}>
             <ListGroup.Item className="">
               <div>
-                <p style={{ fontSize: "20px", color: "red"}}> Description: </p>
-                {product.description}
+                <p style={{ fontSize: "20px", color: "red" }}> Description: </p>
+                <div style={{ whiteSpace: "pre-line" }}>
+                  {product.description}
+                </div>
               </div>
             </ListGroup.Item>
           </Col>
