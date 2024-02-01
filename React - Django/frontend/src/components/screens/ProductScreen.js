@@ -116,7 +116,8 @@ function ProductScreen({ match, history }) {
                   <div
                     style={{
                       flex: 1,
-                      paddingLeft: "10px",
+                      paddingLeft: isMobile ? "35px" : "10px",
+                      paddingRight: isMobile ? "35px" : "0",
                       display: "flex",
                       flexDirection: "column",
                     }}
@@ -127,9 +128,10 @@ function ProductScreen({ match, history }) {
                         flex: 1,
                         display: "flex",
                         flexDirection: "column",
+                        marginBottom: isMobile ? "10px" : "0",
                       }}
                     >
-                      <ListGroup variant="flush" style={{ flex: 1 }}>
+                      <ListGroup variant="flush" style={{ flex: 1, borderRadius: isMobile ? "30px" : "0" }}>
                         <ListGroup.Item
                           style={{ backgroundColor: "#b7bec3", height: "100%"}}
                         >
