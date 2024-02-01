@@ -141,7 +141,7 @@ def credit_wallet(request):
         requester_username = request.user.username if request.user else 'Anonymous User'
 
         # Record the transaction
-        description = f"Admin credited your wallet by ${amount}"
+        description = f"Admin credited your wallet with ${amount}"
         details = f"{requester_username} credited the wallet of {user.username} by ${amount}"
         transaction = Transaction.objects.create(
             user=user,

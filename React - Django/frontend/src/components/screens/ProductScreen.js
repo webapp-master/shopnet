@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useMediaQuery } from '@react-hook/media-query';
+import { useMediaQuery } from "@react-hook/media-query";
 import {
   Row,
   Col,
@@ -32,13 +32,12 @@ function ProductScreen({ match, history }) {
   };
 
   // Use react-bootstrap useMediaQuery hook to get the screen size
-  const isMobile = useMediaQuery('(max-width: 575px)');
-  const isTablet = useMediaQuery('(max-width: 767px)');
-  const isLaptop = useMediaQuery('(max-width: 991px)');
+  const isMobile = useMediaQuery("(max-width: 575px)");
+  const isTablet = useMediaQuery("(max-width: 767px)");
+  const isLaptop = useMediaQuery("(max-width: 991px)");
 
   // Determine flexDirection based on screen size
-  const flexDirection = isMobile || isTablet ? 'column' : 'row';
-
+  const flexDirection = isMobile || isTablet ? "column" : "row";
 
   return (
     <Container fluid>
@@ -131,9 +130,15 @@ function ProductScreen({ match, history }) {
                         marginBottom: isMobile ? "10px" : "0",
                       }}
                     >
-                      <ListGroup variant="flush" style={{ flex: 1, borderRadius: isMobile ? "30px" : "0" }}>
+                      <ListGroup
+                        variant="flush"
+                        style={{
+                          flex: 1,
+                          borderRadius: isMobile ? "30px" : "0",
+                        }}
+                      >
                         <ListGroup.Item
-                          style={{ backgroundColor: "#b7bec3", height: "100%"}}
+                          style={{ backgroundColor: "#b7bec3", height: "100%" }}
                         >
                           <Row>
                             <Col>Price:</Col>
@@ -203,16 +208,21 @@ function ProductScreen({ match, history }) {
                     border: "1px solid #ccc",
                     borderRadius: "8px",
                     backgroundColor: "",
-                    height: "100%"
+                    height: "100%",
                   }}
                 >
                   {/* Content for Container 2 */}
-                  <ListGroup.Item className="" style={{ backgroundColor: "#b7bec3", height:"100%"}}>
+                  <ListGroup.Item
+                    className=""
+                    style={{ backgroundColor: "#b7bec3", height: "100%" }}
+                  >
                     <p style={{ fontSize: "20px", color: "red" }}>
                       {" "}
                       Specifications:{" "}
                     </p>
-                    {product.specification}
+                    <div style={{ whiteSpace: "pre-line" }}>
+                      {product.specification}
+                    </div>
                   </ListGroup.Item>
                 </div>
               </div>
@@ -224,7 +234,7 @@ function ProductScreen({ match, history }) {
           <Col md={6}>
             <ListGroup.Item className="">
               <div>
-                <p style={{ fontSize: "20px", color: "red" }}> Description: </p>
+                <p style={{ fontSize: "20px", color: "red"}}> Description: </p>
                 {product.description}
               </div>
             </ListGroup.Item>
