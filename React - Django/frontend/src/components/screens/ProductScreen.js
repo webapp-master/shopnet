@@ -64,11 +64,8 @@ function ProductScreen({ match, history }) {
             </Col>
 
             <Col md={6}>
-              <div
-                style={{
-                  
-                }}
-              >
+              
+              
                 {/* Container 1 */}
                 <div
                   style={{
@@ -222,7 +219,7 @@ function ProductScreen({ match, history }) {
                     </div>
                   </ListGroup.Item>
                 </div>
-              </div>
+              
             </Col>
           </Row>
         )}
