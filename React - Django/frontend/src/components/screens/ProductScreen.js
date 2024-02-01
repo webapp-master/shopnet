@@ -207,14 +207,13 @@ function ProductScreen({ match, history }) {
                     padding: "3px",
                     border: "1px solid #ccc",
                     borderRadius: "8px",
-                    backgroundColor: "",
-                    height: "100%",
+                    backgroundColor: "#d4d4d4",
                   }}
                 >
                   {/* Content for Container 2 */}
                   <ListGroup.Item
                     className=""
-                    style={{ backgroundColor: "#b7bec3", height: "100%" }}
+                    style={{ backgroundColor: "#b7bec3"}}
                   >
                     <p style={{ fontSize: "20px", color: "red" }}>
                       {" "}
