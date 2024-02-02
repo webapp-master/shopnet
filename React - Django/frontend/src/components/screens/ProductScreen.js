@@ -94,7 +94,7 @@ function ProductScreen({ match, history }) {
                     {/* Content for Division 1 */}
                     <ListGroup variant="flush">
                       <ListGroup.Item className="text-center">
-                        <p style={{ fontSize: "20px" }}> {product.name} </p>
+                        <p style={{ fontSize: "20px", color: "#7a0000" }}> {product.name} </p>
                       </ListGroup.Item>
 
                       <ListGroup.Item className="text-center">
