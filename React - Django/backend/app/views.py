@@ -143,13 +143,15 @@ def credit_wallet(request):
         # Record the transaction
         description = f"Admin credited your wallet with ${amount}"
         details = f"{requester_username} credited the wallet of {user.username} by ${amount}"
+        type = f"credit"
         transaction = Transaction.objects.create(
             user=user,
             description=description,
             details=details,
             amount=amount,
             previous_balance=previous_balance,
-            new_balance=new_balance
+            new_balance=new_balance,
+            type=type
         )
 
         return Response({'message': 'Wallet credited successfully'}, status=status.HTTP_200_OK)
@@ -186,13 +188,15 @@ def debit_wallet(request):
             # Record the transaction
             description = f"Admin debited your wallet by ${amount}"
             details = f"{requester_username} debited the wallet of {user.username} by ${amount}"
+            type = f"debit"
             transaction = Transaction.objects.create(
                 user=user,
                 description=description,
                 details=details,  # Include the additional details
                 amount=amount,
                 previous_balance=previous_balance,
-                new_balance=new_balance
+                new_balance=new_balance,
+                type=type
             )
 
             # Formulate the success message including amount, previous balance, and new balance
@@ -272,6 +276,7 @@ def make_purchase(request):
 
         # Create a string representation of order items for the 'details' field
         details = f"{user.username} placed an order for the items below; " + ", ".join([f"{item['product']} (Qty: {item['qty']}) (unit-price: {item['price']})" for item in order_items])
+        type = f"purchase"
 
         transaction = Transaction.objects.create(
             user=user,
@@ -281,6 +286,7 @@ def make_purchase(request):
             new_balance=new_balance,
             order=order,
             details=details,
+            type=type
         )
 
         # Create instances of the OrderItem model
