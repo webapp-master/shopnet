@@ -128,6 +128,7 @@ function ProductScreen({ match, history }) {
                         display: "flex",
                         flexDirection: "column",
                         marginBottom: isMobile ? "10px" : "0",
+                        border: "none"
                       }}
                     >
                       <ListGroup
@@ -214,7 +215,7 @@ function ProductScreen({ match, history }) {
                   {/* Content for Container 2 */}
                   <ListGroup.Item
                     className=""
-                    style={{ backgroundColor: "#d4d4d4" }}
+                    style={{ backgroundColor: "#d4d4d4", border: "none" }}
                   >
                     <p style={{ fontSize: "20px", color: "red" }}>
                       {" "}
