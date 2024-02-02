@@ -64,8 +64,13 @@ function ProductScreen({ match, history }) {
             </Col>
 
             <Col md={6}>
-              
-              
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  height: "100%",
+                }}
+              >
                 {/* Container 1 */}
                 <div
                   style={{
@@ -199,6 +204,7 @@ function ProductScreen({ match, history }) {
                 {/* Container 2 */}
                 <div
                   style={{
+                    flex: 1, // Make Container 2 take up the remaining space
                     padding: "3px",
                     border: "1px solid #ccc",
                     borderRadius: "8px",
@@ -208,7 +214,7 @@ function ProductScreen({ match, history }) {
                   {/* Content for Container 2 */}
                   <ListGroup.Item
                     className=""
-                    style={{ backgroundColor: "#b7bec3"}}
+                    style={{ backgroundColor: "#b7bec3" }}
                   >
                     <p style={{ fontSize: "20px", color: "red" }}>
                       {" "}
@@ -219,7 +225,7 @@ function ProductScreen({ match, history }) {
                     </div>
                   </ListGroup.Item>
                 </div>
-              
+              </div>
             </Col>
           </Row>
         )}
