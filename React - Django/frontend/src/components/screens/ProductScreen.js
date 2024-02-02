@@ -214,7 +214,7 @@ function ProductScreen({ match, history }) {
                   {/* Content for Container 2 */}
                   <ListGroup.Item
                     className=""
-                    style={{ backgroundColor: "#b7bec3" }}
+                    style={{ backgroundColor: "#d4d4d4" }}
                   >
                     <p style={{ fontSize: "20px", color: "red" }}>
                       {" "}

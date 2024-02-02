@@ -494,3 +494,9 @@ create a button
 there is increased width
 like negative width
 horizontal scroll button
+
+
+			71
+
+the MORE dropdown button
+the hover effect, increase the visibility of the hover effect
