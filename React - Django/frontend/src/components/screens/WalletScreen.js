@@ -80,20 +80,9 @@ const WalletScreen = () => {
   };
 
   const sortedTransactions = transactions.slice().sort((a, b) => b.id - a.id);
-  const redirectToDetails = useHistory();
+  
 
-  // Function to handle transaction link click
-  const handleTransactionLinkClick = (transaction) => {
-    // Check if the type is "purchase"
-    if (transaction.type === "purchase") {
-      // Navigate to the specified route for "purchase"
-      redirectToDetails.push(`/transaction/details/${transaction.id}`);
-    }
-    else if (transaction.type === "credit") {
-      // Redirect to the specified route for "credit"
-      redirectToDetails.push(`/receipt/credit/${transaction.id}`);
-    }
-  };
+  
 
   return (
     <Container fluid>
@@ -156,11 +145,12 @@ const WalletScreen = () => {
                     <tr key={transaction.id}>
                       <td>
                         <Link
-                          
-                          style={{ textDecoration: "underline", color: "blue" }}
-                          onClick={() =>
-                            handleTransactionLinkClick(transaction)
+                          to={
+                            transaction.type === "purchase"
+                              ? `/transaction/details/${transaction.id}`
+                              : `/receipt/credit/${transaction.id}`
                           }
+                          style={{ textDecoration: "underline", color: "blue" }}
                         >
                           {transaction.id}
                         </Link>
