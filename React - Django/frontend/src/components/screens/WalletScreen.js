@@ -89,7 +89,10 @@ const WalletScreen = () => {
       // Navigate to the specified route for "purchase"
       redirectToDetails.push(`/transaction/details/${transaction.id}`);
     }
-    // Add more conditions for other types if needed
+    else if (transaction.type === "credit") {
+      // Redirect to the specified route for "credit"
+      redirectToDetails.push(`/receipt/credit/${transaction.id}`);
+    }
   };
 
   return (
@@ -153,7 +156,7 @@ const WalletScreen = () => {
                     <tr key={transaction.id}>
                       <td>
                         <Link
-                          to={`/transaction/details/${transaction.id}`}
+                          
                           style={{ textDecoration: "underline", color: "blue" }}
                           onClick={() =>
                             handleTransactionLinkClick(transaction)
