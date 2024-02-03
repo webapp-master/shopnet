@@ -11,6 +11,7 @@ import {
   Button,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const WalletScreen = () => {
   const [transactions, setTransactions] = useState([]);
@@ -79,6 +80,17 @@ const WalletScreen = () => {
   };
 
   const sortedTransactions = transactions.slice().sort((a, b) => b.id - a.id);
+  const redirectToDetails = useHistory();
+
+  // Function to handle transaction link click
+  const handleTransactionLinkClick = (transaction) => {
+    // Check if the type is "purchase"
+    if (transaction.type === "purchase") {
+      // Navigate to the specified route for "purchase"
+      redirectToDetails.push(`/transaction/details/${transaction.id}`);
+    }
+    // Add more conditions for other types if needed
+  };
 
   return (
     <Container fluid>
@@ -143,6 +155,9 @@ const WalletScreen = () => {
                         <Link
                           to={`/transaction/details/${transaction.id}`}
                           style={{ textDecoration: "underline", color: "blue" }}
+                          onClick={() =>
+                            handleTransactionLinkClick(transaction)
+                          }
                         >
                           {transaction.id}
                         </Link>
