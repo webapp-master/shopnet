@@ -10,7 +10,7 @@ function Footer() {
   const pathsToHideFooter = ["/login"];
 
   let backgroundColor = 'white'; // Default background color
-  let textColor = '#000985'; // Default text color
+  let textColor = '#1c0c55'; // Default text color
 
   if (currentPath === '/credit' || currentPath === '/debit' || currentPath === '/register' || currentPath === '/' || currentPath === '/all') {
     backgroundColor = '#f0f0f0'; 
