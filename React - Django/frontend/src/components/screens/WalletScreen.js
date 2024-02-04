@@ -80,9 +80,6 @@ const WalletScreen = () => {
   };
 
   const sortedTransactions = transactions.slice().sort((a, b) => b.id - a.id);
-  
-
-  
 
   return (
     <Container fluid>
@@ -148,13 +145,18 @@ const WalletScreen = () => {
                           to={
                             transaction.type === "purchase"
                               ? `/transaction/details/${transaction.id}`
-                              : `/receipt/credit/${transaction.id}`
+                              : transaction.type === "credit"
+                              ? `/receipt/credit/${transaction.id}`
+                              : transaction.type === "debit"
+                              ? `/receipt/debit/${transaction.id}`
+                              : "/"
                           }
                           style={{ textDecoration: "underline", color: "blue" }}
                         >
                           {transaction.id}
                         </Link>
                       </td>
+
                       <td>{transaction.amount}</td>
                       <td>{transaction.description}</td>
                       <td>{transaction.previous_balance}</td>
