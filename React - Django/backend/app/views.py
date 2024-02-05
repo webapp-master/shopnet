@@ -331,3 +331,45 @@ class UserTransactionsView(generics.ListAPIView):
     def get_queryset(self):
         user = self.request.user
         return Transaction.objects.filter(user=user)
+    
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_transaction_details(request, transaction_id):
+    try:
+        # Fetch transaction details based on the transaction_id
+        transaction = Transaction.objects.get(id=transaction_id)
+
+        # Fetch order associated with the transaction
+        order = transaction.order
+
+        # Fetch order items associated with the order
+        order_items = OrderItem.objects.filter(order=order)
+
+        # Serialize data for response
+        transaction_details = {
+            'shippingCost': order.shippingCost,
+            'amountPaid': order.amountPaid,
+            'orderItems': [
+                {
+                    'id': item.id,
+                    'product': item.product.name,
+                    'qty': item.qty,
+                    'price': item.price,
+                    'unitTax': item.unitTax,
+                }
+                for item in order_items
+            ]
+        }
+
+        return Response(transaction_details)
+    except Transaction.DoesNotExist:
+        return Response({'error': 'Transaction not found'}, status=404)
+    except Order.DoesNotExist:
+        return Response({'error': 'Order not found'}, status=404)
+    except OrderItem.DoesNotExist:
+        return Response({'error': 'Order items not found'}, status=404)
+    except Exception as e:
+        return Response({'error': str(e)}, status=500)
+

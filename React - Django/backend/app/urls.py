@@ -18,4 +18,5 @@ urlpatterns = [
     path('user/wallet/balance', views.get_wallet_balance, name='get_wallet_balance'),
     path('make_purchase/', views.make_purchase, name='make_purchase'),
     path('user/transactions/', views.UserTransactionsView.as_view(), name='user_transactions'),
+    path('transaction/<int:transaction_id>/details/', views.get_transaction_details, name='get_transaction_details'),
 ]
