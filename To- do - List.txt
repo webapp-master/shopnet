@@ -500,3 +500,11 @@ horizontal scroll button
 
 the MORE dropdown button
 the hover effect, increase the visibility of the hover effect
+
+
+			72
+"/buy"
+when the purchase was initiate but the user has insufficient fund
+I need the user interface to receive the error message 
+
+ALSO    I want the buttons to react to onclick

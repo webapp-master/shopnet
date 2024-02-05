@@ -54,8 +54,7 @@ const TransactionDetailsScreen = ({ match }) => {
                   <th>Quantity</th>
                   <th>Unit Price</th>
                   <th>Unit Tax</th>
-                  <th>Amount</th>
-                  <th>Status</th>
+                 
                 </tr>
               </thead>
 
@@ -65,8 +64,7 @@ const TransactionDetailsScreen = ({ match }) => {
                   <td>4</td>
                   <td>345</td>
                   <td>4</td>
-                  <td>443</td>
-                  <td>Order SEEN at 26th of January, 2024</td>
+                  
                 </tr>
 
                 <tr>
@@ -74,8 +72,7 @@ const TransactionDetailsScreen = ({ match }) => {
                   <td>7</td>
                   <td>50</td>
                   <td>400</td>
-                  <td>1443</td>
-                  <td>Order PROCESSED at 29th of January, 2024</td>
+                  
                 </tr>
 
                 
@@ -85,8 +82,7 @@ const TransactionDetailsScreen = ({ match }) => {
                   <td>41</td>
                   <td>5</td>
                   <td>40</td>
-                  <td>300</td>
-                  <td>Order SENT at 30th of January, 2024</td>
+                  
                 </tr>
 
                 <tr>
@@ -94,8 +90,7 @@ const TransactionDetailsScreen = ({ match }) => {
                   <td>2</td>
                   <td>34</td>
                   <td>1</td>
-                  <td>44</td>
-                  <td>Order SENT at 1st of Febuary, 2024</td>
+                  
                 </tr>
 
                 <tr>
@@ -103,8 +98,7 @@ const TransactionDetailsScreen = ({ match }) => {
                   <td>12</td>
                   <td>1134</td>
                   <td>12</td>
-                  <td>5644</td>
-                  <td>Order DELIVERED at 22nd of Febuary, 2024</td>
+                  
                 </tr>
 
               </tbody>
