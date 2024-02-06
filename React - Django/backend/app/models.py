@@ -71,8 +71,6 @@ class Order(models.Model):
     tax=models.DecimalField(max_digits=7,decimal_places=2,null=True,blank=True)
     shippingCost=models.DecimalField(max_digits=7,decimal_places=2,null=True,blank=True)
     isPaid = models.BooleanField(default=True)
-    isProcessed = models.BooleanField(default=False)
-    processedAt = models.DateTimeField(auto_now_add=False, null=True, blank=True)
     isDelivered = models.BooleanField(default=False)
     deliveredAt = models.DateTimeField(auto_now_add=False, null=True, blank=True)
     createdAt = models.DateTimeField(auto_now_add=True)
@@ -98,7 +96,7 @@ class OrderItem(models.Model):
     unitTax=models.DecimalField(max_digits=7,decimal_places=2,null=True,blank=True)
         
     def __str__(self):
-        return f"{self.product.name} - Qty: {self.qty}, Price: {self.price}"
+        return f"{self.product} - Qty: {self.qty}, Price: {self.price}"
     
 
 

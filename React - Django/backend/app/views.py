@@ -372,4 +372,3 @@ def get_transaction_details(request, transaction_id):
         return Response({'error': 'Order items not found'}, status=404)
     except Exception as e:
         return Response({'error': str(e)}, status=500)
-
