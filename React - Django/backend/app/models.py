@@ -84,7 +84,7 @@ class Order(models.Model):
         super(Order, self).save(*args, **kwargs)
 
     def __str__(self):
-        return str(self.createdAt)
+        return f"{self.name} - No. of Items: {self.items} -------Delivered?: {self.isDelivered}"
     
 
 
@@ -104,7 +104,7 @@ class OrderItem(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f"{self.product} - Qty: {self.qty}, Price: {self.price}"
+        return f"{self.product} - Qty: {self.qty}, Price: {self.price}, Status: {self.status}"
     
 
 
