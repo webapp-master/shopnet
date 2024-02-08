@@ -20,13 +20,12 @@
 # 
 # This signal allows for a dynamic update of username based on changes or additions to the email field before the User instance is persisted in the database.
 # """
-
-
-
-from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.contrib.auth.models import User
-from .models import Wallet, Profile
+from .models import Wallet, Profile, OrderItem
+from django.db.models.signals import pre_save, post_save
+from django.utils import timezone
+
 
 @receiver(post_save, sender=User)
 def create_user_profile_and_wallet(sender, instance, created, **kwargs):
@@ -41,3 +40,41 @@ def create_user_profile_and_wallet(sender, instance, created, **kwargs):
         profile_instance.phoneNumber = instance.profile.phoneNumber  # Ensure phoneNumber is handled
         profile_instance.City = instance.profile.City  # Ensure City is handled
         profile_instance.save()
+
+
+
+
+@receiver(pre_save, sender=OrderItem)
+def update_status_created_at(sender, instance, **kwargs):
+    """
+    Signal handler to update 'status_created_at' field before saving OrderItem instance.
+    """
+    if instance.pk:  # Check if the instance is already saved
+        # Fetch the current status from the database
+        try:
+            old_instance = sender.objects.get(pk=instance.pk)
+            old_status = old_instance.status
+        except sender.DoesNotExist:
+            old_status = None
+        
+        # If the status field is being updated and the new status is different from the old status
+        if instance.status != old_status:
+            instance.status_created_at = timezone.now()  # Update 'status_created_at' with current time
+
+@receiver(post_save, sender=OrderItem)
+def update_status_created_at_on_change(sender, instance, created, **kwargs):
+    """
+    Signal handler to update 'status_created_at' field after saving OrderItem instance.
+    """
+    if not created:  # Only proceed if the instance is not newly created
+        # Fetch the current status from the database
+        try:
+            old_instance = sender.objects.get(pk=instance.pk)
+            old_status = old_instance.status
+        except sender.DoesNotExist:
+            old_status = None
+        
+        # If the status field is changed from the previous value
+        if instance.status != old_status:
+            instance.status_created_at = timezone.now()  # Update 'status_created_at' with current time
+            instance.save(update_fields=['status_created_at'])  # Save only 'status_created_at' field
