@@ -78,3 +78,18 @@ def update_status_created_at_on_change(sender, instance, created, **kwargs):
         if instance.status != old_status:
             instance.status_created_at = timezone.now()  # Update 'status_created_at' with current time
             instance.save(update_fields=['status_created_at'])  # Save only 'status_created_at' field
+
+
+
+
+
+@receiver(post_save, sender=OrderItem)
+def update_order_status(sender, instance, created, **kwargs):
+    if not created:  # Skip if the OrderItem instance is newly created
+        order = instance.order  # Get the associated Order
+        if order:  # Check if the Order exists
+            all_items_delivered = order.orderitem_set.filter(status='delivered').count() == order.orderitem_set.count()
+            if all_items_delivered:
+                # If all OrderItems are marked as delivered, update the corresponding Order
+                order.isDelivered = True
+                order.save(update_fields=['isDelivered'])
