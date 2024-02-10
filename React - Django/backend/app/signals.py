@@ -82,14 +82,18 @@ def update_status_created_at_on_change(sender, instance, created, **kwargs):
 
 
 
-
 @receiver(post_save, sender=OrderItem)
 def update_order_status(sender, instance, created, **kwargs):
     if not created:  # Skip if the OrderItem instance is newly created
         order = instance.order  # Get the associated Order
         if order:  # Check if the Order exists
             all_items_delivered = order.orderitem_set.filter(status='delivered').count() == order.orderitem_set.count()
+            any_item_not_delivered = order.orderitem_set.exclude(status='delivered').exists()
             if all_items_delivered:
                 # If all OrderItems are marked as delivered, update the corresponding Order
                 order.isDelivered = True
+                order.save(update_fields=['isDelivered'])
+            elif any_item_not_delivered:
+                # If any OrderItem is not marked as delivered, update the corresponding Order
+                order.isDelivered = False
                 order.save(update_fields=['isDelivered'])
