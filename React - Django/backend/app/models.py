@@ -83,8 +83,12 @@ class Order(models.Model):
 
         super(Order, self).save(*args, **kwargs)
 
+    @property
+    def is_delivered_display(self):
+        return "Yes" if self.isDelivered else "No"
+
     def __str__(self):
-        return f"{self.name} - No. of Items: {self.items} -------Delivered?: {self.isDelivered}"
+        return f"{self.name} - No. of Items: {self.items} -------Delivered?: {self.is_delivered_display}"
     
 
 
