@@ -73,7 +73,7 @@ class Order(models.Model):
     shippingCost=models.DecimalField(max_digits=7,decimal_places=2,null=True,blank=True)
     isPaid = models.BooleanField(default=True)
     isDelivered = models.BooleanField(default=False)
-    deliveredAt = models.DateTimeField(auto_now_add=False, null=True, blank=True)
+    deliveredAt = models.DateTimeField(null=True, blank=True)
     createdAt = models.DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs):
