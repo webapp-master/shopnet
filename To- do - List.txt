@@ -508,3 +508,10 @@ when the purchase was initiate but the user has insufficient fund
 I need the user interface to receive the error message 
 
 ALSO    I want the buttons to react to onclick
+
+
+			73
+Shipping
+while collecting the data for address
+if the user uses the string "street"  and "state"
+you must remove it before saving it inside the redux state
