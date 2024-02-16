@@ -515,3 +515,9 @@ Shipping
 while collecting the data for address
 if the user uses the string "street"  and "state"
 you must remove it before saving it inside the redux state
+
+
+			74.
+when you are in the {TransactionDetailsScreen}  
+check if the cart is empty, if YES ; then I need you to display the button "Contact"
+but if the cart is not empty, then i need you to display the button for the "Order"   (Buy)

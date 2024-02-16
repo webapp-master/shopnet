@@ -81,7 +81,6 @@ def update_status_created_at_on_change(sender, instance, created, **kwargs):
 
 
 
-
 @receiver(post_save, sender=OrderItem)
 def update_order_status(sender, instance, created, **kwargs):
     if not created:  # Skip if the OrderItem instance is newly created
@@ -93,30 +92,17 @@ def update_order_status(sender, instance, created, **kwargs):
                 # If all OrderItems are marked as delivered, update the corresponding Order
                 order.isDelivered = True
                 order.save(update_fields=['isDelivered'])
+                order.deliveredAt = timezone.now()  # Stamp the deliveredAt field with current time
+                order.save(update_fields=['deliveredAt'])
             elif any_item_not_delivered:
                 # If any OrderItem is not marked as delivered, update the corresponding Order
                 order.isDelivered = False
                 order.save(update_fields=['isDelivered'])
+                order.deliveredAt = None  # Reset the deliveredAt field
+                order.save(update_fields=['deliveredAt'])
 
 
 
 
-@receiver(pre_save, sender=Order)
-def update_delivered_at(sender, instance, **kwargs):
-    # Check if the isDelivered field is being updated
-    if instance.pk:  # Check if the instance is already saved
-        try:
-            old_instance = sender.objects.get(pk=instance.pk)
-            old_is_delivered = old_instance.isDelivered
-        except sender.DoesNotExist:
-            old_is_delivered = None
-        
-        # If the isDelivered field is changed from the previous value
-        if instance.isDelivered != old_is_delivered:
-            # Update deliveredAt field based on the new value of isDelivered
-            if instance.isDelivered:
-                # If the order is marked as delivered, update deliveredAt with current time
-                instance.deliveredAt = timezone.now()
-            else:
-                # If the order is marked as not delivered, set deliveredAt to None
-                instance.deliveredAt = None
+
+
