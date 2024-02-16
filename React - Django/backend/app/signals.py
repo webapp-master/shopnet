@@ -22,7 +22,7 @@
 # """
 from django.dispatch import receiver
 from django.contrib.auth.models import User
-from .models import Wallet, Profile, OrderItem
+from .models import Wallet, Profile, OrderItem, Order
 from django.db.models.signals import pre_save, post_save
 from django.utils import timezone
 
@@ -97,3 +97,26 @@ def update_order_status(sender, instance, created, **kwargs):
                 # If any OrderItem is not marked as delivered, update the corresponding Order
                 order.isDelivered = False
                 order.save(update_fields=['isDelivered'])
+
+
+
+
+@receiver(pre_save, sender=Order)
+def update_delivered_at(sender, instance, **kwargs):
+    # Check if the isDelivered field is being updated
+    if instance.pk:  # Check if the instance is already saved
+        try:
+            old_instance = sender.objects.get(pk=instance.pk)
+            old_is_delivered = old_instance.isDelivered
+        except sender.DoesNotExist:
+            old_is_delivered = None
+        
+        # If the isDelivered field is changed from the previous value
+        if instance.isDelivered != old_is_delivered:
+            # Update deliveredAt field based on the new value of isDelivered
+            if instance.isDelivered:
+                # If the order is marked as delivered, update deliveredAt with current time
+                instance.deliveredAt = timezone.now()
+            else:
+                # If the order is marked as not delivered, set deliveredAt to None
+                instance.deliveredAt = None
