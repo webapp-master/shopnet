@@ -276,15 +276,27 @@ const BuyScreen = () => {
           <Card style={{ border: "none" }}>
             {" "}
             {/* Set border to none */}
+
             <Card.Header
-              className="text-center"
+              className="d-flex justify-content-center align-items-center"
               style={{
                 backgroundColor: headerFooterColor,
                 borderRadius: "25px",
+                marginBottom: "5px",
               }}
             >
-              <h4>Place your Order</h4>
+              <h4
+                style={{
+                  color: "white",
+                  textShadow: "2px 2px 4px rgba(0, 0, 0, 0.4)",
+                  marginBottom: "0px",
+                }}
+              >
+                Place your Order
+              </h4>
+
             </Card.Header>
+
             <Card.Body
               className="text-dark"
               style={{
@@ -344,6 +356,7 @@ const BuyScreen = () => {
               style={{
                 backgroundColor: headerFooterColor,
                 borderRadius: "25px",
+                marginTop: "9px",
               }}
             >
               <Button
