@@ -310,7 +310,7 @@ const BuyScreen = () => {
                 <p style={{ ...boldText, fontSize: "18px" }}>
                   Wallet Balance: $
                   {walletBalance !== null
-                    ? walletBalance.toFixed(2)
+                    ? walletBalance
                     : "Loading..."}
                 </p>
 
