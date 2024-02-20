@@ -93,7 +93,7 @@ const BuyScreen = () => {
       return acc + item.qty * item.price;
     }, 0);
 
-    return totalCost;
+    return totalCost.toFixed(2); 
   };
 
   // Calculate the total cost

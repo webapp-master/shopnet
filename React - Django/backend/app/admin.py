@@ -12,6 +12,9 @@ class OrderItemAdmin(admin.ModelAdmin):
 
 class TransactionAdmin(admin.ModelAdmin):
     list_display = ('user', 'details', 'order', 'type', 'timestamp')
+
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ('name', 'items', 'isDelivered', 'deliveredAt', 'createdAt')
     
 
 
@@ -20,7 +23,7 @@ admin.site.register(Profile)
 admin.site.register(Product)
 admin.site.register(Wallet)
 admin.site.register(Transaction, TransactionAdmin)
-admin.site.register(Order)
+admin.site.register(Order, OrderAdmin)
 admin.site.register(ShippingAddress)
 admin.site.register(Supplier)
 admin.site.register(OrderItem, OrderItemAdmin)    # Register the custom admin class with the OrderItem model
