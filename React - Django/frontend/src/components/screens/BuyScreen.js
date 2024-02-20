@@ -99,6 +99,7 @@ const BuyScreen = () => {
   // Calculate the total cost
   const totalCost = calculateTotalCost();
 
+  
   const calculateTotalTax = () => {
     // Calculate the total tax from all cart items
     const totalTax = cartItems.reduce((accumulator, currentItem) => {
@@ -116,14 +117,31 @@ const BuyScreen = () => {
   // Calculate the total tax
   const totalTax = calculateTotalTax();
 
-  const calculateTotalAmount = () => {
-    // Calculate the total amount by summing up the cost of products, shipping cost, and tax
-    const totalAmount = totalCost + shippingCost + parseFloat(totalTax);
-    return totalAmount.toFixed(2); // Limit the total amount to 2 decimal places
-  };
 
-  // Calculate the total amount
-  const totalAmount = calculateTotalAmount();
+
+  const calculateTotalAmount = () => {
+  // Ensure totalCost, shippingCost, and totalTax are treated as numbers
+  const numericTotalCost = parseFloat(totalCost);
+  const numericShippingCost = parseFloat(shippingCost);
+  const numericTotalTax = parseFloat(totalTax);
+
+  // Check if any of the values are NaN
+  if (isNaN(numericTotalCost) || isNaN(numericShippingCost) || isNaN(numericTotalTax)) {
+    console.error("One or more values used to calculate total amount is not a number.");
+    return 0; // Return 0 or any default value to prevent further errors
+  }
+
+  // Calculate the total amount by summing up the cost of products, shipping cost, and tax
+  const totalAmount = numericTotalCost + numericShippingCost + numericTotalTax;
+
+  return totalAmount.toFixed(2); // Limit the total amount to 2 decimal places
+};
+
+// Calculate the total amount
+const totalAmount = calculateTotalAmount();
+
+
+
 
   const formatShippingAddress = () => {
     // Access the shippingAddress from the Redux state

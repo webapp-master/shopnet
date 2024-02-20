@@ -15,12 +15,15 @@ class TransactionAdmin(admin.ModelAdmin):
 
 class OrderAdmin(admin.ModelAdmin):
     list_display = ('name', 'items', 'isDelivered', 'deliveredAt', 'createdAt')
+
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ('name', 'sku', 'category', 'price', 'countInStock', 'image')
     
 
 
 # Register your models here.
 admin.site.register(Profile)
-admin.site.register(Product)
+admin.site.register(Product, ProductAdmin)
 admin.site.register(Wallet)
 admin.site.register(Transaction, TransactionAdmin)
 admin.site.register(Order, OrderAdmin)
