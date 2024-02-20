@@ -276,7 +276,6 @@ const BuyScreen = () => {
           <Card style={{ border: "none" }}>
             {" "}
             {/* Set border to none */}
-
             <Card.Header
               className="d-flex justify-content-center align-items-center"
               style={{
@@ -294,9 +293,7 @@ const BuyScreen = () => {
               >
                 Place your Order
               </h4>
-
             </Card.Header>
-
             <Card.Body
               className="text-dark"
               style={{
@@ -308,9 +305,9 @@ const BuyScreen = () => {
             >
               <Card.Text className="text-center">
                 <p style={{ ...boldText, fontSize: "18px" }}>
-                  Wallet Balance: $
-                  {walletBalance !== null
-                    ? walletBalance
+                  Wallet Balance:
+                  {typeof walletBalance === "number"
+                    ? `$${walletBalance.toFixed(2)}`
                     : "Loading..."}
                 </p>
 
