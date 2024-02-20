@@ -11,10 +11,11 @@ const BuyScreen = () => {
 
   // Assuming shippingAddress is available in the Redux state
   const shippingAddress = useSelector((state) => state.shippingAddress);
-  const { state, city, area, street, houseNumber, phoneNumber, shippingCost } = shippingAddress;
+  const { state, city, area, street, houseNumber, phoneNumber, shippingCost } =
+    shippingAddress;
 
   const headerFooterColor = "#bdbdbd";
-  const cardBodyColor = "#fff7eb"; // Desired background color for the card body
+  const cardBodyColor = "#ffc7d6";
   const listBorderStyle = {
     listStyleType: "none",
     padding: "10px",
@@ -93,13 +94,12 @@ const BuyScreen = () => {
       return acc + item.qty * item.price;
     }, 0);
 
-    return totalCost.toFixed(2); 
+    return totalCost.toFixed(2);
   };
 
   // Calculate the total cost
   const totalCost = calculateTotalCost();
 
-  
   const calculateTotalTax = () => {
     // Calculate the total tax from all cart items
     const totalTax = cartItems.reduce((accumulator, currentItem) => {
@@ -117,31 +117,33 @@ const BuyScreen = () => {
   // Calculate the total tax
   const totalTax = calculateTotalTax();
 
-
-
   const calculateTotalAmount = () => {
-  // Ensure totalCost, shippingCost, and totalTax are treated as numbers
-  const numericTotalCost = parseFloat(totalCost);
-  const numericShippingCost = parseFloat(shippingCost);
-  const numericTotalTax = parseFloat(totalTax);
+    // Ensure totalCost, shippingCost, and totalTax are treated as numbers
+    const numericTotalCost = parseFloat(totalCost);
+    const numericShippingCost = parseFloat(shippingCost);
+    const numericTotalTax = parseFloat(totalTax);
 
-  // Check if any of the values are NaN
-  if (isNaN(numericTotalCost) || isNaN(numericShippingCost) || isNaN(numericTotalTax)) {
-    console.error("One or more values used to calculate total amount is not a number.");
-    return 0; // Return 0 or any default value to prevent further errors
-  }
+    // Check if any of the values are NaN
+    if (
+      isNaN(numericTotalCost) ||
+      isNaN(numericShippingCost) ||
+      isNaN(numericTotalTax)
+    ) {
+      console.error(
+        "One or more values used to calculate total amount is not a number."
+      );
+      return 0; // Return 0 or any default value to prevent further errors
+    }
 
-  // Calculate the total amount by summing up the cost of products, shipping cost, and tax
-  const totalAmount = numericTotalCost + numericShippingCost + numericTotalTax;
+    // Calculate the total amount by summing up the cost of products, shipping cost, and tax
+    const totalAmount =
+      numericTotalCost + numericShippingCost + numericTotalTax;
 
-  return totalAmount.toFixed(2); // Limit the total amount to 2 decimal places
-};
+    return totalAmount.toFixed(2); // Limit the total amount to 2 decimal places
+  };
 
-// Calculate the total amount
-const totalAmount = calculateTotalAmount();
-
-
-
+  // Calculate the total amount
+  const totalAmount = calculateTotalAmount();
 
   const formatShippingAddress = () => {
     // Access the shippingAddress from the Redux state
@@ -204,7 +206,7 @@ const totalAmount = calculateTotalAmount();
         price: item.price,
         unitTax: item.tax,
       }));
-  
+
       // Create the request payload
       const payload = {
         totalAmount: parseFloat(totalAmount),
@@ -222,30 +224,29 @@ const totalAmount = calculateTotalAmount();
           shippingCost,
         },
       };
-  
+
       // Send a request to the backend to create an order
-      const response = await axios.post(
-        "/api/make_purchase/",
-        payload,
-        {
-          headers: {
-            Authorization: `Bearer ${userInfo ? userInfo.access : ""}`,
-          },
-        }
-      );
-  
+      const response = await axios.post("/api/make_purchase/", payload, {
+        headers: {
+          Authorization: `Bearer ${userInfo ? userInfo.access : ""}`,
+        },
+      });
+
       // Assuming the new wallet is returned in the response
       const newWallet = response.data.newWallet;
-  
+
       // You can update your state or perform any necessary actions with the new wallet data
       setWalletBalance(newWallet.balance);
-      console.log("Purchase successful. New wallet balance:", newWallet.balance);
-  
+      console.log(
+        "Purchase successful. New wallet balance:",
+        newWallet.balance
+      );
+
       // Reset the cart after a successful purchase
       dispatch(resetCart());
-  
+
       history.push("/cart");
-  
+
       // Force a page reload to clear browser cache
       window.location.reload(true);
     } catch (error) {
@@ -261,7 +262,6 @@ const totalAmount = calculateTotalAmount();
       history.push("/cart");
     }
   }, [cartItems, history]);
-  
 
   return (
     <Container>
@@ -287,34 +287,56 @@ const totalAmount = calculateTotalAmount();
             </Card.Header>
             <Card.Body
               className="text-dark"
-              style={{ backgroundColor: cardBodyColor, borderRadius: "75px" }}
+              style={{
+                backgroundColor: cardBodyColor,
+                borderRadius: "60px",
+                padding: "20px",
+                boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.6)",
+              }}
             >
               <Card.Text className="text-center">
-                <p style={boldText}>
+                <p style={{ ...boldText, fontSize: "18px" }}>
                   Wallet Balance: $
-                  {walletBalance !== null ? walletBalance : "Loading..."}
+                  {walletBalance !== null
+                    ? walletBalance.toFixed(2)
+                    : "Loading..."}
                 </p>
 
-                <p>Product List:</p>
+                <p style={{ fontSize: "16px" }}>Product List:</p>
                 <ul style={listBorderStyle}>
                   {cartItems.map((item, index) => (
-                    <li key={index}>{item.name}</li>
+                    <li
+                      key={index}
+                      style={{ fontSize: "14px", marginBottom: "5px" }}
+                    >
+                      {item.name}
+                    </li>
                   ))}
                 </ul>
 
-                <p>No. of Items: {calculateTotalItems()}</p>
+                <p style={{ fontSize: "16px" }}>
+                  No. of Items: {calculateTotalItems()}
+                </p>
 
-                <p>Cost of Products in Your Cart: ${totalCost}</p>
+                <p style={{ fontSize: "16px" }}>
+                  Cost of Products in Your Cart: ${totalCost}
+                </p>
 
-                <p>Shipping Cost: ${shippingCost}</p>
+                <p style={{ fontSize: "16px" }}>
+                  Shipping Cost: ${shippingCost}
+                </p>
 
-                <p>Tax: ${totalTax}</p>
+                <p style={{ fontSize: "16px" }}>Tax: ${totalTax}</p>
 
-                <p style={boldText}>Total Amount: ${totalAmount}</p>
+                <p style={{ ...boldText, fontSize: "20px" }}>
+                  Total Amount: ${totalAmount}
+                </p>
 
-                <p>Shipping Address: {capitalizedShippingAddress}</p>
+                <p style={{ fontSize: "16px" }}>
+                  Shipping Address: {capitalizedShippingAddress}
+                </p>
 
-                <p>Phone Number: {phoneNumber}</p>
+                <p style={{ fontSize: "16px" }}>Phone Number: {phoneNumber}</p>
               </Card.Text>
             </Card.Body>
             <Card.Footer
@@ -348,7 +370,6 @@ const totalAmount = calculateTotalAmount();
               >
                 Fund Wallet
               </Button>
-              
             </Card.Footer>
           </Card>
         </Col>
