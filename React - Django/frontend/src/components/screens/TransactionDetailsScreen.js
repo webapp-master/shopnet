@@ -58,32 +58,45 @@ const TransactionDetailsScreen = ({ match }) => {
     }
   };
 
-  // Function to start countdown
-  const startCountdown = (deliveryValue) => {
-    let remainingSeconds = deliveryValue; // Assuming 'deliveryValue' is in seconds
-    const countdownInterval = setInterval(() => {
-      remainingSeconds--;
-      setCountdown(remainingSeconds);
-      if (remainingSeconds <= 0) {
-        clearInterval(countdownInterval); // Stop countdown when it reaches zero
-        setCountdown(null); // Reset countdown state
-      }
-    }, 1000); // Update countdown every second
-  };
+  // Function to display formatted delivery time
+const formatDeliveryTime = (delivery) => {
+  if (typeof delivery === "number") {
+    // Convert delivery time from seconds to hours, minutes, and seconds
+    const hours = Math.floor(delivery / 3600);
+    const minutes = Math.floor((delivery % 3600) / 60);
+    const seconds = delivery % 60;
 
-  // Render countdown timer
-  const renderCountdown = () => {
-    if (countdown !== null && countdown !== undefined) {
-      const hours = Math.floor(countdown / 3600);
-      const minutes = Math.floor((countdown % 3600) / 60);
-      const seconds = countdown % 60;
-      return `${hours.toString().padStart(2, "0")}:${minutes
-        .toString()
-        .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
-    } else {
-      return "Loading...";
+    // Format the delivery time as HH:MM:SS
+    return `${hours.toString().padStart(2, "0")}:${minutes
+      .toString()
+      .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+  } else {
+    return "Loading..."; // Return loading if delivery value is not a number
+  }
+};
+
+// Function to start countdown
+const startCountdown = (deliveryValue) => {
+  let remainingSeconds = deliveryValue; // Assuming 'deliveryValue' is in seconds
+  const countdownInterval = setInterval(() => {
+    remainingSeconds--;
+    setCountdown(remainingSeconds);
+    if (remainingSeconds <= 0) {
+      clearInterval(countdownInterval); // Stop countdown when it reaches zero
+      setCountdown(null); // Reset countdown state
     }
-  };
+  }, 1000); // Update countdown every second
+};
+
+// Function to handle countdown logic and formatting
+const renderCountdown = (deliveryValue) => {
+  if (countdown !== null && countdown !== undefined) {
+    return formatDeliveryTime(countdown); // Format remaining time
+  } else {
+    return formatDeliveryTime(deliveryValue); // Display initial delivery time
+  }
+};
+
 
   return (
     <Container fluid>
