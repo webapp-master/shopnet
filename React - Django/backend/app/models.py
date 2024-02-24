@@ -99,8 +99,9 @@ class OrderItem(models.Model):
     price = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
     unitTax = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
-    status = models.CharField(max_length=20, choices=[('sent', 'sent'), ('seen', 'seen'), ('processing', 'processing'), ('dispatched', 'dispatched'), ('delivered', 'delivered')], default='sent')
+    status = models.CharField(max_length=20, choices=[('processing', 'processing'), ('dispatched', 'dispatched'), ('delivered', 'delivered')], default='processing')
     status_created_at = models.DateTimeField(null=True, blank=True)
+    delivery = models.IntegerField(null=True, blank=True, default=0)
 
     def save(self, *args, **kwargs):
         if not self.status_created_at:

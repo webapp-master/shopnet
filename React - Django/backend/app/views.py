@@ -359,6 +359,7 @@ def get_transaction_details(request, transaction_id):
                     'price': item.price,
                     'unitTax': item.unitTax,
                     'status': item.status,
+                    'delivery': item.delivery,
                 }
                 for item in order_items
             ]

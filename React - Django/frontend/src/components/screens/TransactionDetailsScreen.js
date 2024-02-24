@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import {
-  Container,
-  Row,
-  Col,
-  Table,
-} from "react-bootstrap";
+import { Container, Row, Col, Table } from "react-bootstrap";
 
 const TransactionDetailsScreen = ({ match }) => {
   const transactionId = match.params.id;
@@ -38,6 +33,19 @@ const TransactionDetailsScreen = ({ match }) => {
     fetchTransactionDetails();
   }, [accessToken, transactionId]);
 
+  // Function to calculate the countdown timer for delivery
+  const calculateDeliveryTime = (delivery) => {
+    if (typeof delivery === 'number') {
+      const deliveryDate = new Date();
+      deliveryDate.setHours(deliveryDate.getHours() + delivery);
+      const currentTime = new Date();
+      const remainingTime = deliveryDate - currentTime;
+      return Math.floor(remainingTime / (1000 * 60 * 60)) + ' hours';
+    } else {
+      return 'Loading...';
+    }
+  };
+
   return (
     <Container fluid>
       <Row className="justify-content-center">
@@ -65,6 +73,7 @@ const TransactionDetailsScreen = ({ match }) => {
                   <th>Unit Price</th>
                   <th>Unit Tax</th>
                   <th>Status</th>
+                  <th>Delivered in</th> {/* New column for countdown */}
                 </tr>
               </thead>
 
@@ -76,6 +85,7 @@ const TransactionDetailsScreen = ({ match }) => {
                     <td>${item.price}</td>
                     <td>${item.unitTax}</td>
                     <td>{item.status}</td>
+                    <td>{calculateDeliveryTime(item.delivery)}</td> {/* Calculate countdown */}
                   </tr>
                 ))}
               </tbody>
