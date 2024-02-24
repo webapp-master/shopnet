@@ -34,17 +34,26 @@ const TransactionDetailsScreen = ({ match }) => {
   }, [accessToken, transactionId]);
 
   // Function to calculate the countdown timer for delivery
-  const calculateDeliveryTime = (delivery) => {
-    if (typeof delivery === 'number') {
-      const deliveryDate = new Date();
-      deliveryDate.setHours(deliveryDate.getHours() + delivery);
-      const currentTime = new Date();
-      const remainingTime = deliveryDate - currentTime;
-      return Math.floor(remainingTime / (1000 * 60 * 60)) + ' hours';
-    } else {
-      return 'Loading...';
-    }
-  };
+const calculateDeliveryTime = (delivery) => {
+  if (typeof delivery === 'number') {
+    const deliveryDate = new Date();
+    deliveryDate.setHours(deliveryDate.getHours() + delivery);
+    const currentTime = new Date();
+    const remainingTime = deliveryDate - currentTime;
+
+    // Calculate hours, minutes, and seconds
+    const hours = Math.floor(remainingTime / (1000 * 60 * 60));
+    const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+
+    // Format the countdown
+    const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+    return formattedTime;
+  } else {
+    return 'Loading...';
+  }
+};
 
   return (
     <Container fluid>
