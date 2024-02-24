@@ -76,7 +76,7 @@ const ShippingScreen = ({ history }) => {
     Delta: ["Asaba", "Warri", "Ughelli", "Sapele"],
     Ebonyi: ["Abakaliki", "Afikpo", "Onueke", "Edda"],
     Edo: ["Benin City", "Auchi", "Ekpoma", "Uromi"],
-    Ekiti: ["Ado-Ekiti", "Ikere-Ekiti", "Ikole-Ekiti", "Oye-Ekiti"],
+    Ekiti: ["Ado-Ekiti", "Ikere-Ekiti", "Ikole-Ekiti", "Oye-Ekiti", "Iyin-Ekiti"],
     Enugu: ["Enugu", "Nsukka", "Agbani", "Udi"],
     Gombe: ["Gombe", "Kaltungo", "Dukku", "Billiri"],
     Imo: ["Owerri", "Orlu", "Okigwe", "Mbaise"],

@@ -64,6 +64,7 @@ const TransactionDetailsScreen = ({ match }) => {
                   <th>Quantity</th>
                   <th>Unit Price</th>
                   <th>Unit Tax</th>
+                  <th>Status</th>
                 </tr>
               </thead>
 
@@ -74,6 +75,7 @@ const TransactionDetailsScreen = ({ match }) => {
                     <td>{item.qty}</td>
                     <td>${item.price}</td>
                     <td>${item.unitTax}</td>
+                    <td>{item.status}</td>
                   </tr>
                 ))}
               </tbody>
