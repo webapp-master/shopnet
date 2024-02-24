@@ -4,56 +4,64 @@ import { useSelector } from "react-redux";
 import { Container, Row, Col, Table } from "react-bootstrap";
 
 const TransactionDetailsScreen = ({ match }) => {
-  const transactionId = match.params.id;
+    const transactionId = match.params.id;
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [transactionDetails, setTransactionDetails] = useState(null);
+    const [countdown, setCountdown] = useState(null);  // State variable to hold countdown value
 
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [transactionDetails, setTransactionDetails] = useState(null);
+    const accessToken = useSelector((state) => state.userLogin.userInfo?.access);
 
-  const accessToken = useSelector((state) => state.userLogin.userInfo?.access);
+    // Fetch data from backend
+    useEffect(() => {
+        const fetchTransactionDetails = async () => {
+            try {
+                const response = await axios.get(`/api/transaction/${match.params.id}/details`, {
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
+                    },
+                });
+                setTransactionDetails(response.data);
+                setLoading(false);
+                
+                // Start countdown when 'delivery' value is received
+                const deliveryValue = response.data?.orderItems[0]?.delivery;  // Assuming 'delivery' value is in the first order item
+                if (deliveryValue !== null && deliveryValue !== undefined) {
+                    startCountdown(deliveryValue);
+                }
+            } catch (error) {
+                console.error(error.message);
+                setError("Failed to fetch transaction details");
+                setLoading(false);
+            }
+        };
+        fetchTransactionDetails();
+    }, [accessToken, match.params.id]);
 
-  useEffect(() => {
-    const fetchTransactionDetails = async () => {
-      try {
-        const response = await axios.get(`/api/transaction/${transactionId}/details`, {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        });
-
-        setTransactionDetails(response.data);
-        setLoading(false);
-      } catch (error) {
-        console.error(error.message);
-        setError("Failed to fetch transaction details");
-        setLoading(false);
-      }
+    // Function to start countdown
+    const startCountdown = (deliveryValue) => {
+        let remainingSeconds = deliveryValue;  // Assuming 'deliveryValue' is in seconds
+        const countdownInterval = setInterval(() => {
+            remainingSeconds--;
+            setCountdown(remainingSeconds);
+            if (remainingSeconds <= 0) {
+                clearInterval(countdownInterval);  // Stop countdown when it reaches zero
+                setCountdown(null);  // Reset countdown state
+            }
+        }, 1000);  // Update countdown every second
     };
 
-    fetchTransactionDetails();
-  }, [accessToken, transactionId]);
-
-  // Function to calculate the countdown timer for delivery
-const calculateDeliveryTime = (delivery) => {
-  if (typeof delivery === 'number') {
-    const deliveryDate = new Date();
-    deliveryDate.setHours(deliveryDate.getHours() + delivery);
-    const currentTime = new Date();
-    const remainingTime = deliveryDate - currentTime;
-
-    // Calculate hours, minutes, and seconds
-    const hours = Math.floor(remainingTime / (1000 * 60 * 60));
-    const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
-
-    // Format the countdown
-    const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-
-    return formattedTime;
-  } else {
-    return 'Loading...';
-  }
-};
+    // Render countdown timer
+    const renderCountdown = () => {
+        if (countdown !== null && countdown !== undefined) {
+            const hours = Math.floor(countdown / 3600);
+            const minutes = Math.floor((countdown % 3600) / 60);
+            const seconds = countdown % 60;
+            return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        } else {
+            return 'Loading...';
+        }
+    };
 
   return (
     <Container fluid>
@@ -82,7 +90,7 @@ const calculateDeliveryTime = (delivery) => {
                   <th>Unit Price</th>
                   <th>Unit Tax</th>
                   <th>Status</th>
-                  <th>Delivered in</th> {/* New column for countdown */}
+                  <th>Delivered in</th> 
                 </tr>
               </thead>
 
@@ -94,7 +102,7 @@ const calculateDeliveryTime = (delivery) => {
                     <td>${item.price}</td>
                     <td>${item.unitTax}</td>
                     <td>{item.status}</td>
-                    <td>{calculateDeliveryTime(item.delivery)}</td> {/* Calculate countdown */}
+                    <td>{calculateDeliveryTime(item.delivery)}</td>
                   </tr>
                 ))}
               </tbody>
