@@ -378,8 +378,12 @@ def get_transaction_details(request, transaction_id):
     except Exception as e:
         return Response({'error': str(e)}, status=500)
 
+
+
 def calculate_delivered_in(created_at):
-    # Calculate the remaining time
-    time_diff = timezone.now() - created_at
-    remaining_time = timedelta(hours=24) - time_diff  # Assuming the delivery time is within 24 hours
-    return str(remaining_time)
+    # Calculate the time difference in milliseconds
+    time_diff = datetime.now() - created_at
+    remaining_time_ms = time_diff.total_seconds() * 1000  # Convert to milliseconds
+    return remaining_time_ms
+
+
