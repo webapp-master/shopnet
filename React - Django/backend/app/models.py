@@ -101,6 +101,8 @@ class OrderItem(models.Model):
     unitTax = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
     status = models.CharField(max_length=20, choices=[('processing', 'processing'), ('dispatched', 'dispatched'), ('delivered', 'delivered')], default='processing')
     status_created_at = models.DateTimeField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+ 
     
     
 

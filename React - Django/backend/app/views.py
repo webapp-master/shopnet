@@ -362,7 +362,7 @@ def get_transaction_details(request, transaction_id):
                     'price': item.price,
                     'unitTax': item.unitTax,
                     'status': item.status,
-                    'deliveredIn': calculate_delivered_in(item.status_created_at) # Calculate remaining time
+                    'deliveredIn': calculate_delivered_in(item.created_at) # Calculate remaining time
                 }
                 for item in order_items
             ]
@@ -379,9 +379,9 @@ def get_transaction_details(request, transaction_id):
         return Response({'error': str(e)}, status=500)
 
 
-def calculate_delivered_in(created_at):
+def calculate_delivered_in(test_date):
     # Calculate the remaining time
-    time_diff = timezone.now() - created_at
+    time_diff = timezone.now() - test_date
     remaining_time = timedelta(hours=72) - time_diff  # Assuming the delivery time is within 24 hours
     # Convert remaining time to milliseconds
     remaining_time_ms = remaining_time.total_seconds() * 1000
