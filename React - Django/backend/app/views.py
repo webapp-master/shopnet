@@ -23,6 +23,8 @@ from django.http import JsonResponse
 from .serializer import WalletSerializer
 from decimal import Decimal
 from rest_framework import generics
+from datetime import datetime, timedelta
+from django.utils import timezone
 
 
 @api_view(['GET'])
@@ -334,14 +336,15 @@ class UserTransactionsView(generics.ListAPIView):
     
 
 
+
+
+
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_transaction_details(request, transaction_id):
     try:
         # Fetch transaction details based on the transaction_id
         transaction = Transaction.objects.get(id=transaction_id)
-
-        # Fetch order associated with the transaction
         order = transaction.order
 
         # Fetch order items associated with the order
@@ -359,7 +362,7 @@ def get_transaction_details(request, transaction_id):
                     'price': item.price,
                     'unitTax': item.unitTax,
                     'status': item.status,
-                    'delivery': item.delivery,
+                    'deliveredIn': calculate_delivered_in(item.status_created_at)  # Calculate remaining time
                 }
                 for item in order_items
             ]
@@ -374,3 +377,9 @@ def get_transaction_details(request, transaction_id):
         return Response({'error': 'Order items not found'}, status=404)
     except Exception as e:
         return Response({'error': str(e)}, status=500)
+
+def calculate_delivered_in(created_at):
+    # Calculate the remaining time
+    time_diff = timezone.now() - created_at
+    remaining_time = timedelta(hours=24) - time_diff  # Assuming the delivery time is within 24 hours
+    return str(remaining_time)

@@ -101,7 +101,7 @@ class OrderItem(models.Model):
     unitTax = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
     status = models.CharField(max_length=20, choices=[('processing', 'processing'), ('dispatched', 'dispatched'), ('delivered', 'delivered')], default='processing')
     status_created_at = models.DateTimeField(null=True, blank=True)
-    delivery = models.IntegerField(null=True, blank=True, default=0)
+    
 
     def save(self, *args, **kwargs):
         if not self.status_created_at:
