@@ -382,7 +382,7 @@ def get_transaction_details(request, transaction_id):
 def calculate_delivered_in(created_at):
     # Calculate the remaining time
     time_diff = timezone.now() - created_at
-    remaining_time = timedelta(hours=24) - time_diff  # Assuming the delivery time is within 24 hours
+    remaining_time = timedelta(hours=72) - time_diff  # Assuming the delivery time is within 24 hours
     # Convert remaining time to milliseconds
     remaining_time_ms = remaining_time.total_seconds() * 1000
     return remaining_time_ms
