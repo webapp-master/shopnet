@@ -102,6 +102,7 @@ class OrderItem(models.Model):
     status = models.CharField(max_length=20, choices=[('processing', 'processing'), ('dispatched', 'dispatched'), ('delivered', 'delivered')], default='processing')
     status_created_at = models.DateTimeField(null=True, blank=True)
     
+    
 
     def save(self, *args, **kwargs):
         if not self.status_created_at:

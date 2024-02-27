@@ -362,7 +362,7 @@ def get_transaction_details(request, transaction_id):
                     'price': item.price,
                     'unitTax': item.unitTax,
                     'status': item.status,
-                    'deliveredIn': calculate_delivered_in(item.status_created_at)  # Calculate remaining time
+                    'deliveredIn': calculate_delivered_in(item.status_created_at) # Calculate remaining time
                 }
                 for item in order_items
             ]
