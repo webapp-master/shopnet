@@ -38,6 +38,31 @@ const TransactionDetailsScreen = ({ match }) => {
     fetchTransactionDetails();
   }, [accessToken, transactionId]);
 
+  // Function to convert milliseconds to readable time format
+  const convertMillisecondsToTime = (milliseconds) => {
+    const seconds = Math.floor((milliseconds / 1000) % 60);
+    const minutes = Math.floor((milliseconds / (1000 * 60)) % 60);
+    const hours = Math.floor((milliseconds / (1000 * 60 * 60)) % 24);
+    return `${hours}h ${minutes}m ${seconds}s`;
+  };
+
+  useEffect(() => {
+    // Update countdown timer every second
+    const interval = setInterval(() => {
+      // Update the transactionDetails state to trigger re-rendering
+      setTransactionDetails((prevDetails) => ({
+        ...prevDetails,
+        orderItems: prevDetails.orderItems.map((item) => ({
+          ...item,
+          deliveredIn: item.deliveredIn - 1000, // Subtract 1000 milliseconds (1 second)
+        })),
+      }));
+    }, 1000); // Run every 1000 milliseconds (1 second)
+
+    // Cleanup function to clear interval on component unmount
+    return () => clearInterval(interval);
+  }, []); // Run this effect only once on component mount
+
   return (
     <Container fluid>
       <Row className="justify-content-center">
@@ -77,7 +102,7 @@ const TransactionDetailsScreen = ({ match }) => {
                     <td>${item.price}</td>
                     <td>${item.unitTax}</td>
                     <td>{item.status}</td>
-                    <td>{item.deliveredIn}</td> {/* Display remaining time */}
+                    <td>{convertMillisecondsToTime(item.deliveredIn)}</td> {/* Convert milliseconds to readable time */}
                   </tr>
                 ))}
               </tbody>
