@@ -108,23 +108,16 @@ const TransactionDetailsScreen = ({ match }) => {
               </thead>
 
               <tbody>
-                {transactionDetails?.orderItems.map((item) => {
-                  console.log("Item deliveredIn:", item.deliveredIn); // Log deliveredIn before calculating remaining time
-                  const remainingTime = calculateRemainingTime(
-                    item.deliveredIn
-                  ); // Calculate remaining time
-                  console.log("Remaining Time:", remainingTime); // Log remaining time
-                  return (
-                    <tr key={item.id}>
-                      <td>{item.product}</td>
-                      <td>{item.qty}</td>
-                      <td>${item.price}</td>
-                      <td>${item.unitTax}</td>
-                      <td>{item.status}</td>
-                      <td>{remainingTime}</td> {/* Display remaining time */}
-                    </tr>
-                  );
-                })}
+                {transactionDetails?.orderItems.map((item) => (
+                  <tr key={item.id}>
+                    <td>{item.product}</td>
+                    <td>{item.qty}</td>
+                    <td>${item.price}</td>
+                    <td>${item.unitTax}</td>
+                    <td>{item.status}</td>
+                    <td>{item.deliveredIn}</td> {/* Display remaining time */}
+                  </tr>
+                ))}
               </tbody>
             </Table>
           </div>
