@@ -380,10 +380,25 @@ def get_transaction_details(request, transaction_id):
 
 
 
+from django.utils import timezone
+
+# Assuming created_at is a timezone-aware datetime object
 def calculate_delivered_in(created_at):
-    # Calculate the time difference in milliseconds
-    time_diff = datetime.now() - created_at
-    remaining_time_ms = time_diff.total_seconds() * 1000  # Convert to milliseconds
+    # Assuming target_delivery_time is also a timezone-aware datetime object
+    target_delivery_time = timezone.now()  # Example target delivery time
+    
+    # Convert target_delivery_time to the timezone of created_at
+    target_delivery_time = target_delivery_time.astimezone(created_at.tzinfo)
+    
+    # Calculate the time difference
+    time_diff = target_delivery_time - created_at
+    
+    # Convert time difference to milliseconds
+    remaining_time_ms = time_diff.total_seconds() * 1000
+    
     return remaining_time_ms
+
+
+
 
 
