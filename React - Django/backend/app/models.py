@@ -109,6 +109,7 @@ class OrderItem(models.Model):
     status = models.CharField(max_length=20, choices=[('processing', 'processing'), ('dispatched', 'dispatched'), ('delivered', 'delivered')], default='processing')
     status_created_at = models.DateTimeField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    delivery = models.IntegerField(default=0)
  
     
     
