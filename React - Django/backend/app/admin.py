@@ -18,13 +18,17 @@ class OrderAdmin(admin.ModelAdmin):
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('name', 'sku', 'category', 'price', 'countInStock', 'image')
+
+class WalletAdmin(admin.ModelAdmin):
+    list_display = ('user', 'balance')
+
     
 
 
 # Register your models here.
 admin.site.register(Profile)
 admin.site.register(Product, ProductAdmin)
-admin.site.register(Wallet)
+admin.site.register(Wallet, WalletAdmin)
 admin.site.register(Transaction, TransactionAdmin)
 admin.site.register(Order, OrderAdmin)
 admin.site.register(ShippingAddress)
