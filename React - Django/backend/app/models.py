@@ -41,10 +41,17 @@ class Product(models.Model):
 class Wallet(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     balance = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
-    
+    name = models.CharField(max_length=255, blank=True) 
 
     def __str__(self):
         return f"Wallet of {self.user.username}"
+
+    def save(self, *args, **kwargs):
+        # Populate the 'name' field with the concatenated first name and last name
+        if self.user:
+            self.name = f"{self.user.first_name} {self.user.last_name}"
+        super().save(*args, **kwargs)
+
     
 
 

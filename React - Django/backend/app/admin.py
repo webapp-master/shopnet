@@ -20,7 +20,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ('name', 'sku', 'category', 'price', 'countInStock', 'image')
 
 class WalletAdmin(admin.ModelAdmin):
-    list_display = ('user', 'balance')
+    list_display = ('user', 'name', 'balance')
 
     
 
