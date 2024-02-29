@@ -110,10 +110,10 @@ const TransactionDetailsScreen = ({ match }) => {
                     <td>${item.unitTax}</td>
                     <td>{item.status}</td>
                     <td>
-                      {item.deliveredIn <= 0
+                      {item.status === "delivered"
+                        ? "transaction is completed"
+                        : item.deliveredIn <= 0
                         ? "Loading..."
-                        : item.status === "delivered"
-                        ? "Transaction is completed"
                         : convertMillisecondsToTime(item.deliveredIn)}
                     </td>
                   </tr>
