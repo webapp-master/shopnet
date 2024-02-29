@@ -109,8 +109,13 @@ const TransactionDetailsScreen = ({ match }) => {
                     <td>${item.price}</td>
                     <td>${item.unitTax}</td>
                     <td>{item.status}</td>
-                    <td>{convertMillisecondsToTime(item.deliveredIn)}</td>{" "}
-                    {/* Convert milliseconds to readable time */}
+                    <td>
+                      {item.deliveredIn <= 0
+                        ? "Loading..."
+                        : item.status === "delivered"
+                        ? "Transaction is completed"
+                        : convertMillisecondsToTime(item.deliveredIn)}
+                    </td>
                   </tr>
                 ))}
               </tbody>

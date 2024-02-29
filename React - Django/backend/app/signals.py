@@ -98,7 +98,7 @@ def update_order_status(sender, instance, created, **kwargs):
                 # If any OrderItem is not marked as delivered, update the corresponding Order
                 order.isDelivered = False
                 order.save(update_fields=['isDelivered'])
-                order.deliveredAt = timezone.now()
+                order.deliveredAt = None
                 order.save(update_fields=['deliveredAt'])
 
 
