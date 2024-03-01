@@ -22,6 +22,9 @@ class ProductAdmin(admin.ModelAdmin):
 class WalletAdmin(admin.ModelAdmin):
     list_display = ('user', 'name', 'balance')
 
+class ShippingAdmin(admin.ModelAdmin):
+    list_display = ('order', 'state', 'city', 'area', 'street', 'houseNumber', 'phoneNumber', 'shippingCost')
+
     
 
 
@@ -31,6 +34,6 @@ admin.site.register(Product, ProductAdmin)
 admin.site.register(Wallet, WalletAdmin)
 admin.site.register(Transaction, TransactionAdmin)
 admin.site.register(Order, OrderAdmin)
-admin.site.register(ShippingAddress)
+admin.site.register(ShippingAddress, ShippingAdmin)
 admin.site.register(Supplier)
 admin.site.register(OrderItem, OrderItemAdmin)    # Register the custom admin class with the OrderItem model
