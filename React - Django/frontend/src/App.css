@@ -837,20 +837,25 @@
 }
 
 
-                  /*  TransactionDetailsScreen.js  */
+      /*  TransactionDetailsScreen.js  */
 .whatsapp-link {
   position: fixed;
   bottom: 20px;
   left: 10px;
   z-index: 3;
-  animation: whatsapp-icon-bounce 1s infinite alternate;
+  animation: whatsapp-icon-bounce 2s infinite alternate;
 }
 
 @keyframes whatsapp-icon-bounce {
   0% {
     transform: translateY(0);
   }
+
+  40% {
+    transform: translateY(-100px);
+  }
+
   100% {
-    transform: translateY(-10px);
+    transform: translateY(-50px);
   }
 }
