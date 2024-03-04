@@ -3,6 +3,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { Container, Row, Col, Table } from "react-bootstrap";
 
+
 const TransactionDetailsScreen = ({ match }) => {
   const transactionId = match.params.id;
 
@@ -66,6 +67,12 @@ const TransactionDetailsScreen = ({ match }) => {
     return () => clearInterval(interval);
   }, []); // Run this effect only once on component mount
 
+
+  /* Add this CSS animation somewhere in your project */
+
+
+
+
   return (
     <Container fluid>
       <Row className="justify-content-center">
@@ -123,8 +130,29 @@ const TransactionDetailsScreen = ({ match }) => {
           </div>
         </Col>
       </Row>
+
+
+      {/* WhatsApp link */}
+      <a
+        href="https://api.whatsapp.com/send?phone=2349055067540"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          position: "fixed",
+          bottom: "20px",
+          left: "10px",
+          zIndex: "3",
+          animation: "bounce 1s infinite", 
+        }}
+      >
+        <img src="/images/whatsappLogo.png" alt="WhatsApp" width="50" height="50" />
+      </a>
+
+
     </Container>
   );
 };
+
+
 
 export default TransactionDetailsScreen;
