@@ -137,13 +137,7 @@ const TransactionDetailsScreen = ({ match }) => {
         href="https://api.whatsapp.com/send?phone=2349055067540"
         target="_blank"
         rel="noopener noreferrer"
-        style={{
-          position: "fixed",
-          bottom: "20px",
-          left: "10px",
-          zIndex: "3",
-          animation: "bounce 1s infinite", 
-        }}
+        className="whatsapp-link"
       >
         <img src="/images/whatsappLogo.png" alt="WhatsApp" width="50" height="50" />
       </a>

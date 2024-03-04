@@ -835,3 +835,22 @@
   font-size: 10px;
   transition: font-size 0.5s ease;
 }
+
+
+                  /*  TransactionDetailsScreen.js  */
+.whatsapp-link {
+  position: fixed;
+  bottom: 20px;
+  left: 10px;
+  z-index: 3;
+  animation: whatsapp-icon-bounce 1s infinite alternate;
+}
+
+@keyframes whatsapp-icon-bounce {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
