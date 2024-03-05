@@ -837,14 +837,46 @@
 }
 
 
-      /*  TransactionDetailsScreen.js  */
+
+
+                    /* TransactionDetailsScreen.js */
+
 .whatsapp-link {
   position: fixed;
-  bottom: 20px;
-  left: 10px;
+  top: -50px; /* Initially hides the icon above the screen */
+  right: -50px; /* Initially hides the icon to the right of the screen */
   z-index: 3;
-  animation: whatsapp-icon-bounce 2s infinite alternate;
+  animation: whatsapp-icon-roll 3s forwards, whatsapp-icon-bounce 2s infinite alternate;
 }
+
+@keyframes whatsapp-icon-roll {
+  0% {
+    top: -50px;
+    right: -50px;
+    transform: rotate(0deg); /* Initial rotation */
+  }
+  25% {
+    top: 50px; /* Moves the icon down */
+    right: 50px; /* Moves the icon towards the left */
+    transform: rotate(90deg); /* Rotates the icon 90 degrees */
+  }
+  50% {
+    top: calc(50% - 25px); /* Moves the icon to the middle vertically */
+    right: calc(50% - 25px); /* Moves the icon to the middle horizontally */
+    transform: rotate(180deg); /* Rotates the icon 180 degrees */
+  }
+  75% {
+    top: calc(100vh - 100px); /* Moves the icon to the bottom */
+    right: calc(100vw - 100px); /* Moves the icon to the left */
+    transform: rotate(270deg); /* Rotates the icon 270 degrees */
+  }
+  100% {
+    top: calc(100vh - 40px); /* Keeps the icon at the bottom */
+    right: calc(100vw - 70px); /* Keeps the icon at the left */
+    transform: rotate(360deg); /* Rotates the icon back to its initial position */
+  }
+}
+
 
 @keyframes whatsapp-icon-bounce {
   0% {

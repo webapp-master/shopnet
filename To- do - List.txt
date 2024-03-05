@@ -526,3 +526,8 @@ but if the cart is not empty, then i need you to display the button for the "Ord
 
 			75.
 https://www.freepik.com/  I love the landing page and i will like to develop it .
+
+
+			76.
+!userinfo
+I shouldn't be able to  browse /wallet   or any other screens
