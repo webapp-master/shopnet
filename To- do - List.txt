@@ -531,3 +531,10 @@ https://www.freepik.com/  I love the landing page and i will like to develop it 
 			76.
 !userinfo
 I shouldn't be able to  browse /wallet   or any other screens
+
+			77.
+
+TransactionDetailsScreen.js
+
+the whatsapp icon
+whenever you hover on the icon, i need the icon to be stationary

@@ -3,7 +3,6 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { Container, Row, Col, Table } from "react-bootstrap";
 
-
 const TransactionDetailsScreen = ({ match }) => {
   const transactionId = match.params.id;
 
@@ -67,11 +66,7 @@ const TransactionDetailsScreen = ({ match }) => {
     return () => clearInterval(interval);
   }, []); // Run this effect only once on component mount
 
-
   /* Add this CSS animation somewhere in your project */
-
-
-
 
   return (
     <Container fluid>
@@ -102,7 +97,10 @@ const TransactionDetailsScreen = ({ match }) => {
                   <th>Product</th>
                   <th>Quantity</th>
                   <th>Unit Price</th>
+                  <th>Price of Item</th>
                   <th>Unit Tax</th>
+                  <th>Tax on Item</th>
+                  <th>Amount</th>
                   <th>Status</th>
                   <th>To be Delivered In</th>
                 </tr>
@@ -114,7 +112,16 @@ const TransactionDetailsScreen = ({ match }) => {
                     <td>{item.product}</td>
                     <td>{item.qty}</td>
                     <td>${item.price}</td>
+                    <td>
+                    ${(item.qty * item.price).toFixed(2)}
+                    </td>
                     <td>${item.unitTax}</td>
+                    <td>
+                    ${(item.qty * item.unitTax).toFixed(2)}
+                    </td>
+                    <td>
+                    ${(item.qty * item.price + item.qty * item.unitTax).toFixed(2)}
+                    </td>
                     <td>{item.status}</td>
                     <td>
                       {item.status === "delivered"
@@ -131,7 +138,6 @@ const TransactionDetailsScreen = ({ match }) => {
         </Col>
       </Row>
 
-
       {/* WhatsApp link */}
       <a
         href="https://api.whatsapp.com/send?phone=2349055067540"
@@ -139,14 +145,15 @@ const TransactionDetailsScreen = ({ match }) => {
         rel="noopener noreferrer"
         className="whatsapp-link"
       >
-        <img src="/images/whatsappLogo.png" alt="WhatsApp" width="50" height="50" />
+        <img
+          src="/images/whatsappLogo.png"
+          alt="WhatsApp"
+          width="50"
+          height="50"
+        />
       </a>
-
-
     </Container>
   );
 };
-
-
 
 export default TransactionDetailsScreen;

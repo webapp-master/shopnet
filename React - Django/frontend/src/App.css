@@ -846,7 +846,7 @@
   top: -50px; /* Initially hides the icon above the screen */
   right: -50px; /* Initially hides the icon to the right of the screen */
   z-index: 3;
-  animation: whatsapp-icon-roll 3s forwards, whatsapp-icon-bounce 2s infinite alternate;
+  animation: whatsapp-icon-roll 10s forwards, whatsapp-icon-bounce 2s infinite alternate;
 }
 
 @keyframes whatsapp-icon-roll {
