@@ -891,3 +891,12 @@
     transform: translateY(-50px);
   }
 }
+
+
+.transaction-details-table th:nth-child(1) {
+  width: 50rem; 
+}
+
+
+
+

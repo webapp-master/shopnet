@@ -66,7 +66,28 @@ const TransactionDetailsScreen = ({ match }) => {
     return () => clearInterval(interval);
   }, []); // Run this effect only once on component mount
 
-  /* Add this CSS animation somewhere in your project */
+  // Calculate sum for each column
+  const calculateColumnSum = (columnName) => {
+    let sum = 0;
+    transactionDetails?.orderItems.forEach((item) => {
+      sum += item[columnName];
+    });
+    return sum.toFixed(2);
+  };
+
+  // Render the sum row for each column
+  const renderSumRow = () => (
+    <tr className="sum-row">
+      <td colSpan="2"></td>
+      <td>Total:</td>
+      <td>${calculateColumnSum("qty")}</td>
+      <td>${calculateColumnSum("qty * price")}</td>
+      <td>${calculateColumnSum("qty * unitTax")}</td>
+      <td>${calculateColumnSum("(qty * price) + (qty * unitTax)")}</td>
+      <td></td>
+      <td></td>
+    </tr>
+  );
 
   return (
     <Container fluid>
@@ -76,7 +97,7 @@ const TransactionDetailsScreen = ({ match }) => {
             <div className="wallet-header">
               <div className="wallet-balance">
                 <p>
-                  Shipping Cost: $
+                  delivery fee: $
                   {transactionDetails?.shippingCost || "Loading..."}
                 </p>
               </div>
@@ -91,14 +112,14 @@ const TransactionDetailsScreen = ({ match }) => {
               </div>
             </div>
 
-            <Table responsive className="transaction-table">
+            <Table responsive className="transaction-table transaction-details-table">
               <thead>
                 <tr>
                   <th>Product</th>
-                  <th>Quantity</th>
+                  <th>Qty</th>
                   <th>Unit Price</th>
-                  <th>Price of Item</th>
                   <th>Unit Tax</th>
+                  <th>Price of Item</th>
                   <th>Tax on Item</th>
                   <th>Amount</th>
                   <th>Status</th>
@@ -112,16 +133,10 @@ const TransactionDetailsScreen = ({ match }) => {
                     <td>{item.product}</td>
                     <td>{item.qty}</td>
                     <td>${item.price}</td>
-                    <td>
-                    ${(item.qty * item.price).toFixed(2)}
-                    </td>
                     <td>${item.unitTax}</td>
-                    <td>
-                    ${(item.qty * item.unitTax).toFixed(2)}
-                    </td>
-                    <td>
-                    ${(item.qty * item.price + item.qty * item.unitTax).toFixed(2)}
-                    </td>
+                    <td>${(item.qty * item.price).toFixed(2)}</td>
+                    <td>${(item.qty * item.unitTax).toFixed(2)}</td>
+                    <td>${(item.qty * item.price + item.qty * item.unitTax).toFixed(2)}</td>
                     <td>{item.status}</td>
                     <td>
                       {item.status === "delivered"
@@ -132,6 +147,7 @@ const TransactionDetailsScreen = ({ match }) => {
                     </td>
                   </tr>
                 ))}
+                {renderSumRow()}
               </tbody>
             </Table>
           </div>
