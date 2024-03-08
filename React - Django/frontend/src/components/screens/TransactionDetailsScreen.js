@@ -78,13 +78,26 @@ const calculateColumnSum = (columnName) => {
   return sum.toFixed(2);
 };
 
+// Calculate sum for each column
+const calculateColumnSumforQty = (columnName) => {
+  let sum = 0;
+  transactionDetails?.orderItems.forEach((item) => {
+    const value = eval(columnName.replace(/qty/g, item.qty).replace(/price/g, item.price).replace(/unitTax/g, item.unitTax));
+    if (!isNaN(value)) {
+      sum += value;
+    }
+  });
+  return parseInt(sum.toFixed(0)); // Parse the sum to an integer
+};
+
+
 
   // Render the sum row for each column
   const renderSumRow = () => (
     <tr className="sum-row">
       
       <td>Total:</td>
-      <td>{calculateColumnSum("qty")}</td>
+      <td>{calculateColumnSumforQty("qty")}</td>
       <td colSpan="2"></td>
       <td>${calculateColumnSum("qty * price")}</td>
       <td>${calculateColumnSum("qty * unitTax")}</td>
