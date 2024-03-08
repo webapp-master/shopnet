@@ -128,6 +128,7 @@ function Header() {
                   {(currentLocation.pathname === "/" ||
                     currentLocation.pathname === "/all" ||
                     currentLocation.pathname === "/shipping" ||
+                    currentLocation.pathname.includes("/transaction") ||
                     currentLocation.pathname.includes("/product") ||
                     currentLocation.pathname === "/wallet") && (
                     <LinkContainer to="/cart" className="headerButtons">

@@ -82,7 +82,7 @@ const calculateColumnSum = (columnName) => {
 const calculateColumnSumforQty = (columnName) => {
   let sum = 0;
   transactionDetails?.orderItems.forEach((item) => {
-    const value = eval(columnName.replace(/qty/g, item.qty).replace(/price/g, item.price).replace(/unitTax/g, item.unitTax));
+    const value = eval(columnName.replace(/qty/g, item.qty));
     if (!isNaN(value)) {
       sum += value;
     }
@@ -93,18 +93,18 @@ const calculateColumnSumforQty = (columnName) => {
 
 
   // Render the sum row for each column
-  const renderSumRow = () => (
-    <tr className="sum-row">
-      
-      <td>Total:</td>
-      <td>{calculateColumnSumforQty("qty")}</td>
-      <td colSpan="2"></td>
-      <td>${calculateColumnSum("qty * price")}</td>
-      <td>${calculateColumnSum("qty * unitTax")}</td>
-      <td>${calculateColumnSum("(qty * price) + (qty * unitTax)")}</td>
-      <td colSpan="2"></td>
-    </tr>
-  );
+const renderSumRow = () => (
+  <tr className="sum-row">
+    <td className="color-text">Total:</td>
+    <td className="color-text">{calculateColumnSumforQty("qty")}</td>
+    <td className="color-text" colSpan="2"></td>
+    <td className="color-text">${calculateColumnSum("qty * price")}</td>
+    <td className="color-text">${calculateColumnSum("qty * unitTax")}</td>
+    <td className="color-text">${calculateColumnSum("(qty * price) + (qty * unitTax)")}</td>
+    <td colSpan="2"></td>
+  </tr>
+);
+
 
   return (
     <Container fluid>

@@ -18,6 +18,7 @@ function Product({ product }) {
           src={product.image}
         />
       </Link>
+      
 
       <Card.Body
         className="d-flex flex-column align-items-center justify-content-center"
