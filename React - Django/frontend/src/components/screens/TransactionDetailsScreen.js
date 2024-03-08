@@ -67,25 +67,29 @@ const TransactionDetailsScreen = ({ match }) => {
   }, []); // Run this effect only once on component mount
 
   // Calculate sum for each column
-  const calculateColumnSum = (columnName) => {
-    let sum = 0;
-    transactionDetails?.orderItems.forEach((item) => {
-      sum += item[columnName];
-    });
-    return sum.toFixed(2);
-  };
+const calculateColumnSum = (columnName) => {
+  let sum = 0;
+  transactionDetails?.orderItems.forEach((item) => {
+    const value = eval(columnName.replace(/qty/g, item.qty).replace(/price/g, item.price).replace(/unitTax/g, item.unitTax));
+    if (!isNaN(value)) {
+      sum += value;
+    }
+  });
+  return sum.toFixed(2);
+};
+
 
   // Render the sum row for each column
   const renderSumRow = () => (
     <tr className="sum-row">
-      <td colSpan="2"></td>
+      
       <td>Total:</td>
-      <td>${calculateColumnSum("qty")}</td>
+      <td>{calculateColumnSum("qty")}</td>
+      <td colSpan="2"></td>
       <td>${calculateColumnSum("qty * price")}</td>
       <td>${calculateColumnSum("qty * unitTax")}</td>
       <td>${calculateColumnSum("(qty * price) + (qty * unitTax)")}</td>
-      <td></td>
-      <td></td>
+      <td colSpan="2"></td>
     </tr>
   );
 
