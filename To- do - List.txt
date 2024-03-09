@@ -538,3 +538,8 @@ TransactionDetailsScreen.js
 
 the whatsapp icon
 whenever you hover on the icon, i need the icon to be stationary
+
+
+			78.
+work on the body of the Product card
+let each of the items in the card have their own line 

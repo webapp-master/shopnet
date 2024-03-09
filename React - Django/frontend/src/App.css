@@ -905,3 +905,14 @@
   font-weight: 900;
   /*text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);*/
 }
+
+
+                  /*Styles for Product.js*/
+
+.product-card {
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+  transform: scale(1.02);
+}
