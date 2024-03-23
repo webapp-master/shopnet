@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 function Product({ product }) {
   return (
-    <Card className="my-3 p-3 rounded product-card" style={{ height: "500px" }}>
+    <Card className="my-3 p-3 rounded product-card" style={{ height: "400px" }}>
       <Link to={`/product/${product.id}`} className="mx-auto">
         <Card.Img
           style={{
@@ -21,7 +21,7 @@ function Product({ product }) {
 
 
       <Card.Body
-        className="d-flex flex-column align-items-center justify-content-center"
+        className="d-flex flex-column align-items-center justify-content-center sum-row"
         style={{ backgroundColor: "" }}
       >
         <Link
@@ -34,17 +34,13 @@ function Product({ product }) {
           </Card.Title>
         </Link>
 
-        <Card.Text as="div" className="text-center">
-          <div className="my-3">
-            {product.rating} rating from {product.numReviews} reviews
-          </div>
-        </Card.Text>
+        
 
-        <Card.Text as="h3" className="text-center">
+        <Card.Text as="h3" className="text-center color-text">
           ${product.price}
         </Card.Text>
 
-        <Rating value={product.rating} color={"#f8e825"} />
+        
       </Card.Body>
     </Card>
   );
