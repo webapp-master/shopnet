@@ -17,6 +17,7 @@ import TransactionDetailsScreen from "./components/screens/TransactionDetailsScr
 import AllScreenBackground from "./components/screens/AllScreenBackground";
 import ReceiptCreditScreen from "./components/screens/ReceiptCreditScreen";
 import ReceiptDebitScreen from "./components/screens/ReceiptDebitScreen";
+import ProfileScreen from "./components/screens/ProfileScreen";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
         <Route path="/receipt/credit/:id" component={ReceiptCreditScreen} exact />
         <Route path="/receipt/debit/:id" component={ReceiptDebitScreen} exact />
         <Route path="/all" component={AllScreenBackground} exact />
+        <Route path="/profile" component={ProfileScreen} exact />
       </main>
 
       <Footer />

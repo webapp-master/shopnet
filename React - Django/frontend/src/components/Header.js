@@ -14,17 +14,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import { useLocation } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 
 function Header() {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
   const dispatch = useDispatch();
-  const history = useHistory(); // Get the history object
+  const history = useHistory(); 
 
   const logoutHandler = () => {
-    dispatch(logout(history)); // Pass history to the logout action
+    dispatch(logout(history)); 
   };
 
   const isMobile = useMediaQuery({ maxWidth: 867 });
@@ -37,6 +36,7 @@ function Header() {
   const isRegisterRoute = location.pathname === "/register";
   const isHomeRoute = location.pathname === "/";
   const isAllRoute = location.pathname === "/all";
+  const isProfileRoute = location.pathname == "/profile";
 
   const [bottomPosition, setBottomPosition] = useState("15%"); // State to manage bottom position
   const [navbarHeight, setNavbarHeight] = useState("5.5rem"); // State to manage Navbar height
@@ -63,7 +63,10 @@ function Header() {
           isDebitRoute ||
           isRegisterRoute ||
           isHomeRoute ||
-          isAllRoute
+          isAllRoute ||
+          isProfileRoute
+          
+
             ? "0"
             : "20px",
       }}

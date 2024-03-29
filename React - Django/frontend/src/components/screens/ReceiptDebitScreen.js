@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Container, Row, Col, Card } from 'react-bootstrap';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { Container, Row, Col, Card } from "react-bootstrap";
 
 const ReceiptDebitScreen = ({ match }) => {
   const [receiptData, setReceiptData] = useState(null);
@@ -11,13 +11,15 @@ const ReceiptDebitScreen = ({ match }) => {
     const fetchReceiptData = async () => {
       try {
         // Fetch receipt data based on the ID from the route parameters
-        const response = await axios.get(`/api/receipts/debit/${match.params.id}`);
+        const response = await axios.get(
+          `/api/receipts/debit/${match.params.id}`
+        );
 
         setReceiptData(response.data);
         setLoading(false);
       } catch (error) {
         console.error(error.message);
-        setError('Failed to fetch debit receipt');
+        setError("Failed to fetch debit receipt");
         setLoading(false);
       }
     };
@@ -55,15 +57,18 @@ const ReceiptDebitScreen = ({ match }) => {
 // Function to format timestamp
 const formatTimestamp = (timestamp) => {
   const options = {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
     hour12: true,
   };
 
-  const formattedDate = new Date(timestamp).toLocaleDateString('en-US', options);
+  const formattedDate = new Date(timestamp).toLocaleDateString(
+    "en-US",
+    options
+  );
   return formattedDate;
 };
 

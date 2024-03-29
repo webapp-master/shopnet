@@ -97,14 +97,14 @@
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6) !important;
   width: 130px;
   height: 40px;
-}
+}  
 
 .headerButtons:hover {
   background-color: #1f73c9 !important;
   color: white !important;
   text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.6) !important;
-  box-shadow: 0 0 20px 12px rgba(255, 255, 255, 0.5) !important; /* White box shadow on hover */
-}
+  box-shadow: 0 0 20px 12px rgba(255, 255, 255, 0.5) !important; 
+}  
 
 .header-right-Buttons {
   display: flex !important;

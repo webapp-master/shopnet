@@ -294,7 +294,7 @@ function RegisterScreen() {
                                 className="button final"
                                 type="submit"
                               >
-                                APPLY
+                                Register
                               </Button>
                             </center>
 
