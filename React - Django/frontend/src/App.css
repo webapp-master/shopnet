@@ -905,3 +905,31 @@
   transform: scale(1.02);
 }
 
+
+/*Styles for the ProfileScreen.js*/
+
+.profile-page {
+  display: flex;
+  height: 100vh;
+  margin-left: 48px;
+  margin-right: 48px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  
+}
+
+.profile-side-bar {
+  background-color: #4091ed;
+  flex: 0 0 25%;
+  color: white;
+}
+
+.profile-content {
+  flex: 1;
+  background-color: #1b2025;
+  color: white;
+}
+
+
+
+

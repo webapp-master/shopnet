@@ -1,9 +1,9 @@
 import React from 'react';
-import HomeScreen from './HomeScreen'; 
+import ProfileScreen from './ProfileScreen'; 
 
 
 
-const HomeScreenBackground = () => {
+const ProfileBackground = () => {
     return (
       <div
         style={{
@@ -16,11 +16,11 @@ const HomeScreenBackground = () => {
         }}
       >   
 
-        <HomeScreen />
+        <ProfileScreen />
 
       </div>
     );
   };
   
-  export default HomeScreenBackground;
+  export default ProfileBackground;
   
