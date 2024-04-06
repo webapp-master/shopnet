@@ -17,6 +17,10 @@ function Footer() {
     textColor = 'red'; 
   }
 
+  if (currentPath == '/profile') {
+    backgroundColor = '#535357';
+    textColor = 'white';
+  }
 
   // Check if the current path is in the pathsToHideFooter array
   const shouldHideFooter = pathsToHideFooter.includes(currentPath);
