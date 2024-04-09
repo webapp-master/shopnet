@@ -911,38 +911,36 @@
 .profile-page {
   display: flex;
   height: 100vh;
-  margin-left: 48px;
-  margin-right: 48px;
+  margin-left: 30px;
+  margin-right: 30px;
   padding-top: 16px;
   padding-bottom: 16px;
-  flex-basis: auto;
-  flex-grow: 0;
-  flex-shrink: 1;
-  flex-wrap: wrap;
   
 }
 
 .profile-side-bar {
-  background-color: #4091ed;
-  flex-basis: 25%;
-  color: white;
-  display:block;
-  max-width: 25%;
-  min-width: 25%;
+  display: block;
   padding-left: 8px;
   padding-right: 8px;
-
+  background-color: #fff;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: white;
+  min-width: 25%;
+  direction: ltr;
+  margin-right: 8px;
 }
 
 .profile-content {
-  flex-basis: 75%;
-  display:block;
-  max-width: 75%;
-  min-width: 75%;
-  background-color: #1b2025;
+  flex: 1;
   color: white;
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-left: 8px;
+  background-color: #fff;
 }
 
-
-
-
+.big-card-heading {
+  font-size: 20px;
+  color: white;
+}

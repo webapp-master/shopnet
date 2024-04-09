@@ -13,8 +13,15 @@ const ProfileScreen = () => {
         </div>
 
         <div className="profile-content">
-          here is where the content of the page will be and there are four
-          card-body
+          <div className="big-card-header">
+            <h1 className="big-card-heading">Account Overview</h1>
+          </div>
+
+          <div className="big-card-body">
+            <p>there are four smaller cards in here</p>
+            <p>I prefer to use grid layout to construct this</p>
+          </div>
+          
         </div>
       </div>
     </div>
