@@ -4,12 +4,7 @@ const ProfileScreen = () => {
   return (
     <div
       style={{
-        backgroundColor: '#d4d4d6',
-        minHeight: "100vh",
-        width: "100%",
-        display: "flex",
-        justifyContent: "center",
-        padding: "0",
+        backgroundColor: "#d4d4d6",
       }}
     >
       <div className="profile-page">
