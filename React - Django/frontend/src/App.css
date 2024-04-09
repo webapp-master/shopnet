@@ -915,17 +915,30 @@
   margin-right: 48px;
   padding-top: 16px;
   padding-bottom: 16px;
+  flex-basis: auto;
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-wrap: wrap;
   
 }
 
 .profile-side-bar {
   background-color: #4091ed;
-  flex: 0 0 25%;
+  flex-basis: 25%;
   color: white;
+  display:block;
+  max-width: 25%;
+  min-width: 25%;
+  padding-left: 8px;
+  padding-right: 8px;
+
 }
 
 .profile-content {
-  flex: 1;
+  flex-basis: 75%;
+  display:block;
+  max-width: 75%;
+  min-width: 75%;
   background-color: #1b2025;
   color: white;
 }
