@@ -915,8 +915,12 @@
   margin-right: 30px;
   padding-top: 16px;
   padding-bottom: 16px;
-  
 }
+
+.profile-page p {
+  color: red;
+}
+
 
 .profile-side-bar {
   display: block;
@@ -925,22 +929,32 @@
   background-color: #fff;
   font-family: Roboto, Arial, Helvetica, sans-serif;
   font-size: 14px;
-  color: white;
-  min-width: 25%;
+  
   direction: ltr;
   margin-right: 8px;
+  border-radius: 6px;
 }
 
 .profile-content {
   flex: 1;
-  color: white;
-  padding-left: 8px;
-  padding-right: 8px;
   margin-left: 8px;
   background-color: #fff;
+  border-radius: 6px;
+}
+
+.big-card-header {
+  border-bottom: 1px solid #a6a6a8;
+  padding: 14px 16px;
 }
 
 .big-card-heading {
-  font-size: 20px;
-  color: white;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  color: #313133;
+  font-size: 15px;
+  font-weight: bold;
+  margin: 0;
+  text-wrap: nowrap;
+  
+  
 }
+

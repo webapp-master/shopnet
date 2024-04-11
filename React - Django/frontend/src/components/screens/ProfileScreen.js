@@ -13,6 +13,7 @@ const ProfileScreen = () => {
         </div>
 
         <div className="profile-content">
+          
           <div className="big-card-header">
             <h1 className="big-card-heading">Account Overview</h1>
           </div>
