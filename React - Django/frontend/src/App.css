@@ -929,7 +929,7 @@
   background-color: #fff;
   font-family: Roboto, Arial, Helvetica, sans-serif;
   font-size: 14px;
-  
+  text-wrap: nowrap;
   direction: ltr;
   margin-right: 8px;
   border-radius: 6px;
