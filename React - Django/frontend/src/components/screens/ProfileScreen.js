@@ -9,11 +9,23 @@ const ProfileScreen = () => {
     >
       <div className="profile-page">
         <div className="profile-side-bar">
-          <p>this is the space for the sidebar</p>
+          <div className="side-nav">sidebar</div>
+          <div className="side-nav">sidebar</div>
+          <div className="side-nav">sidebar</div>
+          <div className="side-nav">sidebar</div>
+          <div className="side-nav">sidebar</div>
+          <div className="side-nav">sidebar</div>
+          <div className="side-nav">sidebar</div>
+          <div className="side-nav">sidebar</div>
+          <div className="side-nav">sidebar</div>
+          <div className="side-nav">sidebar</div>
+          <div className="side-nav">sidebar</div>
+          <div className="side-nav">sidebar</div>
+          <div className="side-nav">sidebar</div>
         </div>
 
         <div className="profile-content">
-          
+
           <div className="big-card-header">
             <h1 className="big-card-heading">Account Overview</h1>
           </div>
